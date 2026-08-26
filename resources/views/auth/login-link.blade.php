@@ -1,12 +1,6 @@
 <x-layouts.auth title="Log Masuk Tanpa Kata Laluan" heading="Log Masuk Melalui WhatsApp"
                 subheading="Masukkan nombor WhatsApp anda. Kami hantar pautan log masuk — tiada kata laluan diperlukan.">
 
-    @if (session('success'))
-        <x-ui.alert variant="success" icon="check-circle" class="mb-6">
-            {{ session('success') }}
-        </x-ui.alert>
-    @endif
-
     <form method="POST" action="{{ route('masuk.pautan.hantar') }}" class="space-y-5">
         @csrf
 
