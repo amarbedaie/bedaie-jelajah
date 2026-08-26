@@ -82,6 +82,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'phone' => $phone,
             'password' => $data['password'],
+            'password_set_at' => now(),
             'role' => UserRole::Peserta,
         ]);
 

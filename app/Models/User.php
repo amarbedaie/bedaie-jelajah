@@ -19,7 +19,7 @@ class User extends Authenticatable
     use HasFactory, HasPublicId, Notifiable, SoftDeletes;
 
     protected $fillable = [
-        'public_id', 'name', 'email', 'phone', 'password', 'role', 'is_active',
+        'public_id', 'name', 'email', 'phone', 'password', 'password_set_at', 'role', 'is_active',
         'avatar_path', 'state_id', 'district_id', 'gender', 'last_login_at',
     ];
 

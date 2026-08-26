@@ -241,4 +241,34 @@ class LoginLinkTest extends TestCase
         $this->get($link->url())->assertRedirect(route($baharu->homeRoute()));
         $this->assertAuthenticatedAs($baharu);
     }
+
+    public function test_akaun_dicipta_automatik_bermula_tanpa_kata_laluan_ditetapkan(): void
+    {
+        $admin = $this->admin();
+        $application = app(ApplicationService::class)->submit($this->applicationPayload());
+
+        app(ApplicationService::class)->changeStatus(
+            $application, ApplicationStatus::Diterima, null, null, $admin,
+        );
+
+        $this->assertNull($application->fresh()->user->password_set_at);
+    }
+
+    public function test_pendaftaran_awam_menandakan_kata_laluan_telah_ditetapkan(): void
+    {
+        $this->post(route('register'), [
+            'name' => 'Peserta Ujian Daftar',
+            'email' => 'daftar@contoh.com',
+            'phone' => '0198887766',
+            'password' => 'rahsia-baharu-123',
+            'password_confirmation' => 'rahsia-baharu-123',
+            'privacy' => '1',
+        ]);
+
+        $user = User::where('email', 'daftar@contoh.com')->first();
+
+        $this->assertNotNull($user);
+        $this->assertNotNull($user->password_set_at,
+            'Pengguna yang memilih kata laluannya sendiri mesti ditandakan.');
+    }
 }
