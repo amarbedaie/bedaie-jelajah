@@ -81,6 +81,10 @@ class PeopleController extends Controller
     public function sendLoginLink(User $user,
         NotificationService $notifications)
     {
+        // Hanya akaun Penggerak. Admin tidak boleh mencipta pautan masuk
+        // untuk akaun admin lain.
+        abort_unless($user->isPenggerak(), 404);
+
         $link = LoginLink::issueFor($user, 'whatsapp', request()->ip());
 
         $notifications->queue(

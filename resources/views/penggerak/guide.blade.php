@@ -65,7 +65,7 @@
                subheading="Semua yang anda perlu tahu untuk membawa BeDaie ke kawasan anda.">
 
     {{-- ── Jaminan pembuka ─────────────────────────────────── --}}
-    <div class="rounded-[--radius-card-lg] bg-navy-900 p-6 sm:p-8">
+    <div class="rounded-card-lg bg-navy-900 p-6 sm:p-8">
         <div class="relative">
             <div class="motif-girih-dark absolute inset-0 opacity-50" aria-hidden="true"></div>
             <div class="relative max-w-2xl">
@@ -97,7 +97,7 @@
 
         <ol class="mt-5 space-y-4">
             @foreach ($steps as $i => $step)
-                <li class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+                <li class="rounded-card border border-hairline bg-surface p-5">
                     <div class="flex items-start gap-4">
                         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50">
                             <x-ui.icon :name="$step['icon']" class="h-5 w-5 text-brand-700" />
@@ -122,7 +122,7 @@
     <section class="mt-10">
         <h2 class="text-lg font-semibold text-navy-900">Soalan Lazim</h2>
 
-        <div class="mt-5 divide-y divide-hairline overflow-hidden rounded-[--radius-card] border border-hairline bg-surface">
+        <div class="mt-5 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface">
             @foreach ($faqs as [$question, $answer])
                 <details class="group">
                     <summary class="tap-target flex cursor-pointer items-center justify-between gap-4 px-5
@@ -138,7 +138,7 @@
     </section>
 
     {{-- ── Bantuan ─────────────────────────────────────────── --}}
-    <div class="mt-10 rounded-[--radius-card] border border-brand-200 bg-brand-50 p-6">
+    <div class="mt-10 rounded-card border border-brand-200 bg-brand-50 p-6">
         <h2 class="font-semibold text-navy-900">Masih ada soalan?</h2>
         <p class="mt-2 text-ink-soft text-pretty">
             Kami lebih suka anda bertanya daripada tersekat. Hubungi terus — tiada soalan yang bodoh.

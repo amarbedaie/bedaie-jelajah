@@ -17,7 +17,7 @@
                     @endphp
                     <li>
                         <a href="{{ $action['url'] }}"
-                           class="flex items-center justify-between gap-3 rounded-[--radius-card] border p-4
+                           class="flex items-center justify-between gap-3 rounded-card border p-4
                                   transition hover:shadow-soft {{ $tones[$action['tone']] ?? $tones['neutral'] }}">
                             <span class="text-sm font-medium text-pretty">{{ $action['label'] }}</span>
                             <x-ui.icon name="arrow-right" class="h-4 w-4 shrink-0" />
@@ -41,7 +41,7 @@
                 ['Sijil dikeluarkan', number_format($certificatesIssued), 'certificate', route('admin.sijil')],
                 ['Negeri dijelajahi', number_format($headline['negeri']), 'map', route('admin.negeri')],
             ] as [$label, $value, $icon, $url])
-                <div class="rounded-[--radius-card] border border-hairline bg-surface p-5 shadow-soft">
+                <div class="rounded-card border border-hairline bg-surface p-5 shadow-soft">
                     <div class="flex items-start justify-between gap-3">
                         <div>
                             <dd class="font-display text-3xl text-navy-900">{{ $value }}</dd>
@@ -69,7 +69,7 @@
             @else
                 <ul class="space-y-3">
                     @foreach ($todayEvents as $event)
-                        <li class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+                        <li class="rounded-card border border-hairline bg-surface p-5">
                             <div class="flex flex-wrap items-start justify-between gap-3">
                                 <div class="min-w-0">
                                     <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
@@ -105,7 +105,7 @@
             @if ($recentApplications->isEmpty())
                 <x-ui.empty-state compact icon="inbox" title="Tiada permohonan" />
             @else
-                <ul class="divide-y divide-hairline overflow-hidden rounded-[--radius-card] border border-hairline bg-surface">
+                <ul class="divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface">
                     @foreach ($recentApplications as $application)
                         <li>
                             <a href="{{ route('admin.permohonan.show', $application) }}"
@@ -142,7 +142,7 @@
         @else
             <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($demand as $area)
-                    <li class="flex items-center justify-between gap-3 rounded-[--radius-card] border
+                    <li class="flex items-center justify-between gap-3 rounded-card border
                                border-hairline bg-surface p-4">
                         <div class="min-w-0">
                             <p class="truncate font-medium text-navy-900">

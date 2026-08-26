@@ -14,7 +14,7 @@
 
     @if ($active)
         {{-- ══ PROGRAM AKTIF ═══════════════════════════════ --}}
-        <section class="overflow-hidden rounded-[--radius-card-lg] border border-hairline bg-surface shadow-soft">
+        <section class="overflow-hidden rounded-card-lg border border-hairline bg-surface shadow-soft">
             <div class="relative bg-navy-900 p-6">
                 <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
                 <div class="relative flex flex-wrap items-start justify-between gap-4">
@@ -173,7 +173,7 @@
                 @foreach ($applications->take(4) as $application)
                     <li>
                         <a href="{{ route('penggerak.permohonan.show', $application) }}"
-                           class="block rounded-[--radius-card] border border-hairline bg-surface p-5
+                           class="block rounded-card border border-hairline bg-surface p-5
                                   transition hover:border-brand-200 hover:shadow-soft">
                             <div class="flex flex-wrap items-start justify-between gap-3">
                                 <div class="min-w-0">
@@ -215,7 +215,7 @@
                 @foreach ($pastEvents as $event)
                     <li>
                         <a href="{{ route('penggerak.program.show', $event) }}"
-                           class="flex h-full flex-col rounded-[--radius-card] border border-hairline bg-surface p-5
+                           class="flex h-full flex-col rounded-card border border-hairline bg-surface p-5
                                   transition hover:border-brand-200 hover:shadow-soft">
                             <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
                             <p class="mt-0.5 text-sm text-ink-muted">{{ $event->dateLabel() }}</p>

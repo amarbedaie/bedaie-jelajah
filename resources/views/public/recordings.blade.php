@@ -35,7 +35,7 @@
                         $locked = ! $recording->viewableBy($registration);
                         $reason = $recording->lockedReason($registration);
                     @endphp
-                    <li class="relative flex h-full flex-col rounded-[--radius-card] border border-hairline
+                    <li class="relative flex h-full flex-col rounded-card border border-hairline
                                bg-surface p-5 {{ $locked ? '' : 'transition hover:border-brand-200 hover:shadow-soft' }}">
                         <div class="flex items-start gap-3">
                             <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl

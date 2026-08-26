@@ -1,6 +1,6 @@
 @props(['headers' => [], 'caption' => null, 'empty' => 'Tiada rekod'])
 
-<div class="overflow-hidden rounded-[--radius-card] border border-hairline bg-surface">
+<div class="overflow-hidden rounded-card border border-hairline bg-surface">
     <div class="overflow-x-auto">
         <table class="w-full text-sm">
             @if ($caption)

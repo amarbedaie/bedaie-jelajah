@@ -10,7 +10,7 @@
     ];
 @endphp
 
-<div {{ $attributes->merge(['class' => 'rounded-[--radius-card] border p-4 sm:p-5 ' . ($tones[$tone] ?? $tones['default'])]) }}>
+<div {{ $attributes->merge(['class' => 'rounded-card border p-4 sm:p-5 ' . ($tones[$tone] ?? $tones['default'])]) }}>
     <div class="flex items-start justify-between gap-3">
         <p class="text-sm font-medium text-ink-soft">{{ $label }}</p>
         @if ($icon)

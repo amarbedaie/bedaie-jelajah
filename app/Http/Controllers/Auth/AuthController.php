@@ -34,7 +34,7 @@ class AuthController extends Controller
         $field = filter_var($data['email'], FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
         $identifier = $field === 'phone' ? Phone::normalise($data['email']) : $data['email'];
 
-        if (! Auth::attempt([$field => $identifier, 'password' => $data['password']], $request->boolean('remember'))) {
+        if (! Auth::attempt([$field => $identifier, 'password' => $data['password'], 'is_active' => true], $request->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => 'Maklumat log masuk tidak sepadan dengan rekod kami.',
             ]);
@@ -70,6 +70,15 @@ class AuthController extends Controller
         ]);
 
         $phone = Phone::normalise($data['phone']);
+
+        // Nombor yang tidak boleh dinormalkan menjadi null, dan
+        // where('phone', null) menjadi IS NULL — yang memadankan pengguna
+        // pertama tanpa nombor dan menolak pendaftaran dengan mesej salah.
+        if (! $phone) {
+            throw ValidationException::withMessages([
+                'phone' => 'Nombor WhatsApp tidak sah. Contoh: 012-345 6789.',
+            ]);
+        }
 
         if (User::where('phone', $phone)->exists()) {
             throw ValidationException::withMessages([

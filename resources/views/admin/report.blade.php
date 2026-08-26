@@ -23,7 +23,7 @@
             ['Sijil dikeluarkan', number_format($report['certificates'])],
             ['Gambar diluluskan', number_format($report['gallery_count'])],
         ] as [$label, $value])
-            <div class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+            <div class="rounded-card border border-hairline bg-surface p-5">
                 <dd class="font-display text-2xl text-navy-900">{{ $value }}</dd>
                 <dt class="mt-1 text-sm text-ink-soft text-pretty">{{ $label }}</dt>
             </div>

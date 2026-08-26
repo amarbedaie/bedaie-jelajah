@@ -38,7 +38,7 @@
                         </h2>
                         <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                             @foreach ($group as $partner)
-                                <li class="flex h-full flex-col items-center gap-3 rounded-[--radius-card]
+                                <li class="flex h-full flex-col items-center gap-3 rounded-card
                                            border border-hairline bg-surface p-6 text-center">
                                     @if ($partner->logo_path)
                                         <img src="{{ Storage::url($partner->logo_path) }}" alt="{{ $partner->name }}"

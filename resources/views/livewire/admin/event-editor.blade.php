@@ -46,7 +46,7 @@
                         <button type="button" wire:click="regeneratePoster('{{ $style->value }}')"
                                 wire:loading.attr="disabled" wire:target="regeneratePoster"
                                 aria-pressed="{{ $active ? 'true' : 'false' }}"
-                                class="flex h-full w-full flex-col rounded-[--radius-card] border p-4 text-left transition
+                                class="flex h-full w-full flex-col rounded-card border p-4 text-left transition
                                        {{ $active
                                           ? 'border-brand-500 bg-brand-50 ring-1 ring-brand-500'
                                           : 'border-hairline bg-surface hover:border-brand-300' }}">

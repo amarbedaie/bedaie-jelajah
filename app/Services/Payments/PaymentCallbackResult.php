@@ -12,5 +12,6 @@ class PaymentCallbackResult
         public PaymentStatus $status = PaymentStatus::Gagal,
         public array $payload = [],
         public ?string $message = null,
+        public ?float $amount = null,
     ) {}
 }

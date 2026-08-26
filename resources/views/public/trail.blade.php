@@ -15,7 +15,7 @@
         @else
             <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($events as $event)
-                    <article class="flex h-full flex-col overflow-hidden rounded-[--radius-card] border
+                    <article class="flex h-full flex-col overflow-hidden rounded-card border
                                     border-hairline bg-surface shadow-soft">
                         <a href="{{ $event->publicUrl() }}" class="relative block aspect-[16/9] bg-navy-900">
                             @if ($event->heroUrl())

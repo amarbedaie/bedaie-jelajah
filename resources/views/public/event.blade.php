@@ -99,7 +99,7 @@
 
                 {{-- Kad tindakan --}}
                 <div class="lg:sticky lg:top-24">
-                    <div class="overflow-hidden rounded-[--radius-card-lg] bg-surface shadow-lift">
+                    <div class="overflow-hidden rounded-card-lg bg-surface shadow-lift">
                         @if ($event->posterUrl())
                             <img src="{{ $event->posterUrl() }}" alt="Poster {{ $event->title }}"
                                  class="aspect-[4/5] w-full object-cover" />
@@ -233,7 +233,7 @@
                         <h2 class="text-xl font-semibold text-navy-900">Apa Kata Peserta</h2>
                         <div class="mt-4 grid gap-4 sm:grid-cols-2">
                             @foreach ($event->testimonials as $testimonial)
-                                <figure class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+                                <figure class="rounded-card border border-hairline bg-surface p-5">
                                     <blockquote class="text-sm leading-relaxed text-ink-soft text-pretty">
                                         &ldquo;{{ $testimonial->quote }}&rdquo;
                                     </blockquote>
@@ -251,7 +251,7 @@
                 @if (! empty($event->faqs))
                     <div>
                         <h2 class="text-xl font-semibold text-navy-900">Soalan Lazim</h2>
-                        <div class="mt-4 divide-y divide-hairline overflow-hidden rounded-[--radius-card] border border-hairline bg-surface">
+                        <div class="mt-4 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface">
                             @foreach ($event->faqs as $faq)
                                 <details class="group">
                                     <summary class="tap-target flex cursor-pointer items-center justify-between gap-4 px-5 text-sm font-medium text-navy-900">
@@ -328,7 +328,7 @@
 
                 {{-- Sijil --}}
                 @if ($event->certificate_enabled)
-                    <div class="rounded-[--radius-card] border border-brand-200 bg-brand-50 p-5">
+                    <div class="rounded-card border border-brand-200 bg-brand-50 p-5">
                         <div class="flex items-start gap-3">
                             <x-ui.icon name="certificate" class="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
                             <div>

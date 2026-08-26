@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class EventRecording extends Model
@@ -29,6 +30,12 @@ class EventRecording extends Model
             'is_published' => 'boolean',
             'available_from' => 'datetime',
         ];
+    }
+
+    /** Dirujuk melalui public_id — URL peserta tidak mendedahkan ID pangkalan data. */
+    public function getRouteKeyName(): string
+    {
+        return 'public_id';
     }
 
     public function event(): BelongsTo
@@ -130,7 +137,7 @@ class EventRecording extends Model
     public function downloadUrl(): ?string
     {
         return $this->file_path
-            ? \Illuminate\Support\Facades\Storage::disk('public')->url($this->file_path)
+            ? Storage::disk('public')->url($this->file_path)
             : $this->url;
     }
 

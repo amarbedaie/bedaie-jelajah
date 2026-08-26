@@ -9,7 +9,7 @@
     <section class="jelajah-container py-12 sm:py-16">
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @foreach ($categories as $category)
-                <div class="flex h-full flex-col rounded-[--radius-card] border border-hairline bg-surface p-6 shadow-soft">
+                <div class="flex h-full flex-col rounded-card border border-hairline bg-surface p-6 shadow-soft">
                     <div class="flex items-start justify-between gap-3">
                         <div class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50">
                             <x-ui.icon :name="$category->icon ?? 'book'" class="h-6 w-6 text-brand-600" />

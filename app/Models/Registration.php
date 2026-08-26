@@ -154,7 +154,11 @@ class Registration extends Model
 
     public function hasAttended(): bool
     {
-        return $this->attendance()->exists();
+        // Senarai peserta memuatkan relasi ini terlebih dahulu; menembak
+        // pertanyaan baharu di sini menghasilkan N+1 pada setiap baris.
+        return $this->relationLoaded('attendance')
+            ? $this->attendance !== null
+            : $this->attendance()->exists();
     }
 
     public function isPaid(): bool

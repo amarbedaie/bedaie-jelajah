@@ -8,7 +8,7 @@
         <ul class="space-y-3">
             @foreach ($notifications as $notification)
                 @php $data = $notification->data; @endphp
-                <li class="rounded-[--radius-card] border border-hairline bg-surface p-5
+                <li class="rounded-card border border-hairline bg-surface p-5
                            {{ $notification->read_at ? '' : 'border-brand-200 bg-brand-50/40' }}">
                     <div class="flex items-start gap-3.5">
                         <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl

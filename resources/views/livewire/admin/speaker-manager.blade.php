@@ -70,7 +70,7 @@
         <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             @foreach ($speakers as $speaker)
                 <li wire:key="speaker-{{ $speaker->id }}"
-                    class="flex h-full flex-col rounded-[--radius-card] border border-hairline bg-surface p-5">
+                    class="flex h-full flex-col rounded-card border border-hairline bg-surface p-5">
                     <div class="flex items-start gap-4">
                         @if ($speaker->photo_path)
                             <img src="{{ Storage::url($speaker->photo_path) }}" alt="{{ $speaker->name }}"

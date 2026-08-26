@@ -47,7 +47,7 @@
          Disembunyikan di bawah 640px: memaksa SVG selebar 40rem ke dalam
          skrin telefon memotong Sabah dan Sarawak sepenuhnya. Senarai negeri
          di sebelah menjadi laluan utama pada mobile. --}}
-    <div class="relative hidden overflow-hidden rounded-[--radius-card-lg] border border-hairline
+    <div class="relative hidden overflow-hidden rounded-card-lg border border-hairline
                 bg-surface p-3 shadow-soft sm:block sm:p-5">
         <div class="no-scrollbar overflow-x-auto">
             {{-- Geometri sebenar daripada data terbuka rasmi DOSM Malaysia.
@@ -199,7 +199,7 @@
 
         {{-- Senarai negeri. Terbuka secara lalai pada mobile kerana peta
              disembunyikan di situ; tertutup pada desktop di mana peta memimpin. --}}
-        <details class="group rounded-[--radius-card] border border-hairline bg-surface shadow-soft"
+        <details class="group rounded-card border border-hairline bg-surface shadow-soft"
                  x-data x-init="$el.open = window.matchMedia('(max-width: 639px)').matches">
             <summary class="tap-target flex cursor-pointer items-center justify-between gap-2 px-5 text-sm font-medium text-navy-900">
                 <span class="sm:hidden">Pilih negeri anda</span>

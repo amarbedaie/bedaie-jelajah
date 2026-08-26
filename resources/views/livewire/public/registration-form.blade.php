@@ -227,7 +227,7 @@
             </div>
         </x-ui.card>
 
-        <div class="rounded-[--radius-card] border border-hairline bg-mist/60 p-5">
+        <div class="rounded-card border border-hairline bg-mist/60 p-5">
             <h3 class="text-sm font-semibold text-navy-900">Selepas mendaftar</h3>
             <ul class="mt-3 space-y-2">
                 @foreach ([

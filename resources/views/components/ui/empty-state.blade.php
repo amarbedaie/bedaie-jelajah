@@ -1,7 +1,7 @@
 @props(['icon' => 'inbox', 'title', 'description' => null, 'compact' => false])
 
 <div {{ $attributes->merge([
-    'class' => 'flex flex-col items-center justify-center rounded-[--radius-card] border border-dashed border-hairline '
+    'class' => 'flex flex-col items-center justify-center rounded-card border border-dashed border-hairline '
         . 'bg-surface text-center ' . ($compact ? 'px-5 py-8' : 'px-6 py-14')
 ]) }}>
     <div class="flex items-center justify-center rounded-2xl bg-brand-50 {{ $compact ? 'w-11 h-11' : 'w-14 h-14' }}">

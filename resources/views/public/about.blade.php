@@ -62,7 +62,7 @@
             </div>
 
             <aside class="space-y-5">
-                <div class="rounded-[--radius-card-lg] bg-navy-900 p-7 text-white">
+                <div class="rounded-card-lg bg-navy-900 p-7 text-white">
                     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">Slogan Kami</p>
                     <p class="mt-4 font-display text-2xl leading-tight">
                         {{ config('jelajah.slogan') }}
@@ -113,7 +113,7 @@
                     @foreach ($recent as $event)
                         <li>
                             <a href="{{ $event->publicUrl() }}"
-                               class="flex items-center justify-between gap-4 rounded-[--radius-card] border
+                               class="flex items-center justify-between gap-4 rounded-card border
                                       border-hairline bg-surface p-5 transition hover:border-brand-200 hover:shadow-soft">
                                 <div class="min-w-0">
                                     <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
@@ -136,7 +136,7 @@
                 <x-ui.section-heading eyebrow="Suara Mereka" title="Apa Kata Komuniti" />
                 <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($testimonials as $testimonial)
-                        <figure class="flex h-full flex-col rounded-[--radius-card] border border-hairline bg-surface p-6">
+                        <figure class="flex h-full flex-col rounded-card border border-hairline bg-surface p-6">
                             <blockquote class="flex-1 leading-relaxed text-ink-soft text-pretty">
                                 &ldquo;{{ $testimonial->quote }}&rdquo;
                             </blockquote>

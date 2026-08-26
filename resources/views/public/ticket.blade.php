@@ -52,7 +52,7 @@
             </div>
 
             {{-- ── Tiket ─────────────────────────────────────── --}}
-            <div class="mt-8 overflow-hidden rounded-[--radius-card-lg] border border-hairline bg-surface shadow-lift">
+            <div class="mt-8 overflow-hidden rounded-card-lg border border-hairline bg-surface shadow-lift">
                 <div class="relative bg-navy-900 p-6">
                     <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
                     <div class="relative">
@@ -185,7 +185,7 @@
                 </div>
 
                 @if ($attended && $registration->certificate)
-                    <div class="mt-6 rounded-[--radius-card] border border-brand-200 bg-brand-50 p-5">
+                    <div class="mt-6 rounded-card border border-brand-200 bg-brand-50 p-5">
                         <div class="flex items-start gap-3">
                             <x-ui.icon name="certificate" class="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
                             <div class="min-w-0 flex-1">
@@ -203,7 +203,7 @@
                 @endif
 
                 @if ($event->recordings()->published()->exists())
-                    <div class="mt-6 rounded-[--radius-card] border border-brand-200 bg-brand-50 p-5">
+                    <div class="mt-6 rounded-card border border-brand-200 bg-brand-50 p-5">
                         <div class="flex items-start gap-3">
                             <x-ui.icon name="play" class="mt-0.5 h-5 w-5 shrink-0 text-brand-700" />
                             <div class="min-w-0 flex-1">
@@ -221,7 +221,7 @@
                 @endif
 
                 @if ($event->hasEnded() && ! $registration->feedback && $attended)
-                    <div class="mt-6 rounded-[--radius-card] border border-hairline bg-surface p-5">
+                    <div class="mt-6 rounded-card border border-hairline bg-surface p-5">
                         <h3 class="font-semibold text-navy-900">Bagaimana pengalaman anda?</h3>
                         <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                             Maklum balas anda membantu kami memperbaiki program akan datang.

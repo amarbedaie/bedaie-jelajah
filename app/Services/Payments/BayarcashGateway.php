@@ -102,13 +102,27 @@ class BayarcashGateway implements PaymentGateway
             reference: $data['order_number'] ?? null,
             status: $status === '3' ? PaymentStatus::Berjaya : PaymentStatus::Gagal,
             payload: $data,
+            amount: isset($data['amount']) ? (float) $data['amount'] : null,
         );
     }
 
+    /**
+     * Menandatangani pasangan kunci=nilai, bukan nilai sahaja.
+     *
+     * Menandatangani nilai sahaja bermakna menukar nama kunci menghasilkan
+     * rentetan yang sama, jadi satu callback sah boleh ditulis semula
+     * menjadi callback lain yang masih lulus pengesahan.
+     */
     private function checksum(array $payload, string $secret): string
     {
         ksort($payload);
 
-        return hash_hmac('sha256', implode('|', array_map('strval', $payload)), $secret);
+        $signed = [];
+
+        foreach ($payload as $key => $value) {
+            $signed[] = $key.'='.(string) $value;
+        }
+
+        return hash_hmac('sha256', implode('|', $signed), $secret);
     }
 }

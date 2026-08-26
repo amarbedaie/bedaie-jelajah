@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="overflow-hidden rounded-[--radius-card] border border-hairline bg-surface">
+    <div class="overflow-hidden rounded-card border border-hairline bg-surface">
         <div class="grid grid-cols-7 border-b border-hairline bg-mist/60">
             @foreach (['Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab', 'Ahd'] as $label)
                 <div class="px-2 py-2.5 text-center text-xs font-semibold text-ink-soft">{{ $label }}</div>

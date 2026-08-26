@@ -69,7 +69,7 @@
         @if ($detail['completed']->isNotEmpty())
             <div>
                 <x-ui.section-heading eyebrow="Jejak" title="Program Yang Telah Selesai" />
-                <ul class="mt-6 divide-y divide-hairline overflow-hidden rounded-[--radius-card] border border-hairline bg-surface">
+                <ul class="mt-6 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface">
                     @foreach ($detail['completed'] as $event)
                         <li>
                             <a href="{{ $event->publicUrl() }}"

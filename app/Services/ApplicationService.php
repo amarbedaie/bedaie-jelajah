@@ -29,7 +29,18 @@ class ApplicationService
     public function submit(array $data, ?User $user = null): Application
     {
         return DB::transaction(function () use ($data, $user) {
-            $user ??= $this->resolveMobilizer($data);
+            if ($user) {
+                // Pemohon yang sudah log masuk telah membuktikan pemilikan
+                // akaunnya, jadi naikkan pangkat terus — tanpa ini mereka
+                // tersekat 403 pada halaman permohonan mereka sendiri.
+                if ($user->role === UserRole::Peserta) {
+                    $user->update(['role' => UserRole::Penggerak]);
+                }
+
+                $this->ensureProfile($user, (object) $data);
+            } else {
+                $user = $this->resolveMobilizer($data);
+            }
 
             $application = Application::create([
                 ...$data,
@@ -187,12 +198,13 @@ class ApplicationService
         }
 
         if ($user) {
+            // Borang ini tidak disahkan — sesiapa boleh menaip e-mel atau
+            // nombor orang lain. Jadi ia tidak boleh menghidupkan semula
+            // akaun yang sengaja dipadam admin, dan tidak boleh menaikkan
+            // pangkat sesiapa. Kenaikan pangkat berlaku apabila pemohon
+            // membuktikan pemilikan dengan menggunakan pautan log masuk.
             if ($user->trashed()) {
-                $user->restore();
-            }
-
-            if ($user->role === UserRole::Peserta) {
-                $user->update(['role' => UserRole::Penggerak]);
+                return null;
             }
         } else {
             $user = User::create([
@@ -242,6 +254,28 @@ class ApplicationService
             $user,
             ['url' => $link->url(), 'action_label' => 'Log Masuk'],
         );
+    }
+
+    /**
+     * Menaikkan pemohon menjadi Penggerak setelah pemilikan akaun terbukti.
+     *
+     * Dipanggil apabila pautan log masuk digunakan — hanya pemilik nombor
+     * WhatsApp atau e-mel itu boleh sampai ke sini.
+     */
+    public static function promoteIfApplicant(User $user): void
+    {
+        if ($user->role !== UserRole::Peserta) {
+            return;
+        }
+
+        if (! Application::where('user_id', $user->id)->exists()) {
+            return;
+        }
+
+        $user->update(['role' => UserRole::Penggerak]);
+
+        ActivityLogger::log('application.mobilizer_promoted', $user,
+            "{$user->name} dinaikkan menjadi Penggerak selepas mengesahkan pemilikan akaun.");
     }
 
     private function placeholderEmail(?string $phone): string

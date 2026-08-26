@@ -8,7 +8,7 @@
         <div class="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
             <div>
                 @if ($recording->embedUrl())
-                    <div class="overflow-hidden rounded-[--radius-card-lg] bg-navy-900 shadow-lift">
+                    <div class="overflow-hidden rounded-card-lg bg-navy-900 shadow-lift">
                         <div class="aspect-video">
                             <iframe src="{{ $recording->embedUrl() }}"
                                     title="{{ $recording->title }}"
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 @elseif ($recording->downloadUrl())
-                    <div class="rounded-[--radius-card-lg] border border-hairline bg-surface p-8 text-center">
+                    <div class="rounded-card-lg border border-hairline bg-surface p-8 text-center">
                         <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-50">
                             <x-ui.icon :name="$recording->type->icon()" class="h-7 w-7 text-brand-700" />
                         </div>

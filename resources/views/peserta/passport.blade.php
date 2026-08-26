@@ -1,6 +1,6 @@
 <x-layouts.app title="Pasport Ilmu" nav="peserta">
     {{-- ── Kad pasport ────────────────────────────────────── --}}
-    <section class="overflow-hidden rounded-[--radius-card-lg] bg-navy-900 shadow-lift">
+    <section class="overflow-hidden rounded-card-lg bg-navy-900 shadow-lift">
         <div class="relative p-7 sm:p-9">
             <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
             <div class="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-brand-500/25 blur-3xl" aria-hidden="true"></div>
@@ -53,7 +53,7 @@
             <ul class="mt-4 space-y-3">
                 @foreach ($upcoming as $registration)
                     @php $event = $registration->event; @endphp
-                    <li class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+                    <li class="rounded-card border border-hairline bg-surface p-5">
                         <div class="flex flex-wrap items-start justify-between gap-3">
                             <div class="min-w-0">
                                 <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
@@ -99,7 +99,7 @@
         @else
             <ul class="mt-4 grid gap-4 sm:grid-cols-2">
                 @foreach ($certificates->take(4) as $certificate)
-                    <li class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+                    <li class="rounded-card border border-hairline bg-surface p-5">
                         <div class="flex items-start gap-3">
                             <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50">
                                 <x-ui.icon name="certificate" class="h-5 w-5 text-brand-600" />
@@ -125,7 +125,7 @@
     @if ($history->isNotEmpty())
         <section class="mt-8">
             <h2 class="text-lg font-semibold text-navy-900">Sejarah Pembelajaran</h2>
-            <ul class="mt-4 divide-y divide-hairline overflow-hidden rounded-[--radius-card] border border-hairline bg-surface">
+            <ul class="mt-4 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface">
                 @foreach ($history as $registration)
                     @php $event = $registration->event; @endphp
                     <li class="flex flex-wrap items-center justify-between gap-3 p-5">

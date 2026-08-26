@@ -45,6 +45,17 @@ class Application extends Model
         ];
     }
 
+    /**
+     * Dirujuk melalui public_id, bukan ID berjujukan.
+     *
+     * Notifikasi menjana pautan daripada public_id; tanpa ini pengikatan
+     * model mencari mengikut kunci utama dan setiap pautan itu 404.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'public_id';
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -83,7 +94,9 @@ class Application extends Model
     /** Garis masa yang selamat dipaparkan kepada Penggerak (tanpa nota dalaman). */
     public function publicTimeline(): HasMany
     {
-        return $this->hasMany(ApplicationStatusHistory::class)->oldest();
+        return $this->hasMany(ApplicationStatusHistory::class)
+            ->whereNotNull('public_note')
+            ->oldest();
     }
 
     /**

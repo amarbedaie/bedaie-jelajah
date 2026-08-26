@@ -117,7 +117,7 @@
                 </div>
             </x-ui.card>
 
-            <div class="rounded-[--radius-card] bg-mist p-5">
+            <div class="rounded-card bg-mist p-5">
                 <h3 class="text-sm font-semibold text-navy-900">Apa yang berlaku seterusnya?</h3>
                 <ol class="mt-3 space-y-2">
                     @foreach ([

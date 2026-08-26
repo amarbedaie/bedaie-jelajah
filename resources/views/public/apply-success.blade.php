@@ -14,7 +14,7 @@
                 Pasukan BeDaie akan menyemak permohonan ini dan menghubungi anda melalui WhatsApp.
             </p>
 
-            <div class="mt-8 rounded-[--radius-card] border border-hairline bg-surface p-6 text-left shadow-soft">
+            <div class="mt-8 rounded-card border border-hairline bg-surface p-6 text-left shadow-soft">
                 <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">Nombor Rujukan</p>
                 <div class="mt-2 flex flex-wrap items-center gap-3">
                     <p class="font-display text-2xl text-navy-900">{{ $application->reference_no }}</p>
@@ -47,7 +47,7 @@
                 </dl>
             </div>
 
-            <div class="mt-8 rounded-[--radius-card] bg-brand-50 p-6 text-left">
+            <div class="mt-8 rounded-card bg-brand-50 p-6 text-left">
                 <h2 class="font-semibold text-navy-900">Apa yang berlaku seterusnya?</h2>
                 <ol class="mt-3 space-y-2.5">
                     @foreach ([

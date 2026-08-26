@@ -53,8 +53,20 @@ class PaymentController extends Controller
             return response()->json(['ok' => false], 400);
         }
 
-        $payment = Payment::where('gateway_reference', $result->reference)
-            ->orWhere('public_id', $result->reference)
+        // Rujukan kosong tidak boleh dicari: where(null) menjadi IS NULL,
+        // yang memadankan pembayaran manual pertama yang belum berbayar.
+        if (blank($result->reference)) {
+            Log::warning('Callback pembayaran tanpa rujukan.', ['gateway' => $gateway]);
+
+            return response()->json(['ok' => false], 422);
+        }
+
+        $reference = $result->reference;
+
+        $payment = Payment::where(fn ($q) => $q
+            ->where('gateway_reference', $reference)
+            ->orWhere('public_id', $reference)
+            ->orWhereHas('registration', fn ($r) => $r->where('reference_no', $reference)))
             ->first();
 
         if (! $payment) {
@@ -69,6 +81,19 @@ class PaymentController extends Controller
         // Idempotent — callback yang sama boleh tiba lebih daripada sekali.
         if ($payment->status === PaymentStatus::Berjaya) {
             return response()->json(['ok' => true, 'note' => 'sudah diproses']);
+        }
+
+        // Jumlah yang dibayar mesti sepadan dengan jumlah yang dituntut.
+        if ($result->amount !== null
+            && abs($result->amount - (float) $payment->amount) > 0.01) {
+            Log::warning('Callback pembayaran dengan jumlah tidak sepadan.', [
+                'gateway' => $gateway,
+                'reference' => $reference,
+                'dijangka' => (float) $payment->amount,
+                'diterima' => $result->amount,
+            ]);
+
+            return response()->json(['ok' => false], 422);
         }
 
         $payment->update([

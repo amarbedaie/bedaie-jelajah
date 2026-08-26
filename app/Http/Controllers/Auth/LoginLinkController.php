@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LoginLink;
 use App\Models\User;
 use App\Services\ActivityLogger;
+use App\Services\ApplicationService;
 use App\Services\Notifications\NotificationRecipient;
 use App\Services\Notifications\NotificationService;
 use App\Support\Phone;
@@ -46,6 +47,10 @@ class LoginLinkController extends Controller
 
         $user = $this->findUser($data['contact']);
 
+        if ($user && ! $user->is_active) {
+            $user = null;
+        }
+
         // Jawapan yang sama sama ada akaun wujud atau tidak — mengelak
         // orang luar menguji nombor mana yang berdaftar dengan kami.
         if ($user) {
@@ -76,6 +81,12 @@ class LoginLinkController extends Controller
     {
         $link = LoginLink::with('user')->where('token', $token)->first();
 
+        // Akaun yang dinyahaktifkan tidak boleh masuk melalui pintu ini pun.
+        if ($link && ! $link->user?->is_active) {
+            $link->consume();
+            $link = null;
+        }
+
         if (! $link || ! $link->isUsable()) {
             return redirect()->route('masuk.pautan')
                 ->withErrors(['contact' => 'Pautan ini telah tamat tempoh atau sudah digunakan. Sila minta pautan baharu.']);
@@ -91,6 +102,9 @@ class LoginLinkController extends Controller
 
         Auth::login($link->user, remember: true);
         request()->session()->regenerate();
+
+        // Pemilikan kini terbukti, jadi pemohon boleh dinaikkan dengan selamat.
+        ApplicationService::promoteIfApplicant($link->user);
 
         ActivityLogger::log('auth.login_link_used', $link->user,
             "{$link->user->name} log masuk melalui pautan.");

@@ -5,7 +5,7 @@
     $isPast = $event->hasEnded();
 @endphp
 
-<article class="group relative flex h-full flex-col overflow-hidden rounded-[--radius-card] border border-hairline
+<article class="group relative flex h-full flex-col overflow-hidden rounded-card border border-hairline
                 bg-surface shadow-soft transition-all duration-200 hover:-translate-y-0.5
                 hover:border-brand-200 hover:shadow-lift">
     <a href="{{ $event->publicUrl() }}" class="relative block aspect-[16/10] overflow-hidden bg-navy-900">

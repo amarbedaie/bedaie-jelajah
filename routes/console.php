@@ -2,6 +2,11 @@
 
 use App\Console\Commands\AdvanceEventLifecycle;
 use App\Console\Commands\SendEventReminders;
+use App\Enums\EventStatus;
+use App\Models\Event;
+use App\Models\EventReminderDispatch;
+use App\Services\ActivityLogger;
+use App\Services\RegistrationService;
 use Illuminate\Support\Facades\Schedule;
 
 /*
@@ -29,16 +34,21 @@ Schedule::command(AdvanceEventLifecycle::class)
 Schedule::call(function () {
     $promoted = 0;
 
-    App\Models\Event::upcoming()
+    // upcoming() menyusun mengikut starts_at; digabungkan dengan chunkById
+    // itu meninggalkan program yang ID-nya lebih kecil daripada kelompok
+    // pertama. Susun mengikut kunci sahaja di sini.
+    Event::query()
+        ->whereIn('status', [EventStatus::Diterbitkan, EventStatus::Berlangsung])
+        ->where('starts_at', '>=', now())
         ->where('allow_waiting_list', true)
         ->chunkById(50, function ($events) use (&$promoted) {
             foreach ($events as $event) {
-                $promoted += app(App\Services\RegistrationService::class)->promoteFromWaitlist($event);
+                $promoted += app(RegistrationService::class)->promoteFromWaitlist($event);
             }
         });
 
     if ($promoted > 0) {
-        App\Services\ActivityLogger::log(
+        ActivityLogger::log(
             'waitlist.promoted',
             null,
             "{$promoted} peserta dinaikkan daripada senarai menunggu.",
@@ -47,6 +57,6 @@ Schedule::call(function () {
 })->name('jelajah:naikkan-senarai-menunggu')->everyThirtyMinutes()->withoutOverlapping();
 
 // Buang rekod peringatan lama supaya jadual kekal ringan.
-Schedule::call(fn () => App\Models\EventReminderDispatch::where('dispatched_at', '<', now()->subMonths(6))->delete())
+Schedule::call(fn () => EventReminderDispatch::where('dispatched_at', '<', now()->subMonths(6))->delete())
     ->name('jelajah:bersih-rekod-peringatan')
     ->weekly();

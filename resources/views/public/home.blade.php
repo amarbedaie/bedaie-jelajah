@@ -58,7 +58,7 @@
                 @if ($upcoming->isNotEmpty())
                     @php $next = $upcoming->first(); @endphp
                     <div class="relative">
-                        <div class="rounded-[--radius-card-lg] border border-white/12 bg-white/8 p-5 backdrop-blur-md sm:p-6">
+                        <div class="rounded-card-lg border border-white/12 bg-white/8 p-5 backdrop-blur-md sm:p-6">
                             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">
                                 Program Terdekat
                             </p>
@@ -200,7 +200,7 @@
                     ['Sebarkan Link', 'Anda terima link, QR dan poster rasmi.', 'share'],
                     ['BeDaie Hadir', 'Kami datang. Peserta imbas QR. Sijil automatik.', 'heart'],
                 ] as $i => [$title, $body, $icon])
-                    <li class="relative rounded-[--radius-card] border border-white/10 bg-white/6 p-5 backdrop-blur-sm">
+                    <li class="relative rounded-card border border-white/10 bg-white/6 p-5 backdrop-blur-sm">
                         <div class="flex items-center gap-3">
                             <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-500
                                          font-display text-base text-white">{{ $i + 1 }}</span>
@@ -232,7 +232,7 @@
             <div class="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                 @foreach ($categories as $category)
                     {{-- Seluruh kad ialah sasaran ketuk; pautan teks sahaja hanya 20px tinggi. --}}
-                    <div class="group relative flex h-full flex-col rounded-[--radius-card] border border-hairline
+                    <div class="group relative flex h-full flex-col rounded-card border border-hairline
                                 bg-surface p-5 transition hover:border-brand-200 hover:shadow-soft
                                 focus-within:border-brand-400 focus-within:ring-4 focus-within:ring-brand-500/15">
                         <div class="grid h-11 w-11 place-items-center rounded-2xl bg-brand-50
@@ -275,7 +275,7 @@
 
                 <div class="mt-9 grid gap-6 lg:grid-cols-3">
                     @foreach ($recent as $event)
-                        <article class="overflow-hidden rounded-[--radius-card] border border-hairline bg-surface shadow-soft">
+                        <article class="overflow-hidden rounded-card border border-hairline bg-surface shadow-soft">
                             <a href="{{ $event->publicUrl() }}" class="relative block aspect-[16/9] bg-navy-900">
                                 @if ($event->heroUrl())
                                     <img src="{{ $event->heroUrl() }}" alt="{{ $event->title }}" loading="lazy"
@@ -319,7 +319,7 @@
     {{-- ══ H. PERMINTAAN KOMUNITI ════════════════════════════════ --}}
     <section class="bg-surface py-16 sm:py-20">
         <div class="jelajah-container">
-            <div class="relative overflow-hidden rounded-[--radius-card-lg] bg-brand-50 px-6 py-12 sm:px-12 sm:py-16">
+            <div class="relative overflow-hidden rounded-card-lg bg-brand-50 px-6 py-12 sm:px-12 sm:py-16">
                 <div class="motif-girih absolute inset-0 opacity-70" aria-hidden="true"></div>
 
                 <div class="relative mx-auto max-w-2xl text-center">
@@ -357,7 +357,7 @@
 
                 <div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($testimonials as $testimonial)
-                        <figure class="flex h-full flex-col rounded-[--radius-card] border border-hairline bg-surface p-6 shadow-soft">
+                        <figure class="flex h-full flex-col rounded-card border border-hairline bg-surface p-6 shadow-soft">
                             @if ($testimonial->rating)
                                 <div class="flex gap-0.5" aria-label="{{ $testimonial->rating }} daripada 5 bintang">
                                     @for ($i = 1; $i <= 5; $i++)

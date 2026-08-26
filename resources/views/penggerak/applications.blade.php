@@ -12,7 +12,7 @@
             @foreach ($applications as $application)
                 <li>
                     <a href="{{ route('penggerak.permohonan.show', $application) }}"
-                       class="block rounded-[--radius-card] border border-hairline bg-surface p-5
+                       class="block rounded-card border border-hairline bg-surface p-5
                               transition hover:border-brand-200 hover:shadow-soft">
                         <div class="flex flex-wrap items-start justify-between gap-3">
                             <div class="min-w-0">

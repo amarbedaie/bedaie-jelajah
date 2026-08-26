@@ -12,7 +12,7 @@
             @foreach ($events as $event)
                 <li>
                     <a href="{{ route('penggerak.program.show', $event) }}"
-                       class="flex h-full flex-col rounded-[--radius-card] border border-hairline bg-surface p-5
+                       class="flex h-full flex-col rounded-card border border-hairline bg-surface p-5
                               transition hover:border-brand-200 hover:shadow-soft">
                         <div class="flex flex-wrap items-start justify-between gap-2">
                             <x-ui.badge :color="$event->status->color()" dot>{{ $event->status->label() }}</x-ui.badge>

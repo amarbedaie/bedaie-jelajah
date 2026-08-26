@@ -49,7 +49,7 @@
     {{-- ── Keputusan imbasan ──────────────────────────────── --}}
     @if ($result)
         <div class="jelajah-container pt-5" wire:key="result-{{ md5(json_encode($result)) }}">
-            <div class="overflow-hidden rounded-[--radius-card-lg] {{ $tone }} p-5 text-white">
+            <div class="overflow-hidden rounded-card-lg {{ $tone }} p-5 text-white">
                 <div class="flex items-start gap-4">
                     <x-ui.icon :name="$icon" class="mt-0.5 h-7 w-7 shrink-0" />
                     <div class="min-w-0 flex-1">
@@ -89,7 +89,7 @@
 
     {{-- ── Kamera ─────────────────────────────────────────── --}}
     <div class="jelajah-container pt-5">
-        <div class="overflow-hidden rounded-[--radius-card-lg] border border-white/12 bg-white/6">
+        <div class="overflow-hidden rounded-card-lg border border-white/12 bg-white/6">
             <div id="qr-reader" class="aspect-square w-full bg-black/40" x-show="kamera" x-cloak></div>
 
             <div x-show="!kamera" class="p-8 text-center">
@@ -194,7 +194,7 @@
             </button>
         @else
             <form wire:submit="registerWalkIn"
-                  class="rounded-[--radius-card] border border-white/12 bg-white/8 p-5">
+                  class="rounded-card border border-white/12 bg-white/8 p-5">
                 <div class="flex items-center justify-between gap-3">
                     <h2 class="font-semibold text-white">Pendaftaran Walk-in</h2>
                     <button type="button" wire:click="$set('showWalkIn', false)"

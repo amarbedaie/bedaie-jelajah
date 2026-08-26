@@ -222,7 +222,7 @@
     @endif
 
     {{-- ══ Penapis ═══════════════════════════════════════════ --}}
-    <div class="mt-6 rounded-[--radius-card] border border-hairline bg-surface p-4">
+    <div class="mt-6 rounded-card border border-hairline bg-surface p-4">
         <div class="grid gap-3 lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))]">
             <div>
                 <label for="o-search" class="sr-only">Cari sasaran</label>
@@ -325,7 +325,7 @@
                             </span>
                         </header>
 
-                        <div class="min-h-[6rem] space-y-2.5 rounded-[--radius-card] bg-mist/50 p-2.5">
+                        <div class="min-h-[6rem] space-y-2.5 rounded-card bg-mist/50 p-2.5">
                             @forelse ($items as $target)
                                 <article wire:key="t-{{ $target->id }}"
                                          class="rounded-xl border border-hairline bg-surface p-3.5 shadow-soft
@@ -386,7 +386,7 @@
             </div>
 
             @if ($closed->isNotEmpty())
-                <details class="mt-5 rounded-[--radius-card] border border-hairline bg-surface">
+                <details class="mt-5 rounded-card border border-hairline bg-surface">
                     <summary class="tap-target flex cursor-pointer items-center justify-between px-5 text-sm font-medium text-navy-900">
                         Ditutup & ditangguh ({{ $closed->count() }})
                         <x-ui.icon name="chevron-down" class="h-4 w-4 text-ink-muted" />

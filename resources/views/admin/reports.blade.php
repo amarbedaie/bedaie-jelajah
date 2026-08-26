@@ -5,7 +5,7 @@
             ['program', 'Program Dilaksanakan'], ['peserta', 'Peserta Disantuni'],
             ['rakan', 'Rakan Masjid & Organisasi'],
         ] as [$key, $label])
-            <div class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+            <div class="rounded-card border border-hairline bg-surface p-5">
                 <dd class="font-display text-3xl text-navy-900">{{ number_format($headline[$key]) }}</dd>
                 <dt class="mt-1 text-sm text-ink-soft text-pretty">{{ $label }}</dt>
             </div>

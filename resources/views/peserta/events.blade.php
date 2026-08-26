@@ -10,7 +10,7 @@
         <ul class="space-y-4">
             @foreach ($registrations as $registration)
                 @php $event = $registration->event; @endphp
-                <li class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+                <li class="rounded-card border border-hairline bg-surface p-5">
                     <div class="flex flex-wrap items-start justify-between gap-3">
                         <div class="min-w-0">
                             <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>

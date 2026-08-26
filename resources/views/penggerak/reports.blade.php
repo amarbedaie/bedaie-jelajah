@@ -12,7 +12,7 @@
         @else
             <ul class="mt-4 grid gap-4 sm:grid-cols-2">
                 @foreach ($certificates as $certificate)
-                    <li class="flex h-full flex-col rounded-[--radius-card] border border-hairline bg-surface p-5">
+                    <li class="flex h-full flex-col rounded-card border border-hairline bg-surface p-5">
                         <div class="flex items-start gap-3">
                             <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50">
                                 <x-ui.icon name="certificate" class="h-5 w-5 text-brand-600" />

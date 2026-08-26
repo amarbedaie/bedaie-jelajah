@@ -146,6 +146,19 @@ class CertificateService
     /** Sijil penghargaan untuk masjid / organisasi rakan. */
     public function issuePartnerCertificate(Event $event, string $organizationName): Certificate
     {
+        // Program boleh ditutup lebih daripada sekali selepas ditangguh
+        // dan diterbitkan semula — jangan cetak sijil kedua untuk rakan
+        // kongsi yang sama.
+        $existing = Certificate::valid()
+            ->where('event_id', $event->id)
+            ->where('organization_name', $organizationName)
+            ->where('type', CertificateType::PenghargaanRakan->value)
+            ->first();
+
+        if ($existing) {
+            return $existing;
+        }
+
         return $this->create([
             'type' => CertificateType::PenghargaanRakan,
             'event' => $event,

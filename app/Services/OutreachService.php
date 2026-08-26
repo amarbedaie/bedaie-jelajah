@@ -169,7 +169,10 @@ class OutreachService
                 'estimated_attendees' => $overrides['estimated_attendees'] ?? AttendeeEstimate::F101_300,
                 'target_audience' => $overrides['target_audience'] ?? TargetAudience::Umum,
                 'notes' => "Dijana daripada sasaran jelajah {$target->reference_no}. Sumber: {$target->sourceLabel()}.",
-            ], $target->referrer ?? $actor);
+                // Tanpa rujukan, biarkan permohonan menyelesaikan Penggeraknya
+                // sendiri daripada kontak lokasi. Menghantar $actor di sini
+                // menjadikan admin sebagai Penggerak program itu.
+            ], $target->referrer);
 
             $target->update(['application_id' => $application->id]);
 

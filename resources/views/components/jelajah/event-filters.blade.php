@@ -1,7 +1,7 @@
 @props(['states', 'categories', 'action' => null, 'showPrice' => false])
 
 <form method="GET" action="{{ $action ?? url()->current() }}"
-      class="rounded-[--radius-card] border border-hairline bg-surface p-4 shadow-soft sm:p-5">
+      class="rounded-card border border-hairline bg-surface p-4 shadow-soft sm:p-5">
     <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <x-ui.field label="Negeri" for="f-negeri">
             <x-ui.select id="f-negeri" name="negeri">

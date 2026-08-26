@@ -12,7 +12,7 @@
             ['E-mel', $mailReady, 'E-mel dihantar melalui SMTP/API.', 'MAIL_MAILER=log — e-mel tidak dihantar keluar.'],
             ['Queue worker', $queuePending !== null, 'Notifikasi diproses di latar.', 'Tiada maklumat.'],
         ] as [$name, $ready, $onText, $offText])
-            <div class="rounded-[--radius-card] border border-hairline bg-surface p-5">
+            <div class="rounded-card border border-hairline bg-surface p-5">
                 <div class="flex items-center justify-between gap-3">
                     <p class="font-medium text-navy-900">{{ $name }}</p>
                     <x-ui.badge :color="$ready ? 'success' : 'warning'" dot>

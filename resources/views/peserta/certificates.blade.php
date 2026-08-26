@@ -9,7 +9,7 @@
     @else
         <ul class="grid gap-5 sm:grid-cols-2">
             @foreach ($certificates as $certificate)
-                <li class="flex h-full flex-col overflow-hidden rounded-[--radius-card] border border-hairline bg-surface">
+                <li class="flex h-full flex-col overflow-hidden rounded-card border border-hairline bg-surface">
                     <div class="relative bg-navy-900 p-5">
                         <div class="motif-girih-dark absolute inset-0 opacity-50" aria-hidden="true"></div>
                         <div class="relative">
