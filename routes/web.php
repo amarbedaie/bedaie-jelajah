@@ -201,5 +201,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
         ->name('laporan.eksport')->middleware('can:export-participants');
 
     Route::get('/template-notifikasi', [Admin\SettingController::class, 'templates'])->name('template');
+    Route::get('/log-notifikasi', [Admin\SettingController::class, 'notificationLog'])->name('log-notifikasi');
     Route::get('/tetapan', [Admin\SettingController::class, 'index'])->name('tetapan');
 });

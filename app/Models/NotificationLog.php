@@ -21,4 +21,32 @@ class NotificationLog extends Model
     {
         return $this->morphTo();
     }
+
+    /** Alamat penerima disamarkan — log tidak perlu mendedahkan nombor penuh. */
+    public function maskedAddress(): string
+    {
+        $value = (string) $this->recipient_address;
+
+        if ($value === '') {
+            return '—';
+        }
+
+        if (str_contains($value, '@')) {
+            [$user, $domain] = explode('@', $value, 2);
+
+            return mb_substr($user, 0, 2).str_repeat('•', max(1, mb_strlen($user) - 2)).'@'.$domain;
+        }
+
+        $digits = preg_replace('/\D/', '', $value);
+
+        return mb_strlen($digits) > 6
+            ? mb_substr($digits, 0, 3).str_repeat('•', mb_strlen($digits) - 6).mb_substr($digits, -3)
+            : $digits;
+    }
+
+    /** Petikan ringkas kandungan mesej untuk paparan senarai. */
+    public function preview(): string
+    {
+        return \Illuminate\Support\Str::limit(trim((string) $this->body), 160);
+    }
 }

@@ -28,4 +28,31 @@ class SettingController extends Controller
             'activeGateway' => $payments->gateway()->key(),
         ]);
     }
+
+    /** Log notifikasi — bukti sama ada mesej benar-benar keluar. */
+    public function notificationLog(\Illuminate\Http\Request $request)
+    {
+        $whatsappReady = (bool) config('jelajah.whatsapp.enabled')
+            && filled(config('jelajah.whatsapp.base_url'))
+            && filled(config('jelajah.whatsapp.api_key'));
+
+        return view('admin.notification-log', [
+            'whatsappReady' => $whatsappReady,
+            'mailReady' => ! in_array(config('mail.default'), ['log', 'array'], true),
+            'queuePending' => config('queue.default') === 'database'
+                ? \Illuminate\Support\Facades\DB::table('jobs')->count()
+                : null,
+            'logs' => \App\Models\NotificationLog::query()
+                ->when($request->filled('saluran'), fn ($q) => $q->where('channel', $request->string('saluran')))
+                ->when($request->filled('status'), fn ($q) => $q->where('status', $request->string('status')))
+                ->when($request->filled('q'), function ($q) use ($request) {
+                    $term = '%'.$request->string('q').'%';
+                    $q->where(fn ($w) => $w->where('recipient_name', 'like', $term)
+                        ->orWhere('recipient_address', 'like', $term));
+                })
+                ->latest()
+                ->paginate(30)
+                ->withQueryString(),
+        ]);
+    }
 }
