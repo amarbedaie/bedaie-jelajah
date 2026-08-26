@@ -59,13 +59,13 @@ return [
     | Application Timezone
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the default timezone for your application, which
-    | will be used by the PHP date and date-time functions. The timezone
-    | is set to "UTC" by default as it is suitable for most use cases.
+    | Waktu program disimpan sebagai waktu tempatan Malaysia, jadi setiap
+    | perbandingan terhadap now() — tetingkap check-in, "program telah
+    | tamat", pencetus sijil — mesti berada pada zon waktu yang sama.
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'Asia/Kuala_Lumpur'),
 
     /*
     |--------------------------------------------------------------------------
