@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\LoginLinkController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CheckInController;
@@ -91,6 +93,12 @@ Route::middleware('guest')->group(function () {
     Route::get('/log-masuk', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/log-masuk', [AuthController::class, 'login'])->middleware('throttle:10,1');
 
+    // Log masuk tanpa kata laluan — akaun Penggerak dicipta automatik
+    // tanpa kata laluan yang diketahui pemohon.
+    Route::get('/masuk-pautan', [LoginLinkController::class, 'create'])->name('masuk.pautan');
+    Route::post('/masuk-pautan', [LoginLinkController::class, 'store'])
+        ->middleware('throttle:6,15')->name('masuk.pautan.hantar');
+
     Route::get('/daftar-akaun', [AuthController::class, 'showRegister'])->name('register');
     Route::post('/daftar-akaun', [AuthController::class, 'register'])->middleware('throttle:6,1');
 
@@ -102,7 +110,16 @@ Route::middleware('guest')->group(function () {
         ->name('password.update')->middleware('throttle:6,1');
 });
 
+// Di luar kumpulan 'guest': pautan mesti berfungsi walaupun peranti itu
+// masih log masuk sebagai orang lain — telefon dikongsi adalah biasa.
+Route::get('/masuk/{token}', [LoginLinkController::class, 'consume'])
+    ->name('masuk.pautan.guna')->middleware('throttle:20,1');
+
 Route::post('/log-keluar', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+// Menetapkan kata laluan sendiri — akaun yang dicipta automatik tiada satu pun.
+Route::put('/kata-laluan', [PasswordController::class, 'update'])
+    ->name('kata-laluan.update')->middleware(['auth', 'throttle:10,1']);
 
 /*
 |--------------------------------------------------------------------------
@@ -126,7 +143,7 @@ Route::middleware(['auth', 'role:penggerak,admin'])
         Route::get('/peserta', [Penggerak\ParticipantController::class, 'index'])->name('peserta');
         Route::get('/sijil-laporan', [Penggerak\ReportController::class, 'index'])->name('sijil');
         Route::view('/panduan', 'penggerak.guide')->name('panduan');
-    Route::get('/profil', [Penggerak\ProfileController::class, 'edit'])->name('profil');
+        Route::get('/profil', [Penggerak\ProfileController::class, 'edit'])->name('profil');
         Route::put('/profil', [Penggerak\ProfileController::class, 'update'])->name('profil.update');
         Route::get('/notifikasi', [Penggerak\NotificationController::class, 'index'])->name('notifikasi');
     });
@@ -174,6 +191,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
     Route::get('/penggerak', [Admin\PeopleController::class, 'mobilizers'])->name('penggerak');
     Route::get('/penggerak/{user}', [Admin\PeopleController::class, 'mobilizer'])->name('penggerak.show');
+    Route::post('/penggerak/{user}/pautan-masuk', [Admin\PeopleController::class, 'sendLoginLink'])
+        ->name('penggerak.pautan-masuk');
     Route::get('/peserta', [Admin\PeopleController::class, 'participants'])->name('peserta');
 
     Route::get('/kehadiran', [Admin\AttendanceController::class, 'index'])->name('kehadiran');

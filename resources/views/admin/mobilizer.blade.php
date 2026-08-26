@@ -52,6 +52,18 @@
                          variant="whatsapp" block class="mt-5" icon="whatsapp">
                 Hubungi di WhatsApp
             </x-ui.button>
+
+            {{-- Akaun Penggerak dicipta automatik tanpa kata laluan yang
+                 diketahui — ini selalunya satu-satunya jalan masuk mereka. --}}
+            <form method="POST" action="{{ route('admin.penggerak.pautan-masuk', $user) }}" class="mt-2.5">
+                @csrf
+                <x-ui.button type="submit" variant="outline" block icon="lock">
+                    Hantar Pautan Log Masuk
+                </x-ui.button>
+            </form>
+            <p class="mt-2 text-xs text-ink-muted text-pretty">
+                Pautan sekali-guna, sah 30 minit. Guna ini jika Penggerak tidak dapat masuk.
+            </p>
         </x-ui.card>
 
         <div class="space-y-6">

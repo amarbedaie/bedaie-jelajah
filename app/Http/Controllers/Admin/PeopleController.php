@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
+use App\Models\LoginLink;
 use App\Models\Registration;
 use App\Models\State;
 use App\Models\User;
+use App\Services\ActivityLogger;
+use App\Services\Notifications\NotificationRecipient;
+use App\Services\Notifications\NotificationService;
 use Illuminate\Http\Request;
 
 class PeopleController extends Controller
@@ -66,5 +70,35 @@ class PeopleController extends Controller
             'registrations' => $registrations,
             'states' => State::orderBy('sort_order')->get(),
         ]);
+    }
+
+    /**
+     * Menghantar pautan log masuk kepada Penggerak yang tersekat.
+     *
+     * Akaun mereka dicipta automatik daripada permohonan tanpa kata laluan
+     * yang diketahui, jadi ini selalunya satu-satunya jalan masuk.
+     */
+    public function sendLoginLink(User $user,
+        NotificationService $notifications)
+    {
+        $link = LoginLink::issueFor($user, 'whatsapp', request()->ip());
+
+        $notifications->queue(
+            'pautan_log_masuk',
+            NotificationRecipient::fromUser($user),
+            [
+                'participant_name' => $user->name,
+                'registration_link' => $link->url(),
+                'status' => '30 minit',
+            ],
+            $user,
+            ['url' => $link->url(), 'action_label' => 'Log Masuk'],
+        );
+
+        ActivityLogger::log('auth.login_link_sent', $user,
+            "Pautan log masuk dihantar kepada {$user->name} oleh ".auth()->user()->name.'.');
+
+        return back()->with('success',
+            "Pautan log masuk dihantar kepada {$user->name}. Sah selama 30 minit.");
     }
 }

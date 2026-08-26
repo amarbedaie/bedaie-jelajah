@@ -44,7 +44,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Permohonan diterima',
-                        'body' => "Permohonan {{reference_no}} untuk {{venue}} telah kami terima. Kami akan menghubungi anda tidak lama lagi.",
+                        'body' => 'Permohonan {{reference_no}} untuk {{venue}} telah kami terima. Kami akan menghubungi anda tidak lama lagi.',
                     ],
                 ],
             ],
@@ -80,7 +80,21 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Program anda telah disahkan',
-                        'body' => "{{event_name}} pada {{event_date}}. Halaman program & link pendaftaran sudah tersedia.",
+                        'body' => '{{event_name}} pada {{event_date}}. Halaman program & link pendaftaran sudah tersedia.',
+                    ],
+                ],
+            ],
+            [
+                'key' => 'pautan_log_masuk',
+                'name' => 'Pautan log masuk sekali-guna',
+                'channels' => [
+                    'whatsapp' => [
+                        'subject' => 'Pautan Log Masuk',
+                        'body' => "Assalamualaikum {{participant_name}} 👋\n\nIni pautan log masuk anda ke BeDaie Jelajah:\n{{registration_link}}\n\nPautan ini sah selama {{status}} dan hanya boleh digunakan sekali.\n\n_Jika anda tidak meminta pautan ini, abaikan mesej ini._".$sign,
+                    ],
+                    'email' => [
+                        'subject' => 'Pautan log masuk BeDaie Jelajah',
+                        'body' => "Assalamualaikum {{participant_name}},\n\nKlik pautan di bawah untuk log masuk:\n{{registration_link}}\n\nPautan sah selama {{status}} dan hanya boleh digunakan sekali.\n\nJika anda tidak meminta pautan ini, abaikan e-mel ini.",
                     ],
                 ],
             ],
@@ -98,7 +112,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Pendaftaran disahkan',
-                        'body' => "Anda telah berdaftar untuk {{event_name}} pada {{event_date}}.",
+                        'body' => 'Anda telah berdaftar untuk {{event_name}} pada {{event_date}}.',
                     ],
                 ],
             ],
@@ -116,7 +130,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Pendaftaran menunggu pengesahan',
-                        'body' => "Pendaftaran {{reference_no}} untuk {{event_name}} sedang menunggu pengesahan.",
+                        'body' => 'Pendaftaran {{reference_no}} untuk {{event_name}} sedang menunggu pengesahan.',
                     ],
                 ],
             ],
@@ -134,7 +148,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Anda dalam senarai menunggu',
-                        'body' => "Tempat {{event_name}} telah penuh. Kami akan maklumkan jika ada kekosongan.",
+                        'body' => 'Tempat {{event_name}} telah penuh. Kami akan maklumkan jika ada kekosongan.',
                     ],
                 ],
             ],
@@ -152,7 +166,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Tempat anda telah disahkan',
-                        'body' => "Anda kini disahkan untuk {{event_name}}.",
+                        'body' => 'Anda kini disahkan untuk {{event_name}}.',
                     ],
                 ],
             ],
@@ -170,7 +184,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Peringatan program',
-                        'body' => "{{event_name}} akan berlangsung pada {{event_date}}, {{event_time}}.",
+                        'body' => '{{event_name}} akan berlangsung pada {{event_date}}, {{event_time}}.',
                     ],
                 ],
             ],
@@ -188,7 +202,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Program ditangguhkan',
-                        'body' => "{{event_name}} telah ditangguhkan. {{status_note}}",
+                        'body' => '{{event_name}} telah ditangguhkan. {{status_note}}',
                     ],
                 ],
             ],
@@ -206,7 +220,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Program dibatalkan',
-                        'body' => "{{event_name}} telah dibatalkan. {{status_note}}",
+                        'body' => '{{event_name}} telah dibatalkan. {{status_note}}',
                     ],
                 ],
             ],
@@ -224,7 +238,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Pembayaran diterima',
-                        'body' => "Pembayaran untuk {{event_name}} telah disahkan.",
+                        'body' => 'Pembayaran untuk {{event_name}} telah disahkan.',
                     ],
                 ],
             ],
@@ -242,7 +256,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Kongsikan maklum balas anda',
-                        'body' => "Bagaimana pengalaman anda di {{event_name}}?",
+                        'body' => 'Bagaimana pengalaman anda di {{event_name}}?',
                     ],
                 ],
             ],
@@ -260,7 +274,7 @@ class NotificationTemplateSeeder extends Seeder
                     ],
                     'inapp' => [
                         'subject' => 'Sijil anda telah sedia',
-                        'body' => "Sijil untuk {{event_name}} boleh dimuat turun sekarang.",
+                        'body' => 'Sijil untuk {{event_name}} boleh dimuat turun sekarang.',
                     ],
                 ],
             ],

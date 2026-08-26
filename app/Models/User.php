@@ -29,6 +29,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'password_set_at' => 'datetime',
             'last_login_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
@@ -110,5 +111,25 @@ class User extends Authenticatable
     public function homeRoute(): string
     {
         return $this->role->homeRoute();
+    }
+
+    /** Domain e-mel tempatan untuk akaun yang dicipta tanpa e-mel sebenar. */
+    public const PLACEHOLDER_EMAIL_DOMAIN = '@jelajah.bedaie.local';
+
+    /**
+     * E-mel yang benar-benar boleh dihubungi.
+     *
+     * Akaun yang dicipta automatik daripada permohonan diberi e-mel
+     * pemegang tempat supaya lajur unik itu terisi. Menghantar mel ke
+     * sana hanya menghasilkan bounce, jadi ia dianggap tiada e-mel.
+     */
+    public function realEmail(): ?string
+    {
+        return $this->hasPlaceholderEmail() ? null : $this->email;
+    }
+
+    public function hasPlaceholderEmail(): bool
+    {
+        return str_ends_with((string) $this->email, self::PLACEHOLDER_EMAIL_DOMAIN);
     }
 }

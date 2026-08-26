@@ -188,6 +188,23 @@ Dicipta oleh `DemoSeeder`, yang **tidak** dijalankan dalam `APP_ENV=production`.
 
 Log masuk menerima **e-mel atau nombor WhatsApp**.
 
+### Akaun Penggerak yang dicipta automatik
+
+Apabila permohonan awam diterima, sistem mencipta akaun Penggerak dengan
+kata laluan rawak yang **tidak diketahui sesiapa** dan — jika pemohon tidak
+memberi e-mel — alamat pemegang tempat `@jelajah.bedaie.local`. Mereka masuk
+melalui **pautan log masuk WhatsApp** (`/masuk-pautan`):
+
+- Pautan dihantar automatik sebaik permohonan berstatus *Diterima*.
+- Pemohon boleh memintanya sendiri bila-bila masa di `/masuk-pautan`.
+- Admin boleh menghantarnya semula dari halaman butiran Penggerak.
+- Sekali-guna, sah 30 minit, membatalkan pautan sebelumnya, dan berfungsi
+  walaupun peranti itu masih log masuk sebagai orang lain.
+
+Selepas masuk, Penggerak boleh **menetapkan kata laluan** dan mengisi e-mel
+sebenar di halaman Profil. Halaman itu tidak meminta "kata laluan semasa"
+selagi `password_set_at` masih kosong.
+
 ---
 
 ## 7. Struktur modul
@@ -358,6 +375,13 @@ Disahkan dalam pelayar sebenar (Chromium) pada 1440×900 dan 390×844:
 ## 12. Keselamatan & privasi
 
 - Kata laluan di-hash; reset kata laluan melalui token standard Laravel.
+- Pautan log masuk: token rawak 48 aksara, sekali-guna, luput 30 minit,
+  dihadkan 5 permintaan / 15 minit setiap IP. Borang memberi jawapan yang
+  **sama** sama ada akaun wujud atau tidak, supaya nombor berdaftar tidak
+  boleh diuji dari luar.
+- E-mel pemegang tempat (`@jelajah.bedaie.local`) tidak pernah dihantar mel;
+  notifikasi jatuh ke WhatsApp. E-mel sebenar hanya boleh diisi sekali oleh
+  pemiliknya, dan tidak boleh ditukar melalui borang profil selepas itu.
 - CSRF pada semua borang (kecuali webhook pembayaran yang disahkan tandatangan).
 - Rate limiting: log masuk, pendaftaran akaun, borang permohonan, pendaftaran peserta.
 - Token QR dijana rawak dan tidak mendedahkan ID pangkalan data.

@@ -6,6 +6,7 @@ use App\Enums\ApplicationStatus;
 use App\Enums\UserRole;
 use App\Models\Application;
 use App\Models\ApplicationStatusHistory;
+use App\Models\LoginLink;
 use App\Models\MobilizerProfile;
 use App\Models\User;
 use App\Services\Notifications\NotificationRecipient;
@@ -52,6 +53,13 @@ class ApplicationService
             ActivityLogger::log('application.submitted', $application, "Permohonan {$application->reference_no} diterima.");
 
             $this->notifyApplicant($application, 'permohonan_diterima');
+
+            // Akaun Penggerak dicipta tanpa kata laluan yang diketahui pemohon,
+            // jadi kita hantar pautan log masuk terus supaya mereka benar-benar
+            // dapat menjejak status permohonan seperti yang dijanjikan.
+            if ($user) {
+                $this->sendLoginLink($user);
+            }
 
             return $application;
         });
@@ -218,11 +226,29 @@ class ApplicationService
     }
 
     /** Emel pengganti apabila pemohon hanya memberi nombor WhatsApp. */
+    /** Pautan log masuk sekali-guna melalui WhatsApp. */
+    private function sendLoginLink(User $user): void
+    {
+        $link = LoginLink::issueFor($user, 'whatsapp', request()?->ip());
+
+        $this->notifications->queue(
+            'pautan_log_masuk',
+            NotificationRecipient::fromUser($user),
+            [
+                'participant_name' => $user->name,
+                'registration_link' => $link->url(),
+                'status' => '30 minit',
+            ],
+            $user,
+            ['url' => $link->url(), 'action_label' => 'Log Masuk'],
+        );
+    }
+
     private function placeholderEmail(?string $phone): string
     {
         $digits = preg_replace('/\D/', '', (string) $phone) ?: Str::random(10);
 
-        return "penggerak.{$digits}@jelajah.bedaie.local";
+        return "penggerak.{$digits}".User::PLACEHOLDER_EMAIL_DOMAIN;
     }
 
     private function notifyApplicant(Application $application, string $templateKey, array $extra = [], array $context = []): void
@@ -247,6 +273,6 @@ class ApplicationService
 
     private function realEmail(?string $email): ?string
     {
-        return $email && ! str_ends_with($email, '@jelajah.bedaie.local') ? $email : null;
+        return $email && ! str_ends_with($email, User::PLACEHOLDER_EMAIL_DOMAIN) ? $email : null;
     }
 }

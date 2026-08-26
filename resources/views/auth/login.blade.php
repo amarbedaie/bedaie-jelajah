@@ -19,7 +19,7 @@
                        class="h-4 w-4 rounded border-hairline text-brand-500 focus:ring-brand-500" />
                 Ingat saya
             </label>
-            <a href="{{ route('password.request') }}" class="text-sm font-medium text-brand-600 hover:underline">
+            <a href="{{ route('password.request') }}" class="text-sm font-medium text-brand-700 hover:underline">
                 Lupa kata laluan?
             </a>
         </div>
@@ -27,7 +27,17 @@
         <x-ui.button type="submit" variant="primary" block size="lg">Log Masuk</x-ui.button>
     </form>
 
-    <p class="mt-7 text-center text-sm text-ink-soft">
+    <div class="mt-7 rounded-xl border border-brand-200 bg-brand-50 p-4 text-center">
+        <p class="text-sm text-ink-soft text-pretty">
+            Anda Penggerak yang baru menghantar permohonan? Akaun anda dicipta
+            automatik tanpa kata laluan.
+        </p>
+        <x-ui.button :href="route('masuk.pautan')" variant="whatsapp" size="sm" class="mt-3" icon="whatsapp">
+            Log Masuk Melalui WhatsApp
+        </x-ui.button>
+    </div>
+
+    <p class="mt-6 text-center text-sm text-ink-soft">
         Belum ada akaun?
         <a href="{{ route('register') }}" class="font-medium text-brand-600 hover:underline">Daftar sekarang</a>
     </p>

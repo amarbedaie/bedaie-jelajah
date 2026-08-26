@@ -47,7 +47,7 @@ class RegistrationForm extends Component
         if ($user = auth()->user()) {
             $this->name = $user->name;
             $this->phone = $user->phone ?? '';
-            $this->email = str_contains($user->email, '@jelajah.bedaie.local') ? '' : $user->email;
+            $this->email = $user->realEmail() ?? '';
             $this->gender = $user->gender ?? '';
             $this->state_id = (string) ($user->state_id ?? '');
             $this->district_id = (string) ($user->district_id ?? '');

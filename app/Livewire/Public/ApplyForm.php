@@ -77,7 +77,7 @@ class ApplyForm extends Component
         if ($user = auth()->user()) {
             $this->applicant_name = $user->name;
             $this->applicant_phone = $user->phone ?? '';
-            $this->applicant_email = str_contains($user->email, '@jelajah.bedaie.local') ? '' : $user->email;
+            $this->applicant_email = $user->realEmail() ?? '';
             $this->state_id = (string) ($user->state_id ?? $this->state_id);
             $this->district_id = (string) ($user->district_id ?? '');
             $this->background = $user->mobilizerProfile?->background?->value ?? '';

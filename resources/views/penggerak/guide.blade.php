@@ -39,6 +39,8 @@
     ];
 
     $faqs = [
+        ['Saya tidak ingat kata laluan saya. Macam mana?',
+         'Akaun anda dicipta automatik apabila permohonan diterima, jadi kemungkinan besar anda memang tidak pernah menetapkan kata laluan. Pergi ke halaman log masuk dan tekan "Log Masuk Melalui WhatsApp". Masukkan nombor yang sama seperti dalam permohonan, dan kami hantar pautan yang terus membuka akaun anda. Pautan itu sah 30 minit dan hanya boleh diguna sekali. Selepas masuk, anda boleh menetapkan kata laluan sendiri di halaman Profil jika mahu.'],
         ['Saya tidak pernah menganjurkan program. Boleh ke?',
          'Boleh. Itulah sebabnya sistem ini dibina. Anda hanya perlu isi satu borang dan sebarkan satu pautan. Tarikh, penceramah, pendaftaran, kehadiran dan sijil semuanya diuruskan oleh pasukan BeDaie dan sistem ini.'],
         ['Bolehkah saya pilih penceramah?',

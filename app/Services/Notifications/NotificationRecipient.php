@@ -16,7 +16,8 @@ class NotificationRecipient
 
     public static function fromUser(User $user): self
     {
-        return new self($user->name, $user->email, $user->phone, $user);
+        // realEmail() supaya akaun tanpa e-mel sebenar jatuh ke WhatsApp.
+        return new self($user->name, $user->realEmail(), $user->phone, $user);
     }
 
     public static function fromRegistration(Registration $registration): self
