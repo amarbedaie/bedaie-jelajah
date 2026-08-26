@@ -67,7 +67,7 @@
 
         <nav class="flex-1 overflow-y-auto px-3 py-4">
             @foreach ($groups as $group => $items)
-                <p class="px-3 pb-1.5 pt-4 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white/35 first:pt-0">
+                <p class="px-3 pb-1.5 pt-4 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white/60 first:pt-0">
                     {{ $group }}
                 </p>
                 <ul class="space-y-0.5">
@@ -77,7 +77,7 @@
                             <a href="{{ route($item['route']) }}"
                                @if($active) aria-current="page" @endif
                                class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition
-                                      {{ $active ? 'bg-brand-500 font-medium text-white shadow-brand' : 'hover:bg-white/8 hover:text-white' }}">
+                                      {{ $active ? 'bg-brand-action font-medium text-white shadow-brand' : 'hover:bg-white/8 hover:text-white' }}">
                                 <x-ui.icon :name="$item['icon']" class="h-4 w-4 shrink-0" />
                                 <span class="truncate">{{ $item['label'] }}</span>
                             </a>
@@ -89,7 +89,7 @@
 
         <div class="shrink-0 border-t border-white/10 p-3">
             <div class="flex items-center gap-3 rounded-xl px-2 py-2">
-                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-500 text-sm font-semibold text-white">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-action text-sm font-semibold text-white">
                     {{ mb_strtoupper(mb_substr($user->name, 0, 1)) }}
                 </span>
                 <div class="min-w-0 flex-1">

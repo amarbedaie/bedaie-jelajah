@@ -11,7 +11,7 @@
 <div class="{{ $action ? 'max-w-2xl' : '' }}">
     @if ($eyebrow)
         <p class="mb-2.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em]
-                  {{ $light ? 'text-brand-300' : 'text-brand-600' }} {{ $align === 'center' ? 'justify-center' : '' }}">
+                  {{ $light ? 'text-brand-300' : 'text-brand-700' }} {{ $align === 'center' ? 'justify-center' : '' }}">
             <span class="h-px w-6 {{ $light ? 'bg-brand-300/60' : 'bg-brand-300' }}"></span>
             {{ $eyebrow }}
         </p>

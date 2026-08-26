@@ -43,15 +43,28 @@
   --color-surface:    #FFFFFF;
   --color-mist:       #F4F4F4;
   --color-hairline:   #EAEAEA;
+  /* Sempadan kawalan borang perlu 3:1 terhadap latarnya; hairline hanya
+     1.20:1 dan hanya sesuai sebagai pembahagi hiasan. Nilai ini diukur:
+     3.39:1 atas putih, 3.22:1 atas cream, 3.08:1 atas mist. */
+  --color-control-line: #868C94;
+  /* Sempadan untuk kotak amaran & statistik lembut */
+  --color-success-line: #B9EBD5;
+  --color-warning-line: #F6DFB4;
+  --color-danger-line:  #F5C3C5;
 
   /* Semantik */
   --color-success:   #00B96B;
+  /* #00B96B hanya 2.58:1 dengan putih. Nada ini 5.48:1 — untuk butang
+     berisi, ikon dan teks; --color-success kekal untuk aksen besar. */
+  --color-success-ink: #00794A;
   --color-success-soft: #E6F8F0;
   --color-whatsapp:  #00D357;      /* aksen jenama sahaja — jangan bawa teks putih */
   --color-whatsapp-ink: #07873F;   /* 4.62:1 dengan putih — untuk butang */
   --color-warning:   #F5A623;
+  --color-warning-ink: #7A4E06;   /* 6.60:1 atas warning-soft */
   --color-warning-soft: #FEF4E4;
   --color-danger:    #E5484D;
+  --color-danger-ink: #B02226;    /* 6.77:1 dengan putih, 5.93:1 atas danger-soft */
   --color-danger-soft: #FDECED;
 
   /* Tipografi */

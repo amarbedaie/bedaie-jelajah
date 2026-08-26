@@ -8,6 +8,8 @@ colors:
   brand-300: "#B6AAFF"
   brand-400: "#9C8CFF"
   brand-500: "#8875FF"
+  brand-action: "#7059E8"
+  brand-action-hover: "#6350D1"
   brand-600: "#7561F2"
   brand-700: "#6350D1"
   brand-800: "#4C3EA3"
@@ -20,18 +22,26 @@ colors:
   navy-900: "#0A083B"
   ink: "#1B1C1E"
   ink-soft: "#55575C"
-  ink-muted: "#83868C"
+  ink-muted: "#70737A"
   cream: "#FAF9F6"
   surface: "#FFFFFF"
   mist: "#F4F4F4"
   hairline: "#EAEAEA"
+  control-line: "#868C94"
   success: "#00B96B"
+  success-ink: "#00794A"
   success-soft: "#E6F8F0"
+  success-line: "#B9EBD5"
   whatsapp: "#00D357"
+  whatsapp-ink: "#07873F"
   warning: "#F5A623"
+  warning-ink: "#7A4E06"
   warning-soft: "#FEF4E4"
+  warning-line: "#F6DFB4"
   danger: "#E5484D"
+  danger-ink: "#B02226"
   danger-soft: "#FDECED"
+  danger-line: "#F5C3C5"
 typography:
   display:
     fontFamily: "Playfair Display, Poppins, ui-serif, Georgia, serif"
@@ -79,14 +89,14 @@ spacing:
   tap: "2.75rem"
 components:
   button-primary:
-    backgroundColor: "{colors.brand-500}"
+    backgroundColor: "{colors.brand-action}"
     textColor: "{colors.surface}"
     typography: "{typography.body}"
     rounded: "{rounded.pill}"
     padding: "0 1.5rem"
     height: "{spacing.tap}"
   button-primary-hover:
-    backgroundColor: "{colors.brand-600}"
+    backgroundColor: "{colors.brand-action-hover}"
   button-navy:
     backgroundColor: "{colors.navy-900}"
     textColor: "{colors.surface}"
@@ -100,7 +110,7 @@ components:
     padding: "0 1.5rem"
     height: "{spacing.tap}"
   button-whatsapp:
-    backgroundColor: "{colors.whatsapp}"
+    backgroundColor: "{colors.whatsapp-ink}"
     textColor: "{colors.surface}"
     rounded: "{rounded.pill}"
     padding: "0 1.5rem"
@@ -145,8 +155,11 @@ digunakan sebagai hiasan besar; ia menandakan "di sini tempat anda bertindak".
 
 ## Colors
 
-**Ungu jenama.** `brand-500` #8875FF untuk semua tindakan utama. `brand-600`
-untuk hover. `brand-50` untuk latar lembut kad dan lencana. `brand-200`/`300`
+**Ungu jenama.** `brand-500` #8875FF ialah ungu jenama BeDaie, digunakan
+untuk hiasan: titik garis masa, bar kemajuan, gelang fokus, aksen. Ia hanya
+mencapai 3.48:1 dengan teks putih, jadi **setiap permukaan berisi yang
+membawa teks putih menggunakan `brand-action` #7059E8** (4.90:1) — nada yang
+sama, hanya cukup gelap untuk dibaca. `brand-action-hover` untuk hover. `brand-50` untuk latar lembut kad dan lencana. `brand-200`/`300`
 untuk aksen di atas navy. Skala 800/900 jarang digunakan — simpan untuk teks
 pada latar sangat cerah.
 
@@ -157,14 +170,27 @@ pada latar sangat cerah.
 `surface` putih tulen supaya ia timbul sedikit daripada krim. `hairline`
 #EAEAEA untuk semua sempadan — tidak pernah lebih gelap.
 
-**Semantik.** `success` untuk kehadiran dan pengesahan. `whatsapp` #00D357
-khusus untuk butang WhatsApp sahaja — jangan guna sebagai hijau am.
-`warning` untuk menunggu tindakan. `danger` untuk pembatalan.
+**Semantik.** Setiap warna semantik ada tiga peranan, dan menggunakan yang
+salah bermakna gagal kontras:
 
-Setiap warna semantik ada pasangan `-soft` untuk latar amaran dan lencana.
+- **asas** (`success`, `warning`, `danger`) — aksen dan permukaan besar
+  sahaja. Cerah, tidak boleh membawa teks putih.
+- **`-ink`** (`success-ink`, `warning-ink`, `danger-ink`) — apa sahaja yang
+  membawa **teks**: butang berisi, teks ralat, ikon amaran. Semuanya
+  mencapai AA.
+- **`-soft`** latar lembut, **`-line`** sempadannya.
 
-**Kontras.** Teks badan `ink-soft` di atas `cream` mencapai AA. `ink-muted`
-hanya untuk metadata kecil, tidak pernah untuk teks yang perlu dibaca penuh.
+`whatsapp` #00D357 hanya untuk aksen; butang WhatsApp menggunakan
+`whatsapp-ink` (4.62:1). Jangan guna hijau WhatsApp sebagai hijau am.
+
+**Kontras.** Setiap pasangan teks/latar dalam sistem ini mesti mencapai
+4.5:1 (3:1 untuk sempadan kawalan dan penunjuk fokus). Teks badan `ink-soft`
+di atas `cream` mencapai 6.87:1. `ink-muted` (4.75:1 atas putih) hanya untuk
+metadata kecil — dan tidak pernah di atas `mist` atau `brand-50`, di mana ia
+jatuh bawah 4.5:1.
+
+`control-line` ialah sempadan untuk medan borang; `hairline` terlalu cerah
+(1.20:1) dan hanya sesuai sebagai pembahagi hiasan.
 
 ## Typography
 
@@ -220,6 +246,11 @@ Radius kad 20–24px (`card`, `card-lg`) mengikut garis panduan jenama.
 Butang sentiasa pil penuh (`pill`). Input dan kawalan kecil 16px (`xl`).
 Ikon dalam petak bulat 12px (`lg`).
 
+Radius kad dilaksanakan sebagai `rounded-card` / `rounded-card-lg`. Jangan
+tulis `rounded-[--radius-card]` — itu sintaks Tailwind v3 dan menghasilkan
+`border-radius: --radius-card` tanpa `var()`, yang dibuang pelayar secara
+senyap sehingga kad kelihatan bersudut tajam.
+
 Motif `motif-girih` (ungu, di atas cerah) dan `motif-girih-dark` (putih, di atas
 navy) — jubin **khatam 8-mata** 96px pada opacity 7–16%. Bintang terbentuk
 daripada dua segi empat bertindih: geometri Islam tulen yang berjubin sempurna.
@@ -265,6 +296,12 @@ konsisten dan terpaut dengan betul.
   komponen `<x-...>` — ia tidak dikompil dan menghasilkan atribut rosak.
 - Jangan guna hijau WhatsApp untuk apa-apa selain butang WhatsApp.
 - Jangan letak teks penting pada `ink-muted`.
+- Jangan letak teks putih di atas `brand-500`, `success`, `warning` atau
+  `danger` — guna `brand-action` dan pasangan `-ink`.
+- Jangan buang `focus:outline-none` tanpa menggantikannya dengan penunjuk
+  fokus yang mencapai 3:1.
+- Jangan tulis nilai arbitrari `rounded-[--radius-*]`; token itu sudah
+  menjana utiliti sendiri.
 - Jangan bina graf dalam dashboard Penggerak — mereka bukan penganalisis.
 - Jangan biarkan Penggerak menyunting reka bentuk program; templat rasmi
   ialah keseluruhan maksud sistem ini.

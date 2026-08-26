@@ -7,7 +7,7 @@
     <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
         <x-ui.card class="lg:sticky lg:top-24 lg:self-start">
             <div class="flex items-center gap-4">
-                <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-500
+                <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-action
                              font-display text-xl text-white">
                     {{ mb_strtoupper(mb_substr($user->name, 0, 1)) }}
                 </span>

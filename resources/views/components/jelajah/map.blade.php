@@ -69,7 +69,8 @@
                               {{-- Fokus papan kekunci ditanda dengan lilitan tebal navy,
                                    kerana outline CSS tidak boleh dipercayai pada laluan SVG. --}}
                               class="cursor-pointer transition-opacity duration-200 hover:opacity-80
-                                     focus:outline-none"
+                                     focus-visible:outline-2 focus-visible:outline-offset-2
+                                     focus-visible:outline-brand-500"
                               x-bind:opacity="active && active.slug !== '{{ $state['slug'] }}' ? 0.45 : 1"
                               x-bind:stroke="focused === '{{ $state['slug'] }}' ? '#0A083B' : '#FFFFFF'"
                               x-bind:stroke-width="focused === '{{ $state['slug'] }}' ? 4 : 1.6"

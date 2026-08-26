@@ -44,7 +44,7 @@
 
         <h3 class="mt-1.5 text-lg font-semibold leading-snug text-navy-900 text-pretty">
             <a href="{{ $event->publicUrl() }}"
-               class="after:absolute after:inset-0 hover:text-brand-700 focus:outline-none">{{ $event->title }}</a>
+               class="after:absolute after:inset-0 hover:text-brand-700 focus-visible:outline-none">{{ $event->title }}</a>
         </h3>
 
         <dl class="mt-3 space-y-1.5 text-sm text-ink-soft">

@@ -127,7 +127,7 @@
                         'Program disahkan — link, QR dan poster dijana automatik.',
                     ] as $i => $text)
                         <li class="flex gap-2.5 text-sm text-ink-soft text-pretty">
-                            <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-500
+                            <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-action
                                          text-[0.65rem] font-bold text-white">{{ $i + 1 }}</span>
                             {{ $text }}
                         </li>

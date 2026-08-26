@@ -1,11 +1,13 @@
 @php
     $outcome = $result['outcome'] ?? null;
+    // Skrin ini dibaca di pintu masuk masjid waktu malam, jadi setiap
+    // pasangan latar/teks mesti mencapai AA — bukan sekadar berwarna.
     $tones = [
-        'checked_in' => ['bg-success', 'check-circle', 'Berjaya'],
-        'duplicate'  => ['bg-warning', 'alert', 'Sudah Check-in'],
-        'fail'       => ['bg-danger', 'x-circle', 'Tidak Berjaya'],
+        'checked_in' => ['bg-success-ink', 'text-white', 'check-circle', 'Berjaya'],
+        'duplicate'  => ['bg-warning', 'text-navy-900', 'alert', 'Sudah Check-in'],
+        'fail'       => ['bg-danger-ink', 'text-white', 'x-circle', 'Tidak Berjaya'],
     ];
-    [$tone, $icon, $heading] = $tones[$outcome] ?? ['bg-navy-900', 'qr', ''];
+    [$tone, $toneInk, $icon, $heading] = $tones[$outcome] ?? ['bg-navy-900', 'text-white', 'qr', ''];
 @endphp
 
 <div x-data="qrScanner($wire)"
@@ -49,7 +51,7 @@
     {{-- ── Keputusan imbasan ──────────────────────────────── --}}
     @if ($result)
         <div class="jelajah-container pt-5" wire:key="result-{{ md5(json_encode($result)) }}">
-            <div class="overflow-hidden rounded-card-lg {{ $tone }} p-5 text-white">
+            <div class="overflow-hidden rounded-card-lg {{ $tone }} {{ $toneInk }} p-5">
                 <div class="flex items-start gap-4">
                     <x-ui.icon :name="$icon" class="mt-0.5 h-7 w-7 shrink-0" />
                     <div class="min-w-0 flex-1">
@@ -101,8 +103,8 @@
                     Benarkan akses kamera untuk mula mengimbas.
                 </p>
                 <button type="button" x-on:click="mula()"
-                        class="tap-target mt-5 inline-flex items-center gap-2 rounded-full bg-brand-500 px-6
-                               font-medium text-white transition hover:bg-brand-600">
+                        class="tap-target mt-5 inline-flex items-center gap-2 rounded-full bg-brand-action px-6
+                               font-medium text-white transition hover:bg-brand-action-hover">
                     <x-ui.icon name="qr" class="h-5 w-5" /> Buka Kamera
                 </button>
                 <p x-show="ralat" x-text="ralat" x-cloak class="mt-4 text-sm text-red-300"></p>
@@ -123,8 +125,8 @@
             <label for="kod-manual" class="sr-only">Kod QR manual</label>
             <input id="kod-manual" wire:model="manualCode" type="text"
                    placeholder="Masukkan kod QR secara manual"
-                   class="tap-target w-full rounded-xl border border-white/15 bg-white/8 px-4 text-base
-                          text-white placeholder:text-white/40 focus:border-brand-400 focus:outline-none
+                   class="tap-target w-full rounded-xl border border-white/30 bg-white/8 px-4 text-base
+                          text-white placeholder:text-white/60 focus:border-brand-400 focus:outline-none
                           focus:ring-4 focus:ring-brand-500/20" />
             <button type="submit"
                     class="tap-target shrink-0 rounded-xl bg-white/12 px-5 font-medium text-white hover:bg-white/20">
@@ -141,8 +143,8 @@
             <label for="cari" class="sr-only">Cari nama, telefon atau rujukan</label>
             <input id="cari" wire:model.live.debounce.400ms="search" type="search"
                    placeholder="Cari nama, telefon atau rujukan…"
-                   class="tap-target w-full rounded-xl border border-white/15 bg-white/8 px-4 text-base
-                          text-white placeholder:text-white/40 focus:border-brand-400 focus:outline-none
+                   class="tap-target w-full rounded-xl border border-white/30 bg-white/8 px-4 text-base
+                          text-white placeholder:text-white/60 focus:border-brand-400 focus:outline-none
                           focus:ring-4 focus:ring-brand-500/20" />
         </div>
 
@@ -172,8 +174,8 @@
                             @else
                                 <button type="button" wire:click="checkInManually({{ $match->id }})"
                                         wire:loading.attr="disabled"
-                                        class="tap-target shrink-0 rounded-full bg-brand-500 px-4 text-sm
-                                               font-medium text-white hover:bg-brand-600">
+                                        class="tap-target shrink-0 rounded-full bg-brand-action px-4 text-sm
+                                               font-medium text-white hover:bg-brand-action-hover">
                                     Check-in
                                 </button>
                             @endif
@@ -208,8 +210,8 @@
                     <div>
                         <label for="wi-nama" class="mb-1.5 block text-sm text-white/70">Nama penuh</label>
                         <input id="wi-nama" wire:model="walkInName" type="text"
-                               class="tap-target w-full rounded-xl border border-white/15 bg-white/8 px-4
-                                      text-base text-white placeholder:text-white/40 focus:border-brand-400
+                               class="tap-target w-full rounded-xl border border-white/30 bg-white/8 px-4
+                                      text-base text-white placeholder:text-white/60 focus:border-brand-400
                                       focus:outline-none focus:ring-4 focus:ring-brand-500/20" />
                         @error('walkInName') <p class="mt-1.5 text-sm text-red-300">{{ $message }}</p> @enderror
                     </div>
@@ -217,8 +219,8 @@
                     <div>
                         <label for="wi-tel" class="mb-1.5 block text-sm text-white/70">Nombor telefon</label>
                         <input id="wi-tel" wire:model="walkInPhone" type="tel" inputmode="tel"
-                               class="tap-target w-full rounded-xl border border-white/15 bg-white/8 px-4
-                                      text-base text-white placeholder:text-white/40 focus:border-brand-400
+                               class="tap-target w-full rounded-xl border border-white/30 bg-white/8 px-4
+                                      text-base text-white placeholder:text-white/60 focus:border-brand-400
                                       focus:outline-none focus:ring-4 focus:ring-brand-500/20" />
                         @error('walkInPhone') <p class="mt-1.5 text-sm text-red-300">{{ $message }}</p> @enderror
                     </div>
@@ -226,7 +228,7 @@
                     <div>
                         <label for="wi-jantina" class="mb-1.5 block text-sm text-white/70">Jantina (pilihan)</label>
                         <select id="wi-jantina" wire:model="walkInGender"
-                                class="tap-target w-full rounded-xl border border-white/15 bg-navy-900 px-4
+                                class="tap-target w-full rounded-xl border border-white/30 bg-navy-900 px-4
                                        text-base text-white focus:border-brand-400 focus:outline-none">
                             <option value="">Tidak dinyatakan</option>
                             <option value="lelaki">Lelaki</option>
@@ -236,8 +238,8 @@
                 </div>
 
                 <button type="submit" wire:loading.attr="disabled"
-                        class="tap-target mt-5 w-full rounded-full bg-brand-500 px-6 font-medium text-white
-                               hover:bg-brand-600 disabled:opacity-60">
+                        class="tap-target mt-5 w-full rounded-full bg-brand-action px-6 font-medium text-white
+                               hover:bg-brand-action-hover disabled:opacity-60">
                     <span wire:loading.remove wire:target="registerWalkIn">Daftar & Check-in</span>
                     <span wire:loading wire:target="registerWalkIn">Memproses…</span>
                 </button>

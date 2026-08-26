@@ -58,7 +58,7 @@
                         <button type="button" x-on:click="open = !open" x-bind:aria-expanded="open.toString()"
                                 class="tap-target flex items-center gap-2 rounded-full border border-hairline bg-surface px-2.5 py-1.5
                                        transition hover:border-brand-300 hover:bg-brand-50">
-                            <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-500 text-xs font-semibold text-white">
+                            <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-action text-xs font-semibold text-white">
                                 {{ mb_strtoupper(mb_substr($user->name, 0, 1)) }}
                             </span>
                             <span class="hidden max-w-28 truncate text-sm font-medium text-navy-900 sm:block">

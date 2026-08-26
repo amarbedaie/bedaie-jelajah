@@ -36,7 +36,7 @@
                 <div class="min-h-[6.5rem] border-b border-r border-hairline p-2 last:border-r-0
                             {{ $inMonth ? '' : 'bg-mist/40' }}">
                     <p class="text-xs font-medium
-                              {{ $day->isToday() ? 'inline-grid h-5 w-5 place-items-center rounded-full bg-brand-500 text-white'
+                              {{ $day->isToday() ? 'inline-grid h-5 w-5 place-items-center rounded-full bg-brand-action text-white'
                                  : ($inMonth ? 'text-ink-soft' : 'text-ink-muted') }}">
                         {{ $day->day }}
                     </p>

@@ -2,10 +2,10 @@
 
 @php
     $classes = 'tap-target w-full appearance-none rounded-xl border bg-surface px-4 py-2.5 pr-10 text-base text-ink '
-        . 'transition focus:outline-none focus:ring-4 '
+        . 'transition focus:outline-none focus:ring-3 '
         . ($error
-            ? 'border-danger focus:border-danger focus:ring-danger/15'
-            : 'border-hairline focus:border-brand-400 focus:ring-brand-500/15');
+            ? 'border-danger focus:border-danger-ink focus:ring-danger/45'
+            : 'border-control-line focus:border-brand-600 focus:ring-brand-500/45');
 @endphp
 
 <div class="relative">

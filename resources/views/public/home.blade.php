@@ -202,7 +202,7 @@
                 ] as $i => [$title, $body, $icon])
                     <li class="relative rounded-card border border-white/10 bg-white/6 p-5 backdrop-blur-sm">
                         <div class="flex items-center gap-3">
-                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-500
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-action
                                          font-display text-base text-white">{{ $i + 1 }}</span>
                             <x-ui.icon :name="$icon" class="h-5 w-5 text-brand-300" />
                         </div>
@@ -242,7 +242,7 @@
                         </div>
                         <h3 class="mt-4 font-semibold text-navy-900">
                             <a href="{{ route('jemput', ['kategori' => $category->slug]) }}"
-                               class="after:absolute after:inset-0 focus:outline-none">
+                               class="after:absolute after:inset-0 focus-visible:outline-none">
                                 {{ $category->name }}
                                 <span class="sr-only">— jemput BeDaie untuk program ini</span>
                             </a>
