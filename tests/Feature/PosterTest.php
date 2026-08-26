@@ -4,10 +4,13 @@ namespace Tests\Feature;
 
 use App\Enums\ApplicationStatus;
 use App\Services\ApplicationService;
+use App\Enums\PosterStyle;
+use App\Livewire\Admin\EventEditor;
 use App\Services\PosterGenerator;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class PosterTest extends TestCase
@@ -112,5 +115,59 @@ class PosterTest extends TestCase
         $second = Storage::disk('public')->get($event->fresh()->poster_path);
 
         $this->assertNotSame($first, $second, 'Poster mesti mencerminkan tajuk terkini.');
+    }
+
+    public function test_setiap_gaya_poster_menjana_imej(): void
+    {
+        Storage::fake('public');
+
+        $event = $this->makeEvent(['title' => 'Jelajah Ilmu: Ujian Gaya Poster']);
+        $generator = app(PosterGenerator::class);
+
+        foreach (PosterStyle::cases() as $style) {
+            $path = $generator->generate($event->fresh(), $style);
+
+            $this->assertNotNull($path, "Gaya {$style->value} gagal dijana.");
+            Storage::disk('public')->assertExists($path);
+            $this->assertSame($style, $event->fresh()->poster_style);
+        }
+    }
+
+    public function test_gaya_terang_kekal_nisbah_yang_sama(): void
+    {
+        Storage::fake('public');
+
+        $event = $this->makeEvent();
+        app(PosterGenerator::class)->generate($event, PosterStyle::Terang);
+        $event->refresh();
+
+        $poster = new \Imagick;
+        $poster->readImageBlob(Storage::disk('public')->get($event->poster_path));
+
+        $this->assertSame(1080, $poster->getImageWidth());
+        $this->assertSame(1350, $poster->getImageHeight());
+        $poster->clear();
+    }
+
+    public function test_admin_boleh_menukar_gaya_poster(): void
+    {
+        Storage::fake('public');
+
+        $admin = $this->admin();
+        $event = $this->makeEvent();
+
+        Livewire::actingAs($admin)
+            ->test(EventEditor::class, ['event' => $event])
+            ->call('regeneratePoster', PosterStyle::Geometri->value);
+
+        $this->assertSame(PosterStyle::Geometri, $event->fresh()->poster_style);
+        Storage::disk('public')->assertExists($event->fresh()->poster_path);
+    }
+
+    public function test_gaya_lalai_ialah_klasik(): void
+    {
+        $event = $this->makeEvent();
+
+        $this->assertSame(PosterStyle::Klasik, $event->poster_style);
     }
 }

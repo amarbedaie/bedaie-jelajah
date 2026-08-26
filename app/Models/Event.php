@@ -22,7 +22,7 @@ class Event extends Model
     protected $fillable = [
         'public_id', 'short_code', 'slug', 'application_id', 'event_category_id', 'speaker_id',
         'venue_id', 'state_id', 'district_id', 'title', 'theme', 'description',
-        'poster_path', 'hero_image_path', 'starts_at', 'ends_at', 'doors_open_at',
+        'poster_path', 'poster_style', 'hero_image_path', 'starts_at', 'ends_at', 'doors_open_at',
         'pricing_mode', 'price', 'currency', 'capacity', 'allow_waiting_list',
         'allow_guest_registration', 'max_guests_per_registration', 'requires_approval', 'invite_code',
         'registration_opens_at', 'registration_closes_at', 'status', 'target_audience',
@@ -36,6 +36,7 @@ class Event extends Model
     {
         return [
             'status' => EventStatus::class,
+            'poster_style' => \App\Enums\PosterStyle::class,
             'pricing_mode' => PricingMode::class,
             'target_audience' => TargetAudience::class,
             'starts_at' => 'datetime',

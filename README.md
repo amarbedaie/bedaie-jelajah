@@ -310,7 +310,7 @@ Dikuatkuasakan melalui middleware `role:` dan policy
 ## 11. Ujian
 
 ```bash
-php artisan test                       # 129 ujian
+php artisan test                       # 133 ujian
 php artisan test --filter=Registration # satu suite
 ```
 
@@ -333,7 +333,7 @@ Liputan aliran kritikal:
 | `ScheduledTaskTest` | Peringatan dalam tetingkap, tiada peringatan berganda, penutupan program automatik |
 | `OutreachTest` | Papan sasaran keluar: tambah sasaran, sumber (staf/rakan/penggerak/rujukan), prestasi rakan, peringkat, rekod kontak, penukaran kepada permohonan, susulan tertunggak, kebenaran |
 | `RecordingTest` | Akses rakaman: hadir vs berdaftar vs awam, belum diterbitkan, berjadual, program lain ditolak, URL benam YouTube, jejak tontonan |
-| `PosterTest` | Poster 4:5 & hero 16:9 dijana, nisbah betul, tajuk panjang tidak pecah, penjanaan automatik semasa program disahkan |
+| `PosterTest` | Poster 4:5 & hero 16:9 dijana, nisbah betul, tajuk panjang tidak pecah, penjanaan automatik semasa program disahkan, **lima gaya poster**, penukaran gaya melalui admin |
 | `AdminManagementTest` | Sunting program, had kapasiti, notifikasi perubahan tarikh, muat naik & kelulusan galeri, CRUD penceramah/kategori/rakan/testimoni, pengesahan & pengecualian bayaran, pembetulan & penarikan sijil, tetapan, template notifikasi, kebenaran |
 
 ---

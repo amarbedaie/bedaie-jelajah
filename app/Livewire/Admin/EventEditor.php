@@ -35,6 +35,8 @@ class EventEditor extends Component
 
     public bool $open = false;
 
+    public bool $posterPanel = false;
+
     // ── Maklumat teras ──
     public string $title = '';
 
@@ -360,14 +362,26 @@ class EventEditor extends Component
         ));
     }
 
-    /** Menjana semula poster daripada templat rasmi selepas butiran berubah. */
-    public function regeneratePoster(\App\Services\PosterGenerator $posters): void
+    /**
+     * Menjana semula poster dalam gaya yang dipilih.
+     *
+     * Penjana diselesaikan melalui bekas, bukan disuntik ke tanda tangan:
+     * Livewire menyuntik parameter berjenis, yang mengelirukan pemetaan
+     * hujah apabila kaedah ini dipanggil dengan gaya daripada papan.
+     */
+    public function regeneratePoster(?string $style = null): void
     {
-        $path = $posters->generate($this->event);
+        $chosen = $style
+            ? \App\Enums\PosterStyle::tryFrom($style)
+            : $this->event->poster_style;
+
+        $path = app(\App\Services\PosterGenerator::class)->generate($this->event, $chosen);
 
         $path
-            ? session()->flash('success', 'Poster dijana semula daripada templat BeDaie.')
-            : session()->flash('warning', 'Poster tidak dapat dijana pada pelayan ini (Imagick tidak tersedia).');
+            ? session()->flash('success',
+                'Poster dijana semula dalam gaya '.($chosen?->label() ?? 'Klasik').'.')
+            : session()->flash('warning',
+                'Poster tidak dapat dijana pada pelayan ini (Imagick tidak tersedia).');
     }
 
     public function postpone(EventLifecycleService $lifecycle): void
@@ -395,6 +409,7 @@ class EventEditor extends Component
                 ? District::where('state_id', $this->state_id)->orderBy('name')->get()
                 : collect(),
             'pricingModes' => PricingMode::cases(),
+            'posterStyles' => \App\Enums\PosterStyle::cases(),
             'audiences' => TargetAudience::cases(),
         ]);
     }

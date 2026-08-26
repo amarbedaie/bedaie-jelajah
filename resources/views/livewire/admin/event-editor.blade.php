@@ -5,10 +5,8 @@
             {{ $open ? 'Tutup Editor' : 'Sunting Program' }}
         </x-ui.button>
 
-        <x-ui.button wire:click="regeneratePoster" variant="outline" size="sm" icon="image"
-                     wire:loading.attr="disabled" wire:target="regeneratePoster">
-            <span wire:loading.remove wire:target="regeneratePoster">Jana Semula Poster</span>
-            <span wire:loading wire:target="regeneratePoster">Menjana…</span>
+        <x-ui.button wire:click="$toggle('posterPanel')" variant="outline" size="sm" icon="image">
+            {{ $posterPanel ? 'Tutup Poster' : 'Poster Program' }}
         </x-ui.button>
 
         @if ($event->status !== \App\Enums\EventStatus::Selesai)
@@ -31,6 +29,68 @@
             </x-ui.button>
         @endif
     </div>
+
+    {{-- ── Pemilih gaya poster ────────────────────────────── --}}
+    @if ($posterPanel)
+        <x-ui.card class="mt-5">
+            <h3 class="font-semibold text-navy-900">Gaya Poster</h3>
+            <p class="mt-1.5 text-sm text-ink-soft text-pretty">
+                Pilih satu gaya. Sistem menjana poster 4:5 untuk WhatsApp dan cetakan,
+                serta imej 16:9 untuk kad program — kedua-duanya serta-merta.
+            </p>
+
+            <ul class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                @foreach ($posterStyles as $style)
+                    @php $active = $event->poster_style === $style; @endphp
+                    <li>
+                        <button type="button" wire:click="regeneratePoster('{{ $style->value }}')"
+                                wire:loading.attr="disabled" wire:target="regeneratePoster"
+                                aria-pressed="{{ $active ? 'true' : 'false' }}"
+                                class="flex h-full w-full flex-col rounded-[--radius-card] border p-4 text-left transition
+                                       {{ $active
+                                          ? 'border-brand-500 bg-brand-50 ring-1 ring-brand-500'
+                                          : 'border-hairline bg-surface hover:border-brand-300' }}">
+                            <span class="flex items-center justify-between gap-2">
+                                <span class="font-medium text-navy-900">{{ $style->label() }}</span>
+                                @if ($active)
+                                    <x-ui.badge color="purple">Digunakan</x-ui.badge>
+                                @endif
+                            </span>
+                            <span class="mt-1.5 text-sm leading-relaxed text-ink-soft text-pretty">
+                                {{ $style->description() }}
+                            </span>
+                        </button>
+                    </li>
+                @endforeach
+            </ul>
+
+            <div wire:loading wire:target="regeneratePoster"
+                 class="mt-4 text-sm text-ink-muted">Menjana poster…</div>
+
+            @if ($event->posterUrl())
+                <div class="mt-6 flex flex-wrap items-start gap-5 border-t border-hairline pt-5">
+                    <img src="{{ $event->posterUrl() }}?v={{ $event->updated_at?->timestamp }}"
+                         alt="Poster semasa" class="h-64 w-auto rounded-xl ring-1 ring-hairline" />
+                    <div class="min-w-0">
+                        <p class="text-sm font-medium text-navy-900">Poster semasa</p>
+                        <p class="mt-1 text-sm text-ink-soft">
+                            Gaya {{ $event->poster_style?->label() ?? 'Klasik' }}
+                        </p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <x-ui.button :href="$event->posterUrl()" target="_blank"
+                                         variant="outline" size="sm" icon="download">
+                                Muat Turun Poster
+                            </x-ui.button>
+                            @if ($event->heroUrl())
+                                <x-ui.button :href="$event->heroUrl()" target="_blank"
+                                             variant="ghost" size="sm">Imej Kad</x-ui.button>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </x-ui.card>
+    @endif
 
     {{-- ── Editor ─────────────────────────────────────────── --}}
     @if ($open)
