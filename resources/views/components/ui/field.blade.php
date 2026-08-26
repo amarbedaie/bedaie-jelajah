@@ -16,7 +16,11 @@
     {{ $slot }}
 
     @if ($error)
-        <p class="flex items-start gap-1.5 text-sm text-danger-ink">
+        {{-- id dipadankan dengan aria-describedby yang dipancarkan input,
+             dan role="alert" supaya pembaca skrin mengumumkannya apabila
+             Livewire memaparkan semula. --}}
+        <p @if ($for) id="{{ $for }}-error" @endif role="alert"
+           class="flex items-start gap-1.5 text-sm text-danger-ink">
             <x-ui.icon name="alert" class="w-4 h-4 mt-0.5 shrink-0" />
             <span>{{ $error }}</span>
         </p>

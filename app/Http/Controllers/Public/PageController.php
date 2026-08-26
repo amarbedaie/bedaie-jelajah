@@ -11,6 +11,7 @@ use App\Models\Setting;
 use App\Models\Testimonial;
 use App\Services\ImpactStatsService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class PageController extends Controller
 {
@@ -71,6 +72,37 @@ class PageController extends Controller
     }
 
     /** Manifest PWA — sistem ini mobile-first dan boleh dipasang. */
+    /**
+     * Service worker dengan versi terikat kepada binaan semasa.
+     *
+     * Dihidangkan melalui laluan, bukan fail statik, supaya setiap deploy
+     * menghasilkan nama cache baharu dan aset lama benar-benar dibuang.
+     */
+    public function serviceWorker(): Response
+    {
+        $script = str_replace(
+            '__JELAJAH_SW_VERSION__',
+            'jelajah-'.$this->buildFingerprint(),
+            (string) file_get_contents(resource_path('sw.js')),
+        );
+
+        return response($script, 200, [
+            'Content-Type' => 'application/javascript; charset=utf-8',
+            'Cache-Control' => 'no-cache, must-revalidate',
+            'Service-Worker-Allowed' => '/',
+        ]);
+    }
+
+    /** Cap jari binaan aset semasa. */
+    private function buildFingerprint(): string
+    {
+        $manifest = public_path('build/manifest.json');
+
+        return is_file($manifest)
+            ? substr(md5_file($manifest), 0, 12)
+            : 'dev';
+    }
+
     public function manifest(): JsonResponse
     {
         return response()->json([

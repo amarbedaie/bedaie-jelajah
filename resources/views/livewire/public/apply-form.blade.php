@@ -23,9 +23,13 @@
                     $bar = $done || $current ? 'bg-brand-500' : 'bg-hairline';
                 @endphp
                 <li class="flex-1">
+                    {{-- Label langkah tersembunyi bawah sm, jadi bar yang
+                         dilumpuhkan tiada nama boleh capai. Perenggan
+                         "Langkah 1 daripada 4" di atas membawa maknanya. --}}
                     <button type="button"
                             wire:click="goTo({{ $number }})"
                             @disabled(! $done)
+                            @if (! $done) aria-hidden="true" tabindex="-1" @endif
                             aria-current="{{ $current ? 'step' : 'false' }}"
                             class="group flex w-full flex-col gap-1.5 text-left {{ $done ? 'cursor-pointer' : 'cursor-default' }}">
                         <span class="h-1.5 w-full rounded-full transition {{ $bar }} {{ $done ? 'group-hover:bg-brand-600' : '' }}"></span>

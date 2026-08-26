@@ -6,7 +6,10 @@
  * (pendaftaran, kehadiran, kapasiti) SENTIASA diambil dari rangkaian.
  * Menghidangkan kiraan tempat yang lapuk lebih buruk daripada menunggu.
  */
-const VERSION = 'jelajah-v1';
+// Versi disuntik daripada hash manifes Vite semasa dihidangkan. Nilai
+// tetap bermakna cache aset lama tidak pernah dibuang, jadi halaman luar
+// talian terus memuatkan CSS yang sudah tidak wujud selepas deploy.
+const VERSION = '__JELAJAH_SW_VERSION__';
 const OFFLINE_URL = '/luar-talian';
 
 const PRECACHE = [OFFLINE_URL, '/img/icon-192.png', '/img/icon-512.png'];

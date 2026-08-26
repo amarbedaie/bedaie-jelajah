@@ -3,7 +3,8 @@
 @php
     // Arahan Blade tidak dikompil di dalam tag komponen <x-...>, jadi label
     // untuk Alpine mesti disiapkan di sini dahulu.
-    $copyLabel = addslashes('Salin: '.$label);
+    // Label lalai sudah bermula dengan "Salin", jadi jangan awalkan lagi.
+    $copyLabel = addslashes(str_starts_with(mb_strtolower($label), 'salin') ? $label : 'Salin: '.$label);
 @endphp
 
 <div x-data="{ copied: false, copy() {

@@ -59,9 +59,11 @@
         </dl>
     </section>
 
+    {{-- min-w-0: tanpa ini item grid tidak boleh mengecut bawah lebar
+         min-content kandungannya, dan dashboard menatal mendatar pada telefon. --}}
     <div class="mt-7 grid gap-6 lg:grid-cols-2">
         {{-- ── Program hari ini ───────────────────────────── --}}
-        <section>
+        <section class="min-w-0">
             <h2 class="mb-3 text-lg font-semibold text-navy-900">Berlangsung Hari Ini</h2>
             @if ($todayEvents->isEmpty())
                 <x-ui.empty-state compact icon="calendar" title="Tiada program hari ini"
@@ -94,7 +96,7 @@
         </section>
 
         {{-- ── Permohonan terkini ─────────────────────────── --}}
-        <section>
+        <section class="min-w-0">
             <div class="mb-3 flex items-end justify-between gap-3">
                 <h2 class="text-lg font-semibold text-navy-900">Permohonan Terkini</h2>
                 <a href="{{ route('admin.permohonan') }}" class="text-sm font-medium text-brand-600 hover:underline">

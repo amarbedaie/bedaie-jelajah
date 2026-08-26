@@ -53,7 +53,9 @@
             {{-- Geometri sebenar daripada data terbuka rasmi DOSM Malaysia.
                  Semenanjung dan Borneo dikekalkan pada skala yang sama; hanya
                  jurang Laut China Selatan dirapatkan supaya tiada ruang mati. --}}
-            <svg viewBox="0 0 1486 668" role="img" aria-label="Peta jelajah BeDaie mengikut negeri"
+            {{-- Bukan role="img": anak-anaknya ialah butang negeri yang
+                 boleh difokus, dan anak role="img" dianggap hiasan. --}}
+            <svg viewBox="0 0 1486 668" role="group" aria-label="Peta jelajah BeDaie mengikut negeri"
                  class="aspect-[1486/668] w-full">
                 <title>Peta Jelajah BeDaie di Malaysia</title>
 

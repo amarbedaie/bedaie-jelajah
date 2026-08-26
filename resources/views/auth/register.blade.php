@@ -35,7 +35,8 @@
         <div>
             <label class="flex items-start gap-2.5 text-sm text-ink-soft">
                 <input type="checkbox" name="privacy" value="1" @checked(old('privacy'))
-                       class="mt-0.5 h-4 w-4 rounded border-hairline text-brand-500 focus:ring-brand-500" required />
+                       class="mt-0.5 h-4 w-4 shrink-0 rounded border-control-line text-brand-action
+                              focus:ring-brand-500" required />
                 <span>
                     Saya bersetuju dengan
                     <a href="{{ route('privasi') }}" target="_blank" class="font-medium text-brand-600 hover:underline">polisi privasi</a>

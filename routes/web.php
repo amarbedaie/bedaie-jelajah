@@ -82,6 +82,7 @@ Route::view('/luar-talian', 'public.offline')->name('luar-talian');
 Route::get('/tiket/{token}/rakaman', [RecordingController::class, 'index'])->name('rakaman.index');
 Route::get('/tiket/{token}/rakaman/{recording}', [RecordingController::class, 'show'])->name('rakaman.show');
 Route::get('/manifest.webmanifest', [PageController::class, 'manifest'])->name('pwa.manifest');
+Route::get('/sw.js', [PageController::class, 'serviceWorker'])->name('pwa.sw');
 
 /*
 |--------------------------------------------------------------------------

@@ -42,10 +42,10 @@
             {{ $event->category?->name ?? 'Jelajah' }}
         </p>
 
-        <h3 class="mt-1.5 text-lg font-semibold leading-snug text-navy-900 text-pretty">
+        <h2 class="mt-1.5 text-lg font-semibold leading-snug text-navy-900 text-pretty">
             <a href="{{ $event->publicUrl() }}"
                class="after:absolute after:inset-0 hover:text-brand-700 focus-visible:outline-none">{{ $event->title }}</a>
-        </h3>
+        </h2>
 
         <dl class="mt-3 space-y-1.5 text-sm text-ink-soft">
             <div class="flex items-start gap-2">
