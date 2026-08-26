@@ -1,0 +1,14 @@
+@props(['error' => false])
+
+@php
+    $classes = 'tap-target w-full appearance-none rounded-xl border bg-surface px-4 py-2.5 pr-10 text-base text-ink '
+        . 'transition focus:outline-none focus:ring-4 '
+        . ($error
+            ? 'border-danger focus:border-danger focus:ring-danger/15'
+            : 'border-hairline focus:border-brand-400 focus:ring-brand-500/15');
+@endphp
+
+<div class="relative">
+    <select {{ $attributes->merge(['class' => $classes]) }}>{{ $slot }}</select>
+    <x-ui.icon name="chevron-down" class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-ink-muted pointer-events-none" />
+</div>

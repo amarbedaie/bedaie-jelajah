@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@source "../views";
+@source "../../app/Livewire";
+
+/* ══════════════════════════════════════════════════════════════════
+   BEDAIE JELAJAH — DESIGN TOKENS
+   Identiti visual rasmi BeDaie (bedaie.com.my), dikemas kepada
+   gaya korporat pendidikan Islam yang lebih moden & premium.
+   ══════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* Ungu jenama */
+  --color-brand-50:  #F2EFFF;
+  --color-brand-100: #E7E2FF;
+  --color-brand-200: #D5CCFF;
+  --color-brand-300: #B6AAFF;
+  --color-brand-400: #9C8CFF;
+  --color-brand-500: #8875FF;
+  /* Ungu untuk permukaan berisi yang membawa teks putih. #8875FF hanya
+     mencapai 3.48:1 dengan putih; nada ini mencapai 4.90:1 sambil kekal
+     tidak dapat dibezakan sebagai ungu BeDaie. */
+  --color-brand-action: #7059E8;
+  --color-brand-action-hover: #6350D1;
+  --color-brand-600: #7561F2;
+  --color-brand-700: #6350D1;
+  --color-brand-800: #4C3EA3;
+  --color-brand-900: #322A6B;
+
+  /* Navy korporat */
+  --color-navy-50:  #EEEEF6;
+  --color-navy-100: #D4D3E6;
+  --color-navy-300: #8B88B5;
+  --color-navy-500: #3A3670;
+  --color-navy-700: #1B1858;
+  --color-navy-900: #0A083B;
+
+  /* Neutral suam */
+  --color-ink:        #1B1C1E;
+  --color-ink-soft:   #55575C;
+  --color-ink-muted:  #70737A;   /* 4.75:1 atas putih — AA untuk teks biasa */
+  --color-cream:      #FAF9F6;
+  --color-surface:    #FFFFFF;
+  --color-mist:       #F4F4F4;
+  --color-hairline:   #EAEAEA;
+
+  /* Semantik */
+  --color-success:   #00B96B;
+  --color-success-soft: #E6F8F0;
+  --color-whatsapp:  #00D357;      /* aksen jenama sahaja — jangan bawa teks putih */
+  --color-whatsapp-ink: #07873F;   /* 4.62:1 dengan putih — untuk butang */
+  --color-warning:   #F5A623;
+  --color-warning-soft: #FEF4E4;
+  --color-danger:    #E5484D;
+  --color-danger-soft: #FDECED;
+
+  /* Tipografi */
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Playfair Display", "Poppins", ui-serif, Georgia, serif;
+
+  /* Radius — kad 16–24px seperti garis panduan jenama */
+  --radius-focus: 0.5rem;
+  --radius-card: 1.25rem;
+  --radius-card-lg: 1.5rem;
+  --radius-pill: 999px;
+
+  /* Bayang lembut */
+  --shadow-soft: 0 1px 2px rgb(10 8 59 / 0.04), 0 8px 24px -12px rgb(10 8 59 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(10 8 59 / 0.04), 0 16px 40px -16px rgb(10 8 59 / 0.18);
+  --shadow-brand: 0 8px 28px -10px rgb(136 117 255 / 0.55);
+}
+
+/* ── Asas ─────────────────────────────────────────────────────────── */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;      /* tidak pernah lebih kecil daripada 16px pada body */
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-navy-900);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  /* Fokus keyboard yang jelas di seluruh sistem */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: var(--radius-focus);
+  }
+
+  ::selection {
+    background: var(--color-brand-200);
+    color: var(--color-navy-900);
+  }
+
+  [x-cloak] { display: none !important; }
+}
+
+/* ── Komponen berulang ────────────────────────────────────────────── */
+
+@layer components {
+  /* Motif geometri Islam — sangat halus, hanya tekstur latar */
+  /* Khatam 8-mata — bintang Islam klasik yang terbentuk daripada dua
+     segi empat bertindih. Ini geometri sebenar, bukan berlian bersarang. */
+  .motif-girih {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%238875FF%27%20stroke-linejoin%3D%27round%27%3E%3Cg%20stroke-width%3D%271.2%27%20stroke-opacity%3D%270.16%27%3E%3Cpath%20d%3D%27M20%2020h56v56H20z%27%2F%3E%3Cpath%20d%3D%27M48%208%2088%2048%2048%2088%208%2048Z%27%2F%3E%3C%2Fg%3E%3Cg%20stroke-width%3D%271%27%20stroke-opacity%3D%270.10%27%3E%3Cpath%20d%3D%27M40%2033h16l7%207v16l-7%207H40l-7-7V40Z%27%2F%3E%3Cpath%20d%3D%27M0%200%2024%2024M96%200%2072%2024M0%2096%2024%2072M96%2096%2072%2072%27%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-size: 96px 96px;
+  }
+
+  .motif-girih-dark {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23FFFFFF%27%20stroke-linejoin%3D%27round%27%3E%3Cg%20stroke-width%3D%271.2%27%20stroke-opacity%3D%270.12%27%3E%3Cpath%20d%3D%27M20%2020h56v56H20z%27%2F%3E%3Cpath%20d%3D%27M48%208%2088%2048%2048%2088%208%2048Z%27%2F%3E%3C%2Fg%3E%3Cg%20stroke-width%3D%271%27%20stroke-opacity%3D%270.07%27%3E%3Cpath%20d%3D%27M40%2033h16l7%207v16l-7%207H40l-7-7V40Z%27%2F%3E%3Cpath%20d%3D%27M0%200%2024%2024M96%200%2072%2024M0%2096%2024%2072M96%2096%2072%2072%27%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-size: 96px 96px;
+  }
+
+  .jelajah-container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 80rem;
+  }
+
+  @media (min-width: 768px) {
+    .jelajah-container { padding-inline: 2rem; }
+  }
+
+  /* Sasaran sentuh minimum 44px pada semua kawalan utama */
+  .tap-target {
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+  }
+
+  .prose-jelajah p { margin-block: 0.85em; }
+  .prose-jelajah strong { color: var(--color-navy-900); font-weight: 600; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+
+  @keyframes pulse-ring {
+    0%   { opacity: 0.85; transform: scale(1); }
+    70%  { opacity: 0;    transform: scale(1.9); }
+    100% { opacity: 0;    transform: scale(1.9); }
+  }
+  .animate-pulse-ring { animation: pulse-ring 2.2s cubic-bezier(0.24, 0.8, 0.32, 1) infinite; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-rise { animation: rise 0.5s ease-out both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Bar kemajuan Livewire — maklum balas visual semasa memuat */
+[wire\:loading] { }
+.livewire-progress {
+  position: fixed; inset-inline: 0; top: 0; height: 3px; z-index: 100;
+  background: linear-gradient(90deg, var(--color-brand-500), var(--color-brand-300));
+}

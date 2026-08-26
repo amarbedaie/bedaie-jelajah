@@ -1,0 +1,80 @@
+{{-- `fill` boleh ditetapkan supaya ikon seperti bintang penilaian
+     benar-benar terisi, bukan sekadar bertukar warna garis luar. --}}
+@props(['name' => 'circle', 'class' => 'w-5 h-5', 'fill' => 'none'])
+
+@php
+    $paths = [
+        'map'        => '<path d="m9 20-6 3V6l6-3m0 17 6-3m-6 3V3m6 14 6 3V6l-6-3m0 14V3m0 0L9 6"/>',
+        'calendar'   => '<path d="M8 2v4m8-4v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/>',
+        'clock'      => '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+        'pin'        => '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+        'users'      => '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+        'user'       => '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+        'ticket'     => '<path d="M13 5v2m0 4v2m0 4v2M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2Z"/>',
+        'qr'         => '<path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 7h3v3H7zM14 7h3v3h-3zM7 14h3v3H7zM14 14h3v3h-3z"/>',
+        'certificate'=> '<circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-2.5L17 21l-1.5-7"/>',
+        'check'      => '<path d="m4 12 5 5L20 6"/>',
+        'check-circle'=> '<circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+        'x'          => '<path d="M6 6l12 12M18 6 6 18"/>',
+        'x-circle'   => '<circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/>',
+        'alert'      => '<path d="M12 8v5m0 3.5v.5"/><path d="M10.3 3.9 2.4 17.4A2 2 0 0 0 4.1 20.4h15.8a2 2 0 0 0 1.7-3l-7.9-13.5a2 2 0 0 0-3.4 0Z"/>',
+        'info'       => '<circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8.5v.5"/>',
+        'whatsapp'   => '<path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3.2 3.1l-4.7 1.4Z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1l-1.5-.8-1 1a5 5 0 0 1-2.2-2.2l1-1L11 9.5c-.5 0-1 .4-1 1Z" fill="currentColor" stroke="none"/>',
+        'share'      => '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/>',
+        'copy'       => '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+        'download'   => '<path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>',
+        'arrow-right'=> '<path d="M4 12h16m0 0-6-6m6 6-6 6"/>',
+        'arrow-left' => '<path d="M20 12H4m0 0 6-6m-6 6 6 6"/>',
+        'chevron-down'=> '<path d="m6 9 6 6 6-6"/>',
+        'chevron-right'=> '<path d="m9 6 6 6-6 6"/>',
+        'menu'       => '<path d="M4 6h16M4 12h16M4 18h16"/>',
+        'search'     => '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+        'bell'       => '<path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',
+        'plus'       => '<path d="M12 5v14M5 12h14"/>',
+        'edit'       => '<path d="M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><path d="M18.4 2.6a2 2 0 0 1 2.8 2.8L12 14.6l-4 1 1-4Z"/>',
+        'trash'      => '<path d="M4 7h16M10 11v6m4-6v6M5 7l1 13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-13M9 7V4h6v3"/>',
+        'chart'      => '<path d="M4 20V10m6 10V4m6 16v-7m4 7H2"/>',
+        'sparkle'    => '<path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/>',
+        'book'       => '<path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20"/>',
+        // Siluet ruang solat: gerbang lancip tanpa kubah, mengikut garis panduan jenama.
+        'mosque'     => '<path d="M4 21V11l8-6 8 6v10"/><path d="M2 21h20"/><path d="M9 21v-5a3 3 0 0 1 6 0v5"/><path d="M12 5V2.5"/>',
+        'heart'      => '<path d="M12 20s-7-4.4-7-9.5A4 4 0 0 1 12 8a4 4 0 0 1 7 2.5C19 15.6 12 20 12 20Z"/>',
+        'home'       => '<path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 21v-6h6v6"/>',
+        'clipboard'  => '<rect x="8" y="3" width="8" height="4" rx="1"/><path d="M16 5h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/>',
+        'settings'   => '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-3-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.2-3l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 2.9-1.2V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 3 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/>',
+        'logout'     => '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/>',
+        'image'      => '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>',
+        'star'       => '<path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.4l6.1-.9Z"/>',
+        'phone'      => '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>',
+        'mail'       => '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>',
+        'lock'       => '<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+        'eye'        => '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
+        'camera'     => '<path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.5"/>',
+        'handshake'  => '<path d="m11 17 2 2a1 1 0 0 0 1.5 0l1-1a1 1 0 0 1 1.5 0l.5.5a1 1 0 0 0 1.5-1.4L14 11"/><path d="m6 11 3-3 3 3M3 9l4-4h4l3 3h4l4 4"/>',
+        'inbox'      => '<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13a2 2 0 0 1 1.8 1.1L22 12v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6l1.7-5.9A2 2 0 0 1 5.5 5Z"/>',
+        'sun'        => '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/>',
+        'globe'      => '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/>',
+        'refresh'    => '<path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/>',
+        'filter'     => '<path d="M3 5h18l-7 8v6l-4 2v-8Z"/>',
+        'list'       => '<path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/>',
+        'external'   => '<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/>',
+        'arrow-right'=> '<path d="M5 12h14M13 6l6 6-6 6"/>',
+        'chevron-down'=> '<path d="m6 9 6 6 6-6"/>',
+        'chevron-right'=> '<path d="m9 6 6 6-6 6"/>',
+        'check-circle'=> '<circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+        'chat'       => '<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/>',
+        'flag'       => '<path d="M4 21V4m0 0h13l-2.5 4.5L17 13H4"/>',
+        'shield'     => '<path d="M12 3 20 6v6c0 4.6-3.2 7.9-8 9-4.8-1.1-8-4.4-8-9V6Z"/><path d="m9 12 2 2 4-4"/>',
+        'building'   => '<path d="M4 21V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v15M15 21V10h3a2 2 0 0 1 2 2v9M2 21h20M8 8h3M8 12h3M8 16h3"/>',
+        'file'       => '<path d="M14 3v5h5"/><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/>',
+        'play'       => '<circle cx="12" cy="12" r="9"/><path d="M10 8.5 16 12l-6 3.5Z" fill="currentColor"/>',
+        'volume'     => '<path d="M11 5 6 9H3v6h3l5 4Z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/>',
+        'circle'     => '<circle cx="12" cy="12" r="9"/>',
+    ];
+@endphp
+
+<svg {{ $attributes->merge(['class' => $class]) }} viewBox="0 0 24 24" fill="{{ $fill }}"
+     stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"
+     aria-hidden="true" focusable="false">
+    {!! $paths[$name] ?? $paths['circle'] !!}
+</svg>
