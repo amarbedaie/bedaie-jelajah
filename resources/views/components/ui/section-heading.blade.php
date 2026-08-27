@@ -10,14 +10,14 @@
 <div {{ $attributes->merge(['class' => $wrapper]) }}>
 <div class="{{ $action ? 'max-w-2xl' : '' }}">
     @if ($eyebrow)
-        <p class="mb-2.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em]
+        <p class="mb-2.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em]
                   {{ $light ? 'text-clay-300' : 'text-clay-700' }} {{ $align === 'center' ? 'justify-center' : '' }}">
-            <span class="h-px w-6 {{ $light ? 'bg-clay-300/60' : 'bg-clay-300' }}"></span>
+            <span class="h-px w-8 {{ $light ? 'bg-clay-300/60' : 'bg-clay-400' }}"></span>
             {{ $eyebrow }}
         </p>
     @endif
 
-    <h2 class="text-2xl sm:text-3xl lg:text-[2.15rem] font-semibold tracking-tight text-balance
+    <h2 class="font-display text-[1.75rem] leading-[1.12] text-balance sm:text-4xl lg:text-[2.75rem]
                {{ $light ? 'text-white' : 'text-ink' }}">
         {{ $title }}
     </h2>
@@ -35,7 +35,7 @@
 
 @if ($action)
     <a href="{{ $action }}"
-       class="tap-target inline-flex shrink-0 items-center gap-1.5 self-start rounded-full px-4 text-sm
+       class="tap-target inline-flex shrink-0 items-center gap-1.5 self-start rounded-lg px-4 text-sm
               font-medium transition sm:self-auto
               {{ $light ? 'text-clay-300 hover:bg-white/10' : 'text-clay-600 hover:bg-clay-50' }}">
         {{ $actionLabel }}

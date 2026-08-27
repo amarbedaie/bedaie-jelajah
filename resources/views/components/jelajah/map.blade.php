@@ -8,7 +8,7 @@
     // Warna status mengikut garis panduan jenama.
     $fills = [
         'dijelajahi'  => '#D97757',
-        'akan_datang' => '#8A5A11',
+        'akan_datang' => '#E3A488',
         'berlangsung' => '#2F6B44',
         'belum'       => '#DAD7CC',
     ];
@@ -95,7 +95,7 @@
 
                         @if ($state['high_demand'])
                             <circle cx="{{ $state['label_x'] }}" cy="{{ $state['label_y'] - ($tiny ? 26 : 26) }}" r="9"
-                                    fill="#E5484D" stroke="#FFFFFF" stroke-width="2.5" class="pointer-events-none">
+                                    fill="#A3352F" stroke="#FFFFFF" stroke-width="2.5" class="pointer-events-none">
                                 <title>Permintaan tinggi daripada komuniti</title>
                             </circle>
                         @endif
@@ -110,12 +110,12 @@
                             <line x1="{{ $state['label_x'] }}" y1="{{ $state['label_y'] }}"
                                   x2="{{ $state['label_x'] + ($flip ? 34 : -34) }}"
                                   y2="{{ $state['label_y'] + 4 }}"
-                                  stroke="#9A9DA6" stroke-width="1.6" class="pointer-events-none" />
+                                  stroke="#E3E1D9" stroke-width="1.6" class="pointer-events-none" />
                             <text x="{{ $state['label_x'] + ($flip ? 40 : -40) }}"
                                   y="{{ $state['label_y'] + 9 }}"
                                   text-anchor="{{ $flip ? 'start' : 'end' }}"
                                   class="pointer-events-none select-none"
-                                  font-size="22" font-weight="700" fill="#55575C">
+                                  font-size="22" font-weight="700" fill="#57564F">
                                 {{ $state['code'] }}
                             </text>
                         @else
@@ -186,7 +186,7 @@
 
                     <div class="mt-4 grid gap-2">
                         <a x-bind:href="active.url"
-                           class="tap-target inline-flex items-center justify-center gap-2 rounded-full bg-char-900
+                           class="tap-target inline-flex items-center justify-center gap-2 rounded-lg bg-clay-600
                                   px-5 text-sm font-medium text-white transition hover:bg-char-800">
                             Lihat Butiran Negeri
                         </a>

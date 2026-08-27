@@ -13,7 +13,7 @@
     </dl>
 
     <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
-        <section>
+        <section class="min-w-0">
             <h2 class="mb-3 text-lg font-semibold text-ink">Laporan Mengikut Program</h2>
             @if ($events->isEmpty())
                 <x-ui.empty-state compact icon="chart" title="Belum ada program selesai" />
@@ -51,7 +51,7 @@
             @endif
         </section>
 
-        <aside class="space-y-5">
+        <aside class="min-w-0 space-y-5">
             <x-ui.card>
                 <h2 class="font-semibold text-ink">Topik Paling Diminta</h2>
                 @if ($topics->isEmpty())

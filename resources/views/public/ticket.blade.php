@@ -53,14 +53,14 @@
 
             {{-- ── Tiket ─────────────────────────────────────── --}}
             <div class="mt-8 overflow-hidden rounded-card-lg border border-hairline bg-surface shadow-lift">
-                <div class="relative bg-char-900 p-6">
-                    <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
+                <div class="relative border-b border-hairline bg-cream p-6">
+                    <div class="motif-girih absolute inset-0 opacity-60" aria-hidden="true"></div>
                     <div class="relative">
-                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-300">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-700">
                             {{ $event->category?->name ?? 'BeDaie Jelajah' }}
                         </p>
-                        <h2 class="mt-2 font-semibold leading-snug text-white text-pretty">{{ $event->title }}</h2>
-                        <p class="mt-3 font-mono text-xs text-white/50">{{ $registration->reference_no }}</p>
+                        <h2 class="mt-2 font-semibold leading-snug text-ink text-pretty">{{ $event->title }}</h2>
+                        <p class="mt-3 font-mono text-xs text-ink-muted">{{ $registration->reference_no }}</p>
                     </div>
                 </div>
 

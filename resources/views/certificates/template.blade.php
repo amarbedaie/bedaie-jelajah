@@ -114,7 +114,7 @@
         .sign-title { font-size: 7.5pt; color: #67665F; }
 
         .serial { font-size: 7.5pt; color: #67665F; letter-spacing: 0.5pt; }
-        .verify { font-size: 6.5pt; color: #A0A2A8; margin-top: 2pt; }
+        .verify { font-size: 6.5pt; color: #67665F; margin-top: 2pt; }
     </style>
 </head>
 <body>

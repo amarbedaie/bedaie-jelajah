@@ -17,7 +17,7 @@
                             <p style="margin:0;font-size:19px;font-weight:600;color:#FFFFFF;letter-spacing:-0.2px;">
                                 BeDaie <span style="color:#E3A488;">Jelajah</span>
                             </p>
-                            <p style="margin:6px 0 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8B88B5;">
+                            <p style="margin:6px 0 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9E4726;">
                                 {{ config('jelajah.tagline') }}
                             </p>
                         </td>
@@ -64,7 +64,7 @@
                                 {{ config('jelajah.slogan') }}<br>
                                 BeDaie &middot; {{ config('jelajah.org') }} &middot; {{ config('jelajah.motto') }}
                             </p>
-                            <p style="margin:10px 0 0;font-size:11px;color:#A0A2A8;">
+                            <p style="margin:10px 0 0;font-size:11px;color:#67665F;">
                                 Anda menerima e-mel ini kerana anda berurusan dengan BeDaie Jelajah.
                             </p>
                         </td>

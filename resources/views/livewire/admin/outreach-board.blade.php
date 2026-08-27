@@ -275,7 +275,7 @@
             <button type="button" wire:click="$toggle('mineOnly')"
                     aria-pressed="{{ $mineOnly ? 'true' : 'false' }}"
                     class="tap-target rounded-full px-4 text-sm font-medium transition
-                           {{ $mineOnly ? 'bg-char-900 text-white' : 'bg-mist text-ink-soft hover:text-ink' }}">
+                           {{ $mineOnly ? 'bg-clay-600 text-white' : 'bg-mist text-ink-soft hover:text-ink' }}">
                 Sasaran saya
             </button>
 

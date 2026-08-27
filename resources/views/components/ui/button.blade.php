@@ -17,6 +17,7 @@
 
     $variants = [
         'primary'   => 'bg-clay-600 text-white hover:bg-clay-700 focus-visible:outline-clay-700',
+        // Hanya untuk permukaan arang yang disanksi (bar sisi, pengimbas).
         'navy'      => 'bg-ink text-white hover:bg-char-800 focus-visible:outline-clay-400',
         'secondary' => 'bg-clay-50 text-clay-700 hover:bg-clay-100 focus-visible:outline-clay-600',
         'outline'   => 'border border-control-line/60 bg-transparent text-ink hover:border-ink hover:bg-ink/[0.04] focus-visible:outline-clay-600',
@@ -25,7 +26,6 @@
         'success'   => 'bg-success text-white hover:brightness-110 focus-visible:outline-success',
         'danger'    => 'bg-danger text-white hover:brightness-110 focus-visible:outline-danger',
         'danger-soft'=> 'bg-danger-soft text-danger hover:bg-danger hover:text-white focus-visible:outline-danger',
-        'glass'     => 'border border-white/25 bg-white/10 text-white backdrop-blur hover:bg-white/20 focus-visible:outline-white',
         'white'     => 'bg-surface text-ink border border-hairline hover:bg-clay-50 hover:border-clay-300 focus-visible:outline-ink',
     ];
 

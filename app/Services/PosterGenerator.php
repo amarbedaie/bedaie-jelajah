@@ -28,15 +28,15 @@ class PosterGenerator
 
     private const H = 1350;   // 4:5 — sesuai untuk WhatsApp, Instagram dan cetakan
 
-    private const NAVY = '#141413';
+    private const INK = '#141413';
 
-    private const NAVY_DEEP = '#33322D';
+    private const INK_DEEP = '#33322D';
 
     private const BRAND = '#D97757';
 
     private const BRAND_SOFT = '#E3A488';
 
-    private const MUTED = '#A9A69C';
+    private const MUTED = '#8A887F';
 
     private const CREAM = '#F0EEE6';
 
@@ -87,7 +87,7 @@ class PosterGenerator
 
     private function compose(Event $event, PosterStyle $style): \Imagick
     {
-        $ink = $style->isLight() ? self::NAVY : '#FFFFFF';
+        $ink = $style->isLight() ? self::INK : '#FFFFFF';
         $soft = $style->isLight() ? '#9E4726' : self::BRAND_SOFT;
         $meta = $style->isLight() ? '#57564F' : self::MUTED;
         $w = self::W;
@@ -235,7 +235,7 @@ class PosterGenerator
     /** Imej 16:9 untuk kad program — tajuk sahaja, tanpa maklumat berulang. */
     private function composeHero(Event $event, PosterStyle $style): \Imagick
     {
-        $ink = $style->isLight() ? self::NAVY : '#FFFFFF';
+        $ink = $style->isLight() ? self::INK : '#FFFFFF';
         $soft = $style->isLight() ? '#9E4726' : self::BRAND_SOFT;
         $w = self::W;
         $h = 608;
@@ -299,11 +299,11 @@ class PosterGenerator
             return $canvas;
         }
 
-        $canvas->newPseudoImage($w, $h, 'gradient:'.self::NAVY.'-'.self::NAVY_DEEP);
+        $canvas->newPseudoImage($w, $h, 'gradient:'.self::INK.'-'.self::INK_DEEP);
 
         $side = (int) (max($w, $h) * 2.2);
         $glow = new \Imagick;
-        $glow->newPseudoImage($side, $side, 'radial-gradient:'.self::BRAND.'-'.self::NAVY);
+        $glow->newPseudoImage($side, $side, 'radial-gradient:'.self::BRAND.'-'.self::INK);
         $glow->setImageColorspace(\Imagick::COLORSPACE_SRGB);
         $glow->evaluateImage(\Imagick::EVALUATE_MULTIPLY,
             $style === PosterStyle::Geometri ? 0.42 : 0.30, \Imagick::CHANNEL_ALL);
@@ -479,7 +479,7 @@ class PosterGenerator
         $draw->setStrokeWidth(0);
         $draw->setStrokeColor('transparent');
 
-        $this->text($draw, 'BeDaie', 178, 124, 38, $light ? self::NAVY : '#FFFFFF', 'sans-bold');
+        $this->text($draw, 'BeDaie', 178, 124, 38, $light ? self::INK : '#FFFFFF', 'sans-bold');
         $this->text($draw, 'JELAJAH', 178, 154, 18, $light ? '#9E4726' : self::BRAND_SOFT, 'sans-bold', 7);
     }
 

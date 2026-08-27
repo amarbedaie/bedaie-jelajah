@@ -56,9 +56,11 @@ enum ApplicationStatus: string
     {
         return match ($this) {
             self::Draf => 'grey',
-            self::Diterima, self::DalamSemakan => 'purple',
-            self::PerluMaklumat, self::CadanganTarikh => 'warning',
-            self::DalamPerbincangan => 'purple',
+            self::Diterima => 'purple',
+            self::DalamSemakan => 'slate',
+            self::PerluMaklumat => 'warning',
+            self::CadanganTarikh => 'clay',
+            self::DalamPerbincangan => 'navy',
             self::Diluluskan, self::ProgramDisahkan, self::Selesai => 'success',
             self::Ditangguhkan => 'warning',
             self::TidakDapatDipenuhi => 'danger',

@@ -10,53 +10,53 @@
     :ogImage="$event->posterUrl()">
 
     {{-- ══ Hero program ══════════════════════════════════════ --}}
-    <section class="relative overflow-hidden bg-char-900">
-        <div class="motif-girih-dark absolute inset-0 opacity-70" aria-hidden="true"></div>
-        <div class="absolute -right-24 -top-32 h-96 w-96 rounded-full bg-clay-400/25 blur-3xl" aria-hidden="true"></div>
+    <section class="relative overflow-hidden border-b border-hairline">
+        <div class="motif-girih pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
 
-        <div class="jelajah-container relative py-12 sm:py-16">
-            <nav aria-label="Laluan" class="mb-6 flex flex-wrap items-center gap-2 text-sm text-white/50">
-                <a href="{{ route('program.index') }}" class="hover:text-white">Program</a>
+        <div class="jelajah-container relative py-12 sm:py-16 lg:py-20">
+            <nav aria-label="Laluan" class="mb-8 flex flex-wrap items-center gap-2 text-sm text-ink-muted">
+                <a href="{{ route('program.index') }}" class="hover:text-clay-700">Program</a>
                 <span aria-hidden="true">/</span>
-                <a href="{{ route('peta.negeri', $event->state->slug) }}" class="hover:text-white">{{ $event->state->name }}</a>
+                <a href="{{ route('peta.negeri', $event->state->slug) }}" class="hover:text-clay-700">{{ $event->state->name }}</a>
             </nav>
 
             <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
                 <div>
                     <div class="flex flex-wrap gap-2">
-                        <x-ui.badge color="white">{{ $event->category?->name }}</x-ui.badge>
-                        <x-ui.badge color="white">{{ $event->priceLabel() }}</x-ui.badge>
+                        <x-ui.badge color="purple">{{ $event->category?->name }}</x-ui.badge>
+                        <x-ui.badge color="grey">{{ $event->priceLabel() }}</x-ui.badge>
                         @if ($isPast)
-                            <x-ui.badge color="white">Program Selesai</x-ui.badge>
+                            <x-ui.badge color="grey">Program Selesai</x-ui.badge>
                         @elseif ($event->status === \App\Enums\EventStatus::Berlangsung)
                             <x-ui.badge color="success" dot>Sedang Berlangsung</x-ui.badge>
                         @endif
                     </div>
 
-                    <h1 class="mt-5 font-display text-3xl leading-tight text-white sm:text-4xl lg:text-5xl text-pretty">
+                    <h1 class="mt-6 font-display text-[2.25rem] leading-[1.06] text-ink text-pretty
+                               sm:text-5xl lg:text-[3.5rem]">
                         {{ $event->title }}
                     </h1>
 
                     @if ($event->theme)
-                        <p class="mt-3 text-xl text-clay-200 text-pretty">{{ $event->theme }}</p>
+                        <p class="mt-5 text-xl text-clay-700 text-pretty sm:text-2xl">{{ $event->theme }}</p>
                     @endif
 
                     <dl class="mt-8 grid gap-5 sm:grid-cols-2">
                         <div class="flex gap-3">
-                            <x-ui.icon name="calendar" class="mt-0.5 h-5 w-5 shrink-0 text-clay-300" />
+                            <x-ui.icon name="calendar" class="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
                             <div>
-                                <dt class="text-xs uppercase tracking-wider text-white/45">Tarikh & Masa</dt>
-                                <dd class="mt-1 text-white">{{ $event->dateLabel() }}</dd>
-                                <dd class="text-sm text-white/70">{{ $event->timeLabel() }}</dd>
+                                <dt class="text-xs uppercase tracking-wider text-ink-muted">Tarikh & Masa</dt>
+                                <dd class="mt-1 text-ink">{{ $event->dateLabel() }}</dd>
+                                <dd class="text-sm text-ink-soft">{{ $event->timeLabel() }}</dd>
                             </div>
                         </div>
 
                         <div class="flex gap-3">
-                            <x-ui.icon name="pin" class="mt-0.5 h-5 w-5 shrink-0 text-clay-300" />
+                            <x-ui.icon name="pin" class="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
                             <div>
-                                <dt class="text-xs uppercase tracking-wider text-white/45">Lokasi</dt>
-                                <dd class="mt-1 text-white text-pretty">{{ $event->venue?->name ?? $event->locationLabel() }}</dd>
-                                <dd class="text-sm text-white/70 text-pretty">
+                                <dt class="text-xs uppercase tracking-wider text-ink-muted">Lokasi</dt>
+                                <dd class="mt-1 text-ink text-pretty">{{ $event->venue?->name ?? $event->locationLabel() }}</dd>
+                                <dd class="text-sm text-ink-soft text-pretty">
                                     {{ $event->district?->name ? $event->district->name.', ' : '' }}{{ $event->state->name }}
                                 </dd>
                             </div>
@@ -64,22 +64,22 @@
 
                         @if ($event->speaker)
                             <div class="flex gap-3">
-                                <x-ui.icon name="user" class="mt-0.5 h-5 w-5 shrink-0 text-clay-300" />
+                                <x-ui.icon name="user" class="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
                                 <div>
-                                    <dt class="text-xs uppercase tracking-wider text-white/45">Penceramah</dt>
-                                    <dd class="mt-1 text-white">{{ $event->speaker->name }}</dd>
+                                    <dt class="text-xs uppercase tracking-wider text-ink-muted">Penceramah</dt>
+                                    <dd class="mt-1 text-ink">{{ $event->speaker->name }}</dd>
                                     @if ($event->speaker->title)
-                                        <dd class="text-sm text-white/70">{{ $event->speaker->title }}</dd>
+                                        <dd class="text-sm text-ink-soft">{{ $event->speaker->title }}</dd>
                                     @endif
                                 </div>
                             </div>
                         @endif
 
                         <div class="flex gap-3">
-                            <x-ui.icon name="users" class="mt-0.5 h-5 w-5 shrink-0 text-clay-300" />
+                            <x-ui.icon name="users" class="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
                             <div>
-                                <dt class="text-xs uppercase tracking-wider text-white/45">Sasaran Peserta</dt>
-                                <dd class="mt-1 text-white">{{ $event->target_audience?->label() ?? 'Umum' }}</dd>
+                                <dt class="text-xs uppercase tracking-wider text-ink-muted">Sasaran Peserta</dt>
+                                <dd class="mt-1 text-ink">{{ $event->target_audience?->label() ?? 'Umum' }}</dd>
                             </div>
                         </div>
                     </dl>
@@ -88,9 +88,9 @@
                         <div x-data="countdown('{{ $event->countdownTarget()->toIso8601String() }}')"
                              class="mt-8 flex flex-wrap gap-2.5" x-cloak>
                             @foreach (['hari' => 'Hari', 'jam' => 'Jam', 'minit' => 'Minit', 'saat' => 'Saat'] as $key => $label)
-                                <div class="min-w-[4.5rem] rounded-xl bg-white/8 px-4 py-3 text-center ring-1 ring-white/12">
-                                    <p class="font-display text-2xl text-white" x-text="{{ $key }}">—</p>
-                                    <p class="text-xs uppercase tracking-wider text-white/50">{{ $label }}</p>
+                                <div class="min-w-[4.5rem] rounded-lg border border-hairline bg-surface px-4 py-3 text-center">
+                                    <p class="font-display text-2xl text-ink" x-text="{{ $key }}">—</p>
+                                    <p class="text-xs uppercase tracking-wider text-ink-muted">{{ $label }}</p>
                                 </div>
                             @endforeach
                         </div>

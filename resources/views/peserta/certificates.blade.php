@@ -10,13 +10,13 @@
         <ul class="grid gap-5 sm:grid-cols-2">
             @foreach ($certificates as $certificate)
                 <li class="flex h-full flex-col overflow-hidden rounded-card border border-hairline bg-surface">
-                    <div class="relative bg-char-900 p-5">
-                        <div class="motif-girih-dark absolute inset-0 opacity-50" aria-hidden="true"></div>
+                    <div class="relative border-b border-hairline bg-cream p-5">
+                        <div class="motif-girih absolute inset-0 opacity-50" aria-hidden="true"></div>
                         <div class="relative">
-                            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-clay-300">
+                            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-clay-700">
                                 {{ $certificate->type->label() }}
                             </p>
-                            <p class="mt-2 font-medium leading-snug text-white text-pretty">
+                            <p class="mt-2 font-medium leading-snug text-ink text-pretty">
                                 {{ $certificate->event_title }}
                             </p>
                         </div>

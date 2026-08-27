@@ -14,7 +14,7 @@
         <x-ui.button :href="route('jemput', ['negeri' => $state->slug])" variant="primary" icon="heart">
             Jemput BeDaie ke {{ $state->name }}
         </x-ui.button>
-        <x-ui.button :href="route('peta')" variant="glass">Kembali ke Peta</x-ui.button>
+        <x-ui.button :href="route('peta')" variant="outline">Kembali ke Peta</x-ui.button>
     </x-jelajah.page-hero>
 
     <section class="border-b border-hairline bg-surface">

@@ -44,7 +44,7 @@
 
                     <div class="mt-4 flex flex-wrap gap-2.5 border-t border-hairline pt-4">
                         <x-ui.button :href="route('tiket.show', $registration->public_token)"
-                                     variant="navy" size="sm" icon="qr">
+                                     variant="outline" size="sm" icon="qr">
                             Tiket & QR
                         </x-ui.button>
                         <x-ui.button :href="$event->publicUrl()" variant="outline" size="sm">

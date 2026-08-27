@@ -62,6 +62,18 @@ typography:
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: "0.18em"
+  print:
+    fontFamily: "DejaVu Serif, DejaVu Sans, serif"
+    fontSize: "20pt"
+    fontWeight: 400
+    lineHeight: 1.22
+    letterSpacing: "normal"
+  email:
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: "normal"
   mono:
     fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
     fontSize: "0.75rem"
@@ -179,6 +191,12 @@ biarkan saiz membawa penekanan, bukan berat.
 **Hanken Grotesk** — badan, navigasi, butang, label, borang, dashboard.
 Tinggi-x besar dan bentuk huruf yang jelas. Saiz badan tidak pernah turun
 bawah 16px.
+
+**Di luar pelayar, dua substitusi yang disengajakan.** Sijil PDF memakai
+**DejaVu Serif/Sans** — dompdf membawanya sendiri, dan ia padanan terdekat
+kepada Source Serif 4 tanpa membenamkan fail fon. E-mel memakai **Roboto**
+dengan fallback Helvetica/Arial, kerana klien e-mel tidak memuatkan Google
+Fonts. Kedua-duanya sengaja; jangan cuba memaksa muka taip web ke sana.
 
 Tajuk serif memakai tracking -0.02em; sans memakai -0.011em. Ukuran perenggan
 dihadkan 68ch. `text-balance` pada tajuk, `text-pretty` pada perenggan.

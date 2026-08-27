@@ -126,7 +126,7 @@
                 </div>
 
                 <div class="mt-5 flex flex-wrap gap-2.5 border-t border-hairline pt-5">
-                    <x-ui.button :href="route('penggerak.program.show', $active)" variant="navy" size="sm">
+                    <x-ui.button :href="route('penggerak.program.show', $active)" variant="outline" size="sm">
                         Butiran Penuh Program
                     </x-ui.button>
                     <x-ui.button :href="'https://wa.me/'.config('jelajah.support.phone')" target="_blank"

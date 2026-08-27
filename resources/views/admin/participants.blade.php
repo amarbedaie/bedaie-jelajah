@@ -16,7 +16,7 @@
                 </option>
             @endforeach
         </x-ui.select>
-        <x-ui.button type="submit" variant="navy" icon="filter">Tapis</x-ui.button>
+        <x-ui.button type="submit" variant="outline" icon="filter">Tapis</x-ui.button>
     </form>
 
     @if ($registrations->isEmpty())

@@ -1,16 +1,16 @@
 <x-layouts.app title="Pasport Ilmu" nav="peserta">
     {{-- ── Kad pasport ────────────────────────────────────── --}}
-    <section class="overflow-hidden rounded-card-lg bg-char-900 shadow-lift">
+    <section class="overflow-hidden rounded-card-lg border border-hairline bg-cream">
         <div class="relative p-7 sm:p-9">
-            <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
+            <div class="motif-girih absolute inset-0 opacity-60" aria-hidden="true"></div>
             <div class="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-clay-400/25 blur-3xl" aria-hidden="true"></div>
 
             <div class="relative">
-                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-clay-300">
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-clay-700">
                     Pasport Ilmu BeDaie
                 </p>
-                <h1 class="mt-3 font-display text-2xl text-white sm:text-3xl text-pretty">{{ $user->name }}</h1>
-                <p class="mt-1.5 text-sm text-white/55">
+                <h1 class="mt-3 font-display text-2xl text-ink sm:text-3xl text-pretty">{{ $user->name }}</h1>
+                <p class="mt-1.5 text-sm text-ink/55">
                     Ahli sejak {{ $user->created_at->translatedFormat('F Y') }}
                 </p>
 
@@ -21,10 +21,10 @@
                         ['Jam pembelajaran', rtrim(rtrim(number_format($learningHours, 1), '0'), '.'), 'clock'],
                         ['Sijil diperoleh', number_format($certificates->count()), 'certificate'],
                     ] as [$label, $value, $icon])
-                        <div class="rounded-xl bg-white/8 p-4 ring-1 ring-white/10">
-                            <x-ui.icon :name="$icon" class="h-4 w-4 text-clay-300" />
-                            <dd class="mt-2 font-display text-2xl text-white">{{ $value }}</dd>
-                            <dt class="mt-0.5 text-xs text-white/50 text-pretty">{{ $label }}</dt>
+                        <div class="rounded-xl bg-surface p-4 ring-1 ring-hairline">
+                            <x-ui.icon :name="$icon" class="h-4 w-4 text-clay-700" />
+                            <dd class="mt-2 font-display text-2xl text-ink">{{ $value }}</dd>
+                            <dt class="mt-0.5 text-xs text-ink-muted text-pretty">{{ $label }}</dt>
                         </div>
                     @endforeach
                 </dl>
@@ -69,7 +69,7 @@
 
                         <div class="mt-4 flex flex-wrap gap-2.5">
                             <x-ui.button :href="route('tiket.show', $registration->public_token)"
-                                         variant="navy" size="sm" icon="qr">
+                                         variant="outline" size="sm" icon="qr">
                                 Tiket & QR
                             </x-ui.button>
                             <x-ui.button :href="route('tiket.kalendar', $registration->public_token)"

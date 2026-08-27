@@ -2,7 +2,7 @@
     <form method="GET" class="mb-5 grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
         <x-ui.input name="q" :value="request('q')" icon="search"
                     placeholder="Cari nama, e-mel atau telefon…" aria-label="Carian penggerak" />
-        <x-ui.button type="submit" variant="navy" icon="search">Cari</x-ui.button>
+        <x-ui.button type="submit" variant="outline" icon="search">Cari</x-ui.button>
     </form>
 
     @if ($users->isEmpty())

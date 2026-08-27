@@ -46,7 +46,7 @@
             <option value="logged" @selected(request('status') === 'logged')>Direkod sahaja</option>
             <option value="failed" @selected(request('status') === 'failed')>Gagal</option>
         </x-ui.select>
-        <x-ui.button type="submit" variant="navy" icon="filter">Tapis</x-ui.button>
+        <x-ui.button type="submit" variant="outline" icon="filter">Tapis</x-ui.button>
     </form>
 
     @if ($logs->isEmpty())

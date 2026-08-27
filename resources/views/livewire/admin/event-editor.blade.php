@@ -1,7 +1,7 @@
 <div>
     {{-- ── Bar tindakan ───────────────────────────────────── --}}
     <div class="flex flex-wrap gap-2.5">
-        <x-ui.button wire:click="$toggle('open')" variant="navy" size="sm" icon="edit">
+        <x-ui.button wire:click="$toggle('open')" variant="outline" size="sm" icon="edit">
             {{ $open ? 'Tutup Editor' : 'Sunting Program' }}
         </x-ui.button>
 

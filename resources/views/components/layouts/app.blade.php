@@ -115,7 +115,7 @@
                         <a href="{{ route($item['route']) }}"
                            @if($active) aria-current="page" @endif
                            class="tap-target flex shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition
-                                  {{ $active ? 'bg-char-900 text-white' : 'text-ink-soft hover:bg-mist hover:text-ink' }}">
+                                  {{ $active ? 'bg-clay-600 text-white' : 'text-ink-soft hover:bg-mist hover:text-ink' }}">
                             <x-ui.icon :name="$item['icon']" class="h-4 w-4" />
                             {{ $item['label'] }}
                         </a>

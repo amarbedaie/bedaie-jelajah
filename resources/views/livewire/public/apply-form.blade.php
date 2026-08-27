@@ -31,7 +31,8 @@
                             @disabled(! $done)
                             @if (! $done) aria-hidden="true" tabindex="-1" @endif
                             aria-current="{{ $current ? 'step' : 'false' }}"
-                            class="group flex w-full flex-col gap-1.5 text-left {{ $done ? 'cursor-pointer' : 'cursor-default' }}">
+                            class="group flex w-full flex-col justify-center gap-1.5 py-3 text-left
+                                   {{ $done ? 'cursor-pointer' : 'cursor-default' }}">
                         <span class="h-1.5 w-full rounded-full transition {{ $bar }} {{ $done ? 'group-hover:bg-clay-600' : '' }}"></span>
                         <span class="hidden text-xs font-medium sm:block
                                      {{ $done || $current ? 'text-clay-700' : 'text-ink-muted' }}">

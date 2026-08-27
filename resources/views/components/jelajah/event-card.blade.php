@@ -15,11 +15,10 @@
                  class="h-full w-full object-cover" />
         @else
             {{-- Fallback berjenama apabila poster belum dimuat naik --}}
-            <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-clay-600/70 to-char-900" aria-hidden="true"></div>
+            <div class="motif-girih absolute inset-0 opacity-60" aria-hidden="true"></div>
             <div class="relative flex h-full flex-col justify-end p-5">
-                <p class="font-display text-xl leading-tight text-white text-pretty">{{ $event->theme ?? $event->title }}</p>
-                <p class="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-clay-200">
+                <p class="font-display text-xl leading-tight text-ink text-pretty">{{ $event->theme ?? $event->title }}</p>
+                <p class="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-clay-700">
                     {{ $event->category?->name }}
                 </p>
             </div>

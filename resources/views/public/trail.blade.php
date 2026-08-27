@@ -17,13 +17,12 @@
                 @foreach ($events as $event)
                     <article class="flex h-full flex-col overflow-hidden rounded-card border
                                     border-hairline bg-surface shadow-soft">
-                        <a href="{{ $event->publicUrl() }}" class="relative block aspect-[16/9] bg-char-900">
+                        <a href="{{ $event->publicUrl() }}" class="relative block aspect-[16/9] border-b border-hairline bg-cream">
                             @if ($event->heroUrl())
                                 <img src="{{ $event->heroUrl() }}" alt="{{ $event->title }}" loading="lazy"
                                      class="h-full w-full object-cover" />
                             @else
-                                <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
-                                <div class="absolute inset-0 bg-gradient-to-tr from-char-900 to-clay-700/60"></div>
+                                <div class="motif-girih absolute inset-0 opacity-60" aria-hidden="true"></div>
                             @endif
                             <div class="absolute left-3 top-3">
                                 <x-ui.badge color="white">{{ $event->state?->name }}</x-ui.badge>

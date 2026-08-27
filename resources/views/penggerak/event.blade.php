@@ -103,7 +103,7 @@
                 <h3 class="font-semibold text-ink">Tindakan</h3>
                 <div class="mt-4 grid gap-2.5">
                     <x-ui.button :href="route('penggerak.peserta', ['program' => $event->short_code])"
-                                 variant="navy" block icon="users">
+                                 variant="outline" block icon="users">
                         Lihat Peserta
                     </x-ui.button>
 

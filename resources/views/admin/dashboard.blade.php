@@ -41,20 +41,14 @@
                 ['Sijil dikeluarkan', number_format($certificatesIssued), 'certificate', route('admin.sijil')],
                 ['Negeri dijelajahi', number_format($headline['negeri']), 'map', route('admin.negeri')],
             ] as [$label, $value, $icon, $url])
-                <div class="rounded-card border border-hairline bg-surface p-5 shadow-soft">
-                    <div class="flex items-start justify-between gap-3">
-                        <div>
-                            <dd class="font-display text-3xl text-ink">{{ $value }}</dd>
-                            <dt class="mt-1 text-sm text-ink-soft text-pretty">{{ $label }}</dt>
-                        </div>
-                        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-clay-50">
-                            <x-ui.icon :name="$icon" class="h-4 w-4 text-clay-600" />
-                        </span>
-                    </div>
-                    <a href="{{ $url }}" class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-clay-600 hover:underline">
-                        Lihat <x-ui.icon name="arrow-right" class="h-3 w-3" />
-                    </a>
-                </div>
+                {{-- Angka, bukan kad: garis rambut dan ruang membawa
+                     pengasingan, dan keseluruhan blok ialah pautannya. --}}
+                <a href="{{ $url }}"
+                   class="group block border-t border-hairline pt-4 transition-colors hover:border-clay-400">
+                    <dd class="font-display text-[2.5rem] leading-none text-ink tabular-nums">{{ $value }}</dd>
+                    <dt class="mt-2.5 text-sm leading-snug text-ink-muted text-pretty
+                               group-hover:text-clay-700">{{ $label }}</dt>
+                </a>
             @endforeach
         </dl>
     </section>

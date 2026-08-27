@@ -8,7 +8,7 @@
         <div class="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
             <div>
                 @if ($recording->embedUrl())
-                    <div class="overflow-hidden rounded-card-lg bg-char-900 shadow-lift">
+                    <div class="overflow-hidden rounded-card-lg border border-hairline bg-char-900">
                         <div class="aspect-video">
                             <iframe src="{{ $recording->embedUrl() }}"
                                     title="{{ $recording->title }}"

@@ -35,7 +35,7 @@
         @endif
 
         <div class="flex items-end gap-2">
-            <x-ui.button type="submit" variant="navy" icon="filter" block>Tapis</x-ui.button>
+            <x-ui.button type="submit" variant="outline" icon="filter" block>Tapis</x-ui.button>
             @if (request()->hasAny(['negeri', 'kategori', 'harga']))
                 <x-ui.button :href="$action ?? url()->current()" variant="ghost" size="md">Reset</x-ui.button>
             @endif

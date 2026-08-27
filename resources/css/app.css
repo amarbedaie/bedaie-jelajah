@@ -87,6 +87,11 @@
   --color-danger-soft:  #F6E4E0;
   --color-danger-line:  #E5C2BB;
   --color-whatsapp:     #1C7C4A;   /* 5.21:1 dengan putih */
+  /* Slate suam untuk status "sedang diproses" — enam status permohonan
+     tidak boleh berkongsi dua rona sahaja pada skrin triaj admin. */
+  --color-slate:        #3A4654;   /* 9.62:1 dengan putih, 7.97:1 atas slate-soft */
+  --color-slate-soft:   #E7EAEE;
+  --color-slate-line:   #C6CDD6;
 
   /* ── Tipografi ────────────────────────────────────────────────
      Serif transitional untuk tajuk — kontras sederhana, dibaca
@@ -193,7 +198,57 @@
     min-width: 2.75rem;
   }
 
+  /* Preflight membuang gaya lalai h2/ul, jadi teks panjang perlu
+     gayanya sendiri — tanpa ini halaman polisi ialah dinding 16px. */
   .prose-jelajah p { margin-block: 0.85em; }
+
+  .prose-jelajah h2 {
+    margin-top: 2.25em;
+    margin-bottom: 0.6em;
+    font-family: var(--font-display);
+    font-size: 1.625rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-jelajah h3 {
+    margin-top: 1.75em;
+    margin-bottom: 0.45em;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .prose-jelajah h2:first-child,
+  .prose-jelajah h3:first-child { margin-top: 0; }
+
+  .prose-jelajah ul,
+  .prose-jelajah ol {
+    margin-block: 0.85em;
+    padding-inline-start: 1.35rem;
+    max-width: 68ch;
+  }
+
+  .prose-jelajah ul { list-style: disc; }
+  .prose-jelajah ol { list-style: decimal; }
+  .prose-jelajah li { margin-block: 0.4em; padding-inline-start: 0.25rem; }
+  .prose-jelajah li::marker { color: var(--color-clay-500); }
+
+  .prose-jelajah a {
+    color: var(--color-clay-700);
+    text-decoration: underline;
+    text-decoration-color: var(--color-clay-300);
+    text-underline-offset: 3px;
+  }
+
+  .prose-jelajah a:hover { text-decoration-color: var(--color-clay-700); }
+  .prose-jelajah em { font-style: italic; }
+
+  .prose-jelajah hr {
+    margin-block: 2.5em;
+    border: 0;
+    border-top: 1px solid var(--color-hairline);
+  }
   .prose-jelajah strong { color: var(--color-ink); font-weight: 600; }
 }
 

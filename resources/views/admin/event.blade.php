@@ -149,7 +149,7 @@
             <x-ui.card>
                 <h3 class="font-semibold text-ink">Tindakan</h3>
                 <div class="mt-4 grid gap-2.5">
-                    <x-ui.button :href="$event->publicUrl()" target="_blank" variant="navy" block icon="external">
+                    <x-ui.button :href="$event->publicUrl()" target="_blank" variant="outline" block icon="external">
                         Lihat Halaman Awam
                     </x-ui.button>
                     <x-ui.button :href="route('checkin.scanner', $event)" variant="primary" block icon="qr">

@@ -1,24 +1,30 @@
 @props(['label', 'value', 'icon' => null, 'hint' => null, 'tone' => 'default'])
 
 @php
+    // Nombor ialah angka, bukan kad. Nada `default` menanggalkan chrome
+    // sepenuhnya dan bergantung pada garis rambut — sama seperti kaunter
+    // impak di halaman utama, yang sudah menjadi rujukan sistem ini.
     $tones = [
-        'default' => 'bg-surface border-hairline',
-        'brand'   => 'bg-clay-50 border-clay-200',
-        'success' => 'bg-success-soft border-success-line',
-        'warning' => 'bg-warning-soft border-warning-line',
-        'danger'  => 'bg-danger-soft border-danger-line',
+        'default' => 'border-t border-hairline pt-4',
+        'brand'   => 'rounded-card border border-clay-200 bg-clay-50 p-4 sm:p-5',
+        'success' => 'rounded-card border border-success-line bg-success-soft p-4 sm:p-5',
+        'warning' => 'rounded-card border border-warning-line bg-warning-soft p-4 sm:p-5',
+        'danger'  => 'rounded-card border border-danger-line bg-danger-soft p-4 sm:p-5',
     ];
+    $bare = $tone === 'default';
 @endphp
 
-<div {{ $attributes->merge(['class' => 'rounded-card border p-4 sm:p-5 ' . ($tones[$tone] ?? $tones['default'])]) }}>
-    <div class="flex items-start justify-between gap-3">
-        <p class="text-sm font-medium text-ink-soft">{{ $label }}</p>
-        @if ($icon)
-            <x-ui.icon :name="$icon" class="w-5 h-5 shrink-0 text-clay-400" />
+<div {{ $attributes->merge(['class' => $tones[$tone] ?? $tones['default']]) }}>
+    <p class="font-display text-4xl leading-none text-ink tabular-nums sm:text-[2.75rem]">{{ $value }}</p>
+
+    <div class="mt-2.5 flex items-start justify-between gap-3">
+        <p class="text-sm leading-snug text-ink-muted text-pretty">{{ $label }}</p>
+        @if ($icon && ! $bare)
+            <x-ui.icon :name="$icon" class="h-5 w-5 shrink-0 text-clay-500" />
         @endif
     </div>
-    <p class="mt-1.5 text-2xl sm:text-3xl font-semibold tracking-tight text-ink tabular-nums">{{ $value }}</p>
+
     @if ($hint)
-        <p class="mt-1 text-xs text-ink-muted">{{ $hint }}</p>
+        <p class="mt-1.5 text-xs text-ink-muted">{{ $hint }}</p>
     @endif
 </div>

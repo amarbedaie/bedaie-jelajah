@@ -62,17 +62,17 @@
             </div>
 
             <aside class="space-y-5">
-                <div class="rounded-card-lg bg-char-900 p-7 text-white">
-                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay-300">Slogan Kami</p>
+                <div class="rounded-card-lg rounded-card-lg border border-hairline bg-cream p-7">
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay-700">Slogan Kami</p>
                     <p class="mt-4 font-display text-2xl leading-tight">
                         {{ config('jelajah.slogan') }}
                     </p>
-                    <p class="mt-5 text-sm leading-relaxed text-white/65 text-pretty">
+                    <p class="mt-5 text-sm leading-relaxed text-ink/65 text-pretty">
                         Setiap masjid yang membuka pintu, setiap hati yang terbuka menerima —
                         itulah ukuran sebenar jelajah ini.
                     </p>
-                    <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-white/8 px-4 py-2
-                              text-sm text-clay-300 ring-1 ring-white/10">
+                    <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-surface px-4 py-2
+                              text-sm text-clay-700 ring-1 ring-hairline">
                         <x-ui.icon name="home" class="h-4 w-4" /> {{ config('jelajah.motto') }}
                     </p>
                 </div>

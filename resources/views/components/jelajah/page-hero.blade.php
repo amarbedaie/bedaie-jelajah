@@ -15,7 +15,7 @@
                 </p>
             @endif
 
-            <h1 class="mt-6 font-display text-[2.25rem] leading-[1.06] text-ink text-pretty sm:text-5xl lg:text-[3.5rem]">
+            <h1 class="mt-7 font-display text-[2.25rem] leading-[1.02] text-ink text-pretty sm:text-[3.5rem] lg:text-[4.5rem]">
                 {{ $title }}
             </h1>
 

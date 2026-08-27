@@ -3,7 +3,7 @@
     <div class="no-scrollbar -mx-1 mb-5 flex gap-2 overflow-x-auto pb-1">
         <a href="{{ route('admin.permohonan') }}"
            class="tap-target flex shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition
-                  {{ ! request('status') ? 'bg-char-900 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
+                  {{ ! request('status') ? 'bg-clay-600 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
             Semua <span class="text-xs opacity-70">{{ $counts->sum() }}</span>
         </a>
         @foreach ($statuses as $value => $label)
@@ -11,7 +11,7 @@
             @if ($count > 0 || request('status') === $value)
                 <a href="{{ route('admin.permohonan', ['status' => $value]) }}"
                    class="tap-target flex shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition
-                          {{ request('status') === $value ? 'bg-char-900 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
+                          {{ request('status') === $value ? 'bg-clay-600 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
                     {{ $label }} <span class="text-xs opacity-70">{{ $count }}</span>
                 </a>
             @endif
@@ -29,7 +29,7 @@
                 <option value="{{ $state->slug }}" @selected(request('negeri') === $state->slug)>{{ $state->name }}</option>
             @endforeach
         </x-ui.select>
-        <x-ui.button type="submit" variant="navy" icon="filter">Tapis</x-ui.button>
+        <x-ui.button type="submit" variant="outline" icon="filter">Tapis</x-ui.button>
     </form>
 
     @if ($applications->isEmpty())

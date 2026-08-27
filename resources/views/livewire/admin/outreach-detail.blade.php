@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="flex items-end">
-                    <x-ui.button type="submit" variant="navy" block
+                    <x-ui.button type="submit" variant="outline" block
                                  wire:loading.attr="disabled" wire:target="changeStage">
                         Kemas Kini
                     </x-ui.button>

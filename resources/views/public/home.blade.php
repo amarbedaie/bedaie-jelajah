@@ -16,7 +16,7 @@
                         {{ config('jelajah.slogan') }}
                     </p>
 
-                    <h1 class="mt-7 font-display text-[2.75rem] leading-[1.02] text-ink sm:text-6xl lg:text-[4.25rem]">
+                    <h1 class="mt-8 font-display text-[2.75rem] leading-[0.98] text-ink sm:text-[4.5rem] lg:text-[6rem]">
                         Bawa BeDaie<br>ke kawasan anda.
                     </h1>
 
@@ -117,7 +117,7 @@
                     <div class="border-l border-hairline pl-5 first:border-l-0 first:pl-0
                                 sm:[&:nth-child(4)]:border-l-0 sm:[&:nth-child(4)]:pl-0
                                 lg:[&:nth-child(4)]:border-l lg:[&:nth-child(4)]:pl-5">
-                        <dd class="font-display text-4xl leading-none text-ink sm:text-5xl"
+                        <dd class="font-display text-5xl leading-none text-ink tabular-nums sm:text-[4.5rem]"
                             x-data="counter({{ (int) $headline[$key] }})"
                             x-text="display.toLocaleString('ms-MY')">{{ number_format($headline[$key]) }}</dd>
                         <dt class="mt-2.5 text-sm leading-snug text-ink-muted text-pretty">{{ $label }}</dt>
@@ -226,34 +226,33 @@
                 title="Program Yang Boleh Anda Mohon"
                 description="Pilih yang paling sesuai dengan keperluan komuniti anda. Pasukan BeDaie akan menentukan penceramah dan pengisian." />
 
-            <div class="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {{-- Ini taksonomi, bukan sepuluh produk. Senarai takrif dua
+                 lajur dengan satu CTA dikongsi — bukan sepuluh CTA serupa. --}}
+            <dl class="mt-10 grid gap-x-14 border-t border-hairline sm:grid-cols-2">
                 @foreach ($categories as $category)
-                    {{-- Seluruh kad ialah sasaran ketuk; pautan teks sahaja hanya 20px tinggi. --}}
-                    <div class="group relative flex h-full flex-col rounded-card border border-hairline
-                                bg-surface p-5 transition hover:border-clay-200 hover:shadow-soft
-                                focus-within:border-clay-400 focus-within:ring-4 focus-within:ring-clay-400/15">
-                        <div class="grid h-11 w-11 place-items-center rounded-2xl bg-clay-50
-                                    transition group-hover:bg-clay-600">
-                            <x-ui.icon :name="$category->icon ?? 'book'"
-                                       class="h-5 w-5 text-clay-700 transition group-hover:text-white" />
-                        </div>
-                        <h3 class="mt-4 font-semibold text-ink">
+                    <div class="group border-b border-hairline py-5 sm:py-6">
+                        <dt>
                             <a href="{{ route('jemput', ['kategori' => $category->slug]) }}"
-                               class="after:absolute after:inset-0 focus-visible:outline-none">
-                                {{ $category->name }}
+                               class="flex items-baseline justify-between gap-4 font-display text-xl text-ink
+                                      transition-colors hover:text-clay-700">
+                                <span class="text-pretty">{{ $category->name }}</span>
+                                <x-ui.icon name="arrow-right"
+                                           class="h-4 w-4 shrink-0 translate-y-0.5 text-clay-500 opacity-0
+                                                  transition group-hover:opacity-100" />
                                 <span class="sr-only">— jemput BeDaie untuk program ini</span>
                             </a>
-                        </h3>
-                        <p class="mt-1.5 flex-1 text-sm leading-relaxed text-ink-soft text-pretty">
+                        </dt>
+                        <dd class="mt-2 max-w-prose text-sm leading-relaxed text-ink-soft text-pretty">
                             {{ $category->description }}
-                        </p>
-                        <span aria-hidden="true"
-                              class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-clay-700">
-                            Jemput BeDaie
-                            <x-ui.icon name="arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5" />
-                        </span>
+                        </dd>
                     </div>
                 @endforeach
+            </dl>
+
+            <div class="mt-9">
+                <x-ui.button :href="route('jemput')" variant="primary">
+                    Jemput BeDaie ke Kawasan Anda
+                </x-ui.button>
             </div>
         </div>
     </section>
@@ -270,46 +269,34 @@
                     :action="route('jejak')"
                     actionLabel="Semua Jejak" />
 
-                <div class="mt-9 grid gap-6 lg:grid-cols-3">
+                {{-- Rekod lepas ialah senarai, bukan grid kad. Tarikh,
+                     tempat, kehadiran — satu garis rambut setiap baris.
+                     Ini juga menamatkan tajuk yang berulang dua kali. --}}
+                <ul class="mt-10 divide-y divide-hairline border-t border-hairline">
                     @foreach ($recent as $event)
-                        <article class="overflow-hidden rounded-card border border-hairline bg-surface">
+                        <li>
                             <a href="{{ $event->publicUrl() }}"
-                               class="relative block aspect-[16/9] border-b border-hairline bg-cream">
-                                @if ($event->heroUrl())
-                                    <img src="{{ $event->heroUrl() }}" alt="{{ $event->title }}" loading="lazy"
-                                         class="h-full w-full object-cover" />
-                                @else
-                                    <div class="motif-girih absolute inset-0 opacity-60" aria-hidden="true"></div>
-                                @endif
+                               class="group grid gap-2 py-6 sm:grid-cols-[9rem_minmax(0,1fr)_auto] sm:items-baseline sm:gap-6">
+                                <span class="text-sm text-ink-muted tabular-nums">{{ $event->dateLabel() }}</span>
+
+                                <span class="min-w-0">
+                                    <span class="block font-display text-xl leading-snug text-ink text-pretty
+                                                 group-hover:text-clay-700">{{ $event->title }}</span>
+                                    <span class="mt-1 block text-sm text-ink-soft text-pretty">
+                                        {{ $event->locationLabel() }}
+                                    </span>
+                                </span>
+
+                                <span class="flex items-baseline gap-1.5 sm:justify-self-end">
+                                    <span class="font-display text-2xl text-ink tabular-nums">
+                                        {{ number_format($event->attended_count) }}
+                                    </span>
+                                    <span class="text-sm text-ink-muted">hadir</span>
+                                </span>
                             </a>
-
-                            <div class="border-b border-hairline px-5 py-3">
-                                <p class="text-sm text-ink-soft text-pretty">{{ $event->locationLabel() }}</p>
-                            </div>
-
-                            <div class="p-5">
-                                <p class="text-xs text-ink-muted">{{ $event->dateLabel() }}</p>
-                                <h3 class="mt-1.5 font-display text-lg leading-snug text-ink text-pretty">
-                                    <a href="{{ $event->publicUrl() }}" class="hover:text-clay-700">{{ $event->title }}</a>
-                                </h3>
-
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <x-ui.badge color="purple" icon="users">
-                                        {{ number_format($event->attended_count) }} hadir
-                                    </x-ui.badge>
-                                    @if ($event->averageRating())
-                                        <x-ui.badge color="success" icon="star">
-                                            {{ number_format($event->averageRating(), 1) }} / 5
-                                        </x-ui.badge>
-                                    @endif
-                                    @if ($event->gallery_count)
-                                        <x-ui.badge color="grey" icon="image">{{ $event->gallery_count }} gambar</x-ui.badge>
-                                    @endif
-                                </div>
-                            </div>
-                        </article>
+                        </li>
                     @endforeach
-                </div>
+                </ul>
             </div>
         </section>
     @endif
@@ -332,7 +319,7 @@
                         Belum ada lokasi tertentu? Ini cukup — dua medan sahaja, bukan borang penuh.
                     </p>
                     <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                        <x-ui.button :href="route('minat')" variant="navy" size="lg" icon="pin">
+                        <x-ui.button :href="route('minat')" variant="primary" size="lg">
                             Beritahu Kami Kawasan Anda
                         </x-ui.button>
                         <x-ui.button :href="route('peta')" variant="outline" size="lg">
@@ -353,30 +340,36 @@
                     id="tajuk-testimoni"
                     title="Apa Kata Penggerak, Masjid dan Peserta" />
 
-                <div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($testimonials as $testimonial)
-                        <figure class="flex h-full flex-col rounded-card border border-hairline bg-surface p-6 shadow-soft">
-                            @if ($testimonial->rating)
-                                <div class="flex gap-0.5" aria-label="{{ $testimonial->rating }} daripada 5 bintang">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <x-ui.icon name="star"
-                                            :fill="$i <= $testimonial->rating ? 'currentColor' : 'none'"
-                                            class="h-4 w-4 {{ $i <= $testimonial->rating ? 'text-warning' : 'text-hairline' }}" />
-                                    @endfor
-                                </div>
-                            @endif
+                {{-- Testimoni bercakap dengan kuat apabila ia satu suara,
+                     bukan empat kad dalam grid tiga lajur yang tinggal
+                     baris kosong. --}}
+                @php $lead = $testimonials->first(); $rest = $testimonials->skip(1)->take(2); @endphp
 
-                            <blockquote class="mt-4 flex-1 leading-relaxed text-ink-soft text-pretty">
-                                &ldquo;{{ $testimonial->quote }}&rdquo;
-                            </blockquote>
+                <figure class="mt-12 border-t border-clay-300 pt-9">
+                    <blockquote class="max-w-4xl font-display text-[1.75rem] leading-[1.32] text-ink text-pretty sm:text-[2.25rem]">
+                        &ldquo;{{ $lead->quote }}&rdquo;
+                    </blockquote>
+                    <figcaption class="mt-7 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <span class="font-medium text-ink">{{ $lead->name }}</span>
+                        <span class="text-sm text-ink-muted">{{ $lead->role_label }}</span>
+                    </figcaption>
+                </figure>
 
-                            <figcaption class="mt-5 border-t border-hairline pt-4">
-                                <p class="font-medium text-ink">{{ $testimonial->name }}</p>
-                                <p class="mt-0.5 text-sm text-ink-muted">{{ $testimonial->role_label }}</p>
-                            </figcaption>
-                        </figure>
-                    @endforeach
-                </div>
+                @if ($rest->isNotEmpty())
+                    <div class="mt-12 grid gap-10 border-t border-hairline pt-9 sm:grid-cols-2">
+                        @foreach ($rest as $testimonial)
+                            <figure>
+                                <blockquote class="leading-relaxed text-ink-soft text-pretty">
+                                    &ldquo;{{ $testimonial->quote }}&rdquo;
+                                </blockquote>
+                                <figcaption class="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                    <span class="text-sm font-medium text-ink">{{ $testimonial->name }}</span>
+                                    <span class="text-sm text-ink-muted">{{ $testimonial->role_label }}</span>
+                                </figcaption>
+                            </figure>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </section>
     @endif

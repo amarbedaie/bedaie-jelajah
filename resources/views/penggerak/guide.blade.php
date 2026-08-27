@@ -83,7 +83,7 @@
                         Hantar Permohonan
                     </x-ui.button>
                     <x-ui.button :href="'https://wa.me/'.config('jelajah.support.phone')"
-                                 target="_blank" rel="noopener" variant="glass" icon="whatsapp">
+                                 target="_blank" rel="noopener" variant="whatsapp" icon="whatsapp">
                         Tanya Kami di WhatsApp
                     </x-ui.button>
                 </div>
