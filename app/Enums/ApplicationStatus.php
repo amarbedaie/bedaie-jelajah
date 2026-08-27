@@ -55,15 +55,15 @@ enum ApplicationStatus: string
     public function color(): string
     {
         return match ($this) {
-            self::Draf => 'grey',
-            self::Diterima => 'purple',
-            self::DalamSemakan => 'slate',
-            self::PerluMaklumat => 'warning',
-            self::CadanganTarikh => 'clay',
-            self::DalamPerbincangan => 'navy',
-            self::Diluluskan, self::ProgramDisahkan, self::Selesai => 'success',
-            self::Ditangguhkan => 'warning',
-            self::TidakDapatDipenuhi => 'danger',
+            self::Draf => 'quiet',
+            self::Diterima => 'soft',
+            self::DalamSemakan => 'line',
+            self::DalamPerbincangan => 'edge',
+            self::PerluMaklumat => 'strong',
+            self::CadanganTarikh => 'strong',
+            self::Diluluskan, self::ProgramDisahkan, self::Selesai => 'solid',
+            self::Ditangguhkan => 'quiet',
+            self::TidakDapatDipenuhi => 'alert',
         };
     }
 

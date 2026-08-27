@@ -71,7 +71,7 @@
                                      wire:model="gender" :checked="$gender === 'perempuan'" />
                     </div>
                     @error('gender')
-                        <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </fieldset>
             @endif
@@ -134,7 +134,7 @@
 
                                         <button type="button" wire:click="removeGuest({{ $i }})"
                                                 class="tap-target grid shrink-0 place-items-center rounded-xl text-ink-muted
-                                                       transition hover:bg-danger-soft hover:text-danger"
+                                                       transition hover:bg-alert-soft hover:text-alert"
                                                 aria-label="Buang ahli keluarga {{ $i + 1 }}">
                                             <x-ui.icon name="trash" class="h-4 w-4" />
                                         </button>
@@ -152,10 +152,10 @@
                              label="Saya bersetuju dengan polisi privasi"
                              hint="Maklumat ini digunakan untuk pengesahan kehadiran dan penerbitan sijil." />
                 @error('privacy')
-                    <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                    <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                 @enderror
                 @error('event')
-                    <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                    <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -221,7 +221,7 @@
                 @else
                     <div class="mt-3 flex items-center justify-between border-t border-hairline pt-3">
                         <span class="font-medium text-ink">Jumlah</span>
-                        <span class="font-display text-xl text-success">{{ $event->priceLabel() }}</span>
+                        <span class="font-display text-xl text-clay-700">{{ $event->priceLabel() }}</span>
                     </div>
                 @endif
             </div>
@@ -237,7 +237,7 @@
                     'Sijil digital dijana automatik selepas program.',
                 ] as $item)
                     <li class="flex gap-2.5 text-sm text-ink-soft text-pretty">
-                        <x-ui.icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                        <x-ui.icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-clay-700" />
                         {{ $item }}
                     </li>
                 @endforeach

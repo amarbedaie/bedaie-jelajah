@@ -12,16 +12,16 @@
             {{-- ── Status ────────────────────────────────────── --}}
             <div class="text-center">
                 @if ($status === \App\Enums\RegistrationStatus::Disahkan)
-                    <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-success-soft">
-                        <x-ui.icon name="check-circle" class="h-7 w-7 text-success" />
+                    <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-clay-50">
+                        <x-ui.icon name="check-circle" class="h-7 w-7 text-clay-700" />
                     </div>
                     <h1 class="mt-5 font-display text-2xl text-ink sm:text-3xl">Pendaftaran Disahkan</h1>
                     <p class="mt-2 text-ink-soft text-pretty">
                         Tunjukkan QR di bawah pada pintu masuk untuk merekod kehadiran anda.
                     </p>
                 @elseif ($status === \App\Enums\RegistrationStatus::SenaraiMenunggu)
-                    <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-warning-soft">
-                        <x-ui.icon name="clock" class="h-7 w-7 text-warning" />
+                    <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-mist">
+                        <x-ui.icon name="clock" class="h-7 w-7 text-clay-700" />
                     </div>
                     <h1 class="mt-5 font-display text-2xl text-ink sm:text-3xl">Anda Dalam Senarai Menunggu</h1>
                     <p class="mt-2 text-ink-soft text-pretty">
@@ -29,8 +29,8 @@
                         sebaik sahaja ada tempat kosong.
                     </p>
                 @elseif ($status === \App\Enums\RegistrationStatus::MenungguPengesahan)
-                    <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-warning-soft">
-                        <x-ui.icon name="clock" class="h-7 w-7 text-warning" />
+                    <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-mist">
+                        <x-ui.icon name="clock" class="h-7 w-7 text-clay-700" />
                     </div>
                     <h1 class="mt-5 font-display text-2xl text-ink sm:text-3xl">Menunggu Pengesahan</h1>
                     <p class="mt-2 text-ink-soft text-pretty">
@@ -70,7 +70,7 @@
                             {!! $qrSvg !!}
                         </div>
                         @if ($attended)
-                            <p class="mt-4 inline-flex items-center gap-2 rounded-full bg-success-soft px-4 py-1.5
+                            <p class="mt-4 inline-flex items-center gap-2 rounded-full bg-clay-50 px-4 py-1.5
                                       text-sm font-medium text-[#0A5537]">
                                 <x-ui.icon name="check-circle" class="h-4 w-4" />
                                 Kehadiran direkod {{ $registration->attendance?->checked_in_at?->format('g:ia, j M Y') }}
@@ -237,7 +237,7 @@
                     <p class="mt-6 text-center text-sm text-ink-muted">
                         Tidak dapat hadir?
                         <a href="{{ route('tiket.cancel', $registration->public_token) }}"
-                           class="font-medium text-danger hover:underline">Batalkan pendaftaran</a>
+                           class="font-medium text-alert hover:underline">Batalkan pendaftaran</a>
                         supaya tempat dapat diberikan kepada orang lain.
                     </p>
                 @endunless

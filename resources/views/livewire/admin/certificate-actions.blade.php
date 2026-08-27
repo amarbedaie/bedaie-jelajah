@@ -27,7 +27,7 @@
                 <x-ui.input id="cn-{{ $certificate->id }}" wire:model="correctedName"
                             :error="$errors->has('correctedName')" class="text-sm" />
                 @error('correctedName')
-                    <p class="mt-1.5 text-xs text-danger">{{ $message }}</p>
+                    <p class="mt-1.5 text-xs text-alert">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -40,7 +40,7 @@
             </div>
         </div>
     @elseif ($mode === 'revoke')
-        <div class="w-full max-w-sm rounded-xl border border-danger/30 bg-danger-soft p-3 text-left">
+        <div class="w-full max-w-sm rounded-xl border border-alert/30 bg-alert-soft p-3 text-left">
             <p class="text-xs font-semibold text-ink">Tarik balik sijil</p>
             <p class="mt-1 text-xs text-ink-soft text-pretty">
                 Sijil tidak lagi boleh dimuat turun dan pengesahan awam akan menunjukkan
@@ -53,7 +53,7 @@
                             placeholder="Sebab pembatalan…"
                             :error="$errors->has('revokeReason')" class="text-sm" />
                 @error('revokeReason')
-                    <p class="mt-1.5 text-xs text-danger">{{ $message }}</p>
+                    <p class="mt-1.5 text-xs text-alert">{{ $message }}</p>
                 @enderror
             </div>
 

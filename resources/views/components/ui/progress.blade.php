@@ -2,7 +2,7 @@
 
 @php
     $pct = $max > 0 ? min(100, max(0, round($value / $max * 100))) : 0;
-    $tones = ['brand' => 'bg-clay-400', 'success' => 'bg-success', 'warning' => 'bg-warning', 'navy' => 'bg-char-900'];
+    $tones = ['brand' => 'bg-clay-400', 'success' => 'bg-clay-600', 'warning' => 'bg-clay-400', 'navy' => 'bg-char-900'];
 @endphp
 
 <div {{ $attributes->merge(['class' => 'space-y-1.5']) }}>

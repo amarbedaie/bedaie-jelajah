@@ -13,12 +13,14 @@
    satu helaian kertas tulang yang tenang, taip bersaiz penerbitan, dan
    satu warna tanah liat yang hanya muncul di tempat orang bertindak.
 
-   OWN-WORLD: Kertas tulang #F0EEE6 sebagai tanah seluruh sistem. Dakwat
-   hitam suam #141413. Satu aksen tanah liat: #D97757 untuk aksen dan
-   #B4552F apabila ia membawa teks putih. Sempadan rambut suam, bukan
-   kelabu. Bayang hampir tiada — kedalaman datang daripada sempadan dan
-   ruang. Serif Source Serif 4 untuk tajuk; Hanken Grotesk untuk badan.
-   Motif khatam 8-mata kekal, kini dalam tanah liat, sebagai tekstur.
+   OWN-WORLD: Tiga keluarga warna, tidak lebih. Kertas tulang #F0EEE6,
+   dakwat hitam suam #141413, dan satu tanah liat #D97757 (isian #B4552F).
+   Tiada hijau, tiada oren amaran, tiada biru. Status dibawa oleh BENTUK
+   lencana — senyap, bergaris, lembut, tebal, pejal — bukan oleh rona.
+   Satu isyarat wain #8E2438 dikhaskan untuk pembatalan dan kegagalan
+   sahaja; hue 349 berbanding 17 tanah liat, jadi ia tidak pernah
+   dikelirukan dengan aksen. Sempadan rambut suam. Bayang hampir tiada.
+   Serif Source Serif 4 untuk tajuk; Hanken Grotesk untuk badan.
 
    STORY: Pengunjung nampak satu halaman yang lapang dan yakin, membaca
    satu tajuk besar, dan nampak dengan segera satu tindakan tanah liat.
@@ -74,24 +76,14 @@
   --color-char-200: #D6D3C9;
   --color-char-100: #E8E5DB;
 
-  /* ── Semantik ─────────────────────────────────────────────────
-     Bumi, bukan neon — supaya ia tinggal dalam dunia yang sama.
-     Asas membawa teks putih; -soft latar; -line sempadan. */
-  --color-success:      #2F6B44;   /* 6.35:1 dengan putih */
-  --color-success-soft: #E4EDE3;
-  --color-success-line: #C3D6C2;
-  --color-warning:      #8A5A11;   /* 5.91:1 dengan putih */
-  --color-warning-soft: #F5EBD8;
-  --color-warning-line: #E2CFA6;
-  --color-danger:       #A3352F;   /* 6.76:1 dengan putih */
-  --color-danger-soft:  #F6E4E0;
-  --color-danger-line:  #E5C2BB;
-  --color-whatsapp:     #1C7C4A;   /* 5.21:1 dengan putih */
-  /* Slate suam untuk status "sedang diproses" — enam status permohonan
-     tidak boleh berkongsi dua rona sahaja pada skrin triaj admin. */
-  --color-slate:        #3A4654;   /* 9.62:1 dengan putih, 7.97:1 atas slate-soft */
-  --color-slate-soft:   #E7EAEE;
-  --color-slate-line:   #C6CDD6;
+  /* ── Isyarat tunggal ─────────────────────────────────────────
+     Satu-satunya rona keempat dalam sistem. Dikhaskan untuk
+     pembatalan, kegagalan dan tindakan memusnah — tidak pernah untuk
+     hiasan. Wain pada hue 349 berbanding tanah liat pada hue 17,
+     supaya ia tidak pernah dibaca sebagai aksen. */
+  --color-alert:      #8E2438;   /* 8.54:1 dengan putih, 7.35:1 atas kertas */
+  --color-alert-soft: #F4E4E7;
+  --color-alert-line: #DFC0C7;
 
   /* ── Tipografi ────────────────────────────────────────────────
      Serif transitional untuk tajuk — kontras sederhana, dibaca

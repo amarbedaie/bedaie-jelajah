@@ -45,7 +45,7 @@
                 </span>
             </label>
             @error('privacy')
-                <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                <p class="mt-2 text-sm text-alert">{{ $message }}</p>
             @enderror
         </div>
 

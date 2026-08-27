@@ -101,7 +101,7 @@
 
                 <fieldset>
                     <legend class="mb-2.5 block text-sm font-medium text-ink">
-                        Saya ialah <span class="text-danger" aria-hidden="true">*</span>
+                        Saya ialah <span class="text-alert" aria-hidden="true">*</span>
                     </legend>
                     <div class="grid gap-2.5 sm:grid-cols-2">
                         @foreach ($backgrounds as $option)
@@ -112,7 +112,7 @@
                         @endforeach
                     </div>
                     @error('background')
-                        <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </fieldset>
 
@@ -160,7 +160,7 @@
 
                 <fieldset>
                     <legend class="mb-2.5 block text-sm font-medium text-ink">
-                        Adakah pihak lokasi telah bersetuju? <span class="text-danger" aria-hidden="true">*</span>
+                        Adakah pihak lokasi telah bersetuju? <span class="text-alert" aria-hidden="true">*</span>
                     </legend>
                     <div class="grid gap-2.5">
                         @foreach ($consents as $option)
@@ -171,7 +171,7 @@
                         @endforeach
                     </div>
                     @error('venue_consent')
-                        <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </fieldset>
 
@@ -239,7 +239,7 @@
 
                 <fieldset>
                     <legend class="mb-2.5 block text-sm font-medium text-ink">
-                        Anggaran peserta <span class="text-danger" aria-hidden="true">*</span>
+                        Anggaran peserta <span class="text-alert" aria-hidden="true">*</span>
                     </legend>
                     <div class="grid gap-2.5 sm:grid-cols-2">
                         @foreach ($estimates as $option)
@@ -250,13 +250,13 @@
                         @endforeach
                     </div>
                     @error('estimated_attendees')
-                        <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </fieldset>
 
                 <fieldset>
                     <legend class="mb-2.5 block text-sm font-medium text-ink">
-                        Sasaran peserta <span class="text-danger" aria-hidden="true">*</span>
+                        Sasaran peserta <span class="text-alert" aria-hidden="true">*</span>
                     </legend>
                     <div class="grid gap-2.5 sm:grid-cols-2">
                         @foreach ($audiences as $option)
@@ -267,7 +267,7 @@
                         @endforeach
                     </div>
                     @error('target_audience')
-                        <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </fieldset>
             </div>
@@ -355,7 +355,7 @@
                                  label="Saya bersetuju dengan polisi privasi"
                                  hint="Maklumat ini digunakan untuk menghubungi saya berkaitan permohonan ini sahaja." />
                     @error('privacy')
-                        <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </div>
 

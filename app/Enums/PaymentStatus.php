@@ -28,11 +28,11 @@ enum PaymentStatus: string
     public function color(): string
     {
         return match ($this) {
-            self::BelumBayar => 'grey',
-            self::MenungguPengesahan => 'warning',
-            self::Berjaya, self::Dikecualikan, self::Ditaja => 'success',
-            self::Gagal => 'danger',
-            self::Dipulangkan => 'navy',
+            self::BelumBayar => 'quiet',
+            self::MenungguPengesahan => 'strong',
+            self::Berjaya, self::Dikecualikan, self::Ditaja => 'solid',
+            self::Gagal => 'alert',
+            self::Dipulangkan => 'line',
         };
     }
 

@@ -51,11 +51,11 @@ enum OutreachSource: string
     public function color(): string
     {
         return match ($this) {
-            self::StafTerus => 'grey',
-            self::Rakan => 'purple',
-            self::Penggerak => 'success',
-            self::Rujukan => 'warning',
-            self::PermintaanKawasan => 'purple',
+            self::StafTerus => 'quiet',
+            self::Rakan => 'soft',
+            self::Penggerak => 'solid',
+            self::Rujukan => 'strong',
+            self::PermintaanKawasan => 'soft',
         };
     }
 

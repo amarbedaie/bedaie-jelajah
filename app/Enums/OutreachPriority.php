@@ -22,9 +22,9 @@ enum OutreachPriority: string
     public function color(): string
     {
         return match ($this) {
-            self::Tinggi => 'danger',
-            self::Sederhana => 'warning',
-            self::Rendah => 'grey',
+            self::Tinggi => 'alert',
+            self::Sederhana => 'strong',
+            self::Rendah => 'quiet',
         };
     }
 

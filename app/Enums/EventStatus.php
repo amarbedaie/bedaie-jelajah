@@ -26,12 +26,12 @@ enum EventStatus: string
     public function color(): string
     {
         return match ($this) {
-            self::Draf => 'grey',
-            self::Diterbitkan => 'purple',
-            self::Berlangsung => 'success',
-            self::Selesai => 'navy',
-            self::Ditangguhkan => 'warning',
-            self::Dibatalkan => 'danger',
+            self::Draf => 'quiet',
+            self::Diterbitkan => 'soft',
+            self::Berlangsung => 'strong',
+            self::Selesai => 'solid',
+            self::Ditangguhkan => 'quiet',
+            self::Dibatalkan => 'alert',
         };
     }
 

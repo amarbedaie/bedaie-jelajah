@@ -1,8 +1,8 @@
 <x-layouts.public title="Permohonan Diterima — BeDaie Jelajah">
     <section class="jelajah-container py-16 sm:py-24">
         <div class="mx-auto max-w-2xl text-center">
-            <div class="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-success-soft">
-                <x-ui.icon name="check-circle" class="h-8 w-8 text-success" />
+            <div class="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-clay-50">
+                <x-ui.icon name="check-circle" class="h-8 w-8 text-clay-700" />
             </div>
 
             <h1 class="mt-6 font-display text-3xl text-ink sm:text-4xl text-pretty">

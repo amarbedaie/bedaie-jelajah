@@ -13,13 +13,13 @@
                 <dt class="text-sm text-ink-soft">Sasaran dipaparkan</dt>
             </div>
             <div>
-                <dd class="font-display text-3xl {{ $overdueCount > 0 ? 'text-danger' : 'text-ink' }}">
+                <dd class="font-display text-3xl {{ $overdueCount > 0 ? 'text-alert' : 'text-ink' }}">
                     {{ number_format($overdueCount) }}
                 </dd>
                 <dt class="text-sm text-ink-soft">Tindakan tertunggak</dt>
             </div>
             <div>
-                <dd class="font-display text-3xl text-success">{{ number_format($wonCount) }}</dd>
+                <dd class="font-display text-3xl text-clay-700">{{ number_format($wonCount) }}</dd>
                 <dt class="text-sm text-ink-soft">Berjaya jadi jelajah</dt>
             </div>
         </dl>
@@ -91,7 +91,7 @@
                 {{-- ── Sumber sasaran ─────────────────────────── --}}
                 <fieldset class="rounded-xl border border-hairline bg-mist/40 p-4">
                     <legend class="px-1 text-sm font-medium text-ink">
-                        Dari mana sasaran ini datang? <span class="text-danger" aria-hidden="true">*</span>
+                        Dari mana sasaran ini datang? <span class="text-alert" aria-hidden="true">*</span>
                     </legend>
                     <p class="mt-1 text-xs text-ink-soft text-pretty">
                         Ini yang membolehkan kita tahu rakan mana benar-benar membawa hasil.
@@ -120,7 +120,7 @@
                                 </x-ui.select>
                             </x-ui.field>
                             @if ($partners->isEmpty())
-                                <p class="mt-2 text-sm text-warning">
+                                <p class="mt-2 text-sm text-clay-700">
                                     Belum ada rakan aktif.
                                     <a href="{{ route('admin.rakan') }}" class="font-medium underline">Tambah rakan dahulu</a>.
                                 </p>
@@ -282,7 +282,7 @@
             <button type="button" wire:click="$toggle('overdueOnly')"
                     aria-pressed="{{ $overdueOnly ? 'true' : 'false' }}"
                     class="tap-target rounded-full px-4 text-sm font-medium transition
-                           {{ $overdueOnly ? 'bg-danger text-white' : 'bg-mist text-ink-soft hover:text-ink' }}">
+                           {{ $overdueOnly ? 'bg-alert text-white' : 'bg-mist text-ink-soft hover:text-ink' }}">
                 Tertunggak
             </button>
 
@@ -339,7 +339,7 @@
                                             {{ $target->name }}
                                         </a>
                                         @if ($target->priority === \App\Enums\OutreachPriority::Tinggi)
-                                            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-danger"
+                                            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-alert"
                                                   title="Keutamaan tinggi"></span>
                                         @endif
                                     </div>
@@ -356,7 +356,7 @@
                                     </div>
 
                                     <div class="mt-3 flex items-center justify-between gap-2 border-t border-hairline pt-2.5">
-                                        <span class="min-w-0 truncate text-xs {{ $target->isOverdue() ? 'font-medium text-danger' : 'text-ink-muted' }}">
+                                        <span class="min-w-0 truncate text-xs {{ $target->isOverdue() ? 'font-medium text-alert' : 'text-ink-muted' }}">
                                             @if ($target->next_action_at)
                                                 {{ $target->isOverdue() ? 'Tertunggak' : 'Susul' }}
                                                 {{ $target->next_action_at->translatedFormat('j M') }}
@@ -436,7 +436,7 @@
                             <td class="px-4 py-3">
                                 <x-ui.badge :color="$target->stage->color()">{{ $target->stage->label() }}</x-ui.badge>
                             </td>
-                            <td class="whitespace-nowrap px-4 py-3 text-sm {{ $target->isOverdue() ? 'font-medium text-danger' : 'text-ink-muted' }}">
+                            <td class="whitespace-nowrap px-4 py-3 text-sm {{ $target->isOverdue() ? 'font-medium text-alert' : 'text-ink-muted' }}">
                                 {{ $target->next_action_at?->translatedFormat('j M Y') ?? '—' }}
                             </td>
                             <td class="px-4 py-3 text-right">
@@ -480,7 +480,7 @@
                                 <td class="px-4 py-3">
                                     <div class="flex items-center gap-2.5">
                                         <span class="h-1.5 w-20 overflow-hidden rounded-full bg-mist">
-                                            <span class="block h-full rounded-full bg-success"
+                                            <span class="block h-full rounded-full bg-clay-600"
                                                   style="width: {{ $rate }}%"></span>
                                         </span>
                                         <span class="text-sm text-ink-soft">{{ $rate }}%</span>

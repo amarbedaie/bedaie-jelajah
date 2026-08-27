@@ -63,13 +63,13 @@ enum OutreachStage: string
     public function color(): string
     {
         return match ($this) {
-            self::Sasaran, self::CariKontak => 'grey',
-            self::KontakDijumpai, self::Dihubungi => 'purple',
-            self::Berbincang => 'warning',
-            self::Setuju, self::Dijadualkan => 'success',
-            self::Berjaya => 'success',
-            self::TidakBerminat => 'danger',
-            self::Tangguh => 'grey',
+            self::Sasaran, self::CariKontak => 'quiet',
+            self::KontakDijumpai, self::Dihubungi => 'soft',
+            self::Berbincang => 'strong',
+            self::Setuju, self::Dijadualkan => 'solid',
+            self::Berjaya => 'solid',
+            self::TidakBerminat => 'alert',
+            self::Tangguh => 'quiet',
         };
     }
 

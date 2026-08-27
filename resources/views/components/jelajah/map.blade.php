@@ -5,12 +5,16 @@
     // kerana Putrajaya dan Labuan hanya beberapa piksel lebar pada peta.
     $tinyStates = ['PLS', 'KUL', 'PJY', 'LBN', 'MLK', 'PNG'];
 
-    // Warna status mengikut garis panduan jenama.
+    // Empat keadaan, satu rona. Kedalaman tanah liat yang membezakan —
+    // negeri yang telah dijelajahi paling pekat, yang belum paling pucat.
+    // Tiga keadaan membawa tanah liat; negeri yang belum dijelajahi
+    // dibiar kosong sebagai kertas — itu maknanya secara harfiah, dan
+    // ia melepaskan hujung pucat supaya tiga yang lain boleh terpisah.
     $fills = [
-        'dijelajahi'  => '#D97757',
-        'akan_datang' => '#E3A488',
-        'berlangsung' => '#2F6B44',
-        'belum'       => '#DAD7CC',
+        'berlangsung' => '#7E3720',
+        'dijelajahi'  => '#C96A48',
+        'akan_datang' => '#E9C3B0',
+        'belum'       => '#F0EEE6',
     ];
 
     $legend = [
@@ -95,7 +99,7 @@
 
                         @if ($state['high_demand'])
                             <circle cx="{{ $state['label_x'] }}" cy="{{ $state['label_y'] - ($tiny ? 26 : 26) }}" r="9"
-                                    fill="#A3352F" stroke="#FFFFFF" stroke-width="2.5" class="pointer-events-none">
+                                    fill="#8E2438" stroke="#FFFFFF" stroke-width="2.5" class="pointer-events-none">
                                 <title>Permintaan tinggi daripada komuniti</title>
                             </circle>
                         @endif
@@ -136,12 +140,13 @@
         <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-hairline pt-4">
             @foreach ($legend as $key => $label)
                 <li class="flex items-center gap-2 text-xs text-ink-soft">
-                    <span class="h-3 w-3 rounded-full" style="background: {{ $fills[$key] }}"></span>
+                    <span class="h-3 w-3 rounded-full ring-1 ring-inset ring-ink/12"
+                          style="background: {{ $fills[$key] }}"></span>
                     {{ $label }}
                 </li>
             @endforeach
             <li class="flex items-center gap-2 text-xs text-ink-soft">
-                <span class="h-3 w-3 rounded-full bg-danger"></span> Permintaan tinggi
+                <span class="h-3 w-3 rounded-full bg-alert"></span> Permintaan tinggi
             </li>
         </ul>
     </div>
@@ -215,7 +220,7 @@
                         <a href="{{ route('peta.negeri', $state['slug']) }}"
                            class="tap-target flex items-center justify-between gap-3 rounded-xl px-3 text-sm hover:bg-mist">
                             <span class="flex items-center gap-2.5 text-ink">
-                                <span class="h-2.5 w-2.5 shrink-0 rounded-full"
+                                <span class="h-2.5 w-2.5 shrink-0 rounded-full ring-1 ring-inset ring-ink/12"
                                       style="background: {{ $fills[$state['status']] ?? $fills['belum'] }}"></span>
                                 {{ $state['name'] }}
                             </span>

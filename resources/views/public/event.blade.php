@@ -133,7 +133,7 @@
                                         <x-ui.progress :value="$event->fillPercent()"
                                                        :tone="$event->fillPercent() >= 90 ? 'warning' : 'brand'"
                                                        :showValue="false" />
-                                        <p class="mt-2 text-sm {{ $seatsLeft && $seatsLeft <= 20 ? 'font-medium text-warning' : 'text-ink-soft' }}">
+                                        <p class="mt-2 text-sm {{ $seatsLeft && $seatsLeft <= 20 ? 'font-medium text-clay-700' : 'text-ink-soft' }}">
                                             @if ($event->isFull())
                                                 Tempat telah penuh — senarai menunggu dibuka.
                                             @else

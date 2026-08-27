@@ -35,7 +35,7 @@
 
                 <fieldset>
                     <legend class="mb-2.5 block text-sm font-medium text-ink">
-                        Ikon <span class="text-danger" aria-hidden="true">*</span>
+                        Ikon <span class="text-alert" aria-hidden="true">*</span>
                     </legend>
                     <div class="flex flex-wrap gap-2">
                         @foreach ($icons as $option)
@@ -51,7 +51,7 @@
                         @endforeach
                     </div>
                     @error('icon')
-                        <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </fieldset>
 

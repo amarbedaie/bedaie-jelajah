@@ -27,16 +27,9 @@ colors:
   char-400: "#8A887F"
   char-200: "#D6D3C9"
   char-100: "#E8E5DB"
-  success: "#2F6B44"
-  success-soft: "#E4EDE3"
-  success-line: "#C3D6C2"
-  warning: "#8A5A11"
-  warning-soft: "#F5EBD8"
-  warning-line: "#E2CFA6"
-  danger: "#A3352F"
-  danger-soft: "#F6E4E0"
-  danger-line: "#E5C2BB"
-  whatsapp: "#1C7C4A"
+  alert: "#8E2438"
+  alert-soft: "#F4E4E7"
+  alert-line: "#DFC0C7"
 typography:
   display:
     fontFamily: "Source Serif 4, ui-serif, Georgia, serif"
@@ -109,8 +102,8 @@ components:
     rounded: "0.5rem"
     padding: "0 1.125rem"
     height: "{spacing.tap}"
-  button-whatsapp:
-    backgroundColor: "{colors.whatsapp}"
+  button-alert:
+    backgroundColor: "{colors.alert}"
     textColor: "{colors.surface}"
     rounded: "0.5rem"
   card:
@@ -153,11 +146,19 @@ wujud tetapi hampir tidak kelihatan; ia memisahkan, ia tidak mengangkat.
 
 ## Colors
 
-**Kertas.** `cream` ialah tanah halaman. `surface` putih tulen untuk kad —
-ia timbul daripada tulang tanpa perlu bayang. `mist` untuk telaga: kepala
-jadual, blok nota. `hairline` untuk setiap pembahagi.
+**Tiga keluarga. Tidak lebih.** Itu peraturan yang paling ketat dalam sistem
+ini, dan ia yang menjadikannya kelihatan premium.
 
-**Tanah liat.** Satu keluarga, tiga peranan:
+**Kertas.** `cream` #F0EEE6 ialah tanah halaman. `surface` putih tulen untuk
+kad — ia timbul daripada tulang tanpa perlu bayang. `mist` untuk telaga:
+kepala jadual, blok nota, lencana senyap. `hairline` untuk setiap pembahagi.
+`control-line` untuk sempadan medan borang.
+
+**Dakwat.** `ink` #141413 untuk tajuk dan teks utama. `ink-soft` untuk
+perenggan sekunder. `ink-muted` untuk metadata — ia mencapai AA di atas
+ketiga-tiga latar cerah, termasuk `mist`.
+
+**Tanah liat.** Satu keluarga, satu tangga penuh 50→900, tiga peranan:
 
 - `clay-400` #D97757 — aksen, tekstur girih, garis. Ia **tidak** boleh
   membawa teks putih; ia hanya mencapai 3.12:1.
@@ -165,19 +166,42 @@ jadual, blok nota. `hairline` untuk setiap pembahagi.
   4.91:1. Ini warna butang utama.
 - `clay-700` #9E4726 — hover, dan teks tanah liat di atas kertas. 5.34:1.
 
-**Dakwat.** `ink` untuk tajuk dan teks utama. `ink-soft` untuk perenggan
-sekunder. `ink-muted` untuk metadata — ia mencapai AA di atas ketiga-tiga
-latar cerah, termasuk `mist`.
+**Satu isyarat, dan hanya satu.** `alert` #8E2438 ialah rona keempat dan
+satu-satunya. Ia dikhaskan untuk pembatalan, kegagalan dan tindakan
+memusnah — tidak pernah untuk hiasan, tidak pernah untuk amaran lembut.
+Hue-nya 349° berbanding 17° tanah liat, dipilih dengan sengaja supaya ia
+tidak pernah dibaca sebagai aksen jenama.
 
-**Semantik bumi, bukan neon.** Setiap warna semantik ada tiga peranan:
-asas (`success`, `warning`, `danger`) membawa teks putih dan menjadi teks
-di atas latar lembutnya; `-soft` latar; `-line` sempadan. Nilai dipilih
-supaya ia tinggal dalam dunia kertas yang sama — hijau hutan, oker, bata.
+**Tiada hijau, tiada oren amaran, tiada biru.** Kejayaan tidak berwarna
+hijau di sini; ia berwarna dakwat — pejal, selesai, dimeterai. Butang
+WhatsApp memakai tanah liat dengan ikon WhatsApp; ikon itu yang
+mengenalkannya, dan hijau #00D357 ialah satu-satunya benda paling kuat yang
+boleh diletakkan pada halaman kertas.
 
-**Kontras diukur, bukan diagak.** 26 pasangan diperiksa; semuanya lulus
+### Status dibawa oleh bentuk, bukan rona
+
+Ini yang membolehkan sistem ini kekal tiga warna tanpa kehilangan maklumat.
+Lencana mempunyai **tujuh bentuk**, dibina daripada isian, cincin dan warna
+teks:
+
+| Bentuk | Isian | Cincin | Teks | Maksud |
+|---|---|---|---|---|
+| `quiet` | mist | tiada | ink-muted | tidak aktif, tidur |
+| `line` | tiada | control-line | ink | sedang diproses |
+| `edge` | tiada | clay-400 | clay-700 | bergerak, aktif |
+| `soft` | clay-50 | clay-200 | clay-700 | baharu, diterima |
+| `strong` | clay-600 | — | putih | tindakan diperlukan |
+| `solid` | ink | — | cream | selesai, dimeterai |
+| `alert` | alert-soft | alert-line | alert | dibatalkan, gagal |
+| `paper` | surface | hairline | ink | lencana di atas imej |
+
+Dua status boleh berkongsi satu bentuk apabila ia benar-benar satu kelas
+tindakan yang sama — "Perlu Maklumat" dan "Cadangan Tarikh" kedua-duanya
+bermaksud bola di pihak pemohon. Itu pengelompokan yang disengajakan, bukan
+kekurangan warna.
+
+**Kontras diukur, bukan diagak.** 20 pasangan diperiksa; semuanya lulus
 4.5:1 untuk teks dan 3:1 untuk sempadan kawalan dan penunjuk fokus.
-`control-line` #858175 dipilih kerana ia satu-satunya kelabu suam yang
-mencapai 3:1 pada ketiga-tiga latar sekali gus.
 
 ## Typography
 
@@ -244,6 +268,12 @@ opacity 30–50%. Ini satu-satunya ornamen Islam yang dibenarkan. Ia tekstur
 latar, bukan gambar. `motif-girih-dark` (putih) dikekalkan untuk dua
 permukaan arang sahaja.
 
+Peta jelajah mewarnakan negeri dengan **kedalaman tanah liat**, bukan rona
+berbeza: sedang berlangsung paling pekat, telah dijelajahi sederhana, akan
+datang pucat, dan **belum dijelajahi dibiarkan kosong sebagai kertas** — itu
+maknanya secara harfiah, dan ia melepaskan hujung pucat supaya tiga keadaan
+lain boleh terpisah dengan jelas.
+
 Poster dan imej kad program dijana pada kertas tulang dengan **rosette girih
 10-mata** tanah liat sebagai subjek visual, dan siluet arked masjid tanpa
 kubah pada kakinya.
@@ -279,8 +309,12 @@ serta `aria-describedby` yang sepadan.
 - Jangan tambah muka taip ketiga.
 - Jangan bina slab gelap. Sistem ini kertas; arang hanya untuk bar sisi admin
   dan skrin pengimbas.
-- Jangan letak teks putih di atas `clay-400`, `success`, `warning` atau
-  `danger` yang cerah — guna `clay-600` dan nada asas semantik yang diukur.
+- **Jangan tambah rona kelima.** Tiga keluarga dan satu isyarat; jika satu
+  keadaan baharu perlu dibezakan, tambah satu *bentuk* lencana, bukan satu
+  warna.
+- Jangan guna `alert` untuk apa-apa selain pembatalan, kegagalan dan
+  tindakan memusnah.
+- Jangan letak teks putih di atas `clay-400` — guna `clay-600`.
 - Jangan guna kubah, bulan sabit, kaligrafi hiasan atau lampu tanglung.
 - Jangan letak arahan Blade (`@js`, `@disabled`, `@class`) di dalam tag
   komponen `<x-...>`, dan jangan letak `@class` pada elemen yang sudah

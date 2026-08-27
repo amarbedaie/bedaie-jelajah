@@ -50,7 +50,7 @@
                         <x-ui.icon name="bell" class="h-5 w-5" />
                         @if ($unread)
                             <span class="absolute right-1.5 top-1.5 grid h-4 min-w-4 place-items-center rounded-full
-                                         bg-danger px-1 text-[0.6rem] font-bold text-white">{{ min($unread, 9) }}</span>
+                                         bg-alert px-1 text-[0.6rem] font-bold text-white">{{ min($unread, 9) }}</span>
                         @endif
                     </a>
 
@@ -95,7 +95,7 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit"
-                                            class="tap-target flex w-full items-center gap-2.5 rounded-xl px-3 text-left text-sm text-danger hover:bg-danger-soft">
+                                            class="tap-target flex w-full items-center gap-2.5 rounded-xl px-3 text-left text-sm text-alert hover:bg-alert-soft">
                                         <x-ui.icon name="logout" class="h-4 w-4" /> Log Keluar
                                     </button>
                                 </form>

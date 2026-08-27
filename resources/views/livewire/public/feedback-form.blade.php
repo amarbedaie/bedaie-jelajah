@@ -1,8 +1,8 @@
 <div class="mx-auto max-w-xl">
     @if ($submitted)
         <x-ui.card class="text-center sm:p-8">
-            <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-success-soft">
-                <x-ui.icon name="check-circle" class="h-7 w-7 text-success" />
+            <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-clay-50">
+                <x-ui.icon name="check-circle" class="h-7 w-7 text-clay-700" />
             </div>
             <h2 class="mt-5 font-display text-2xl text-ink">Terima Kasih</h2>
             <p class="mt-3 text-ink-soft text-pretty">
@@ -46,7 +46,7 @@
                 {{-- Penilaian bintang --}}
                 <fieldset>
                     <legend class="mb-3 block text-sm font-medium text-ink">
-                        Penilaian keseluruhan <span class="text-danger" aria-hidden="true">*</span>
+                        Penilaian keseluruhan <span class="text-alert" aria-hidden="true">*</span>
                     </legend>
                     <div class="flex gap-2" role="radiogroup" aria-label="Penilaian 1 hingga 5">
                         @for ($i = 1; $i <= 5; $i++)
@@ -55,16 +55,16 @@
                                     aria-label="{{ $i }} daripada 5"
                                     class="tap-target grid flex-1 place-items-center rounded-xl border transition
                                            {{ $rating >= $i
-                                              ? 'border-warning bg-warning-soft'
+                                              ? 'border-clay-400 bg-mist'
                                               : 'border-hairline bg-surface hover:border-clay-300' }}">
                                 <x-ui.icon name="star"
                                     :fill="$rating >= $i ? 'currentColor' : 'none'"
-                                    class="h-6 w-6 {{ $rating >= $i ? 'text-warning' : 'text-hairline' }}" />
+                                    class="h-6 w-6 {{ $rating >= $i ? 'text-clay-700' : 'text-hairline' }}" />
                             </button>
                         @endfor
                     </div>
                     @error('rating')
-                        <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </fieldset>
 

@@ -7,9 +7,9 @@
     $tones = [
         'default' => 'border-t border-hairline pt-4',
         'brand'   => 'rounded-card border border-clay-200 bg-clay-50 p-4 sm:p-5',
-        'success' => 'rounded-card border border-success-line bg-success-soft p-4 sm:p-5',
-        'warning' => 'rounded-card border border-warning-line bg-warning-soft p-4 sm:p-5',
-        'danger'  => 'rounded-card border border-danger-line bg-danger-soft p-4 sm:p-5',
+        'success' => 'rounded-card border border-clay-300 bg-clay-50 p-4 sm:p-5',
+        'warning' => 'rounded-card border border-control-line/35 bg-mist p-4 sm:p-5',
+        'danger'  => 'rounded-card border border-alert-line bg-alert-soft p-4 sm:p-5',
     ];
     $bare = $tone === 'default';
 @endphp

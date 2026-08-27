@@ -4,7 +4,7 @@
             <h2 class="mb-3 text-lg font-semibold text-ink">Hari Ini</h2>
             <ul class="grid gap-4 sm:grid-cols-2">
                 @foreach ($today as $event)
-                    <li class="rounded-card border border-success/30 bg-success-soft p-5">
+                    <li class="rounded-card border border-clay-600/30 bg-clay-50 p-5">
                         <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                         <p class="mt-0.5 text-sm text-ink-soft text-pretty">
                             {{ $event->timeLabel() }} &middot; {{ $event->venue?->name ?? $event->locationLabel() }}

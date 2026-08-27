@@ -22,10 +22,13 @@
         'secondary' => 'bg-clay-50 text-clay-700 hover:bg-clay-100 focus-visible:outline-clay-600',
         'outline'   => 'border border-control-line/60 bg-transparent text-ink hover:border-ink hover:bg-ink/[0.04] focus-visible:outline-clay-600',
         'ghost'     => 'text-ink-soft hover:bg-ink/[0.05] hover:text-ink focus-visible:outline-clay-600',
-        'whatsapp'  => 'bg-whatsapp text-white hover:brightness-110 focus-visible:outline-whatsapp',
-        'success'   => 'bg-success text-white hover:brightness-110 focus-visible:outline-success',
-        'danger'    => 'bg-danger text-white hover:brightness-110 focus-visible:outline-danger',
-        'danger-soft'=> 'bg-danger-soft text-danger hover:bg-danger hover:text-white focus-visible:outline-danger',
+        // WhatsApp tidak lagi membawa hijaunya sendiri — ikon yang
+        // mengenalkannya, dan hijau itu satu-satunya benda paling kuat
+        // pada halaman kertas.
+        'whatsapp'  => 'bg-clay-600 text-white hover:bg-clay-700 focus-visible:outline-clay-700',
+        'success'   => 'bg-ink text-cream hover:bg-char-800 focus-visible:outline-clay-600',
+        'danger'    => 'bg-alert text-white hover:brightness-110 focus-visible:outline-alert',
+        'danger-soft'=> 'bg-alert-soft text-alert hover:bg-alert hover:text-white focus-visible:outline-alert',
         'white'     => 'bg-surface text-ink border border-hairline hover:bg-clay-50 hover:border-clay-300 focus-visible:outline-ink',
     ];
 

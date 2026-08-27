@@ -32,9 +32,9 @@ enum RecordingVisibility: string
     public function color(): string
     {
         return match ($this) {
-            self::Hadir => 'success',
-            self::Berdaftar => 'purple',
-            self::Awam => 'grey',
+            self::Hadir => 'solid',
+            self::Berdaftar => 'soft',
+            self::Awam => 'quiet',
         };
     }
 

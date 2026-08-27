@@ -9,9 +9,9 @@
                 @foreach ($actions as $action)
                     @php
                         $tones = [
-                            'warning' => 'border-warning/30 bg-warning-soft text-[#7A4E06]',
-                            'success' => 'border-success/30 bg-success-soft text-[#0A5537]',
-                            'danger'  => 'border-danger/30 bg-danger-soft text-[#8C1A1E]',
+                            'warning' => 'border-clay-400/30 bg-mist text-[#7A4E06]',
+                            'success' => 'border-clay-600/30 bg-clay-50 text-[#0A5537]',
+                            'danger'  => 'border-alert/30 bg-alert-soft text-[#8C1A1E]',
                             'neutral' => 'border-hairline bg-surface text-ink',
                         ];
                     @endphp

@@ -3,9 +3,9 @@
     // Skrin ini dibaca di pintu masuk masjid waktu malam, jadi setiap
     // pasangan latar/teks mesti mencapai AA — bukan sekadar berwarna.
     $tones = [
-        'checked_in' => ['bg-success', 'text-white', 'check-circle', 'Berjaya'],
-        'duplicate'  => ['bg-warning', 'text-ink', 'alert', 'Sudah Check-in'],
-        'fail'       => ['bg-danger', 'text-white', 'x-circle', 'Tidak Berjaya'],
+        'checked_in' => ['bg-clay-600', 'text-white', 'check-circle', 'Berjaya'],
+        'duplicate'  => ['bg-clay-400', 'text-ink', 'alert', 'Sudah Check-in'],
+        'fail'       => ['bg-alert', 'text-white', 'x-circle', 'Tidak Berjaya'],
     ];
     [$tone, $toneInk, $icon, $heading] = $tones[$outcome] ?? ['bg-char-900', 'text-white', 'qr', ''];
 @endphp
@@ -35,7 +35,7 @@
     <div class="jelajah-container pt-5">
         <dl class="grid grid-cols-4 gap-2">
             @foreach ([
-                ['hadir', 'Hadir', 'text-success'],
+                ['hadir', 'Hadir', 'text-clay-700'],
                 ['belum_hadir', 'Belum Hadir', 'text-white'],
                 ['berdaftar', 'Berdaftar', 'text-white'],
                 ['walk_in', 'Walk-in', 'text-clay-300'],
@@ -168,7 +168,7 @@
                             </div>
 
                             @if ($match->hasAttended())
-                                <span class="shrink-0 rounded-full bg-success/20 px-3 py-1.5 text-xs font-medium text-success">
+                                <span class="shrink-0 rounded-full bg-clay-600/20 px-3 py-1.5 text-xs font-medium text-clay-700">
                                     Hadir {{ $match->attendance->checked_in_at->format('g:ia') }}
                                 </span>
                             @else

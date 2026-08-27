@@ -3,8 +3,8 @@
         <div class="mx-auto max-w-lg">
             <x-ui.card class="sm:p-8">
                 <div class="text-center">
-                    <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-danger-soft">
-                        <x-ui.icon name="alert" class="h-7 w-7 text-danger" />
+                    <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-alert-soft">
+                        <x-ui.icon name="alert" class="h-7 w-7 text-alert" />
                     </div>
                     <h1 class="mt-5 font-display text-2xl text-ink">Batalkan Pendaftaran?</h1>
                     <p class="mt-3 text-ink-soft text-pretty">

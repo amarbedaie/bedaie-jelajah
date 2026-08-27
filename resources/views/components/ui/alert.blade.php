@@ -3,9 +3,9 @@
 @php
     $styles = [
         'info'    => ['bg-clay-50 border-clay-200 text-clay-900', 'text-clay-700', 'info'],
-        'success' => ['bg-success-soft border-success-line text-success', 'text-success', 'check-circle'],
-        'warning' => ['bg-warning-soft border-warning-line text-warning', 'text-warning', 'alert'],
-        'danger'  => ['bg-danger-soft border-danger-line text-danger', 'text-danger', 'x-circle'],
+        'success' => ['bg-clay-50 border-clay-300 text-ink', 'text-clay-700', 'check-circle'],
+        'warning' => ['bg-mist border-control-line/35 text-ink', 'text-ink-soft', 'alert'],
+        'danger'  => ['bg-alert-soft border-alert-line text-alert', 'text-alert', 'x-circle'],
         'neutral' => ['bg-mist border-hairline text-ink', 'text-ink-soft', 'info'],
     ];
     [$box, $iconColor, $defaultIcon] = $styles[$variant] ?? $styles['info'];

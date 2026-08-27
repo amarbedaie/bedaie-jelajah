@@ -24,9 +24,9 @@
                 <p class="mt-3 text-ink-soft text-pretty">{{ $application->status->description() }}</p>
 
                 @if ($application->event)
-                    <div class="mt-5 rounded-xl border border-success/25 bg-success-soft p-4">
+                    <div class="mt-5 rounded-xl border border-clay-600/25 bg-clay-50 p-4">
                         <div class="flex items-start gap-3">
-                            <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-success" />
+                            <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-clay-700" />
                             <div class="min-w-0 flex-1">
                                 <p class="font-medium text-[#0A5537]">Program anda telah disahkan</p>
                                 <p class="mt-1 text-sm text-[#0A5537]/85 text-pretty">

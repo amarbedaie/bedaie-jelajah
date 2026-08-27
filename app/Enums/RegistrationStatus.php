@@ -24,10 +24,10 @@ enum RegistrationStatus: string
     public function color(): string
     {
         return match ($this) {
-            self::MenungguPengesahan => 'warning',
-            self::Disahkan => 'success',
-            self::SenaraiMenunggu => 'purple',
-            self::Dibatalkan, self::Ditolak => 'danger',
+            self::MenungguPengesahan => 'strong',
+            self::Disahkan => 'solid',
+            self::SenaraiMenunggu => 'soft',
+            self::Dibatalkan, self::Ditolak => 'alert',
         };
     }
 

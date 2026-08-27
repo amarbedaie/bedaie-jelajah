@@ -33,7 +33,7 @@
                     <x-ui.input id="d-note" wire:model="stageNote" :error="$errors->has('stageNote')"
                                 placeholder="Contoh: Nazir setuju, tunggu kelulusan JK." />
                     @error('stageNote')
-                        <p class="mt-1.5 text-sm text-danger">{{ $message }}</p>
+                        <p class="mt-1.5 text-sm text-alert">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -46,9 +46,9 @@
             </form>
 
             @if ($target->application)
-                <div class="mt-5 rounded-xl border border-success/25 bg-success-soft p-4">
+                <div class="mt-5 rounded-xl border border-clay-600/25 bg-clay-50 p-4">
                     <div class="flex items-start gap-3">
-                        <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-success" />
+                        <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-clay-700" />
                         <div class="min-w-0 flex-1">
                             <p class="font-medium text-[#0A5537]">Sasaran ini telah menjadi permohonan</p>
                             <p class="mt-1 font-mono text-xs text-[#0A5537]/85">
@@ -300,7 +300,7 @@
                     </x-ui.button>
                 @endif
             @else
-                <div class="mt-4 rounded-xl bg-warning-soft p-4">
+                <div class="mt-4 rounded-xl bg-mist p-4">
                     <p class="text-sm text-[#7A4E06] text-pretty">
                         Kontak belum dijumpai. Ini kerja pertama untuk sasaran ini.
                     </p>
@@ -377,7 +377,7 @@
             </form>
 
             @if ($target->isOverdue())
-                <p class="mt-3 rounded-lg bg-danger-soft px-3 py-2 text-sm text-[#8C1A1E]">
+                <p class="mt-3 rounded-lg bg-alert-soft px-3 py-2 text-sm text-[#8C1A1E]">
                     Tindakan susulan tertunggak sejak
                     {{ $target->next_action_at->translatedFormat('j M Y') }}.
                 </p>

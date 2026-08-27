@@ -77,7 +77,7 @@
             <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 @foreach ($pending as $photo)
                     <li wire:key="pending-{{ $photo->id }}"
-                        class="overflow-hidden rounded-card border border-warning/30 bg-surface">
+                        class="overflow-hidden rounded-card border border-clay-400/30 bg-surface">
                         <img src="{{ Storage::url($photo->image_path) }}" alt="{{ $photo->caption }}"
                              class="aspect-square w-full object-cover" />
                         <div class="p-3">

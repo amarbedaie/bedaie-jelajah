@@ -7,8 +7,8 @@
         <div class="mx-auto max-w-2xl">
             @if (! $certificate)
                 <x-ui.card class="text-center sm:p-10">
-                    <div class="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-danger-soft">
-                        <x-ui.icon name="x-circle" class="h-8 w-8 text-danger" />
+                    <div class="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-alert-soft">
+                        <x-ui.icon name="x-circle" class="h-8 w-8 text-alert" />
                     </div>
                     <h1 class="mt-6 font-display text-2xl text-ink">Sijil Tidak Ditemui</h1>
                     <p class="mt-3 text-ink-soft text-pretty">
@@ -23,16 +23,16 @@
                 <x-ui.card class="sm:p-10">
                     <div class="text-center">
                         <div class="mx-auto grid h-16 w-16 place-items-center rounded-3xl
-                                    {{ $valid ? 'bg-success-soft' : 'bg-danger-soft' }}">
+                                    {{ $valid ? 'bg-clay-50' : 'bg-alert-soft' }}">
                             <x-ui.icon :name="$valid ? 'check-circle' : 'x-circle'"
-                                       class="h-8 w-8 {{ $valid ? 'text-success' : 'text-danger' }}" />
+                                       class="h-8 w-8 {{ $valid ? 'text-clay-700' : 'text-alert' }}" />
                         </div>
                         <h1 class="mt-6 font-display text-2xl text-ink sm:text-3xl">
                             {{ $valid ? 'Sijil Ini Sah' : 'Sijil Ini Tidak Lagi Sah' }}
                         </h1>
                         @unless ($valid)
                             <p class="mt-3 text-ink-soft text-pretty">
-                                Status: <strong class="text-danger">{{ $certificate->status->label() }}</strong>.
+                                Status: <strong class="text-alert">{{ $certificate->status->label() }}</strong>.
                                 @if ($certificate->revoke_reason)
                                     {{ $certificate->revoke_reason }}
                                 @endif

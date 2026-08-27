@@ -37,8 +37,8 @@
                         </div>
 
                         @if ($application->event)
-                            <div class="mt-4 flex items-center gap-2 rounded-xl bg-success-soft px-3.5 py-2.5">
-                                <x-ui.icon name="check-circle" class="h-4 w-4 shrink-0 text-success" />
+                            <div class="mt-4 flex items-center gap-2 rounded-xl bg-clay-50 px-3.5 py-2.5">
+                                <x-ui.icon name="check-circle" class="h-4 w-4 shrink-0 text-clay-700" />
                                 <span class="text-sm text-[#0A5537] text-pretty">
                                     Program telah dijana: {{ $application->event->title }}
                                 </span>

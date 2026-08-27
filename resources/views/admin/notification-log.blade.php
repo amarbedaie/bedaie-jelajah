@@ -82,7 +82,7 @@
                         @endphp
                         <x-ui.badge :color="$tone">{{ $label }}</x-ui.badge>
                         @if ($log->error)
-                            <p class="mt-1 max-w-xs text-xs text-danger text-pretty">{{ $log->error }}</p>
+                            <p class="mt-1 max-w-xs text-xs text-alert text-pretty">{{ $log->error }}</p>
                         @endif
                     </td>
                     <td class="max-w-md px-4 py-3">

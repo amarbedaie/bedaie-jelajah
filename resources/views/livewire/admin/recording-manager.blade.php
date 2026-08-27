@@ -56,7 +56,7 @@
 
             <fieldset>
                 <legend class="mb-2.5 block text-sm font-medium text-ink">
-                    Siapa boleh tonton? <span class="text-danger" aria-hidden="true">*</span>
+                    Siapa boleh tonton? <span class="text-alert" aria-hidden="true">*</span>
                 </legend>
                 <div class="grid gap-2.5">
                     @foreach ($visibilities as $option)

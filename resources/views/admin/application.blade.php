@@ -109,7 +109,7 @@
                                     <p class="mt-1 text-sm text-ink-soft text-pretty">{{ $entry->public_note }}</p>
                                 @endif
                                 @if ($entry->internal_note)
-                                    <p class="mt-1.5 rounded-lg bg-warning-soft px-2.5 py-1.5 text-xs text-[#7A4E06] text-pretty">
+                                    <p class="mt-1.5 rounded-lg bg-mist px-2.5 py-1.5 text-xs text-[#7A4E06] text-pretty">
                                         <strong>Dalaman:</strong> {{ $entry->internal_note }}
                                     </p>
                                 @endif

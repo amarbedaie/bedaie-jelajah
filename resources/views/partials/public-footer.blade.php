@@ -55,7 +55,7 @@
                 <h3 class="text-sm font-semibold uppercase tracking-wider text-ink">Hubungi</h3>
                 <ul class="mt-4 space-y-3 text-sm">
                     <li class="flex items-start gap-2.5">
-                        <x-ui.icon name="whatsapp" class="mt-0.5 h-4 w-4 shrink-0 text-whatsapp" />
+                        <x-ui.icon name="whatsapp" class="mt-0.5 h-4 w-4 shrink-0 text-clay-700" />
                         <a href="https://wa.me/{{ $waPhone }}" class="transition hover:text-clay-700">+{{ $waPhone }}</a>
                     </li>
                     <li class="flex items-start gap-2.5">
