@@ -44,15 +44,15 @@
 </head>
 <body class="min-h-screen bg-cream antialiased" x-data="{ sidebar: false }">
     <a href="#kandungan" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60]
-              focus:rounded-full focus:bg-navy-900 focus:px-5 focus:py-2.5 focus:text-white">
+              focus:rounded-full focus:bg-char-900 focus:px-5 focus:py-2.5 focus:text-white">
         Langkau ke kandungan
     </a>
 
     {{-- Sidebar --}}
     <div x-show="sidebar" x-cloak x-transition.opacity x-on:click="sidebar = false"
-         class="fixed inset-0 z-40 bg-navy-900/50 backdrop-blur-sm lg:hidden" aria-hidden="true"></div>
+         class="fixed inset-0 z-40 bg-char-900/50 backdrop-blur-sm lg:hidden" aria-hidden="true"></div>
 
-    <aside class="fixed inset-y-0 left-0 z-50 flex w-72 flex-col bg-navy-900 text-white/70 transition-transform duration-300
+    <aside class="fixed inset-y-0 left-0 z-50 flex w-72 flex-col bg-char-900 text-white/70 transition-transform duration-300
                   lg:translate-x-0"
            x-bind:class="sidebar ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
            aria-label="Navigasi admin">
@@ -77,7 +77,7 @@
                             <a href="{{ route($item['route']) }}"
                                @if($active) aria-current="page" @endif
                                class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition
-                                      {{ $active ? 'bg-brand-action font-medium text-white shadow-brand' : 'hover:bg-white/8 hover:text-white' }}">
+                                      {{ $active ? 'bg-clay-600 font-medium text-white shadow-brand' : 'hover:bg-white/8 hover:text-white' }}">
                                 <x-ui.icon :name="$item['icon']" class="h-4 w-4 shrink-0" />
                                 <span class="truncate">{{ $item['label'] }}</span>
                             </a>
@@ -89,7 +89,7 @@
 
         <div class="shrink-0 border-t border-white/10 p-3">
             <div class="flex items-center gap-3 rounded-xl px-2 py-2">
-                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-action text-sm font-semibold text-white">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-clay-600 text-sm font-semibold text-white">
                     {{ mb_strtoupper(mb_substr($user->name, 0, 1)) }}
                 </span>
                 <div class="min-w-0 flex-1">
@@ -118,14 +118,14 @@
         <header class="sticky top-0 z-30 border-b border-hairline bg-surface/95 backdrop-blur-md">
             <div class="flex h-16 items-center gap-3 px-4 sm:px-6">
                 <button type="button" x-on:click="sidebar = true"
-                        class="tap-target -ml-2 grid place-items-center rounded-xl text-navy-900 hover:bg-mist lg:hidden"
+                        class="tap-target -ml-2 grid place-items-center rounded-xl text-ink hover:bg-mist lg:hidden"
                         aria-label="Buka menu">
                     <x-ui.icon name="menu" class="h-6 w-6" />
                 </button>
 
                 <div class="min-w-0 flex-1">
                     @if ($heading)
-                        <h1 class="truncate text-base font-semibold text-navy-900 sm:text-lg">{{ $heading }}</h1>
+                        <h1 class="truncate text-base font-semibold text-ink sm:text-lg">{{ $heading }}</h1>
                     @endif
                 </div>
 

@@ -3,19 +3,19 @@
     // Skrin ini dibaca di pintu masuk masjid waktu malam, jadi setiap
     // pasangan latar/teks mesti mencapai AA — bukan sekadar berwarna.
     $tones = [
-        'checked_in' => ['bg-success-ink', 'text-white', 'check-circle', 'Berjaya'],
-        'duplicate'  => ['bg-warning', 'text-navy-900', 'alert', 'Sudah Check-in'],
-        'fail'       => ['bg-danger-ink', 'text-white', 'x-circle', 'Tidak Berjaya'],
+        'checked_in' => ['bg-success', 'text-white', 'check-circle', 'Berjaya'],
+        'duplicate'  => ['bg-warning', 'text-ink', 'alert', 'Sudah Check-in'],
+        'fail'       => ['bg-danger', 'text-white', 'x-circle', 'Tidak Berjaya'],
     ];
-    [$tone, $toneInk, $icon, $heading] = $tones[$outcome] ?? ['bg-navy-900', 'text-white', 'qr', ''];
+    [$tone, $toneInk, $icon, $heading] = $tones[$outcome] ?? ['bg-char-900', 'text-white', 'qr', ''];
 @endphp
 
 <div x-data="qrScanner($wire)"
      x-on:imbasan-selesai.window="maklum($event.detail.outcome)"
-     class="min-h-screen bg-navy-900 pb-24">
+     class="min-h-screen bg-char-900 pb-24">
 
     {{-- ── Kepala ─────────────────────────────────────────── --}}
-    <header class="sticky top-0 z-30 border-b border-white/10 bg-navy-900/95 backdrop-blur">
+    <header class="sticky top-0 z-30 border-b border-white/10 bg-char-900/95 backdrop-blur">
         <div class="jelajah-container">
             <div class="flex h-16 items-center justify-between gap-3">
                 <div class="min-w-0">
@@ -38,7 +38,7 @@
                 ['hadir', 'Hadir', 'text-success'],
                 ['belum_hadir', 'Belum Hadir', 'text-white'],
                 ['berdaftar', 'Berdaftar', 'text-white'],
-                ['walk_in', 'Walk-in', 'text-brand-300'],
+                ['walk_in', 'Walk-in', 'text-clay-300'],
             ] as [$key, $label, $colour])
                 <div class="rounded-xl bg-white/8 p-3 text-center ring-1 ring-white/10">
                     <dd class="font-display text-xl {{ $colour }}">{{ number_format($stats[$key]) }}</dd>
@@ -96,15 +96,15 @@
 
             <div x-show="!kamera" class="p-8 text-center">
                 <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-white/10">
-                    <x-ui.icon name="camera" class="h-7 w-7 text-brand-300" />
+                    <x-ui.icon name="camera" class="h-7 w-7 text-clay-300" />
                 </div>
                 <p class="mt-4 font-medium text-white">Imbas QR Peserta</p>
                 <p class="mt-1.5 text-sm text-white/60 text-pretty">
                     Benarkan akses kamera untuk mula mengimbas.
                 </p>
                 <button type="button" x-on:click="mula()"
-                        class="tap-target mt-5 inline-flex items-center gap-2 rounded-full bg-brand-action px-6
-                               font-medium text-white transition hover:bg-brand-action-hover">
+                        class="tap-target mt-5 inline-flex items-center gap-2 rounded-full bg-clay-600 px-6
+                               font-medium text-white transition hover:bg-clay-700">
                     <x-ui.icon name="qr" class="h-5 w-5" /> Buka Kamera
                 </button>
                 <p x-show="ralat" x-text="ralat" x-cloak class="mt-4 text-sm text-red-300"></p>
@@ -126,8 +126,8 @@
             <input id="kod-manual" wire:model="manualCode" type="text"
                    placeholder="Masukkan kod QR secara manual"
                    class="tap-target w-full rounded-xl border border-white/30 bg-white/8 px-4 text-base
-                          text-white placeholder:text-white/60 focus:border-brand-400 focus:outline-none
-                          focus:ring-4 focus:ring-brand-500/20" />
+                          text-white placeholder:text-white/60 focus:border-clay-400 focus:outline-none
+                          focus:ring-4 focus:ring-clay-400/20" />
             <button type="submit"
                     class="tap-target shrink-0 rounded-xl bg-white/12 px-5 font-medium text-white hover:bg-white/20">
                 Semak
@@ -144,8 +144,8 @@
             <input id="cari" wire:model.live.debounce.400ms="search" type="search"
                    placeholder="Cari nama, telefon atau rujukan…"
                    class="tap-target w-full rounded-xl border border-white/30 bg-white/8 px-4 text-base
-                          text-white placeholder:text-white/60 focus:border-brand-400 focus:outline-none
-                          focus:ring-4 focus:ring-brand-500/20" />
+                          text-white placeholder:text-white/60 focus:border-clay-400 focus:outline-none
+                          focus:ring-4 focus:ring-clay-400/20" />
         </div>
 
         @if (strlen($search) >= 3)
@@ -174,8 +174,8 @@
                             @else
                                 <button type="button" wire:click="checkInManually({{ $match->id }})"
                                         wire:loading.attr="disabled"
-                                        class="tap-target shrink-0 rounded-full bg-brand-action px-4 text-sm
-                                               font-medium text-white hover:bg-brand-action-hover">
+                                        class="tap-target shrink-0 rounded-full bg-clay-600 px-4 text-sm
+                                               font-medium text-white hover:bg-clay-700">
                                     Check-in
                                 </button>
                             @endif
@@ -211,8 +211,8 @@
                         <label for="wi-nama" class="mb-1.5 block text-sm text-white/70">Nama penuh</label>
                         <input id="wi-nama" wire:model="walkInName" type="text"
                                class="tap-target w-full rounded-xl border border-white/30 bg-white/8 px-4
-                                      text-base text-white placeholder:text-white/60 focus:border-brand-400
-                                      focus:outline-none focus:ring-4 focus:ring-brand-500/20" />
+                                      text-base text-white placeholder:text-white/60 focus:border-clay-400
+                                      focus:outline-none focus:ring-4 focus:ring-clay-400/20" />
                         @error('walkInName') <p class="mt-1.5 text-sm text-red-300">{{ $message }}</p> @enderror
                     </div>
 
@@ -220,16 +220,16 @@
                         <label for="wi-tel" class="mb-1.5 block text-sm text-white/70">Nombor telefon</label>
                         <input id="wi-tel" wire:model="walkInPhone" type="tel" inputmode="tel"
                                class="tap-target w-full rounded-xl border border-white/30 bg-white/8 px-4
-                                      text-base text-white placeholder:text-white/60 focus:border-brand-400
-                                      focus:outline-none focus:ring-4 focus:ring-brand-500/20" />
+                                      text-base text-white placeholder:text-white/60 focus:border-clay-400
+                                      focus:outline-none focus:ring-4 focus:ring-clay-400/20" />
                         @error('walkInPhone') <p class="mt-1.5 text-sm text-red-300">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label for="wi-jantina" class="mb-1.5 block text-sm text-white/70">Jantina (pilihan)</label>
                         <select id="wi-jantina" wire:model="walkInGender"
-                                class="tap-target w-full rounded-xl border border-white/30 bg-navy-900 px-4
-                                       text-base text-white focus:border-brand-400 focus:outline-none">
+                                class="tap-target w-full rounded-xl border border-white/30 bg-char-900 px-4
+                                       text-base text-white focus:border-clay-400 focus:outline-none">
                             <option value="">Tidak dinyatakan</option>
                             <option value="lelaki">Lelaki</option>
                             <option value="perempuan">Perempuan</option>
@@ -238,8 +238,8 @@
                 </div>
 
                 <button type="submit" wire:loading.attr="disabled"
-                        class="tap-target mt-5 w-full rounded-full bg-brand-action px-6 font-medium text-white
-                               hover:bg-brand-action-hover disabled:opacity-60">
+                        class="tap-target mt-5 w-full rounded-full bg-clay-600 px-6 font-medium text-white
+                               hover:bg-clay-700 disabled:opacity-60">
                     <span wire:loading.remove wire:target="registerWalkIn">Daftar & Check-in</span>
                     <span wire:loading wire:target="registerWalkIn">Memproses…</span>
                 </button>

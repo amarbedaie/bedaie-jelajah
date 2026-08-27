@@ -1,6 +1,6 @@
 <x-layouts.admin :title="$event->title" :heading="$event->title">
     <a href="{{ route('admin.program') }}"
-       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-navy-900">
+       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
         <x-ui.icon name="arrow-left" class="h-4 w-4" /> Semua program
     </a>
 
@@ -18,7 +18,7 @@
         <div class="space-y-6">
             {{-- Ringkasan --}}
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Ringkasan Pendaftaran</h2>
+                <h2 class="font-semibold text-ink">Ringkasan Pendaftaran</h2>
 
                 @if ($event->capacity)
                     <div class="mt-4">
@@ -39,7 +39,7 @@
                         ['Sijil sah', number_format($report['certificates'])],
                     ] as [$label, $value])
                         <div class="rounded-xl bg-mist p-3.5">
-                            <dd class="font-display text-xl text-navy-900">{{ $value }}</dd>
+                            <dd class="font-display text-xl text-ink">{{ $value }}</dd>
                             <dt class="mt-0.5 text-xs text-ink-soft text-pretty">{{ $label }}</dt>
                         </div>
                     @endforeach
@@ -48,7 +48,7 @@
 
             {{-- Butiran --}}
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Butiran Program</h2>
+                <h2 class="font-semibold text-ink">Butiran Program</h2>
                 <dl class="mt-4 divide-y divide-hairline">
                     @foreach ([
                         'Tajuk' => $event->title,
@@ -71,7 +71,7 @@
                                 <dd class="text-sm text-ink text-pretty">
                                     @if ($label === 'Dari permohonan')
                                         <a href="{{ route('admin.permohonan.show', $event->application) }}"
-                                           class="font-medium text-brand-600 hover:underline">{{ $value }}</a>
+                                           class="font-medium text-clay-600 hover:underline">{{ $value }}</a>
                                     @else
                                         {{ $value }}
                                     @endif
@@ -87,23 +87,23 @@
             {{-- Kewangan & maklum balas --}}
             <div class="grid gap-6 sm:grid-cols-2">
                 <x-ui.card>
-                    <h2 class="font-semibold text-navy-900">Kewangan</h2>
+                    <h2 class="font-semibold text-ink">Kewangan</h2>
                     <dl class="mt-4 space-y-3 text-sm">
                         <div class="flex justify-between gap-3">
                             <dt class="text-ink-muted">Kutipan berjaya</dt>
-                            <dd class="font-medium text-navy-900">RM {{ number_format($report['revenue'], 2) }}</dd>
+                            <dd class="font-medium text-ink">RM {{ number_format($report['revenue'], 2) }}</dd>
                         </div>
                         <div class="flex justify-between gap-3">
                             <dt class="text-ink-muted">Menunggu pengesahan</dt>
-                            <dd class="text-navy-900">{{ number_format($report['pending_payments']) }}</dd>
+                            <dd class="text-ink">{{ number_format($report['pending_payments']) }}</dd>
                         </div>
                     </dl>
                 </x-ui.card>
 
                 <x-ui.card>
-                    <h2 class="font-semibold text-navy-900">Maklum Balas</h2>
+                    <h2 class="font-semibold text-ink">Maklum Balas</h2>
                     @if ($report['rating_count'] > 0)
-                        <p class="mt-3 font-display text-3xl text-navy-900">
+                        <p class="mt-3 font-display text-3xl text-ink">
                             {{ number_format((float) $report['rating'], 1) }}
                             <span class="text-base font-normal text-ink-muted">/ 5</span>
                         </p>
@@ -131,12 +131,12 @@
             {{-- Demografi --}}
             @if ($report['by_state']->isNotEmpty())
                 <x-ui.card>
-                    <h2 class="font-semibold text-navy-900">Peserta Mengikut Negeri</h2>
+                    <h2 class="font-semibold text-ink">Peserta Mengikut Negeri</h2>
                     <ul class="mt-4 space-y-2">
                         @foreach ($report['by_state']->take(8) as $stateName => $count)
                             <li class="flex items-center justify-between gap-3 text-sm">
                                 <span class="text-ink-soft">{{ $stateName }}</span>
-                                <span class="font-medium text-navy-900">{{ $count }}</span>
+                                <span class="font-medium text-ink">{{ $count }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -147,7 +147,7 @@
         {{-- Sisi --}}
         <aside class="space-y-5 xl:sticky xl:top-24 xl:self-start">
             <x-ui.card>
-                <h3 class="font-semibold text-navy-900">Tindakan</h3>
+                <h3 class="font-semibold text-ink">Tindakan</h3>
                 <div class="mt-4 grid gap-2.5">
                     <x-ui.button :href="$event->publicUrl()" target="_blank" variant="navy" block icon="external">
                         Lihat Halaman Awam
@@ -174,12 +174,12 @@
             </x-ui.card>
 
             <x-ui.card>
-                <h3 class="font-semibold text-navy-900">Pautan & QR</h3>
+                <h3 class="font-semibold text-ink">Pautan & QR</h3>
                 <div class="mt-4 flex flex-col items-center gap-4 rounded-xl bg-mist p-4">
                     <div class="rounded-xl bg-white p-2.5 ring-1 ring-hairline">
                         {!! app(\App\Services\QrCodeService::class)->svg($event->shortUrl(), 150) !!}
                     </div>
-                    <p class="break-all text-center font-mono text-xs text-brand-700">{{ $event->shortUrl() }}</p>
+                    <p class="break-all text-center font-mono text-xs text-clay-700">{{ $event->shortUrl() }}</p>
                 </div>
                 <div class="mt-4 grid gap-2.5">
                     <x-ui.copy-button :text="$event->shortUrl()" label="Salin Link Pendek" variant="outline" block />

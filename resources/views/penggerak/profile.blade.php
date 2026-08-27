@@ -76,7 +76,7 @@
         </x-ui.card>
 
         <x-ui.card class="mt-6 sm:p-8">
-            <h2 class="font-semibold text-navy-900">
+            <h2 class="font-semibold text-ink">
                 {{ $user->password_set_at ? 'Tukar Kata Laluan' : 'Tetapkan Kata Laluan' }}
             </h2>
             <p class="mt-1.5 text-sm text-ink-soft text-pretty">

@@ -33,7 +33,7 @@ enum PosterStyle: string
     public function description(): string
     {
         return match ($this) {
-            self::Klasik => 'Navy pekat dengan rosette girih. Sesuai untuk kuliah malam dan program masjid.',
+            self::Klasik => 'Kertas tulang dengan rosette girih tanah liat. Lalai untuk kebanyakan program.',
             self::Terang => 'Latar krim dengan dakwat navy. Mudah dibaca di bawah cahaya siang dan menjimatkan dakwat cetakan.',
             self::Fokus => 'Nama penceramah dibesarkan. Untuk program yang menarik kerana penceramahnya.',
             self::Geometri => 'Corak khatam besar dan berani. Untuk program anak muda dan kempen bermusim.',
@@ -44,7 +44,9 @@ enum PosterStyle: string
     /** Adakah gaya ini berlatar cerah? Menentukan warna dakwat. */
     public function isLight(): bool
     {
-        return in_array($this, [self::Terang, self::Minimalis], true);
+        // Kertas ialah lalai dunia ini; hanya Fokus dan Geometri gelap,
+        // untuk program malam yang mahukan kontras kuat.
+        return ! in_array($this, [self::Fokus, self::Geometri], true);
     }
 
     public static function options(): array

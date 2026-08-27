@@ -9,17 +9,15 @@
 @php
     $officialPath = public_path('brand/bedaie-logo.svg');
     $hasOfficial = is_file($officialPath);
-    $markColor = $light ? '#FFFFFF' : '#8875FF';
-    $textColor = $light ? 'text-white' : 'text-navy-900';
-    $subColor  = $light ? 'text-brand-300' : 'text-brand-600';
+    $textColor = $light ? 'text-white' : 'text-ink';
+    $subColor  = $light ? 'text-clay-300' : 'text-clay-600';
 @endphp
 
 <span {{ $attributes->merge(['class' => 'inline-flex items-center gap-2.5 ' . $class]) }}>
     @if ($hasOfficial)
         <img src="{{ asset('brand/bedaie-logo.svg') }}" alt="BeDaie" class="h-9 w-auto" />
     @else
-        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl"
-              style="background: {{ $light ? 'rgba(255,255,255,0.14)' : '#8875FF' }}"
+        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg {{ $light ? 'bg-white/15' : 'bg-clay-600' }}"
               data-logo="bedaie-logo-placeholder">
             <svg viewBox="0 0 64 64" class="h-6 w-6" fill="none" aria-hidden="true">
                 <g stroke="#FFFFFF" stroke-width="3.4" stroke-linejoin="round">

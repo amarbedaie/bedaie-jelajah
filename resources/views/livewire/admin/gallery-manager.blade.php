@@ -1,7 +1,7 @@
 <div class="space-y-10">
     {{-- ── Muat naik ──────────────────────────────────────── --}}
     <x-ui.card>
-        <h2 class="font-semibold text-navy-900">Muat Naik Gambar Program</h2>
+        <h2 class="font-semibold text-ink">Muat Naik Gambar Program</h2>
         <p class="mt-1.5 text-sm text-ink-soft text-pretty">
             Gambar yang dimuat naik oleh admin terus diluluskan dan dipaparkan pada
             halaman program serta Galeri Impak.
@@ -35,9 +35,9 @@
                 <input id="g-photos" type="file" wire:model="photos" multiple
                        accept="image/jpeg,image/png,image/webp"
                        class="tap-target w-full rounded-xl border border-hairline bg-surface px-4 py-2.5
-                              text-sm text-ink file:mr-3 file:rounded-full file:border-0 file:bg-brand-50
-                              file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-brand-700
-                              hover:file:bg-brand-100" />
+                              text-sm text-ink file:mr-3 file:rounded-full file:border-0 file:bg-clay-50
+                              file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-clay-700
+                              hover:file:bg-clay-100" />
             </x-ui.field>
 
             <div wire:loading wire:target="photos" class="text-sm text-ink-muted">Memuat naik gambar…</div>
@@ -63,7 +63,7 @@
 
     {{-- ── Menunggu kelulusan ─────────────────────────────── --}}
     <section>
-        <h2 class="mb-3 text-lg font-semibold text-navy-900">
+        <h2 class="mb-3 text-lg font-semibold text-ink">
             Menunggu Kelulusan
             @if ($pending->isNotEmpty())
                 <x-ui.badge color="warning" class="ml-1">{{ $pending->count() }}</x-ui.badge>
@@ -102,9 +102,9 @@
     {{-- ── Diterbitkan ────────────────────────────────────── --}}
     <section>
         <div class="mb-3 flex items-end justify-between gap-3">
-            <h2 class="text-lg font-semibold text-navy-900">Galeri Diterbitkan</h2>
+            <h2 class="text-lg font-semibold text-ink">Galeri Diterbitkan</h2>
             <a href="{{ route('galeri') }}" target="_blank"
-               class="text-sm font-medium text-brand-600 hover:underline">Lihat halaman awam</a>
+               class="text-sm font-medium text-clay-600 hover:underline">Lihat halaman awam</a>
         </div>
 
         @if ($approved->isEmpty())
@@ -125,8 +125,8 @@
                                    wire:change="updateCaption({{ $photo->id }}, $event.target.value)"
                                    placeholder="Tambah kapsyen…"
                                    class="mt-2 w-full rounded-lg border border-hairline bg-surface px-2.5 py-1.5
-                                          text-xs text-ink placeholder:text-ink-muted focus:border-brand-400
-                                          focus:outline-none focus:ring-2 focus:ring-brand-500/15" />
+                                          text-xs text-ink placeholder:text-ink-muted focus:border-clay-400
+                                          focus:outline-none focus:ring-2 focus:ring-clay-400/15" />
 
                             <div class="mt-2.5 flex gap-1.5">
                                 <x-ui.button wire:click="unapprove({{ $photo->id }})" variant="ghost" size="sm" icon="eye">

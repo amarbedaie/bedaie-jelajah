@@ -2,13 +2,13 @@
 
 @php
     $pct = $max > 0 ? min(100, max(0, round($value / $max * 100))) : 0;
-    $tones = ['brand' => 'bg-brand-500', 'success' => 'bg-success', 'warning' => 'bg-warning', 'navy' => 'bg-navy-900'];
+    $tones = ['brand' => 'bg-clay-400', 'success' => 'bg-success', 'warning' => 'bg-warning', 'navy' => 'bg-char-900'];
 @endphp
 
 <div {{ $attributes->merge(['class' => 'space-y-1.5']) }}>
     @if ($label || $showValue)
         <div class="flex items-baseline justify-between gap-3 text-sm">
-            @if ($label) <span class="font-medium text-navy-900">{{ $label }}</span> @endif
+            @if ($label) <span class="font-medium text-ink">{{ $label }}</span> @endif
             @if ($showValue) <span class="tabular-nums text-ink-muted">{{ $pct }}%</span> @endif
         </div>
     @endif

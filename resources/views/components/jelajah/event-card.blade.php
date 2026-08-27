@@ -6,20 +6,20 @@
 @endphp
 
 <article class="group relative flex h-full flex-col overflow-hidden rounded-card border border-hairline
-                bg-surface shadow-soft transition-all duration-200 hover:-translate-y-0.5
-                hover:border-brand-200 hover:shadow-lift">
-    <a href="{{ $event->publicUrl() }}" class="relative block aspect-[16/10] overflow-hidden bg-navy-900">
+                bg-surface transition-colors duration-150 hover:border-clay-300">
+    <a href="{{ $event->publicUrl() }}"
+       class="relative block aspect-[16/10] overflow-hidden border-b border-hairline bg-cream">
         @if ($event->heroUrl())
             <img src="{{ $event->heroUrl() }}" alt="{{ $event->title }}" loading="lazy"
                  width="1080" height="608"
-                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                 class="h-full w-full object-cover" />
         @else
             {{-- Fallback berjenama apabila poster belum dimuat naik --}}
             <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-brand-600/70 to-navy-900" aria-hidden="true"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-clay-600/70 to-char-900" aria-hidden="true"></div>
             <div class="relative flex h-full flex-col justify-end p-5">
                 <p class="font-display text-xl leading-tight text-white text-pretty">{{ $event->theme ?? $event->title }}</p>
-                <p class="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-brand-200">
+                <p class="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-clay-200">
                     {{ $event->category?->name }}
                 </p>
             </div>
@@ -38,13 +38,13 @@
     </a>
 
     <div class="flex flex-1 flex-col p-5">
-        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-600">
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-clay-600">
             {{ $event->category?->name ?? 'Jelajah' }}
         </p>
 
-        <h2 class="mt-1.5 text-lg font-semibold leading-snug text-navy-900 text-pretty">
+        <h2 class="mt-2 font-display text-xl leading-snug text-ink text-pretty">
             <a href="{{ $event->publicUrl() }}"
-               class="after:absolute after:inset-0 hover:text-brand-700 focus-visible:outline-none">{{ $event->title }}</a>
+               class="after:absolute after:inset-0 hover:text-clay-700 focus-visible:outline-none">{{ $event->title }}</a>
         </h2>
 
         <dl class="mt-3 space-y-1.5 text-sm text-ink-soft">

@@ -10,7 +10,7 @@
 
     @if ($showForm)
         <x-ui.card class="mb-6">
-            <h3 class="font-semibold text-navy-900">
+            <h3 class="font-semibold text-ink">
                 {{ $editingId ? 'Kemas Kini Rakan' : 'Rakan Baharu' }}
             </h3>
 
@@ -53,8 +53,8 @@
                         <input id="r-logo" type="file" wire:model="logo"
                                accept="image/jpeg,image/png,image/webp,image/svg+xml"
                                class="tap-target w-full rounded-xl border border-hairline bg-surface px-4 py-2.5
-                                      text-sm text-ink file:mr-3 file:rounded-full file:border-0 file:bg-brand-50
-                                      file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-brand-700" />
+                                      text-sm text-ink file:mr-3 file:rounded-full file:border-0 file:bg-clay-50
+                                      file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-clay-700" />
                     </x-ui.field>
 
                     <x-ui.field label="Susunan" for="r-sort" optional :error="$errors->first('sort_order')">
@@ -89,7 +89,7 @@
         <div class="space-y-8">
             @foreach ($partners as $type => $group)
                 <section>
-                    <h3 class="mb-3 text-lg font-semibold text-navy-900">
+                    <h3 class="mb-3 text-lg font-semibold text-ink">
                         {{ $types[$type] ?? \Illuminate\Support\Str::headline($type) }}
                     </h3>
 
@@ -102,17 +102,17 @@
                                             <img src="{{ Storage::url($partner->logo_path) }}" alt=""
                                                  class="h-8 w-auto max-w-24 object-contain" />
                                         @else
-                                            <span class="grid h-8 w-8 place-items-center rounded-lg bg-brand-50">
-                                                <x-ui.icon name="building" class="h-4 w-4 text-brand-600" />
+                                            <span class="grid h-8 w-8 place-items-center rounded-lg bg-clay-50">
+                                                <x-ui.icon name="building" class="h-4 w-4 text-clay-600" />
                                             </span>
                                         @endif
-                                        <span class="font-medium text-navy-900">{{ $partner->name }}</span>
+                                        <span class="font-medium text-ink">{{ $partner->name }}</span>
                                     </div>
                                 </td>
                                 <td class="px-4 py-3">
                                     @if ($partner->website_url)
                                         <a href="{{ $partner->website_url }}" target="_blank" rel="noopener"
-                                           class="text-sm text-brand-600 hover:underline">
+                                           class="text-sm text-clay-600 hover:underline">
                                             {{ \Illuminate\Support\Str::limit($partner->website_url, 32) }}
                                         </a>
                                     @else

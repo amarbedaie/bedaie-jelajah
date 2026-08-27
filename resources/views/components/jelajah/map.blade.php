@@ -7,10 +7,10 @@
 
     // Warna status mengikut garis panduan jenama.
     $fills = [
-        'dijelajahi'  => '#8875FF',
-        'akan_datang' => '#F5A623',
-        'berlangsung' => '#00B96B',
-        'belum'       => '#E4E4EA',
+        'dijelajahi'  => '#D97757',
+        'akan_datang' => '#8A5A11',
+        'berlangsung' => '#2F6B44',
+        'belum'       => '#DAD7CC',
     ];
 
     $legend = [
@@ -72,9 +72,9 @@
                                    kerana outline CSS tidak boleh dipercayai pada laluan SVG. --}}
                               class="cursor-pointer transition-opacity duration-200 hover:opacity-80
                                      focus-visible:outline-2 focus-visible:outline-offset-2
-                                     focus-visible:outline-brand-500"
+                                     focus-visible:outline-clay-400"
                               x-bind:opacity="active && active.slug !== '{{ $state['slug'] }}' ? 0.45 : 1"
-                              x-bind:stroke="focused === '{{ $state['slug'] }}' ? '#0A083B' : '#FFFFFF'"
+                              x-bind:stroke="focused === '{{ $state['slug'] }}' ? '#141413' : '#FFFFFF'"
                               x-bind:stroke-width="focused === '{{ $state['slug'] }}' ? 4 : 1.6"
                               x-on:click="select('{{ $state['slug'] }}')"
                               x-on:mouseenter="select('{{ $state['slug'] }}')"
@@ -123,7 +123,7 @@
                                   text-anchor="middle"
                                   class="pointer-events-none select-none"
                                   font-size="24" font-weight="700"
-                                  fill="{{ $state['status'] === 'belum' ? '#55575C' : '#FFFFFF' }}">
+                                  fill="{{ $state['status'] === 'belum' ? '#57564F' : '#FFFFFF' }}">
                                 {{ $state['code'] }}
                             </text>
                         @endif
@@ -151,8 +151,8 @@
         <x-ui.card class="min-h-[13rem]">
             <template x-if="!active">
                 <div class="flex h-full flex-col justify-center py-4 text-center">
-                    <x-ui.icon name="map" class="mx-auto h-8 w-8 text-brand-300" />
-                    <p class="mt-3 font-medium text-navy-900">Pilih negeri pada peta</p>
+                    <x-ui.icon name="map" class="mx-auto h-8 w-8 text-clay-300" />
+                    <p class="mt-3 font-medium text-ink">Pilih negeri pada peta</p>
                     <p class="mt-1 text-sm text-ink-muted text-pretty">
                         Atau gunakan senarai negeri di bawah untuk melihat rekod jelajah.
                     </p>
@@ -161,38 +161,38 @@
 
             <template x-if="active">
                 <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">Negeri</p>
-                    <h3 class="mt-1 text-xl font-semibold text-navy-900" x-text="active.name"></h3>
+                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-600">Negeri</p>
+                    <h3 class="mt-1 text-xl font-semibold text-ink" x-text="active.name"></h3>
 
                     <dl class="mt-4 grid grid-cols-2 gap-3">
                         <div class="rounded-xl bg-mist p-3">
                             <dt class="text-xs text-ink-muted">Program</dt>
-                            <dd class="text-lg font-semibold text-navy-900" x-text="active.events"></dd>
+                            <dd class="text-lg font-semibold text-ink" x-text="active.events"></dd>
                         </div>
                         <div class="rounded-xl bg-mist p-3">
                             <dt class="text-xs text-ink-muted">Peserta</dt>
-                            <dd class="text-lg font-semibold text-navy-900"
+                            <dd class="text-lg font-semibold text-ink"
                                 x-text="active.participants.toLocaleString('ms-MY')"></dd>
                         </div>
                         <div class="rounded-xl bg-mist p-3">
                             <dt class="text-xs text-ink-muted">Daerah dilawati</dt>
-                            <dd class="text-lg font-semibold text-navy-900" x-text="active.districts"></dd>
+                            <dd class="text-lg font-semibold text-ink" x-text="active.districts"></dd>
                         </div>
                         <div class="rounded-xl bg-mist p-3">
                             <dt class="text-xs text-ink-muted">Akan datang</dt>
-                            <dd class="text-lg font-semibold text-navy-900" x-text="active.upcoming"></dd>
+                            <dd class="text-lg font-semibold text-ink" x-text="active.upcoming"></dd>
                         </div>
                     </dl>
 
                     <div class="mt-4 grid gap-2">
                         <a x-bind:href="active.url"
-                           class="tap-target inline-flex items-center justify-center gap-2 rounded-full bg-navy-900
-                                  px-5 text-sm font-medium text-white transition hover:bg-navy-700">
+                           class="tap-target inline-flex items-center justify-center gap-2 rounded-full bg-char-900
+                                  px-5 text-sm font-medium text-white transition hover:bg-char-800">
                             Lihat Butiran Negeri
                         </a>
                         <a x-bind:href="active.invite"
                            class="tap-target inline-flex items-center justify-center gap-2 rounded-full border
-                                  border-brand-300 px-5 text-sm font-medium text-brand-700 transition hover:bg-brand-50">
+                                  border-clay-300 px-5 text-sm font-medium text-clay-700 transition hover:bg-clay-50">
                             Jemput BeDaie ke Negeri Ini
                         </a>
                     </div>
@@ -204,7 +204,7 @@
              disembunyikan di situ; tertutup pada desktop di mana peta memimpin. --}}
         <details class="group rounded-card border border-hairline bg-surface shadow-soft"
                  x-data x-init="$el.open = window.matchMedia('(max-width: 639px)').matches">
-            <summary class="tap-target flex cursor-pointer items-center justify-between gap-2 px-5 text-sm font-medium text-navy-900">
+            <summary class="tap-target flex cursor-pointer items-center justify-between gap-2 px-5 text-sm font-medium text-ink">
                 <span class="sm:hidden">Pilih negeri anda</span>
                 <span class="hidden sm:inline">Senarai semua negeri</span>
                 <x-ui.icon name="chevron-down" class="h-4 w-4 shrink-0 text-ink-muted transition group-open:rotate-180" />
@@ -214,7 +214,7 @@
                     <li>
                         <a href="{{ route('peta.negeri', $state['slug']) }}"
                            class="tap-target flex items-center justify-between gap-3 rounded-xl px-3 text-sm hover:bg-mist">
-                            <span class="flex items-center gap-2.5 text-navy-900">
+                            <span class="flex items-center gap-2.5 text-ink">
                                 <span class="h-2.5 w-2.5 shrink-0 rounded-full"
                                       style="background: {{ $fills[$state['status']] ?? $fills['belum'] }}"></span>
                                 {{ $state['name'] }}

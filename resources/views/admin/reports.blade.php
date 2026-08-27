@@ -6,7 +6,7 @@
             ['rakan', 'Rakan Masjid & Organisasi'],
         ] as [$key, $label])
             <div class="rounded-card border border-hairline bg-surface p-5">
-                <dd class="font-display text-3xl text-navy-900">{{ number_format($headline[$key]) }}</dd>
+                <dd class="font-display text-3xl text-ink">{{ number_format($headline[$key]) }}</dd>
                 <dt class="mt-1 text-sm text-ink-soft text-pretty">{{ $label }}</dt>
             </div>
         @endforeach
@@ -14,7 +14,7 @@
 
     <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
         <section>
-            <h2 class="mb-3 text-lg font-semibold text-navy-900">Laporan Mengikut Program</h2>
+            <h2 class="mb-3 text-lg font-semibold text-ink">Laporan Mengikut Program</h2>
             @if ($events->isEmpty())
                 <x-ui.empty-state compact icon="chart" title="Belum ada program selesai" />
             @else
@@ -22,7 +22,7 @@
                     @foreach ($events as $event)
                         <tr class="hover:bg-mist/40">
                             <td class="px-4 py-3">
-                                <p class="font-medium text-navy-900">{{ $event->title }}</p>
+                                <p class="font-medium text-ink">{{ $event->title }}</p>
                                 <p class="text-xs text-ink-muted">
                                     {{ $event->venue?->name ?? $event->state?->name }}
                                 </p>
@@ -30,8 +30,8 @@
                             <td class="whitespace-nowrap px-4 py-3 text-ink-soft">
                                 {{ $event->starts_at->translatedFormat('j M Y') }}
                             </td>
-                            <td class="px-4 py-3 text-navy-900">{{ number_format($event->registered_count) }}</td>
-                            <td class="px-4 py-3 text-navy-900">{{ number_format($event->attended_count) }}</td>
+                            <td class="px-4 py-3 text-ink">{{ number_format($event->registered_count) }}</td>
+                            <td class="px-4 py-3 text-ink">{{ number_format($event->attended_count) }}</td>
                             <td class="px-4 py-3">
                                 <x-ui.badge color="grey">{{ number_format($event->attendanceRate(), 0) }}%</x-ui.badge>
                             </td>
@@ -53,7 +53,7 @@
 
         <aside class="space-y-5">
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Topik Paling Diminta</h2>
+                <h2 class="font-semibold text-ink">Topik Paling Diminta</h2>
                 @if ($topics->isEmpty())
                     <p class="mt-3 text-sm text-ink-muted">Belum ada data.</p>
                 @else
@@ -69,7 +69,7 @@
             </x-ui.card>
 
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Kawasan Permintaan Tertinggi</h2>
+                <h2 class="font-semibold text-ink">Kawasan Permintaan Tertinggi</h2>
                 @if ($demand->isEmpty())
                     <p class="mt-3 text-sm text-ink-muted">Belum ada permintaan.</p>
                 @else

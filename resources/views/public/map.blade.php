@@ -19,7 +19,7 @@
                     ['rakan', 'Rakan Masjid & Organisasi'],
                 ] as [$key, $label])
                     <div>
-                        <dd class="font-display text-3xl text-navy-900">{{ number_format($headline[$key]) }}</dd>
+                        <dd class="font-display text-3xl text-ink">{{ number_format($headline[$key]) }}</dd>
                         <dt class="mt-0.5 text-sm text-ink-soft text-pretty">{{ $label }}</dt>
                     </div>
                 @endforeach

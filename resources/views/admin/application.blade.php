@@ -2,7 +2,7 @@
                  :heading="$application->venue_name">
 
     <a href="{{ route('admin.permohonan') }}"
-       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-navy-900">
+       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
         <x-ui.icon name="arrow-left" class="h-4 w-4" /> Semua permohonan
     </a>
 
@@ -18,7 +18,7 @@
         {{-- ── Butiran ────────────────────────────────────── --}}
         <div class="space-y-6">
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Maklumat Pemohon</h2>
+                <h2 class="font-semibold text-ink">Maklumat Pemohon</h2>
                 <dl class="mt-4 divide-y divide-hairline">
                     @foreach ([
                         'Nama' => $application->applicant_name,
@@ -33,7 +33,7 @@
                                 <dd class="text-sm text-ink text-pretty">
                                     @if ($label === 'WhatsApp')
                                         <a href="https://wa.me/{{ $value }}" target="_blank" rel="noopener"
-                                           class="font-medium text-brand-600 hover:underline">{{ $value }}</a>
+                                           class="font-medium text-clay-600 hover:underline">{{ $value }}</a>
                                     @else
                                         {{ $value }}
                                     @endif
@@ -45,7 +45,7 @@
             </x-ui.card>
 
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Maklumat Lokasi</h2>
+                <h2 class="font-semibold text-ink">Maklumat Lokasi</h2>
                 <dl class="mt-4 divide-y divide-hairline">
                     @foreach ([
                         'Lokasi' => $application->venue_name,
@@ -73,7 +73,7 @@
             </x-ui.card>
 
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Cadangan Program</h2>
+                <h2 class="font-semibold text-ink">Cadangan Program</h2>
                 <dl class="mt-4 divide-y divide-hairline">
                     @foreach ([
                         'Jenis program' => $application->category?->name,
@@ -96,13 +96,13 @@
 
             {{-- Timeline penuh (termasuk nota dalaman) --}}
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Timeline Status</h2>
+                <h2 class="font-semibold text-ink">Timeline Status</h2>
                 <ol class="mt-5">
                     @forelse ($application->statusHistories->sortByDesc('created_at') as $entry)
-                        <li class="relative flex gap-4 border-l-2 border-brand-200 pb-6 pl-6 last:border-transparent last:pb-0">
-                            <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-brand-500 ring-4 ring-surface"></span>
+                        <li class="relative flex gap-4 border-l-2 border-clay-200 pb-6 pl-6 last:border-transparent last:pb-0">
+                            <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-clay-400 ring-4 ring-surface"></span>
                             <div class="min-w-0">
-                                <p class="font-medium text-navy-900">
+                                <p class="font-medium text-ink">
                                     {{ $entry->to_status->label() }}
                                 </p>
                                 @if ($entry->public_note)
@@ -127,7 +127,7 @@
 
             {{-- Nota dalaman / rekod komunikasi --}}
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Nota Dalaman & Komunikasi</h2>
+                <h2 class="font-semibold text-ink">Nota Dalaman & Komunikasi</h2>
                 @if ($application->internalNotes->isNotEmpty())
                     <ul class="mt-4 space-y-3">
                         @foreach ($application->internalNotes as $note)

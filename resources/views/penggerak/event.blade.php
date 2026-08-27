@@ -1,12 +1,12 @@
 <x-layouts.app :title="$event->title" nav="penggerak">
     <a href="{{ route('penggerak.program') }}"
-       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-navy-900">
+       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
         <x-ui.icon name="arrow-left" class="h-4 w-4" /> Semua program
     </a>
 
     <div class="mt-4 flex flex-wrap items-start justify-between gap-4">
         <div class="min-w-0">
-            <h1 class="font-display text-2xl text-navy-900 sm:text-3xl text-pretty">{{ $event->title }}</h1>
+            <h1 class="font-display text-2xl text-ink sm:text-3xl text-pretty">{{ $event->title }}</h1>
             <p class="mt-1.5 text-ink-soft text-pretty">
                 {{ $event->dateLabel() }} &middot; {{ $event->timeLabel() }}<br>
                 {{ $event->venue?->name ?? $event->locationLabel() }}
@@ -19,7 +19,7 @@
         <div class="space-y-6">
             {{-- Statistik --}}
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Pendaftaran</h2>
+                <h2 class="font-semibold text-ink">Pendaftaran</h2>
 
                 @if ($event->capacity)
                     <div class="mt-4">
@@ -36,7 +36,7 @@
                         ['Hadir', number_format($event->attended_count)],
                     ] as [$label, $value])
                         <div class="rounded-xl bg-mist p-3.5">
-                            <dd class="font-display text-xl text-navy-900">{{ $value }}</dd>
+                            <dd class="font-display text-xl text-ink">{{ $value }}</dd>
                             <dt class="mt-0.5 text-xs text-ink-soft">{{ $label }}</dt>
                         </div>
                     @endforeach
@@ -45,13 +45,13 @@
 
             {{-- Kongsi --}}
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Sebarkan Program</h2>
+                <h2 class="font-semibold text-ink">Sebarkan Program</h2>
 
                 <div class="mt-4 flex flex-col items-center gap-5 rounded-xl bg-mist p-5 sm:flex-row">
                     <div class="shrink-0 rounded-xl bg-white p-2.5 ring-1 ring-hairline">{!! $qrSvg !!}</div>
                     <div class="min-w-0 flex-1 text-center sm:text-left">
-                        <p class="text-sm font-medium text-navy-900">Link pendaftaran</p>
-                        <p class="mt-1 break-all font-mono text-sm text-brand-700">{{ $event->shortUrl() }}</p>
+                        <p class="text-sm font-medium text-ink">Link pendaftaran</p>
+                        <p class="mt-1 break-all font-mono text-sm text-clay-700">{{ $event->shortUrl() }}</p>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
             {{-- Laporan ringkas selepas program --}}
             @if ($summary)
                 <x-ui.card>
-                    <h2 class="font-semibold text-navy-900">Laporan Ringkas</h2>
+                    <h2 class="font-semibold text-ink">Laporan Ringkas</h2>
                     <dl class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                         @foreach ([
                             ['Berdaftar', number_format($summary['registered'])],
@@ -88,7 +88,7 @@
                             ['Mahu kelas lanjutan', number_format($summary['wants_advanced'])],
                         ] as [$label, $value])
                             <div class="rounded-xl bg-mist p-3.5">
-                                <dd class="font-display text-xl text-navy-900">{{ $value }}</dd>
+                                <dd class="font-display text-xl text-ink">{{ $value }}</dd>
                                 <dt class="mt-0.5 text-xs text-ink-soft text-pretty">{{ $label }}</dt>
                             </div>
                         @endforeach
@@ -100,7 +100,7 @@
         {{-- Sisi --}}
         <aside class="space-y-5">
             <x-ui.card>
-                <h3 class="font-semibold text-navy-900">Tindakan</h3>
+                <h3 class="font-semibold text-ink">Tindakan</h3>
                 <div class="mt-4 grid gap-2.5">
                     <x-ui.button :href="route('penggerak.peserta', ['program' => $event->short_code])"
                                  variant="navy" block icon="users">
@@ -132,7 +132,7 @@
             </x-ui.card>
 
             <x-ui.card>
-                <h3 class="font-semibold text-navy-900">Butiran Program</h3>
+                <h3 class="font-semibold text-ink">Butiran Program</h3>
                 <dl class="mt-3 space-y-3 text-sm">
                     @foreach ([
                         'Kod program' => $event->short_code,
@@ -145,7 +145,7 @@
                         @if ($value)
                             <div class="flex justify-between gap-3">
                                 <dt class="text-ink-muted">{{ $label }}</dt>
-                                <dd class="text-right text-navy-900 text-pretty">{{ $value }}</dd>
+                                <dd class="text-right text-ink text-pretty">{{ $value }}</dd>
                             </div>
                         @endif
                     @endforeach

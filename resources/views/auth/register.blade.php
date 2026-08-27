@@ -35,13 +35,13 @@
         <div>
             <label class="flex items-start gap-2.5 text-sm text-ink-soft">
                 <input type="checkbox" name="privacy" value="1" @checked(old('privacy'))
-                       class="mt-0.5 h-4 w-4 shrink-0 rounded border-control-line text-brand-action
-                              focus:ring-brand-500" required />
+                       class="mt-0.5 h-4 w-4 shrink-0 rounded border-control-line text-clay-600
+                              focus:ring-clay-400" required />
                 <span>
                     Saya bersetuju dengan
-                    <a href="{{ route('privasi') }}" target="_blank" class="font-medium text-brand-600 hover:underline">polisi privasi</a>
+                    <a href="{{ route('privasi') }}" target="_blank" class="font-medium text-clay-600 hover:underline">polisi privasi</a>
                     dan
-                    <a href="{{ route('terma') }}" target="_blank" class="font-medium text-brand-600 hover:underline">terma penggunaan</a>.
+                    <a href="{{ route('terma') }}" target="_blank" class="font-medium text-clay-600 hover:underline">terma penggunaan</a>.
                 </span>
             </label>
             @error('privacy')
@@ -54,6 +54,6 @@
 
     <p class="mt-7 text-center text-sm text-ink-soft">
         Sudah ada akaun?
-        <a href="{{ route('login') }}" class="font-medium text-brand-600 hover:underline">Log masuk</a>
+        <a href="{{ route('login') }}" class="font-medium text-clay-600 hover:underline">Log masuk</a>
     </p>
 </x-layouts.auth>

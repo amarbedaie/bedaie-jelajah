@@ -5,7 +5,7 @@
         <x-ui.card>
             <div class="flex flex-wrap items-start justify-between gap-3">
                 <div class="min-w-0">
-                    <h2 class="font-semibold text-navy-900">Kemajuan Sasaran</h2>
+                    <h2 class="font-semibold text-ink">Kemajuan Sasaran</h2>
                     <p class="mt-1 text-sm text-ink-soft text-pretty">{{ $target->stage->description() }}</p>
                 </div>
                 <x-ui.badge :color="$target->stage->color()" dot>{{ $target->stage->label() }}</x-ui.badge>
@@ -18,7 +18,7 @@
 
             <form wire:submit="changeStage" class="mt-5 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_auto]">
                 <div>
-                    <label for="d-stage" class="mb-1.5 block text-sm font-medium text-navy-900">Peringkat</label>
+                    <label for="d-stage" class="mb-1.5 block text-sm font-medium text-ink">Peringkat</label>
                     <x-ui.select id="d-stage" wire:model="stage" :error="$errors->has('stage')">
                         @foreach ($stages as $option)
                             <option value="{{ $option->value }}">{{ $option->label() }}</option>
@@ -27,7 +27,7 @@
                 </div>
 
                 <div>
-                    <label for="d-note" class="mb-1.5 block text-sm font-medium text-navy-900">
+                    <label for="d-note" class="mb-1.5 block text-sm font-medium text-ink">
                         Nota <span class="font-normal text-ink-muted">(pilihan)</span>
                     </label>
                     <x-ui.input id="d-note" wire:model="stageNote" :error="$errors->has('stageNote')"
@@ -63,8 +63,8 @@
                 </div>
             @elseif ($target->stage->canConvert())
                 @if (! $converting)
-                    <div class="mt-5 rounded-xl border border-brand-200 bg-brand-50/60 p-4">
-                        <p class="text-sm font-medium text-navy-900">Pihak lokasi sudah bersetuju?</p>
+                    <div class="mt-5 rounded-xl border border-clay-200 bg-clay-50/60 p-4">
+                        <p class="text-sm font-medium text-ink">Pihak lokasi sudah bersetuju?</p>
                         <p class="mt-1 text-sm text-ink-soft text-pretty">
                             Tukar sasaran ini kepada permohonan rasmi. Selepas itu ia mengalir melalui
                             aliran permohonan biasa sehingga program dijana.
@@ -75,8 +75,8 @@
                         </x-ui.button>
                     </div>
                 @else
-                    <form wire:submit="convert" class="mt-5 space-y-4 rounded-xl border border-brand-200 bg-brand-50/60 p-4">
-                        <p class="text-sm font-semibold text-navy-900">Butiran Permohonan</p>
+                    <form wire:submit="convert" class="mt-5 space-y-4 rounded-xl border border-clay-200 bg-clay-50/60 p-4">
+                        <p class="text-sm font-semibold text-ink">Butiran Permohonan</p>
 
                         <x-ui.field label="Jenis program" for="c-cat" required
                                     :error="$errors->first('event_category_id')">
@@ -149,7 +149,7 @@
 
         {{-- Rekod aktiviti --}}
         <x-ui.card>
-            <h2 class="font-semibold text-navy-900">Rekod Aktiviti</h2>
+            <h2 class="font-semibold text-ink">Rekod Aktiviti</h2>
             <p class="mt-1 text-sm text-ink-soft text-pretty">
                 Catat setiap panggilan dan lawatan supaya staf lain tahu apa yang sudah dibuat.
             </p>
@@ -187,13 +187,13 @@
             {{-- Garis masa --}}
             <ol class="mt-6 border-t border-hairline pt-5">
                 @forelse ($target->activities as $activity)
-                    <li class="relative flex gap-4 border-l-2 border-brand-200 pb-5 pl-6 last:border-transparent last:pb-0">
+                    <li class="relative flex gap-4 border-l-2 border-clay-200 pb-5 pl-6 last:border-transparent last:pb-0">
                         <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full
-                                     {{ $activity->isStageChange() ? 'bg-brand-500' : 'bg-hairline' }} ring-4 ring-surface"></span>
+                                     {{ $activity->isStageChange() ? 'bg-clay-400' : 'bg-hairline' }} ring-4 ring-surface"></span>
                         <div class="min-w-0">
                             <div class="flex flex-wrap items-center gap-2">
                                 <x-ui.icon :name="$activity->type->icon()" class="h-4 w-4 text-ink-muted" />
-                                <span class="text-sm font-medium text-navy-900">
+                                <span class="text-sm font-medium text-ink">
                                     @if ($activity->isStageChange())
                                         {{ $activity->from_stage?->label() ?? 'Baharu' }}
                                         &rarr; {{ $activity->to_stage?->label() }}
@@ -228,7 +228,7 @@
         {{-- Kontak --}}
         <x-ui.card>
             <div class="flex items-center justify-between gap-3">
-                <h3 class="font-semibold text-navy-900">Kontak Lokasi</h3>
+                <h3 class="font-semibold text-ink">Kontak Lokasi</h3>
                 <x-ui.button wire:click="$toggle('editingContact')" variant="ghost" size="sm" icon="edit">
                     {{ $editingContact ? 'Tutup' : 'Ubah' }}
                 </x-ui.button>
@@ -262,7 +262,7 @@
                     @if ($target->contact_name)
                         <div>
                             <dt class="text-xs text-ink-muted">Nama</dt>
-                            <dd class="mt-0.5 text-navy-900">
+                            <dd class="mt-0.5 text-ink">
                                 {{ $target->contact_name }}
                                 @if ($target->contact_role)
                                     <span class="block text-xs text-ink-muted">{{ $target->contact_role }}</span>
@@ -275,7 +275,7 @@
                             <dt class="text-xs text-ink-muted">Telefon</dt>
                             <dd class="mt-0.5">
                                 <a href="tel:{{ $target->contact_phone }}"
-                                   class="font-medium text-brand-600 hover:underline">{{ $target->contact_phone }}</a>
+                                   class="font-medium text-clay-600 hover:underline">{{ $target->contact_phone }}</a>
                             </dd>
                         </div>
                     @endif
@@ -313,13 +313,13 @@
 
         {{-- Sumber --}}
         <x-ui.card>
-            <h3 class="font-semibold text-navy-900">Sumber Sasaran</h3>
+            <h3 class="font-semibold text-ink">Sumber Sasaran</h3>
             <div class="mt-3 flex items-start gap-3">
-                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-50">
-                    <x-ui.icon :name="$target->source->icon()" class="h-4 w-4 text-brand-600" />
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-clay-50">
+                    <x-ui.icon :name="$target->source->icon()" class="h-4 w-4 text-clay-600" />
                 </span>
                 <div class="min-w-0">
-                    <p class="text-sm font-medium text-navy-900">{{ $target->sourceLabel() }}</p>
+                    <p class="text-sm font-medium text-ink">{{ $target->sourceLabel() }}</p>
                     <p class="mt-0.5 text-xs text-ink-soft text-pretty">{{ $target->source->description() }}</p>
                 </div>
             </div>
@@ -327,7 +327,7 @@
             @if ($target->referrer_phone)
                 <p class="mt-3 text-sm text-ink-soft">
                     Perujuk: <a href="tel:{{ $target->referrer_phone }}"
-                                class="font-medium text-brand-600 hover:underline">{{ $target->referrer_phone }}</a>
+                                class="font-medium text-clay-600 hover:underline">{{ $target->referrer_phone }}</a>
                 </p>
             @endif
 
@@ -340,7 +340,7 @@
 
         {{-- Tugasan --}}
         <x-ui.card>
-            <h3 class="font-semibold text-navy-900">Tugasan & Susulan</h3>
+            <h3 class="font-semibold text-ink">Tugasan & Susulan</h3>
 
             <form wire:submit="saveAssignment" class="mt-4 space-y-3">
                 <x-ui.field label="Staf bertanggungjawab" for="t-assignee" :error="$errors->first('assigned_to')">
@@ -386,7 +386,7 @@
 
         {{-- Butiran lokasi --}}
         <x-ui.card>
-            <h3 class="font-semibold text-navy-900">Butiran Lokasi</h3>
+            <h3 class="font-semibold text-ink">Butiran Lokasi</h3>
             <dl class="mt-3 space-y-3 text-sm">
                 @foreach ([
                     'Jenis' => $target->type->label(),
@@ -399,7 +399,7 @@
                     @if ($value)
                         <div class="flex justify-between gap-3">
                             <dt class="text-ink-muted">{{ $label }}</dt>
-                            <dd class="text-right text-navy-900 text-pretty">{{ $value }}</dd>
+                            <dd class="text-right text-ink text-pretty">{{ $value }}</dd>
                         </div>
                     @endif
                 @endforeach

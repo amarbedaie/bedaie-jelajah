@@ -13,10 +13,10 @@
                 <li>
                     <a href="{{ route('penggerak.permohonan.show', $application) }}"
                        class="block rounded-card border border-hairline bg-surface p-5
-                              transition hover:border-brand-200 hover:shadow-soft">
+                              transition hover:border-clay-200 hover:shadow-soft">
                         <div class="flex flex-wrap items-start justify-between gap-3">
                             <div class="min-w-0">
-                                <p class="font-medium text-navy-900 text-pretty">{{ $application->venue_name }}</p>
+                                <p class="font-medium text-ink text-pretty">{{ $application->venue_name }}</p>
                                 <p class="mt-0.5 text-sm text-ink-muted">
                                     {{ $application->reference_no }} &middot; {{ $application->category?->name }}
                                 </p>

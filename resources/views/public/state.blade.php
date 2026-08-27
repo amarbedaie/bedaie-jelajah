@@ -27,7 +27,7 @@
                     ['Permintaan Komuniti', number_format($detail['interest_count'])],
                 ] as [$label, $value])
                     <div>
-                        <dd class="font-display text-3xl text-navy-900">{{ $value }}</dd>
+                        <dd class="font-display text-3xl text-ink">{{ $value }}</dd>
                         <dt class="mt-0.5 text-sm text-ink-soft">{{ $label }}</dt>
                     </div>
                 @endforeach
@@ -38,7 +38,7 @@
     <section class="jelajah-container space-y-14 py-12 sm:py-16">
         @if ($detail['districts_visited']->isNotEmpty())
             <div>
-                <h2 class="text-xl font-semibold text-navy-900">Daerah Yang Telah Dilawati</h2>
+                <h2 class="text-xl font-semibold text-ink">Daerah Yang Telah Dilawati</h2>
                 <ul class="mt-4 flex flex-wrap gap-2">
                     @foreach ($detail['districts_visited'] as $district)
                         <li><x-ui.badge color="purple" icon="pin">{{ $district }}</x-ui.badge></li>
@@ -75,7 +75,7 @@
                             <a href="{{ $event->publicUrl() }}"
                                class="flex flex-wrap items-center justify-between gap-3 p-5 transition hover:bg-mist/60">
                                 <div class="min-w-0">
-                                    <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
+                                    <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                                     <p class="mt-0.5 text-sm text-ink-muted">
                                         {{ $event->dateLabel() }} &middot; {{ $event->venue?->name ?? $event->district?->name }}
                                     </p>

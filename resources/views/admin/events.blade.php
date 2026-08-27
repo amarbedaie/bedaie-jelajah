@@ -40,7 +40,7 @@
                 <tr class="hover:bg-mist/40">
                     <td class="px-4 py-3 font-mono text-xs text-ink-soft">{{ $event->short_code }}</td>
                     <td class="px-4 py-3">
-                        <p class="font-medium text-navy-900">{{ $event->title }}</p>
+                        <p class="font-medium text-ink">{{ $event->title }}</p>
                         <p class="text-xs text-ink-muted">
                             {{ $event->category?->name }}
                             @if ($event->speaker) &middot; {{ $event->speaker->name }} @endif
@@ -55,7 +55,7 @@
                         <span class="block text-xs text-ink-muted">{{ $event->state?->name }}</span>
                     </td>
                     <td class="px-4 py-3">
-                        <p class="text-navy-900">
+                        <p class="text-ink">
                             {{ number_format($event->seatsTaken()) }}/{{ number_format($event->capacity ?? 0) }}
                         </p>
                         @if ($event->hasEnded())

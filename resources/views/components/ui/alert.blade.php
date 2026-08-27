@@ -2,10 +2,10 @@
 
 @php
     $styles = [
-        'info'    => ['bg-brand-50 border-brand-200 text-brand-900', 'text-brand-700', 'info'],
-        'success' => ['bg-success-soft border-success-line text-success-ink', 'text-success-ink', 'check-circle'],
-        'warning' => ['bg-warning-soft border-warning-line text-warning-ink', 'text-warning-ink', 'alert'],
-        'danger'  => ['bg-danger-soft border-danger-line text-danger-ink', 'text-danger-ink', 'x-circle'],
+        'info'    => ['bg-clay-50 border-clay-200 text-clay-900', 'text-clay-700', 'info'],
+        'success' => ['bg-success-soft border-success-line text-success', 'text-success', 'check-circle'],
+        'warning' => ['bg-warning-soft border-warning-line text-warning', 'text-warning', 'alert'],
+        'danger'  => ['bg-danger-soft border-danger-line text-danger', 'text-danger', 'x-circle'],
         'neutral' => ['bg-mist border-hairline text-ink', 'text-ink-soft', 'info'],
     ];
     [$box, $iconColor, $defaultIcon] = $styles[$variant] ?? $styles['info'];

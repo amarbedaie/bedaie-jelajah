@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\RegistrationStatus;
 use App\Services\ApplicationService;
 use App\Services\AttendanceService;
 use App\Services\CertificateService;
@@ -40,7 +41,7 @@ class PageRenderTest extends TestCase
         $this->get(route('pwa.manifest'))
             ->assertOk()
             ->assertJsonPath('name', 'BeDaie Jelajah')
-            ->assertJsonPath('theme_color', '#8875FF');
+            ->assertJsonPath('theme_color', '#D97757');
     }
 
     public function test_halaman_program_dan_pautan_pendek_berfungsi(): void
@@ -191,7 +192,7 @@ class PageRenderTest extends TestCase
         ])->assertRedirect(route('tiket.show', $registration->public_token));
 
         $this->assertSame(
-            \App\Enums\RegistrationStatus::Dibatalkan,
+            RegistrationStatus::Dibatalkan,
             $registration->fresh()->status,
         );
     }

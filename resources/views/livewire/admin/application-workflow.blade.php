@@ -1,7 +1,7 @@
 <div class="space-y-5">
     {{-- ── Tukar status ───────────────────────────────────── --}}
     <x-ui.card>
-        <h2 class="font-semibold text-navy-900">Tindakan Permohonan</h2>
+        <h2 class="font-semibold text-ink">Tindakan Permohonan</h2>
 
         <form wire:submit="save" class="mt-4 space-y-4">
             <x-ui.field label="Status" for="wf-status" required :error="$errors->first('status')">
@@ -20,8 +20,8 @@
                            class="font-medium underline">buka program</a>.
                     </x-ui.alert>
                 @else
-                    <div class="rounded-xl border border-brand-200 bg-brand-50/60 p-4">
-                        <p class="text-sm font-semibold text-navy-900">Butiran Program</p>
+                    <div class="rounded-xl border border-clay-200 bg-clay-50/60 p-4">
+                        <p class="text-sm font-semibold text-ink">Butiran Program</p>
                         <p class="mt-1 text-xs text-ink-soft text-pretty">
                             Menyimpan status ini akan menjana halaman program, link pendek, QR,
                             poster dan dashboard Penggerak secara automatik.
@@ -114,7 +114,7 @@
 
     {{-- ── Rekod komunikasi ───────────────────────────────── --}}
     <x-ui.card>
-        <h2 class="font-semibold text-navy-900">Rekod Komunikasi</h2>
+        <h2 class="font-semibold text-ink">Rekod Komunikasi</h2>
         <p class="mt-1 text-sm text-ink-soft text-pretty">
             Catat perbualan dengan pemohon supaya pasukan lain tahu konteksnya.
         </p>

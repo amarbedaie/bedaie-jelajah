@@ -28,7 +28,7 @@
                     <a href="{{ route($item['route']) }}"
                        @if($active) aria-current="page" @endif
                        class="rounded-full px-4 py-2 text-sm font-medium transition
-                              {{ $active ? 'bg-brand-50 text-brand-700' : 'text-ink-soft hover:bg-mist hover:text-navy-900' }}">
+                              {{ $active ? 'bg-clay-50 text-clay-700' : 'text-ink-soft hover:bg-mist hover:text-ink' }}">
                         {{ $item['label'] }}
                     </a>
                 @endforeach
@@ -50,14 +50,14 @@
                     @else
                         <a href="{{ route('login') }}"
                            class="tap-target inline-flex items-center rounded-full px-4 py-2 text-sm font-medium
-                                  text-ink-soft transition hover:bg-mist hover:text-navy-900">
+                                  text-ink-soft transition hover:bg-mist hover:text-ink">
                             Log Masuk
                         </a>
                     @endauth
                 </div>
 
                 <button type="button" x-on:click="open = !open"
-                        class="tap-target lg:hidden -mr-2 grid place-items-center rounded-xl text-navy-900 hover:bg-mist"
+                        class="tap-target lg:hidden -mr-2 grid place-items-center rounded-xl text-ink hover:bg-mist"
                         x-bind:aria-expanded="open.toString()" aria-controls="menu-mobil" aria-label="Buka menu">
                     <x-ui.icon name="menu" x-show="!open" class="w-6 h-6" />
                     <x-ui.icon name="x" x-show="open" x-cloak class="w-6 h-6" />
@@ -74,7 +74,7 @@
                 @php $active = request()->routeIs($item['route']) || request()->routeIs($item['route'].'.*'); @endphp
                 <a href="{{ route($item['route']) }}"
                    class="tap-target flex items-center rounded-xl px-4 text-base font-medium
-                          {{ $active ? 'bg-brand-50 text-brand-700' : 'text-navy-900 hover:bg-mist' }}">
+                          {{ $active ? 'bg-clay-50 text-clay-700' : 'text-ink hover:bg-mist' }}">
                     {{ $item['label'] }}
                 </a>
             @endforeach

@@ -113,8 +113,8 @@ class PageController extends Controller
             'scope' => '/',
             'display' => 'standalone',
             'orientation' => 'portrait-primary',
-            'background_color' => '#FAF9F6',
-            'theme_color' => '#8875FF',
+            'background_color' => '#F0EEE6',
+            'theme_color' => '#D97757',
             'lang' => 'ms',
             'icons' => [
                 ['src' => asset('img/icon-192.png'), 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any'],

@@ -15,7 +15,7 @@
                     <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-success-soft">
                         <x-ui.icon name="check-circle" class="h-7 w-7 text-success" />
                     </div>
-                    <h1 class="mt-5 font-display text-2xl text-navy-900 sm:text-3xl">Pendaftaran Disahkan</h1>
+                    <h1 class="mt-5 font-display text-2xl text-ink sm:text-3xl">Pendaftaran Disahkan</h1>
                     <p class="mt-2 text-ink-soft text-pretty">
                         Tunjukkan QR di bawah pada pintu masuk untuk merekod kehadiran anda.
                     </p>
@@ -23,7 +23,7 @@
                     <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-warning-soft">
                         <x-ui.icon name="clock" class="h-7 w-7 text-warning" />
                     </div>
-                    <h1 class="mt-5 font-display text-2xl text-navy-900 sm:text-3xl">Anda Dalam Senarai Menunggu</h1>
+                    <h1 class="mt-5 font-display text-2xl text-ink sm:text-3xl">Anda Dalam Senarai Menunggu</h1>
                     <p class="mt-2 text-ink-soft text-pretty">
                         Tempat telah penuh buat masa ini. Kami akan memaklumkan melalui WhatsApp
                         sebaik sahaja ada tempat kosong.
@@ -32,7 +32,7 @@
                     <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-warning-soft">
                         <x-ui.icon name="clock" class="h-7 w-7 text-warning" />
                     </div>
-                    <h1 class="mt-5 font-display text-2xl text-navy-900 sm:text-3xl">Menunggu Pengesahan</h1>
+                    <h1 class="mt-5 font-display text-2xl text-ink sm:text-3xl">Menunggu Pengesahan</h1>
                     <p class="mt-2 text-ink-soft text-pretty">
                         @if ($payment && $payment->status === \App\Enums\PaymentStatus::BelumBayar)
                             Pendaftaran anda akan disahkan sebaik pembayaran diterima.
@@ -44,7 +44,7 @@
                     <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-mist">
                         <x-ui.icon name="x-circle" class="h-7 w-7 text-ink-muted" />
                     </div>
-                    <h1 class="mt-5 font-display text-2xl text-navy-900 sm:text-3xl">Pendaftaran Dibatalkan</h1>
+                    <h1 class="mt-5 font-display text-2xl text-ink sm:text-3xl">Pendaftaran Dibatalkan</h1>
                     <p class="mt-2 text-ink-soft text-pretty">
                         Tempat anda telah dilepaskan. Anda boleh mendaftar semula jika masih ada tempat.
                     </p>
@@ -53,10 +53,10 @@
 
             {{-- ── Tiket ─────────────────────────────────────── --}}
             <div class="mt-8 overflow-hidden rounded-card-lg border border-hairline bg-surface shadow-lift">
-                <div class="relative bg-navy-900 p-6">
+                <div class="relative bg-char-900 p-6">
                     <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
                     <div class="relative">
-                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-300">
                             {{ $event->category?->name ?? 'BeDaie Jelajah' }}
                         </p>
                         <h2 class="mt-2 font-semibold leading-snug text-white text-pretty">{{ $event->title }}</h2>
@@ -87,7 +87,7 @@
                     <dl class="space-y-3.5">
                         <div class="flex gap-3">
                             <dt class="w-28 shrink-0 text-sm text-ink-muted">Peserta</dt>
-                            <dd class="text-sm font-medium text-navy-900 text-pretty">{{ $registration->name }}</dd>
+                            <dd class="text-sm font-medium text-ink text-pretty">{{ $registration->name }}</dd>
                         </div>
 
                         @if ($registration->guests->isNotEmpty())
@@ -185,11 +185,11 @@
                 </div>
 
                 @if ($attended && $registration->certificate)
-                    <div class="mt-6 rounded-card border border-brand-200 bg-brand-50 p-5">
+                    <div class="mt-6 rounded-card border border-clay-200 bg-clay-50 p-5">
                         <div class="flex items-start gap-3">
-                            <x-ui.icon name="certificate" class="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                            <x-ui.icon name="certificate" class="mt-0.5 h-5 w-5 shrink-0 text-clay-600" />
                             <div class="min-w-0 flex-1">
-                                <h3 class="font-semibold text-navy-900">Sijil Anda Telah Sedia</h3>
+                                <h3 class="font-semibold text-ink">Sijil Anda Telah Sedia</h3>
                                 <p class="mt-1 font-mono text-xs text-ink-muted">
                                     {{ $registration->certificate->certificate_number }}
                                 </p>
@@ -203,11 +203,11 @@
                 @endif
 
                 @if ($event->recordings()->published()->exists())
-                    <div class="mt-6 rounded-card border border-brand-200 bg-brand-50 p-5">
+                    <div class="mt-6 rounded-card border border-clay-200 bg-clay-50 p-5">
                         <div class="flex items-start gap-3">
-                            <x-ui.icon name="play" class="mt-0.5 h-5 w-5 shrink-0 text-brand-700" />
+                            <x-ui.icon name="play" class="mt-0.5 h-5 w-5 shrink-0 text-clay-700" />
                             <div class="min-w-0 flex-1">
-                                <h3 class="font-semibold text-navy-900">Rakaman Program Tersedia</h3>
+                                <h3 class="font-semibold text-ink">Rakaman Program Tersedia</h3>
                                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                                     Tonton semula sesi ini bila-bila masa.
                                 </p>
@@ -222,7 +222,7 @@
 
                 @if ($event->hasEnded() && ! $registration->feedback && $attended)
                     <div class="mt-6 rounded-card border border-hairline bg-surface p-5">
-                        <h3 class="font-semibold text-navy-900">Bagaimana pengalaman anda?</h3>
+                        <h3 class="font-semibold text-ink">Bagaimana pengalaman anda?</h3>
                         <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                             Maklum balas anda membantu kami memperbaiki program akan datang.
                         </p>

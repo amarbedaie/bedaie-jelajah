@@ -2,16 +2,16 @@
 
 @php
     $colors = [
-        'purple'   => 'bg-brand-50 text-brand-700 ring-brand-200',
-        'navy'     => 'bg-navy-50 text-navy-700 ring-navy-100',
-        'success'  => 'bg-success-soft text-[#00794A] ring-[#B9EBD5]',
-        'warning'  => 'bg-warning-soft text-[#9A6208] ring-[#F6DFB4]',
-        'danger'   => 'bg-danger-soft text-[#B02226] ring-[#F5C3C5]',
+        'purple'   => 'bg-clay-50 text-clay-700 ring-clay-200',
+        'navy'     => 'bg-char-100 text-char-800 ring-char-200',
+        'success'  => 'bg-success-soft text-success ring-success-line',
+        'warning'  => 'bg-warning-soft text-warning ring-warning-line',
+        'danger'   => 'bg-danger-soft text-danger ring-danger-line',
         'grey'     => 'bg-mist text-ink-soft ring-hairline',
-        'white'    => 'bg-white/15 text-white ring-white/25 backdrop-blur',
+        'white'    => 'bg-surface text-ink ring-hairline shadow-soft',
     ];
     $dotColors = [
-        'purple' => 'bg-brand-500', 'navy' => 'bg-navy-700', 'success' => 'bg-success',
+        'purple' => 'bg-clay-400', 'navy' => 'bg-char-800', 'success' => 'bg-success',
         'warning' => 'bg-warning', 'danger' => 'bg-danger', 'grey' => 'bg-ink-muted', 'white' => 'bg-white',
     ];
 @endphp

@@ -13,7 +13,7 @@
             @php $model = $raw[$state['id']] ?? null; @endphp
             <tr class="hover:bg-mist/40">
                 <td class="px-4 py-3">
-                    <p class="font-medium text-navy-900">{{ $state['name'] }}</p>
+                    <p class="font-medium text-ink">{{ $state['name'] }}</p>
                     <p class="text-xs text-ink-muted">{{ $state['code'] }} &middot; {{ ucfirst($state['region']) }}</p>
                 </td>
                 <td class="px-4 py-3">
@@ -31,10 +31,10 @@
                         <x-ui.badge color="danger" class="ml-1">Permintaan tinggi</x-ui.badge>
                     @endif
                 </td>
-                <td class="px-4 py-3 text-navy-900">{{ number_format($state['events']) }}</td>
+                <td class="px-4 py-3 text-ink">{{ number_format($state['events']) }}</td>
                 <td class="px-4 py-3 text-ink-soft">{{ number_format($state['completed']) }}</td>
                 <td class="px-4 py-3 text-ink-soft">{{ number_format($state['upcoming']) }}</td>
-                <td class="px-4 py-3 text-navy-900">{{ number_format($state['participants']) }}</td>
+                <td class="px-4 py-3 text-ink">{{ number_format($state['participants']) }}</td>
                 <td class="px-4 py-3 text-ink-soft">
                     {{ number_format($state['districts']) }} / {{ number_format($model?->districts_count ?? 0) }}
                 </td>

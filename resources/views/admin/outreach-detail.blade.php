@@ -1,6 +1,6 @@
 <x-layouts.admin :title="$target->name" :heading="$target->name">
     <a href="{{ route('admin.sasaran') }}"
-       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-navy-900">
+       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
         <x-ui.icon name="arrow-left" class="h-4 w-4" /> Papan sasaran
     </a>
 

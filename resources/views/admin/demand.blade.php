@@ -6,19 +6,19 @@
 
     <div class="grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
         <section>
-            <h2 class="mb-3 text-lg font-semibold text-navy-900">Kawasan Permintaan Tertinggi</h2>
+            <h2 class="mb-3 text-lg font-semibold text-ink">Kawasan Permintaan Tertinggi</h2>
             @if ($areas->isEmpty())
                 <x-ui.empty-state compact icon="heart" title="Belum ada permintaan" />
             @else
                 <x-jelajah.admin-table :headers="['Daerah', 'Negeri', 'Jumlah permintaan', 'Individu unik', '']">
                     @foreach ($areas as $area)
                         <tr class="hover:bg-mist/40">
-                            <td class="px-4 py-3 font-medium text-navy-900">
+                            <td class="px-4 py-3 font-medium text-ink">
                                 {{ $area->district?->name ?? 'Tidak dinyatakan' }}
                             </td>
                             <td class="px-4 py-3 text-ink-soft">{{ $area->state?->name }}</td>
-                            <td class="px-4 py-3 text-navy-900">{{ number_format($area->total) }}</td>
-                            <td class="px-4 py-3 text-navy-900">{{ number_format($area->individuals) }}</td>
+                            <td class="px-4 py-3 text-ink">{{ number_format($area->total) }}</td>
+                            <td class="px-4 py-3 text-ink">{{ number_format($area->individuals) }}</td>
                             <td class="px-4 py-3 text-right">
                                 @if ($area->state)
                                     <x-ui.button :href="route('peta.negeri', $area->state->slug)" target="_blank"
@@ -33,7 +33,7 @@
 
         <aside class="space-y-5">
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Topik Paling Diminta</h2>
+                <h2 class="font-semibold text-ink">Topik Paling Diminta</h2>
                 @if ($topics->isEmpty())
                     <p class="mt-3 text-sm text-ink-muted">Belum ada data.</p>
                 @else
@@ -49,7 +49,7 @@
             </x-ui.card>
 
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Negeri Belum Dijelajahi</h2>
+                <h2 class="font-semibold text-ink">Negeri Belum Dijelajahi</h2>
                 @php $untouched = $states->where('status', 'belum')->sortByDesc('interest'); @endphp
                 @if ($untouched->isEmpty())
                     <p class="mt-3 text-sm text-ink-muted">Semua negeri telah dijelajahi. Alhamdulillah.</p>

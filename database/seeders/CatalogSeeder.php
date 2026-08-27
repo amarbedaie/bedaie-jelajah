@@ -116,7 +116,7 @@ class CatalogSeeder extends Seeder
             CertificateTemplate::updateOrCreate(
                 ['slug' => Str::slug($row['name'])],
                 array_merge($row, [
-                    'accent_color' => '#8875FF',
+                    'accent_color' => '#B4552F',
                     'signature_name' => 'Pengarah BeDaie Jelajah',
                     'signature_title' => config('jelajah.org'),
                     'is_active' => true,

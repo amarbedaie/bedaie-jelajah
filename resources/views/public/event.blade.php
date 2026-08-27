@@ -10,9 +10,9 @@
     :ogImage="$event->posterUrl()">
 
     {{-- ══ Hero program ══════════════════════════════════════ --}}
-    <section class="relative overflow-hidden bg-navy-900">
+    <section class="relative overflow-hidden bg-char-900">
         <div class="motif-girih-dark absolute inset-0 opacity-70" aria-hidden="true"></div>
-        <div class="absolute -right-24 -top-32 h-96 w-96 rounded-full bg-brand-500/25 blur-3xl" aria-hidden="true"></div>
+        <div class="absolute -right-24 -top-32 h-96 w-96 rounded-full bg-clay-400/25 blur-3xl" aria-hidden="true"></div>
 
         <div class="jelajah-container relative py-12 sm:py-16">
             <nav aria-label="Laluan" class="mb-6 flex flex-wrap items-center gap-2 text-sm text-white/50">
@@ -38,12 +38,12 @@
                     </h1>
 
                     @if ($event->theme)
-                        <p class="mt-3 text-xl text-brand-200 text-pretty">{{ $event->theme }}</p>
+                        <p class="mt-3 text-xl text-clay-200 text-pretty">{{ $event->theme }}</p>
                     @endif
 
                     <dl class="mt-8 grid gap-5 sm:grid-cols-2">
                         <div class="flex gap-3">
-                            <x-ui.icon name="calendar" class="mt-0.5 h-5 w-5 shrink-0 text-brand-300" />
+                            <x-ui.icon name="calendar" class="mt-0.5 h-5 w-5 shrink-0 text-clay-300" />
                             <div>
                                 <dt class="text-xs uppercase tracking-wider text-white/45">Tarikh & Masa</dt>
                                 <dd class="mt-1 text-white">{{ $event->dateLabel() }}</dd>
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="flex gap-3">
-                            <x-ui.icon name="pin" class="mt-0.5 h-5 w-5 shrink-0 text-brand-300" />
+                            <x-ui.icon name="pin" class="mt-0.5 h-5 w-5 shrink-0 text-clay-300" />
                             <div>
                                 <dt class="text-xs uppercase tracking-wider text-white/45">Lokasi</dt>
                                 <dd class="mt-1 text-white text-pretty">{{ $event->venue?->name ?? $event->locationLabel() }}</dd>
@@ -64,7 +64,7 @@
 
                         @if ($event->speaker)
                             <div class="flex gap-3">
-                                <x-ui.icon name="user" class="mt-0.5 h-5 w-5 shrink-0 text-brand-300" />
+                                <x-ui.icon name="user" class="mt-0.5 h-5 w-5 shrink-0 text-clay-300" />
                                 <div>
                                     <dt class="text-xs uppercase tracking-wider text-white/45">Penceramah</dt>
                                     <dd class="mt-1 text-white">{{ $event->speaker->name }}</dd>
@@ -76,7 +76,7 @@
                         @endif
 
                         <div class="flex gap-3">
-                            <x-ui.icon name="users" class="mt-0.5 h-5 w-5 shrink-0 text-brand-300" />
+                            <x-ui.icon name="users" class="mt-0.5 h-5 w-5 shrink-0 text-clay-300" />
                             <div>
                                 <dt class="text-xs uppercase tracking-wider text-white/45">Sasaran Peserta</dt>
                                 <dd class="mt-1 text-white">{{ $event->target_audience?->label() ?? 'Umum' }}</dd>
@@ -120,7 +120,7 @@
                                 </div>
                             @else
                                 <div class="flex items-baseline justify-between gap-3">
-                                    <p class="font-display text-2xl text-navy-900">{{ $event->priceLabel() }}</p>
+                                    <p class="font-display text-2xl text-ink">{{ $event->priceLabel() }}</p>
                                     @if ($event->capacity)
                                         <p class="text-sm text-ink-muted">
                                             {{ number_format($event->seatsTaken()) }}/{{ number_format($event->capacity) }}
@@ -169,7 +169,7 @@
                                     {!! app(\App\Services\QrCodeService::class)->svg($event->shortUrl(), 84) !!}
                                 </div>
                                 <div class="min-w-0">
-                                    <p class="text-sm font-medium text-navy-900">Imbas untuk mendaftar</p>
+                                    <p class="text-sm font-medium text-ink">Imbas untuk mendaftar</p>
                                     <p class="mt-0.5 break-all font-mono text-xs text-ink-muted">{{ $event->shortUrl() }}</p>
                                 </div>
                             </div>
@@ -186,7 +186,7 @@
             <div class="space-y-10">
                 {{-- Tentang program --}}
                 <div>
-                    <h2 class="text-xl font-semibold text-navy-900">Tentang Program Ini</h2>
+                    <h2 class="text-xl font-semibold text-ink">Tentang Program Ini</h2>
                     <div class="mt-4 space-y-3 leading-relaxed text-ink-soft">
                         @foreach (preg_split('/\n\s*\n/', trim($event->description ?? '')) as $paragraph)
                             <p class="text-pretty">{{ $paragraph }}</p>
@@ -197,13 +197,13 @@
                 {{-- Tentatif --}}
                 @if (! empty($event->tentative))
                     <div>
-                        <h2 class="text-xl font-semibold text-navy-900">Tentatif Program</h2>
+                        <h2 class="text-xl font-semibold text-ink">Tentatif Program</h2>
                         <ol class="mt-4 space-y-0">
                             @foreach ($event->tentative as $i => $row)
-                                <li class="flex gap-4 border-l-2 border-brand-200 pb-5 pl-5 last:pb-0
+                                <li class="flex gap-4 border-l-2 border-clay-200 pb-5 pl-5 last:pb-0
                                            {{ $loop->last ? 'border-transparent' : '' }} relative">
-                                    <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-brand-500 ring-4 ring-cream"></span>
-                                    <span class="w-20 shrink-0 text-sm font-semibold text-brand-700">{{ $row['masa'] ?? '' }}</span>
+                                    <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-clay-400 ring-4 ring-cream"></span>
+                                    <span class="w-20 shrink-0 text-sm font-semibold text-clay-700">{{ $row['masa'] ?? '' }}</span>
                                     <span class="text-sm text-ink-soft text-pretty">{{ $row['aktiviti'] ?? '' }}</span>
                                 </li>
                             @endforeach
@@ -214,7 +214,7 @@
                 {{-- Galeri (program selesai) --}}
                 @if ($event->gallery->isNotEmpty())
                     <div>
-                        <h2 class="text-xl font-semibold text-navy-900">Galeri Program</h2>
+                        <h2 class="text-xl font-semibold text-ink">Galeri Program</h2>
                         <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                             @foreach ($event->gallery as $photo)
                                 <figure class="overflow-hidden rounded-xl bg-mist">
@@ -230,14 +230,14 @@
                 {{-- Testimoni --}}
                 @if ($event->testimonials->isNotEmpty())
                     <div>
-                        <h2 class="text-xl font-semibold text-navy-900">Apa Kata Peserta</h2>
+                        <h2 class="text-xl font-semibold text-ink">Apa Kata Peserta</h2>
                         <div class="mt-4 grid gap-4 sm:grid-cols-2">
                             @foreach ($event->testimonials as $testimonial)
                                 <figure class="rounded-card border border-hairline bg-surface p-5">
                                     <blockquote class="text-sm leading-relaxed text-ink-soft text-pretty">
                                         &ldquo;{{ $testimonial->quote }}&rdquo;
                                     </blockquote>
-                                    <figcaption class="mt-3 text-sm font-medium text-navy-900">
+                                    <figcaption class="mt-3 text-sm font-medium text-ink">
                                         {{ $testimonial->name }}
                                         <span class="block text-xs font-normal text-ink-muted">{{ $testimonial->role_label }}</span>
                                     </figcaption>
@@ -250,11 +250,11 @@
                 {{-- Soalan lazim --}}
                 @if (! empty($event->faqs))
                     <div>
-                        <h2 class="text-xl font-semibold text-navy-900">Soalan Lazim</h2>
+                        <h2 class="text-xl font-semibold text-ink">Soalan Lazim</h2>
                         <div class="mt-4 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface">
                             @foreach ($event->faqs as $faq)
                                 <details class="group">
-                                    <summary class="tap-target flex cursor-pointer items-center justify-between gap-4 px-5 text-sm font-medium text-navy-900">
+                                    <summary class="tap-target flex cursor-pointer items-center justify-between gap-4 px-5 text-sm font-medium text-ink">
                                         {{ $faq['soalan'] ?? '' }}
                                         <x-ui.icon name="chevron-down" class="h-4 w-4 shrink-0 text-ink-muted transition group-open:rotate-180" />
                                     </summary>
@@ -272,7 +272,7 @@
             <aside class="space-y-5">
                 {{-- Lokasi & peta --}}
                 <x-ui.card>
-                    <h3 class="font-semibold text-navy-900">Lokasi</h3>
+                    <h3 class="font-semibold text-ink">Lokasi</h3>
                     <p class="mt-2 text-sm text-ink-soft text-pretty">
                         {{ $event->venue?->address ?? $event->locationLabel() }}
                     </p>
@@ -294,7 +294,7 @@
 
                 {{-- Penganjur --}}
                 <x-ui.card>
-                    <h3 class="font-semibold text-navy-900">Penganjur & Rakan</h3>
+                    <h3 class="font-semibold text-ink">Penganjur & Rakan</h3>
                     <dl class="mt-3 space-y-3 text-sm">
                         @if ($event->organizer_name)
                             <div>
@@ -328,11 +328,11 @@
 
                 {{-- Sijil --}}
                 @if ($event->certificate_enabled)
-                    <div class="rounded-card border border-brand-200 bg-brand-50 p-5">
+                    <div class="rounded-card border border-clay-200 bg-clay-50 p-5">
                         <div class="flex items-start gap-3">
-                            <x-ui.icon name="certificate" class="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                            <x-ui.icon name="certificate" class="mt-0.5 h-5 w-5 shrink-0 text-clay-600" />
                             <div>
-                                <h3 class="font-semibold text-navy-900">Sijil Digital Automatik</h3>
+                                <h3 class="font-semibold text-ink">Sijil Digital Automatik</h3>
                                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                                     Imbas QR kehadiran di pintu masuk, dan sijil anda dijana automatik
                                     selepas program tamat.

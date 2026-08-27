@@ -16,8 +16,8 @@
             @endif
         </div>
     @elseif ($mode === 'regenerate')
-        <div class="w-full max-w-sm rounded-xl border border-brand-200 bg-brand-50/60 p-3 text-left">
-            <p class="text-xs font-semibold text-navy-900">Betulkan nama pada sijil</p>
+        <div class="w-full max-w-sm rounded-xl border border-clay-200 bg-clay-50/60 p-3 text-left">
+            <p class="text-xs font-semibold text-ink">Betulkan nama pada sijil</p>
             <p class="mt-1 text-xs text-ink-soft text-pretty">
                 Sijil baharu akan dijana. Sijil lama ditandakan "Digantikan".
             </p>
@@ -41,7 +41,7 @@
         </div>
     @elseif ($mode === 'revoke')
         <div class="w-full max-w-sm rounded-xl border border-danger/30 bg-danger-soft p-3 text-left">
-            <p class="text-xs font-semibold text-navy-900">Tarik balik sijil</p>
+            <p class="text-xs font-semibold text-ink">Tarik balik sijil</p>
             <p class="mt-1 text-xs text-ink-soft text-pretty">
                 Sijil tidak lagi boleh dimuat turun dan pengesahan awam akan menunjukkan
                 status ditarik balik.

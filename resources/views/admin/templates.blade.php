@@ -19,7 +19,7 @@
                 <x-ui.card>
                     <div class="flex flex-wrap items-start justify-between gap-3">
                         <div class="min-w-0">
-                            <h2 class="font-semibold text-navy-900">{{ $rows->first()->name }}</h2>
+                            <h2 class="font-semibold text-ink">{{ $rows->first()->name }}</h2>
                             <p class="mt-0.5 font-mono text-xs text-ink-muted">{{ $key }}</p>
                         </div>
                     </div>

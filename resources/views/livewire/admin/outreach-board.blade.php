@@ -9,11 +9,11 @@
     <div class="flex flex-wrap items-end justify-between gap-4">
         <dl class="flex flex-wrap gap-x-8 gap-y-3">
             <div>
-                <dd class="font-display text-3xl text-navy-900">{{ number_format($total) }}</dd>
+                <dd class="font-display text-3xl text-ink">{{ number_format($total) }}</dd>
                 <dt class="text-sm text-ink-soft">Sasaran dipaparkan</dt>
             </div>
             <div>
-                <dd class="font-display text-3xl {{ $overdueCount > 0 ? 'text-danger' : 'text-navy-900' }}">
+                <dd class="font-display text-3xl {{ $overdueCount > 0 ? 'text-danger' : 'text-ink' }}">
                     {{ number_format($overdueCount) }}
                 </dd>
                 <dt class="text-sm text-ink-soft">Tindakan tertunggak</dt>
@@ -30,7 +30,7 @@
                     <button type="button" wire:click="$set('view', '{{ $key }}')"
                             aria-pressed="{{ $view === $key ? 'true' : 'false' }}"
                             class="rounded-full px-4 py-1.5 text-sm font-medium transition
-                                   {{ $view === $key ? 'bg-surface text-navy-900 shadow-soft' : 'text-ink-soft hover:text-navy-900' }}">
+                                   {{ $view === $key ? 'bg-surface text-ink shadow-soft' : 'text-ink-soft hover:text-ink' }}">
                         {{ $label }}
                     </button>
                 @endforeach
@@ -45,7 +45,7 @@
     {{-- ══ Borang sasaran baharu ═════════════════════════════ --}}
     @if ($showForm)
         <x-ui.card class="mt-6">
-            <h2 class="font-semibold text-navy-900">Sasaran Baharu</h2>
+            <h2 class="font-semibold text-ink">Sasaran Baharu</h2>
             <p class="mt-1 text-sm text-ink-soft text-pretty">
                 Rekod lokasi yang anda mahu dekati. Jika kontak sudah ada, sasaran terus
                 masuk ke peringkat "Kontak Dijumpai".
@@ -90,7 +90,7 @@
 
                 {{-- ── Sumber sasaran ─────────────────────────── --}}
                 <fieldset class="rounded-xl border border-hairline bg-mist/40 p-4">
-                    <legend class="px-1 text-sm font-medium text-navy-900">
+                    <legend class="px-1 text-sm font-medium text-ink">
                         Dari mana sasaran ini datang? <span class="text-danger" aria-hidden="true">*</span>
                     </legend>
                     <p class="mt-1 text-xs text-ink-soft text-pretty">
@@ -275,20 +275,20 @@
             <button type="button" wire:click="$toggle('mineOnly')"
                     aria-pressed="{{ $mineOnly ? 'true' : 'false' }}"
                     class="tap-target rounded-full px-4 text-sm font-medium transition
-                           {{ $mineOnly ? 'bg-navy-900 text-white' : 'bg-mist text-ink-soft hover:text-navy-900' }}">
+                           {{ $mineOnly ? 'bg-char-900 text-white' : 'bg-mist text-ink-soft hover:text-ink' }}">
                 Sasaran saya
             </button>
 
             <button type="button" wire:click="$toggle('overdueOnly')"
                     aria-pressed="{{ $overdueOnly ? 'true' : 'false' }}"
                     class="tap-target rounded-full px-4 text-sm font-medium transition
-                           {{ $overdueOnly ? 'bg-danger text-white' : 'bg-mist text-ink-soft hover:text-navy-900' }}">
+                           {{ $overdueOnly ? 'bg-danger text-white' : 'bg-mist text-ink-soft hover:text-ink' }}">
                 Tertunggak
             </button>
 
             @if ($this->hasFilters())
                 <button type="button" wire:click="clearFilters"
-                        class="tap-target rounded-full px-4 text-sm text-ink-muted hover:text-navy-900">
+                        class="tap-target rounded-full px-4 text-sm text-ink-muted hover:text-ink">
                     Kosongkan penapis
                 </button>
             @endif
@@ -319,7 +319,7 @@
                     @php $items = $grouped[$stage->value] ?? collect(); @endphp
                     <section class="w-[17rem] shrink-0 snap-start" aria-label="{{ $stage->label() }}">
                         <header class="flex items-center justify-between gap-2 px-1 pb-2.5">
-                            <h3 class="text-sm font-semibold text-navy-900">{{ $stage->label() }}</h3>
+                            <h3 class="text-sm font-semibold text-ink">{{ $stage->label() }}</h3>
                             <span class="rounded-full bg-mist px-2 py-0.5 text-xs font-medium text-ink-soft">
                                 {{ $items->count() }}
                             </span>
@@ -329,13 +329,13 @@
                             @forelse ($items as $target)
                                 <article wire:key="t-{{ $target->id }}"
                                          class="rounded-xl border border-hairline bg-surface p-3.5 shadow-soft
-                                                transition hover:border-brand-200">
+                                                transition hover:border-clay-200">
                                     <div class="flex items-start gap-2">
                                         <x-ui.icon :name="$target->type->icon()"
                                                    class="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" />
                                         <a href="{{ route('admin.sasaran.show', $target) }}"
-                                           class="min-w-0 flex-1 text-sm font-medium leading-snug text-navy-900
-                                                  hover:text-brand-700 text-pretty">
+                                           class="min-w-0 flex-1 text-sm font-medium leading-snug text-ink
+                                                  hover:text-clay-700 text-pretty">
                                             {{ $target->name }}
                                         </a>
                                         @if ($target->priority === \App\Enums\OutreachPriority::Tinggi)
@@ -370,7 +370,7 @@
                                         @if ($stage !== \App\Enums\OutreachStage::Berjaya)
                                             <button type="button" wire:click="advance({{ $target->id }})"
                                                     class="shrink-0 rounded-full p-1.5 text-ink-muted transition
-                                                           hover:bg-brand-50 hover:text-brand-700"
+                                                           hover:bg-clay-50 hover:text-clay-700"
                                                     aria-label="Gerakkan {{ $target->name }} ke peringkat seterusnya">
                                                 <x-ui.icon name="arrow-right" class="h-4 w-4" />
                                             </button>
@@ -387,7 +387,7 @@
 
             @if ($closed->isNotEmpty())
                 <details class="mt-5 rounded-card border border-hairline bg-surface">
-                    <summary class="tap-target flex cursor-pointer items-center justify-between px-5 text-sm font-medium text-navy-900">
+                    <summary class="tap-target flex cursor-pointer items-center justify-between px-5 text-sm font-medium text-ink">
                         Ditutup & ditangguh ({{ $closed->count() }})
                         <x-ui.icon name="chevron-down" class="h-4 w-4 text-ink-muted" />
                     </summary>
@@ -396,7 +396,7 @@
                             <li class="flex flex-wrap items-center justify-between gap-3 px-5 py-3">
                                 <div class="min-w-0">
                                     <a href="{{ route('admin.sasaran.show', $target) }}"
-                                       class="text-sm font-medium text-navy-900 hover:text-brand-700">
+                                       class="text-sm font-medium text-ink hover:text-clay-700">
                                         {{ $target->name }}
                                     </a>
                                     <p class="text-xs text-ink-muted">
@@ -425,7 +425,7 @@
                         <tr wire:key="row-{{ $target->id }}" class="hover:bg-mist/40">
                             <td class="px-4 py-3">
                                 <a href="{{ route('admin.sasaran.show', $target) }}"
-                                   class="font-medium text-navy-900 hover:text-brand-700">{{ $target->name }}</a>
+                                   class="font-medium text-ink hover:text-clay-700">{{ $target->name }}</a>
                                 <p class="font-mono text-xs text-ink-muted">{{ $target->reference_no }}</p>
                             </td>
                             <td class="px-4 py-3 text-ink-soft">{{ $target->locationLabel() }}</td>
@@ -453,7 +453,7 @@
     {{-- ══ RAKAN ═════════════════════════════════════════════ --}}
     @if ($view === 'rakan')
         <div class="mt-6">
-            <h2 class="text-lg font-semibold text-navy-900">Sumbangan Rakan</h2>
+            <h2 class="text-lg font-semibold text-ink">Sumbangan Rakan</h2>
             <p class="mt-1 text-sm text-ink-soft text-pretty">
                 Berapa lokasi dibawa oleh setiap rakan, dan berapa yang akhirnya menjadi jelajah sebenar.
             </p>
@@ -471,12 +471,12 @@
                                 $rate = $row->jumlah > 0 ? round($row->berjaya / $row->jumlah * 100) : 0;
                             @endphp
                             <tr class="hover:bg-mist/40">
-                                <td class="px-4 py-3 font-medium text-navy-900">
+                                <td class="px-4 py-3 font-medium text-ink">
                                     {{ $row->partner?->name ?? 'Rakan dibuang' }}
                                 </td>
-                                <td class="px-4 py-3 text-navy-900">{{ $row->jumlah }}</td>
+                                <td class="px-4 py-3 text-ink">{{ $row->jumlah }}</td>
                                 <td class="px-4 py-3 text-ink-soft">{{ $row->aktif }}</td>
-                                <td class="px-4 py-3 text-navy-900">{{ $row->berjaya }}</td>
+                                <td class="px-4 py-3 text-ink">{{ $row->berjaya }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center gap-2.5">
                                         <span class="h-1.5 w-20 overflow-hidden rounded-full bg-mist">

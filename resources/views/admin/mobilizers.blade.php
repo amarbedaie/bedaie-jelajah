@@ -14,12 +14,12 @@
             @foreach ($users as $user)
                 <tr class="hover:bg-mist/40">
                     <td class="px-4 py-3">
-                        <p class="font-medium text-navy-900">{{ $user->name }}</p>
+                        <p class="font-medium text-ink">{{ $user->name }}</p>
                         <p class="text-xs text-ink-muted">{{ $user->mobilizerProfile?->background?->label() }}</p>
                     </td>
                     <td class="px-4 py-3">
                         <a href="https://wa.me/{{ $user->phone }}" target="_blank" rel="noopener"
-                           class="text-sm font-medium text-brand-600 hover:underline">{{ $user->phone }}</a>
+                           class="text-sm font-medium text-clay-600 hover:underline">{{ $user->phone }}</a>
                         <span class="block text-xs text-ink-muted">{{ $user->email }}</span>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">
@@ -27,8 +27,8 @@
                         <span class="block text-xs text-ink-muted">{{ $user->state?->name }}</span>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">{{ $user->mobilizerProfile?->organization_name ?? '—' }}</td>
-                    <td class="px-4 py-3 text-navy-900">{{ $user->applications_count }}</td>
-                    <td class="px-4 py-3 text-navy-900">{{ $user->mobilized_events_count }}</td>
+                    <td class="px-4 py-3 text-ink">{{ $user->applications_count }}</td>
+                    <td class="px-4 py-3 text-ink">{{ $user->mobilized_events_count }}</td>
                     <td class="px-4 py-3 text-right">
                         <x-ui.button :href="route('admin.penggerak.show', $user)" variant="ghost" size="sm">Buka</x-ui.button>
                     </td>

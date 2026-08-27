@@ -16,10 +16,10 @@
         <div class="flex items-center justify-between gap-3">
             <label class="flex items-center gap-2.5 text-sm text-ink-soft">
                 <input type="checkbox" name="remember" value="1"
-                       class="h-4 w-4 rounded border-hairline text-brand-500 focus:ring-brand-500" />
+                       class="h-4 w-4 rounded border-hairline text-clay-400 focus:ring-clay-400" />
                 Ingat saya
             </label>
-            <a href="{{ route('password.request') }}" class="text-sm font-medium text-brand-700 hover:underline">
+            <a href="{{ route('password.request') }}" class="text-sm font-medium text-clay-700 hover:underline">
                 Lupa kata laluan?
             </a>
         </div>
@@ -27,7 +27,7 @@
         <x-ui.button type="submit" variant="primary" block size="lg">Log Masuk</x-ui.button>
     </form>
 
-    <div class="mt-7 rounded-xl border border-brand-200 bg-brand-50 p-4 text-center">
+    <div class="mt-7 rounded-xl border border-clay-200 bg-clay-50 p-4 text-center">
         <p class="text-sm text-ink-soft text-pretty">
             Anda Penggerak yang baru menghantar permohonan? Akaun anda dicipta
             automatik tanpa kata laluan.
@@ -39,7 +39,7 @@
 
     <p class="mt-6 text-center text-sm text-ink-soft">
         Belum ada akaun?
-        <a href="{{ route('register') }}" class="font-medium text-brand-600 hover:underline">Daftar sekarang</a>
+        <a href="{{ route('register') }}" class="font-medium text-clay-600 hover:underline">Daftar sekarang</a>
     </p>
 
     @if (! app()->environment('production'))

@@ -3,7 +3,7 @@
     <div class="no-scrollbar -mx-1 mb-5 flex gap-2 overflow-x-auto pb-1">
         <a href="{{ route('admin.permohonan') }}"
            class="tap-target flex shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition
-                  {{ ! request('status') ? 'bg-navy-900 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
+                  {{ ! request('status') ? 'bg-char-900 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
             Semua <span class="text-xs opacity-70">{{ $counts->sum() }}</span>
         </a>
         @foreach ($statuses as $value => $label)
@@ -11,7 +11,7 @@
             @if ($count > 0 || request('status') === $value)
                 <a href="{{ route('admin.permohonan', ['status' => $value]) }}"
                    class="tap-target flex shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition
-                          {{ request('status') === $value ? 'bg-navy-900 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
+                          {{ request('status') === $value ? 'bg-char-900 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
                     {{ $label }} <span class="text-xs opacity-70">{{ $count }}</span>
                 </a>
             @endif
@@ -42,7 +42,7 @@
                 <tr class="hover:bg-mist/40">
                     <td class="px-4 py-3 font-mono text-xs text-ink-soft">{{ $application->reference_no }}</td>
                     <td class="px-4 py-3">
-                        <p class="font-medium text-navy-900">{{ $application->venue_name }}</p>
+                        <p class="font-medium text-ink">{{ $application->venue_name }}</p>
                         <p class="text-xs text-ink-muted">{{ $application->applicant_name }}</p>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">

@@ -44,14 +44,14 @@
                 <div class="rounded-card border border-hairline bg-surface p-5 shadow-soft">
                     <div class="flex items-start justify-between gap-3">
                         <div>
-                            <dd class="font-display text-3xl text-navy-900">{{ $value }}</dd>
+                            <dd class="font-display text-3xl text-ink">{{ $value }}</dd>
                             <dt class="mt-1 text-sm text-ink-soft text-pretty">{{ $label }}</dt>
                         </div>
-                        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-50">
-                            <x-ui.icon :name="$icon" class="h-4 w-4 text-brand-600" />
+                        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-clay-50">
+                            <x-ui.icon :name="$icon" class="h-4 w-4 text-clay-600" />
                         </span>
                     </div>
-                    <a href="{{ $url }}" class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-brand-600 hover:underline">
+                    <a href="{{ $url }}" class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-clay-600 hover:underline">
                         Lihat <x-ui.icon name="arrow-right" class="h-3 w-3" />
                     </a>
                 </div>
@@ -64,7 +64,7 @@
     <div class="mt-7 grid gap-6 lg:grid-cols-2">
         {{-- ── Program hari ini ───────────────────────────── --}}
         <section class="min-w-0">
-            <h2 class="mb-3 text-lg font-semibold text-navy-900">Berlangsung Hari Ini</h2>
+            <h2 class="mb-3 text-lg font-semibold text-ink">Berlangsung Hari Ini</h2>
             @if ($todayEvents->isEmpty())
                 <x-ui.empty-state compact icon="calendar" title="Tiada program hari ini"
                     description="Program yang dijadualkan hari ini akan muncul di sini." />
@@ -74,7 +74,7 @@
                         <li class="rounded-card border border-hairline bg-surface p-5">
                             <div class="flex flex-wrap items-start justify-between gap-3">
                                 <div class="min-w-0">
-                                    <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
+                                    <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                                     <p class="mt-0.5 text-sm text-ink-muted text-pretty">
                                         {{ $event->timeLabel() }} &middot; {{ $event->venue?->name ?? $event->locationLabel() }}
                                     </p>
@@ -98,8 +98,8 @@
         {{-- ── Permohonan terkini ─────────────────────────── --}}
         <section class="min-w-0">
             <div class="mb-3 flex items-end justify-between gap-3">
-                <h2 class="text-lg font-semibold text-navy-900">Permohonan Terkini</h2>
-                <a href="{{ route('admin.permohonan') }}" class="text-sm font-medium text-brand-600 hover:underline">
+                <h2 class="text-lg font-semibold text-ink">Permohonan Terkini</h2>
+                <a href="{{ route('admin.permohonan') }}" class="text-sm font-medium text-clay-600 hover:underline">
                     Semua
                 </a>
             </div>
@@ -113,7 +113,7 @@
                             <a href="{{ route('admin.permohonan.show', $application) }}"
                                class="flex items-start justify-between gap-3 p-4 hover:bg-mist/60">
                                 <div class="min-w-0">
-                                    <p class="truncate font-medium text-navy-900">{{ $application->venue_name }}</p>
+                                    <p class="truncate font-medium text-ink">{{ $application->venue_name }}</p>
                                     <p class="mt-0.5 truncate text-xs text-ink-muted">
                                         {{ $application->reference_no }} &middot; {{ $application->state?->name }}
                                         &middot; {{ $application->submitted_at?->diffForHumans() }}
@@ -133,8 +133,8 @@
     {{-- ── Permintaan kawasan ─────────────────────────────── --}}
     <section class="mt-7">
         <div class="mb-3 flex items-end justify-between gap-3">
-            <h2 class="text-lg font-semibold text-navy-900">Kawasan Permintaan Tertinggi</h2>
-            <a href="{{ route('admin.permintaan') }}" class="text-sm font-medium text-brand-600 hover:underline">
+            <h2 class="text-lg font-semibold text-ink">Kawasan Permintaan Tertinggi</h2>
+            <a href="{{ route('admin.permintaan') }}" class="text-sm font-medium text-clay-600 hover:underline">
                 Semua permintaan
             </a>
         </div>
@@ -147,7 +147,7 @@
                     <li class="flex items-center justify-between gap-3 rounded-card border
                                border-hairline bg-surface p-4">
                         <div class="min-w-0">
-                            <p class="truncate font-medium text-navy-900">
+                            <p class="truncate font-medium text-ink">
                                 {{ $area->district?->name ?? $area->state?->name }}
                             </p>
                             <p class="truncate text-xs text-ink-muted">{{ $area->state?->name }}</p>

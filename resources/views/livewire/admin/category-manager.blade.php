@@ -10,7 +10,7 @@
 
     @if ($showForm)
         <x-ui.card class="mb-6">
-            <h3 class="font-semibold text-navy-900">
+            <h3 class="font-semibold text-ink">
                 {{ $editingId ? 'Kemas Kini Kategori' : 'Kategori Baharu' }}
             </h3>
 
@@ -34,7 +34,7 @@
                 </x-ui.field>
 
                 <fieldset>
-                    <legend class="mb-2.5 block text-sm font-medium text-navy-900">
+                    <legend class="mb-2.5 block text-sm font-medium text-ink">
                         Ikon <span class="text-danger" aria-hidden="true">*</span>
                     </legend>
                     <div class="flex flex-wrap gap-2">
@@ -44,8 +44,8 @@
                                     aria-label="Ikon {{ $option }}"
                                     class="tap-target grid place-items-center rounded-xl border transition
                                            {{ $icon === $option
-                                              ? 'border-brand-500 bg-brand-50 text-brand-700 ring-1 ring-brand-500'
-                                              : 'border-hairline bg-surface text-ink-soft hover:border-brand-300' }}">
+                                              ? 'border-clay-400 bg-clay-50 text-clay-700 ring-1 ring-clay-400'
+                                              : 'border-hairline bg-surface text-ink-soft hover:border-clay-300' }}">
                                 <x-ui.icon :name="$option" class="h-5 w-5" />
                             </button>
                         @endforeach
@@ -88,11 +88,11 @@
                 <tr wire:key="category-{{ $category->id }}" class="hover:bg-mist/40">
                     <td class="px-4 py-3">
                         <div class="flex items-center gap-3">
-                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-50">
-                                <x-ui.icon :name="$category->icon ?? 'book'" class="h-4 w-4 text-brand-600" />
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-clay-50">
+                                <x-ui.icon :name="$category->icon ?? 'book'" class="h-4 w-4 text-clay-600" />
                             </span>
                             <div class="min-w-0">
-                                <p class="font-medium text-navy-900">{{ $category->name }}</p>
+                                <p class="font-medium text-ink">{{ $category->name }}</p>
                                 <p class="font-mono text-xs text-ink-muted">{{ $category->slug }}</p>
                             </div>
                         </div>
@@ -100,9 +100,9 @@
                     <td class="max-w-md px-4 py-3 text-ink-soft text-pretty">
                         {{ \Illuminate\Support\Str::limit($category->description, 90) }}
                     </td>
-                    <td class="px-4 py-3 text-navy-900">{{ $category->events_count }}</td>
-                    <td class="px-4 py-3 text-navy-900">{{ $category->applications_count }}</td>
-                    <td class="px-4 py-3 text-navy-900">{{ $category->area_interest_requests_count }}</td>
+                    <td class="px-4 py-3 text-ink">{{ $category->events_count }}</td>
+                    <td class="px-4 py-3 text-ink">{{ $category->applications_count }}</td>
+                    <td class="px-4 py-3 text-ink">{{ $category->area_interest_requests_count }}</td>
                     <td class="px-4 py-3">
                         <button type="button" wire:click="toggleActive({{ $category->id }})"
                                 aria-label="Tukar status aktif">

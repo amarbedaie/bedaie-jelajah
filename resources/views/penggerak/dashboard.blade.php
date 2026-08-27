@@ -6,7 +6,7 @@
     {{-- ── Salam ──────────────────────────────────────────── --}}
     <div class="mb-7">
         <p class="text-sm text-ink-muted">{{ $greeting }},</p>
-        <h1 class="mt-0.5 font-display text-2xl text-navy-900 sm:text-3xl">{{ $user->name }}</h1>
+        <h1 class="mt-0.5 font-display text-2xl text-ink sm:text-3xl">{{ $user->name }}</h1>
         <p class="mt-1.5 text-ink-soft text-pretty">
             Terima kasih kerana menggerakkan ilmu di kawasan anda.
         </p>
@@ -15,18 +15,18 @@
     @if ($active)
         {{-- ══ PROGRAM AKTIF ═══════════════════════════════ --}}
         <section class="overflow-hidden rounded-card-lg border border-hairline bg-surface shadow-soft">
-            <div class="relative bg-navy-900 p-6">
-                <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
+            <div class="relative border-b border-hairline bg-cream p-6">
+                <div class="motif-girih absolute inset-0 opacity-45" aria-hidden="true"></div>
                 <div class="relative flex flex-wrap items-start justify-between gap-4">
                     <div class="min-w-0">
                         <div class="flex flex-wrap items-center gap-2">
-                            <x-ui.badge color="white">{{ $active->status->label() }}</x-ui.badge>
-                            <x-ui.badge color="white">{{ $active->priceLabel() }}</x-ui.badge>
+                            <x-ui.badge color="purple">{{ $active->status->label() }}</x-ui.badge>
+                            <x-ui.badge color="grey">{{ $active->priceLabel() }}</x-ui.badge>
                         </div>
-                        <h2 class="mt-3 text-xl font-semibold leading-snug text-white text-pretty">
+                        <h2 class="mt-3 font-display text-2xl leading-snug text-ink text-pretty">
                             {{ $active->title }}
                         </h2>
-                        <p class="mt-2 text-sm text-white/70 text-pretty">
+                        <p class="mt-2.5 text-sm text-ink-soft text-pretty">
                             {{ $active->dateLabel() }} &middot; {{ $active->timeLabel() }}<br>
                             {{ $active->venue?->name ?? $active->locationLabel() }}
                         </p>
@@ -34,9 +34,9 @@
 
                     @if ($active->countdownTarget())
                         <div x-data="countdown('{{ $active->countdownTarget()->toIso8601String() }}')"
-                             class="shrink-0 rounded-xl bg-white/10 px-4 py-3 text-center ring-1 ring-white/15" x-cloak>
-                            <p class="font-display text-2xl text-white" x-text="hari">—</p>
-                            <p class="text-xs uppercase tracking-wider text-white/50">Hari lagi</p>
+                             class="shrink-0 rounded-lg border border-hairline bg-surface px-4 py-3 text-center" x-cloak>
+                            <p class="font-display text-2xl text-ink" x-text="hari">—</p>
+                            <p class="text-xs uppercase tracking-wider text-ink-muted">Hari lagi</p>
                         </div>
                     @endif
                 </div>
@@ -45,7 +45,7 @@
             {{-- Kemajuan pendaftaran --}}
             <div class="border-b border-hairline p-6">
                 <div class="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 class="font-semibold text-navy-900">Kemajuan Pendaftaran</h3>
+                    <h3 class="font-semibold text-ink">Kemajuan Pendaftaran</h3>
                     <p class="text-sm text-ink-muted">Sasaran {{ number_format($active->capacity) }} peserta</p>
                 </div>
 
@@ -55,24 +55,24 @@
                 </div>
 
                 <dl class="mt-5 grid grid-cols-3 gap-3">
-                    <div class="rounded-xl bg-brand-50 p-3.5">
-                        <dd class="font-display text-2xl text-brand-700">{{ number_format($active->seatsTaken()) }}</dd>
+                    <div class="rounded-xl bg-clay-50 p-3.5">
+                        <dd class="font-display text-2xl text-clay-700">{{ number_format($active->seatsTaken()) }}</dd>
                         <dt class="mt-0.5 text-xs text-ink-soft">Telah mendaftar</dt>
                     </div>
                     <div class="rounded-xl bg-mist p-3.5">
-                        <dd class="font-display text-2xl text-navy-900">
+                        <dd class="font-display text-2xl text-ink">
                             {{ $active->seatsLeft() !== null ? number_format($active->seatsLeft()) : '∞' }}
                         </dd>
                         <dt class="mt-0.5 text-xs text-ink-soft">Tempat tersedia</dt>
                     </div>
                     <div class="rounded-xl bg-mist p-3.5">
-                        <dd class="font-display text-2xl text-navy-900">{{ number_format($active->attended_count) }}</dd>
+                        <dd class="font-display text-2xl text-ink">{{ number_format($active->attended_count) }}</dd>
                         <dt class="mt-0.5 text-xs text-ink-soft">Telah hadir</dt>
                     </div>
                 </dl>
 
                 <p class="mt-4 text-sm text-ink-soft text-pretty">
-                    <strong class="text-navy-900">{{ number_format($active->seatsTaken()) }} telah mendaftar.</strong>
+                    <strong class="text-ink">{{ number_format($active->seatsTaken()) }} telah mendaftar.</strong>
                     @if ($active->seatsLeft() !== null && $active->seatsLeft() > 0)
                         {{ number_format($active->seatsLeft()) }} tempat masih tersedia.
                     @elseif ($active->isFull())
@@ -83,7 +83,7 @@
 
             {{-- Kongsi --}}
             <div class="p-6">
-                <h3 class="font-semibold text-navy-900">Sebarkan Program Ini</h3>
+                <h3 class="font-semibold text-ink">Sebarkan Program Ini</h3>
                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                     Cara paling berkesan: kongsi di WhatsApp kumpulan kariah dan keluarga.
                 </p>
@@ -117,8 +117,8 @@
                         <div class="shrink-0 rounded-xl bg-white p-2.5 ring-1 ring-hairline">{!! $qrSvg !!}</div>
                     @endif
                     <div class="min-w-0 flex-1 text-center sm:text-left">
-                        <p class="text-sm font-medium text-navy-900">Link pendaftaran anda</p>
-                        <p class="mt-1 break-all font-mono text-sm text-brand-700">{{ $active->shortUrl() }}</p>
+                        <p class="text-sm font-medium text-ink">Link pendaftaran anda</p>
+                        <p class="mt-1 break-all font-mono text-sm text-clay-700">{{ $active->shortUrl() }}</p>
                         <p class="mt-2.5 text-xs text-ink-muted text-pretty">
                             Cetak QR ini pada poster atau paparkan di skrin masjid.
                         </p>
@@ -155,9 +155,9 @@
     {{-- ══ PERMOHONAN SAYA ═════════════════════════════════ --}}
     <section class="mt-8">
         <div class="flex flex-wrap items-end justify-between gap-3">
-            <h2 class="text-lg font-semibold text-navy-900">Permohonan Saya</h2>
+            <h2 class="text-lg font-semibold text-ink">Permohonan Saya</h2>
             <a href="{{ route('penggerak.permohonan') }}"
-               class="text-sm font-medium text-brand-600 hover:underline">Lihat semua</a>
+               class="text-sm font-medium text-clay-600 hover:underline">Lihat semua</a>
         </div>
 
         @if ($applications->isEmpty())
@@ -174,10 +174,10 @@
                     <li>
                         <a href="{{ route('penggerak.permohonan.show', $application) }}"
                            class="block rounded-card border border-hairline bg-surface p-5
-                                  transition hover:border-brand-200 hover:shadow-soft">
+                                  transition hover:border-clay-200 hover:shadow-soft">
                             <div class="flex flex-wrap items-start justify-between gap-3">
                                 <div class="min-w-0">
-                                    <p class="font-medium text-navy-900 text-pretty">{{ $application->venue_name }}</p>
+                                    <p class="font-medium text-ink text-pretty">{{ $application->venue_name }}</p>
                                     <p class="mt-0.5 text-sm text-ink-muted">
                                         {{ $application->reference_no }} &middot;
                                         {{ $application->district?->name ? $application->district->name.', ' : '' }}{{ $application->state?->name }}
@@ -206,9 +206,9 @@
     @if ($pastEvents->isNotEmpty())
         <section class="mt-8">
             <div class="flex flex-wrap items-end justify-between gap-3">
-                <h2 class="text-lg font-semibold text-navy-900">Program Yang Telah Selesai</h2>
+                <h2 class="text-lg font-semibold text-ink">Program Yang Telah Selesai</h2>
                 <a href="{{ route('penggerak.sijil') }}"
-                   class="text-sm font-medium text-brand-600 hover:underline">Sijil & laporan</a>
+                   class="text-sm font-medium text-clay-600 hover:underline">Sijil & laporan</a>
             </div>
 
             <ul class="mt-4 grid gap-4 sm:grid-cols-2">
@@ -216,8 +216,8 @@
                     <li>
                         <a href="{{ route('penggerak.program.show', $event) }}"
                            class="flex h-full flex-col rounded-card border border-hairline bg-surface p-5
-                                  transition hover:border-brand-200 hover:shadow-soft">
-                            <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
+                                  transition hover:border-clay-200 hover:shadow-soft">
+                            <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                             <p class="mt-0.5 text-sm text-ink-muted">{{ $event->dateLabel() }}</p>
                             <div class="mt-3 flex flex-wrap gap-2">
                                 <x-ui.badge color="purple" icon="users">

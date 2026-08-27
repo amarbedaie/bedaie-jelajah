@@ -15,7 +15,7 @@
                     ['rakan', 'Rakan Masjid & Organisasi'],
                 ] as [$key, $label])
                     <div>
-                        <dd class="font-display text-3xl text-navy-900 sm:text-4xl">{{ number_format($headline[$key]) }}</dd>
+                        <dd class="font-display text-3xl text-ink sm:text-4xl">{{ number_format($headline[$key]) }}</dd>
                         <dt class="mt-1 text-sm text-ink-soft text-pretty">{{ $label }}</dt>
                     </div>
                 @endforeach
@@ -62,8 +62,8 @@
             </div>
 
             <aside class="space-y-5">
-                <div class="rounded-card-lg bg-navy-900 p-7 text-white">
-                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">Slogan Kami</p>
+                <div class="rounded-card-lg bg-char-900 p-7 text-white">
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay-300">Slogan Kami</p>
                     <p class="mt-4 font-display text-2xl leading-tight">
                         {{ config('jelajah.slogan') }}
                     </p>
@@ -72,15 +72,15 @@
                         itulah ukuran sebenar jelajah ini.
                     </p>
                     <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-white/8 px-4 py-2
-                              text-sm text-brand-300 ring-1 ring-white/10">
+                              text-sm text-clay-300 ring-1 ring-white/10">
                         <x-ui.icon name="home" class="h-4 w-4" /> {{ config('jelajah.motto') }}
                     </p>
                 </div>
 
                 <x-ui.card>
-                    <h3 class="font-semibold text-navy-900">Dianjurkan oleh</h3>
+                    <h3 class="font-semibold text-ink">Dianjurkan oleh</h3>
                     <p class="mt-2 text-sm text-ink-soft">
-                        <strong class="text-navy-900">BeDaie</strong><br>
+                        <strong class="text-ink">BeDaie</strong><br>
                         {{ config('jelajah.org') }}
                     </p>
                     <x-ui.button :href="config('jelajah.website')" target="_blank" rel="noopener"
@@ -90,7 +90,7 @@
                 </x-ui.card>
 
                 <x-ui.card>
-                    <h3 class="font-semibold text-navy-900">Mula Sekarang</h3>
+                    <h3 class="font-semibold text-ink">Mula Sekarang</h3>
                     <div class="mt-4 grid gap-2.5">
                         <x-ui.button :href="route('jemput')" variant="primary" block icon="heart">
                             Jemput BeDaie
@@ -114,9 +114,9 @@
                         <li>
                             <a href="{{ $event->publicUrl() }}"
                                class="flex items-center justify-between gap-4 rounded-card border
-                                      border-hairline bg-surface p-5 transition hover:border-brand-200 hover:shadow-soft">
+                                      border-hairline bg-surface p-5 transition hover:border-clay-200 hover:shadow-soft">
                                 <div class="min-w-0">
-                                    <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
+                                    <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                                     <p class="mt-0.5 text-sm text-ink-muted">
                                         {{ $event->dateLabel() }} &middot; {{ $event->state?->name }}
                                     </p>
@@ -141,7 +141,7 @@
                                 &ldquo;{{ $testimonial->quote }}&rdquo;
                             </blockquote>
                             <figcaption class="mt-5 border-t border-hairline pt-4">
-                                <p class="font-medium text-navy-900">{{ $testimonial->name }}</p>
+                                <p class="font-medium text-ink">{{ $testimonial->name }}</p>
                                 <p class="mt-0.5 text-sm text-ink-muted">{{ $testimonial->role_label }}</p>
                             </figcaption>
                         </figure>

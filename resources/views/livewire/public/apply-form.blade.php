@@ -12,7 +12,7 @@
     <nav aria-label="Kemajuan borang" class="mb-8">
         <p class="mb-3 text-sm font-medium text-ink-soft">
             Langkah {{ $step }} daripada {{ \App\Livewire\Public\ApplyForm::LAST_STEP }} &middot;
-            <span class="text-navy-900">{{ $steps[$step][0] }}</span>
+            <span class="text-ink">{{ $steps[$step][0] }}</span>
         </p>
 
         <ol class="flex items-center gap-1.5">
@@ -20,7 +20,7 @@
                 @php
                     $done = $number < $step;
                     $current = $number === $step;
-                    $bar = $done || $current ? 'bg-brand-500' : 'bg-hairline';
+                    $bar = $done || $current ? 'bg-clay-400' : 'bg-hairline';
                 @endphp
                 <li class="flex-1">
                     {{-- Label langkah tersembunyi bawah sm, jadi bar yang
@@ -32,9 +32,9 @@
                             @if (! $done) aria-hidden="true" tabindex="-1" @endif
                             aria-current="{{ $current ? 'step' : 'false' }}"
                             class="group flex w-full flex-col gap-1.5 text-left {{ $done ? 'cursor-pointer' : 'cursor-default' }}">
-                        <span class="h-1.5 w-full rounded-full transition {{ $bar }} {{ $done ? 'group-hover:bg-brand-600' : '' }}"></span>
+                        <span class="h-1.5 w-full rounded-full transition {{ $bar }} {{ $done ? 'group-hover:bg-clay-600' : '' }}"></span>
                         <span class="hidden text-xs font-medium sm:block
-                                     {{ $done || $current ? 'text-brand-700' : 'text-ink-muted' }}">
+                                     {{ $done || $current ? 'text-clay-700' : 'text-ink-muted' }}">
                             {{ $meta[0] }}
                         </span>
                     </button>
@@ -48,7 +48,7 @@
         @if ($step === 1)
             <div class="space-y-6">
                 <div>
-                    <h2 class="text-xl font-semibold text-navy-900">Tentang Anda</h2>
+                    <h2 class="text-xl font-semibold text-ink">Tentang Anda</h2>
                     <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                         Kami perlukan cara untuk menghubungi anda. WhatsApp adalah saluran utama kami.
                     </p>
@@ -99,7 +99,7 @@
                 </div>
 
                 <fieldset>
-                    <legend class="mb-2.5 block text-sm font-medium text-navy-900">
+                    <legend class="mb-2.5 block text-sm font-medium text-ink">
                         Saya ialah <span class="text-danger" aria-hidden="true">*</span>
                     </legend>
                     <div class="grid gap-2.5 sm:grid-cols-2">
@@ -129,7 +129,7 @@
         @if ($step === 2)
             <div class="space-y-6">
                 <div>
-                    <h2 class="text-xl font-semibold text-navy-900">Cadangan Lokasi</h2>
+                    <h2 class="text-xl font-semibold text-ink">Cadangan Lokasi</h2>
                     <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                         Di mana anda mahu program ini diadakan? Tidak mengapa jika pihak lokasi
                         belum bersetuju — kami boleh membantu.
@@ -158,7 +158,7 @@
                 </x-ui.field>
 
                 <fieldset>
-                    <legend class="mb-2.5 block text-sm font-medium text-navy-900">
+                    <legend class="mb-2.5 block text-sm font-medium text-ink">
                         Adakah pihak lokasi telah bersetuju? <span class="text-danger" aria-hidden="true">*</span>
                     </legend>
                     <div class="grid gap-2.5">
@@ -194,7 +194,7 @@
         @if ($step === 3)
             <div class="space-y-6">
                 <div>
-                    <h2 class="text-xl font-semibold text-navy-900">Cadangan Program</h2>
+                    <h2 class="text-xl font-semibold text-ink">Cadangan Program</h2>
                     <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                         Beritahu kami keperluan komuniti anda. Pasukan BeDaie akan menentukan
                         penceramah dan pengisian yang paling sesuai.
@@ -237,7 +237,7 @@
                 </div>
 
                 <fieldset>
-                    <legend class="mb-2.5 block text-sm font-medium text-navy-900">
+                    <legend class="mb-2.5 block text-sm font-medium text-ink">
                         Anggaran peserta <span class="text-danger" aria-hidden="true">*</span>
                     </legend>
                     <div class="grid gap-2.5 sm:grid-cols-2">
@@ -254,7 +254,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend class="mb-2.5 block text-sm font-medium text-navy-900">
+                    <legend class="mb-2.5 block text-sm font-medium text-ink">
                         Sasaran peserta <span class="text-danger" aria-hidden="true">*</span>
                     </legend>
                     <div class="grid gap-2.5 sm:grid-cols-2">
@@ -314,7 +314,7 @@
 
             <div class="space-y-6">
                 <div>
-                    <h2 class="text-xl font-semibold text-navy-900">Semak & Hantar</h2>
+                    <h2 class="text-xl font-semibold text-ink">Semak & Hantar</h2>
                     <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                         Sila semak maklumat di bawah. Anda boleh kembali untuk membetulkannya.
                     </p>
@@ -324,9 +324,9 @@
                     @foreach ($summary as $sectionTitle => [$targetStep, $rows])
                         <div class="rounded-xl border border-hairline bg-mist/50 p-4">
                             <div class="flex items-center justify-between gap-3">
-                                <h3 class="text-sm font-semibold text-navy-900">{{ $sectionTitle }}</h3>
+                                <h3 class="text-sm font-semibold text-ink">{{ $sectionTitle }}</h3>
                                 <button type="button" wire:click="goTo({{ $targetStep }})"
-                                        class="rounded-full px-2.5 py-1 text-xs font-medium text-brand-600 hover:bg-brand-50">
+                                        class="rounded-full px-2.5 py-1 text-xs font-medium text-clay-600 hover:bg-clay-50">
                                     Ubah
                                 </button>
                             </div>
@@ -393,6 +393,6 @@
     <p class="mt-6 text-center text-sm text-ink-muted">
         Ada soalan? Hubungi kami di
         <a href="https://wa.me/{{ config('jelajah.support.phone') }}" target="_blank" rel="noopener"
-           class="font-medium text-brand-600 hover:underline">WhatsApp</a>.
+           class="font-medium text-clay-600 hover:underline">WhatsApp</a>.
     </p>
 </div>

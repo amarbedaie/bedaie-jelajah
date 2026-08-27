@@ -2,7 +2,7 @@
 
 <div {{ $attributes->merge(['class' => 'space-y-1.5']) }}>
     @if ($label)
-        <label @if($for) for="{{ $for }}" @endif class="block text-sm font-medium text-navy-900">
+        <label @if($for) for="{{ $for }}" @endif class="block text-sm font-medium text-ink">
             {{ $label }}
             @if ($required)
                 <span class="text-danger" aria-hidden="true">*</span>
@@ -20,7 +20,7 @@
              dan role="alert" supaya pembaca skrin mengumumkannya apabila
              Livewire memaparkan semula. --}}
         <p @if ($for) id="{{ $for }}-error" @endif role="alert"
-           class="flex items-start gap-1.5 text-sm text-danger-ink">
+           class="flex items-start gap-1.5 text-sm text-danger">
             <x-ui.icon name="alert" class="w-4 h-4 mt-0.5 shrink-0" />
             <span>{{ $error }}</span>
         </p>

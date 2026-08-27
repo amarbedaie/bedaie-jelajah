@@ -1,7 +1,7 @@
 <div>
     <div class="mb-4 flex flex-wrap items-end justify-between gap-3">
         <div>
-            <h2 class="text-lg font-semibold text-navy-900">Testimoni</h2>
+            <h2 class="text-lg font-semibold text-ink">Testimoni</h2>
             <p class="mt-0.5 text-sm text-ink-soft">Hanya testimoni yang diluluskan dipaparkan kepada umum.</p>
         </div>
         @unless ($showForm)
@@ -12,7 +12,7 @@
     {{-- ── Borang ─────────────────────────────────────────── --}}
     @if ($showForm)
         <x-ui.card class="mb-6">
-            <h3 class="font-semibold text-navy-900">
+            <h3 class="font-semibold text-ink">
                 {{ $editingId ? 'Kemas Kini Testimoni' : 'Testimoni Baharu' }}
             </h3>
 
@@ -95,7 +95,7 @@
             @foreach ($testimonials as $testimonial)
                 <tr wire:key="testimonial-{{ $testimonial->id }}" class="hover:bg-mist/40">
                     <td class="px-4 py-3">
-                        <p class="font-medium text-navy-900">{{ $testimonial->name }}</p>
+                        <p class="font-medium text-ink">{{ $testimonial->name }}</p>
                         <p class="text-xs text-ink-muted">{{ $testimonial->role_label }}</p>
                     </td>
                     <td class="max-w-lg px-4 py-3 text-ink-soft text-pretty">

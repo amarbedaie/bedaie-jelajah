@@ -5,7 +5,7 @@
                 <x-ui.icon name="check-circle" class="h-8 w-8 text-success" />
             </div>
 
-            <h1 class="mt-6 font-display text-3xl text-navy-900 sm:text-4xl text-pretty">
+            <h1 class="mt-6 font-display text-3xl text-ink sm:text-4xl text-pretty">
                 Permohonan Anda Telah Kami Terima
             </h1>
 
@@ -15,9 +15,9 @@
             </p>
 
             <div class="mt-8 rounded-card border border-hairline bg-surface p-6 text-left shadow-soft">
-                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">Nombor Rujukan</p>
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-600">Nombor Rujukan</p>
                 <div class="mt-2 flex flex-wrap items-center gap-3">
-                    <p class="font-display text-2xl text-navy-900">{{ $application->reference_no }}</p>
+                    <p class="font-display text-2xl text-ink">{{ $application->reference_no }}</p>
                     <x-ui.copy-button :text="$application->reference_no" label="Salin" size="sm" />
                 </div>
 
@@ -47,8 +47,8 @@
                 </dl>
             </div>
 
-            <div class="mt-8 rounded-card bg-brand-50 p-6 text-left">
-                <h2 class="font-semibold text-navy-900">Apa yang berlaku seterusnya?</h2>
+            <div class="mt-8 rounded-card bg-clay-50 p-6 text-left">
+                <h2 class="font-semibold text-ink">Apa yang berlaku seterusnya?</h2>
                 <ol class="mt-3 space-y-2.5">
                     @foreach ([
                         'Kami semak permohonan dan kesesuaian lokasi.',
@@ -57,7 +57,7 @@
                         'Program disahkan — halaman program, link, QR dan poster dijana automatik untuk anda sebarkan.',
                     ] as $i => $text)
                         <li class="flex gap-3 text-sm text-ink-soft text-pretty">
-                            <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-action
+                            <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-clay-600
                                          text-[0.65rem] font-bold text-white">{{ $i + 1 }}</span>
                             {{ $text }}
                         </li>

@@ -14,7 +14,7 @@
         ] as [$name, $ready, $onText, $offText])
             <div class="rounded-card border border-hairline bg-surface p-5">
                 <div class="flex items-center justify-between gap-3">
-                    <p class="font-medium text-navy-900">{{ $name }}</p>
+                    <p class="font-medium text-ink">{{ $name }}</p>
                     <x-ui.badge :color="$ready ? 'success' : 'warning'" dot>
                         {{ $ready ? 'Aktif' : 'Mod log' }}
                     </x-ui.badge>
@@ -67,7 +67,7 @@
                         </x-ui.badge>
                     </td>
                     <td class="px-4 py-3">
-                        <p class="text-navy-900">{{ $log->recipient_name ?? '—' }}</p>
+                        <p class="text-ink">{{ $log->recipient_name ?? '—' }}</p>
                         {{-- Alamat penuh disimpan; dipaparkan separa demi privasi. --}}
                         <p class="font-mono text-xs text-ink-muted">{{ $log->maskedAddress() }}</p>
                     </td>

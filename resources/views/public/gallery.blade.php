@@ -18,7 +18,7 @@
                              alt="{{ $photo->caption ?? $photo->event?->title }}" loading="lazy"
                              class="w-full object-cover" />
                         <figcaption class="p-3">
-                            <p class="text-sm text-navy-900 text-pretty">{{ $photo->caption ?? $photo->event?->title }}</p>
+                            <p class="text-sm text-ink text-pretty">{{ $photo->caption ?? $photo->event?->title }}</p>
                             @if ($photo->event)
                                 <p class="mt-0.5 text-xs text-ink-muted">
                                     {{ $photo->event->venue?->name ?? $photo->event->state?->name }}

@@ -1,12 +1,12 @@
 <x-layouts.app title="Pasport Ilmu" nav="peserta">
     {{-- ── Kad pasport ────────────────────────────────────── --}}
-    <section class="overflow-hidden rounded-card-lg bg-navy-900 shadow-lift">
+    <section class="overflow-hidden rounded-card-lg bg-char-900 shadow-lift">
         <div class="relative p-7 sm:p-9">
             <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
-            <div class="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-brand-500/25 blur-3xl" aria-hidden="true"></div>
+            <div class="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-clay-400/25 blur-3xl" aria-hidden="true"></div>
 
             <div class="relative">
-                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-300">
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-clay-300">
                     Pasport Ilmu BeDaie
                 </p>
                 <h1 class="mt-3 font-display text-2xl text-white sm:text-3xl text-pretty">{{ $user->name }}</h1>
@@ -22,7 +22,7 @@
                         ['Sijil diperoleh', number_format($certificates->count()), 'certificate'],
                     ] as [$label, $value, $icon])
                         <div class="rounded-xl bg-white/8 p-4 ring-1 ring-white/10">
-                            <x-ui.icon :name="$icon" class="h-4 w-4 text-brand-300" />
+                            <x-ui.icon :name="$icon" class="h-4 w-4 text-clay-300" />
                             <dd class="mt-2 font-display text-2xl text-white">{{ $value }}</dd>
                             <dt class="mt-0.5 text-xs text-white/50 text-pretty">{{ $label }}</dt>
                         </div>
@@ -35,8 +35,8 @@
     {{-- ── Program akan datang ────────────────────────────── --}}
     <section class="mt-8">
         <div class="flex flex-wrap items-end justify-between gap-3">
-            <h2 class="text-lg font-semibold text-navy-900">Program Akan Datang</h2>
-            <a href="{{ route('peserta.program') }}" class="text-sm font-medium text-brand-600 hover:underline">
+            <h2 class="text-lg font-semibold text-ink">Program Akan Datang</h2>
+            <a href="{{ route('peserta.program') }}" class="text-sm font-medium text-clay-600 hover:underline">
                 Semua program saya
             </a>
         </div>
@@ -56,7 +56,7 @@
                     <li class="rounded-card border border-hairline bg-surface p-5">
                         <div class="flex flex-wrap items-start justify-between gap-3">
                             <div class="min-w-0">
-                                <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
+                                <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                                 <p class="mt-0.5 text-sm text-ink-muted text-pretty">
                                     {{ $event->dateLabel() }} &middot; {{ $event->timeLabel() }}<br>
                                     {{ $event->venue?->name ?? $event->locationLabel() }}
@@ -86,8 +86,8 @@
     {{-- ── Sijil ──────────────────────────────────────────── --}}
     <section class="mt-8">
         <div class="flex flex-wrap items-end justify-between gap-3">
-            <h2 class="text-lg font-semibold text-navy-900">Sijil Saya</h2>
-            <a href="{{ route('peserta.sijil') }}" class="text-sm font-medium text-brand-600 hover:underline">
+            <h2 class="text-lg font-semibold text-ink">Sijil Saya</h2>
+            <a href="{{ route('peserta.sijil') }}" class="text-sm font-medium text-clay-600 hover:underline">
                 Semua sijil
             </a>
         </div>
@@ -101,11 +101,11 @@
                 @foreach ($certificates->take(4) as $certificate)
                     <li class="rounded-card border border-hairline bg-surface p-5">
                         <div class="flex items-start gap-3">
-                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50">
-                                <x-ui.icon name="certificate" class="h-5 w-5 text-brand-600" />
+                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-clay-50">
+                                <x-ui.icon name="certificate" class="h-5 w-5 text-clay-600" />
                             </span>
                             <div class="min-w-0 flex-1">
-                                <p class="font-medium text-navy-900 text-pretty">{{ $certificate->event_title }}</p>
+                                <p class="font-medium text-ink text-pretty">{{ $certificate->event_title }}</p>
                                 <p class="mt-0.5 font-mono text-xs text-ink-muted">
                                     {{ $certificate->certificate_number }}
                                 </p>
@@ -124,13 +124,13 @@
     {{-- ── Sejarah ────────────────────────────────────────── --}}
     @if ($history->isNotEmpty())
         <section class="mt-8">
-            <h2 class="text-lg font-semibold text-navy-900">Sejarah Pembelajaran</h2>
+            <h2 class="text-lg font-semibold text-ink">Sejarah Pembelajaran</h2>
             <ul class="mt-4 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface">
                 @foreach ($history as $registration)
                     @php $event = $registration->event; @endphp
                     <li class="flex flex-wrap items-center justify-between gap-3 p-5">
                         <div class="min-w-0">
-                            <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
+                            <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                             <p class="mt-0.5 text-sm text-ink-muted">
                                 {{ $event->dateLabel() }} &middot; {{ $event->state?->name }}
                             </p>
@@ -157,7 +157,7 @@
     {{-- ── Cadangan ───────────────────────────────────────── --}}
     @if ($suggested->isNotEmpty())
         <section class="mt-8">
-            <h2 class="text-lg font-semibold text-navy-900">Cadangan Untuk Anda</h2>
+            <h2 class="text-lg font-semibold text-ink">Cadangan Untuk Anda</h2>
             <p class="mt-1 text-sm text-ink-soft">Berdasarkan program yang pernah anda sertai.</p>
             <div class="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($suggested as $event)

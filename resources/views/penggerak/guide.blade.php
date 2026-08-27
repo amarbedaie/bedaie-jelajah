@@ -65,15 +65,15 @@
                subheading="Semua yang anda perlu tahu untuk membawa BeDaie ke kawasan anda.">
 
     {{-- ── Jaminan pembuka ─────────────────────────────────── --}}
-    <div class="rounded-card-lg bg-navy-900 p-6 sm:p-8">
+    <div class="rounded-card-lg border border-hairline bg-cream p-6 sm:p-8">
         <div class="relative">
-            <div class="motif-girih-dark absolute inset-0 opacity-50" aria-hidden="true"></div>
+            <div class="motif-girih absolute inset-0 opacity-45" aria-hidden="true"></div>
             <div class="relative max-w-2xl">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-300">Mulakan di sini</p>
-                <h2 class="mt-3 font-display text-2xl text-white sm:text-3xl text-pretty">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-clay-700">Mulakan di sini</p>
+                <h2 class="mt-3 font-display text-2xl text-ink sm:text-3xl text-pretty">
                     Anda tidak perlu menjadi penganjur profesional.
                 </h2>
-                <p class="mt-4 leading-relaxed text-white/75 text-pretty">
+                <p class="mt-4 leading-relaxed text-ink/75 text-pretty">
                     Ramai Penggerak kami adalah ahli kariah biasa yang menganjurkan program
                     pertama dalam hidup mereka. Isi satu borang, sebarkan satu pautan —
                     selebihnya kami uruskan.
@@ -93,19 +93,19 @@
 
     {{-- ── Enam langkah ────────────────────────────────────── --}}
     <section class="mt-10">
-        <h2 class="text-lg font-semibold text-navy-900">Bagaimana Ia Berfungsi</h2>
+        <h2 class="text-lg font-semibold text-ink">Bagaimana Ia Berfungsi</h2>
 
         <ol class="mt-5 space-y-4">
             @foreach ($steps as $i => $step)
                 <li class="rounded-card border border-hairline bg-surface p-5">
                     <div class="flex items-start gap-4">
-                        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50">
-                            <x-ui.icon :name="$step['icon']" class="h-5 w-5 text-brand-700" />
+                        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-clay-50">
+                            <x-ui.icon :name="$step['icon']" class="h-5 w-5 text-clay-700" />
                         </span>
                         <div class="min-w-0 flex-1">
                             <div class="flex items-baseline gap-2.5">
-                                <span class="text-sm font-semibold text-brand-700">{{ $i + 1 }}</span>
-                                <h3 class="font-semibold text-navy-900">{{ $step['title'] }}</h3>
+                                <span class="text-sm font-semibold text-clay-700">{{ $i + 1 }}</span>
+                                <h3 class="font-semibold text-ink">{{ $step['title'] }}</h3>
                             </div>
                             <p class="mt-2 leading-relaxed text-ink-soft text-pretty">{{ $step['body'] }}</p>
                             <p class="mt-3 rounded-xl bg-mist px-3.5 py-2.5 text-sm text-ink-soft text-pretty">
@@ -120,13 +120,13 @@
 
     {{-- ── Soalan lazim ────────────────────────────────────── --}}
     <section class="mt-10">
-        <h2 class="text-lg font-semibold text-navy-900">Soalan Lazim</h2>
+        <h2 class="text-lg font-semibold text-ink">Soalan Lazim</h2>
 
         <div class="mt-5 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface">
             @foreach ($faqs as [$question, $answer])
                 <details class="group">
                     <summary class="tap-target flex cursor-pointer items-center justify-between gap-4 px-5
-                                    text-sm font-medium text-navy-900">
+                                    text-sm font-medium text-ink">
                         {{ $question }}
                         <x-ui.icon name="chevron-down"
                                    class="h-4 w-4 shrink-0 text-ink-muted transition group-open:rotate-180" />
@@ -138,8 +138,8 @@
     </section>
 
     {{-- ── Bantuan ─────────────────────────────────────────── --}}
-    <div class="mt-10 rounded-card border border-brand-200 bg-brand-50 p-6">
-        <h2 class="font-semibold text-navy-900">Masih ada soalan?</h2>
+    <div class="mt-10 rounded-card border border-clay-200 bg-clay-50 p-6">
+        <h2 class="font-semibold text-ink">Masih ada soalan?</h2>
         <p class="mt-2 text-ink-soft text-pretty">
             Kami lebih suka anda bertanya daripada tersekat. Hubungi terus — tiada soalan yang bodoh.
         </p>

@@ -20,7 +20,7 @@
     <div class="no-print sticky top-0 z-10 border-b border-hairline bg-surface">
         <div class="jelajah-container flex h-16 items-center justify-between gap-3">
             <a href="{{ route('penggerak.program.show', $event) }}"
-               class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-navy-900">
+               class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
                 <x-ui.icon name="arrow-left" class="h-4 w-4" /> Kembali
             </a>
             <div class="flex items-center gap-2">
@@ -34,25 +34,25 @@
     <div class="py-8">
         {{-- A4 nisbah 1:1.414 --}}
         <div class="poster mx-auto flex aspect-[1/1.414] w-full max-w-[46rem] flex-col overflow-hidden
-                    bg-navy-900 shadow-lift">
+                    bg-char-900 shadow-lift">
             <div class="relative flex flex-1 flex-col">
                 <div class="motif-girih-dark absolute inset-0 opacity-70" aria-hidden="true"></div>
-                <div class="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-brand-500/30 blur-3xl" aria-hidden="true"></div>
-                <div class="absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-brand-700/25 blur-3xl" aria-hidden="true"></div>
+                <div class="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-clay-400/30 blur-3xl" aria-hidden="true"></div>
+                <div class="absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-clay-700/25 blur-3xl" aria-hidden="true"></div>
 
                 <div class="relative flex flex-1 flex-col p-10">
                     {{-- Kepala --}}
                     <div class="flex items-start justify-between gap-4">
                         <x-brand.logo :light="true" />
                         <span class="rounded-full bg-white/10 px-3.5 py-1.5 text-[0.65rem] font-semibold
-                                     uppercase tracking-[0.18em] text-brand-300 ring-1 ring-white/15">
+                                     uppercase tracking-[0.18em] text-clay-300 ring-1 ring-white/15">
                             {{ $event->category?->name ?? 'Jelajah' }}
                         </span>
                     </div>
 
                     {{-- Badan --}}
                     <div class="mt-12 flex-1">
-                        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
+                        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-clay-300">
                             {{ config('jelajah.slogan') }}
                         </p>
 
@@ -61,13 +61,13 @@
                         </h1>
 
                         @if ($event->theme)
-                            <p class="mt-4 text-xl text-brand-200 text-pretty">{{ $event->theme }}</p>
+                            <p class="mt-4 text-xl text-clay-200 text-pretty">{{ $event->theme }}</p>
                         @endif
 
                         @if ($event->speaker)
                             <div class="mt-8 inline-flex items-center gap-3 rounded-2xl bg-white/8 px-5 py-3
                                         ring-1 ring-white/12">
-                                <x-ui.icon name="user" class="h-5 w-5 text-brand-300" />
+                                <x-ui.icon name="user" class="h-5 w-5 text-clay-300" />
                                 <div>
                                     <p class="font-medium text-white">{{ $event->speaker->name }}</p>
                                     @if ($event->speaker->title)
@@ -80,7 +80,7 @@
                         <dl class="mt-10 space-y-4">
                             <div class="flex items-start gap-4">
                                 <dt class="sr-only">Tarikh</dt>
-                                <x-ui.icon name="calendar" class="mt-1 h-6 w-6 shrink-0 text-brand-300" />
+                                <x-ui.icon name="calendar" class="mt-1 h-6 w-6 shrink-0 text-clay-300" />
                                 <dd>
                                     <p class="text-xl font-semibold text-white">{{ $event->dateLabel() }}</p>
                                     <p class="text-white/65">{{ $event->timeLabel() }}</p>
@@ -89,7 +89,7 @@
 
                             <div class="flex items-start gap-4">
                                 <dt class="sr-only">Lokasi</dt>
-                                <x-ui.icon name="pin" class="mt-1 h-6 w-6 shrink-0 text-brand-300" />
+                                <x-ui.icon name="pin" class="mt-1 h-6 w-6 shrink-0 text-clay-300" />
                                 <dd>
                                     <p class="text-xl font-semibold text-white text-pretty">
                                         {{ $event->venue?->name ?? $event->locationLabel() }}
@@ -102,7 +102,7 @@
 
                             <div class="flex items-start gap-4">
                                 <dt class="sr-only">Penyertaan</dt>
-                                <x-ui.icon name="ticket" class="mt-1 h-6 w-6 shrink-0 text-brand-300" />
+                                <x-ui.icon name="ticket" class="mt-1 h-6 w-6 shrink-0 text-clay-300" />
                                 <dd>
                                     <p class="text-xl font-semibold text-white">{{ $event->priceLabel() }}</p>
                                     <p class="text-white/65">
@@ -117,7 +117,7 @@
                     {{-- Kaki: QR + link --}}
                     <div class="mt-8 flex items-end justify-between gap-6 border-t border-white/12 pt-7">
                         <div class="min-w-0">
-                            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-300">
+                            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-clay-300">
                                 Daftar Sekarang
                             </p>
                             <p class="mt-2 break-all font-mono text-lg text-white">{{ $event->shortUrl() }}</p>

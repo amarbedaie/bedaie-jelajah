@@ -3,7 +3,7 @@
 
     {{-- Sijil penghargaan Penggerak --}}
     <section>
-        <h2 class="text-lg font-semibold text-navy-900">Sijil Penghargaan Penggerak</h2>
+        <h2 class="text-lg font-semibold text-ink">Sijil Penghargaan Penggerak</h2>
 
         @if ($certificates->isEmpty())
             <x-ui.empty-state class="mt-4" compact icon="certificate"
@@ -14,11 +14,11 @@
                 @foreach ($certificates as $certificate)
                     <li class="flex h-full flex-col rounded-card border border-hairline bg-surface p-5">
                         <div class="flex items-start gap-3">
-                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50">
-                                <x-ui.icon name="certificate" class="h-5 w-5 text-brand-600" />
+                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-clay-50">
+                                <x-ui.icon name="certificate" class="h-5 w-5 text-clay-600" />
                             </span>
                             <div class="min-w-0 flex-1">
-                                <p class="font-medium text-navy-900 text-pretty">{{ $certificate->event_title }}</p>
+                                <p class="font-medium text-ink text-pretty">{{ $certificate->event_title }}</p>
                                 <p class="mt-0.5 font-mono text-xs text-ink-muted">
                                     {{ $certificate->certificate_number }}
                                 </p>
@@ -43,7 +43,7 @@
 
     {{-- Laporan ringkas --}}
     <section class="mt-10">
-        <h2 class="text-lg font-semibold text-navy-900">Laporan Program</h2>
+        <h2 class="text-lg font-semibold text-ink">Laporan Program</h2>
 
         @if ($events->isEmpty())
             <x-ui.empty-state class="mt-4" compact icon="chart"
@@ -56,7 +56,7 @@
                     <x-ui.card>
                         <div class="flex flex-wrap items-start justify-between gap-3">
                             <div class="min-w-0">
-                                <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
+                                <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                                 <p class="mt-0.5 text-sm text-ink-muted">
                                     {{ $event->dateLabel() }} &middot; {{ $event->venue?->name ?? $event->state?->name }}
                                 </p>
@@ -77,7 +77,7 @@
                                     ['Mahu lanjutan', number_format($report['wants_advanced'])],
                                 ] as [$label, $value])
                                     <div class="rounded-xl bg-mist p-3">
-                                        <dd class="font-display text-lg text-navy-900">{{ $value }}</dd>
+                                        <dd class="font-display text-lg text-ink">{{ $value }}</dd>
                                         <dt class="mt-0.5 text-xs text-ink-soft text-pretty">{{ $label }}</dt>
                                     </div>
                                 @endforeach

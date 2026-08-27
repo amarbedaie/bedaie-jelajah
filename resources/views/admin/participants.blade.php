@@ -28,20 +28,20 @@
             @foreach ($registrations as $registration)
                 <tr class="hover:bg-mist/40">
                     <td class="px-4 py-3">
-                        <p class="font-medium text-navy-900">{{ $registration->name }}</p>
+                        <p class="font-medium text-ink">{{ $registration->name }}</p>
                         <p class="font-mono text-xs text-ink-muted">{{ $registration->reference_no }}</p>
                         {{-- Nombor penuh sengaja tidak dipaparkan pada direktori --}}
                         <p class="font-mono text-xs text-ink-muted">{{ $registration->maskedPhone() }}</p>
                     </td>
                     <td class="px-4 py-3">
                         <a href="{{ route('admin.program.show', $registration->event) }}"
-                           class="text-navy-900 hover:text-brand-700">{{ $registration->event->title }}</a>
+                           class="text-ink hover:text-clay-700">{{ $registration->event->title }}</a>
                         <span class="block text-xs text-ink-muted">
                             {{ $registration->event->starts_at->translatedFormat('j M Y') }}
                         </span>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">{{ $registration->state?->name ?? '—' }}</td>
-                    <td class="px-4 py-3 text-navy-900">{{ $registration->seats() }}</td>
+                    <td class="px-4 py-3 text-ink">{{ $registration->seats() }}</td>
                     <td class="px-4 py-3">
                         <x-ui.badge :color="$registration->status->color()">{{ $registration->status->label() }}</x-ui.badge>
                     </td>

@@ -33,7 +33,7 @@
     {{-- ── Pemilih gaya poster ────────────────────────────── --}}
     @if ($posterPanel)
         <x-ui.card class="mt-5">
-            <h3 class="font-semibold text-navy-900">Gaya Poster</h3>
+            <h3 class="font-semibold text-ink">Gaya Poster</h3>
             <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                 Pilih satu gaya. Sistem menjana poster 4:5 untuk WhatsApp dan cetakan,
                 serta imej 16:9 untuk kad program — kedua-duanya serta-merta.
@@ -48,10 +48,10 @@
                                 aria-pressed="{{ $active ? 'true' : 'false' }}"
                                 class="flex h-full w-full flex-col rounded-card border p-4 text-left transition
                                        {{ $active
-                                          ? 'border-brand-500 bg-brand-50 ring-1 ring-brand-500'
-                                          : 'border-hairline bg-surface hover:border-brand-300' }}">
+                                          ? 'border-clay-400 bg-clay-50 ring-1 ring-clay-400'
+                                          : 'border-hairline bg-surface hover:border-clay-300' }}">
                             <span class="flex items-center justify-between gap-2">
-                                <span class="font-medium text-navy-900">{{ $style->label() }}</span>
+                                <span class="font-medium text-ink">{{ $style->label() }}</span>
                                 @if ($active)
                                     <x-ui.badge color="purple">Digunakan</x-ui.badge>
                                 @endif
@@ -72,7 +72,7 @@
                     <img src="{{ $event->posterUrl() }}?v={{ $event->updated_at?->timestamp }}"
                          alt="Poster semasa" class="h-64 w-auto rounded-xl ring-1 ring-hairline" />
                     <div class="min-w-0">
-                        <p class="text-sm font-medium text-navy-900">Poster semasa</p>
+                        <p class="text-sm font-medium text-ink">Poster semasa</p>
                         <p class="mt-1 text-sm text-ink-soft">
                             Gaya {{ $event->poster_style?->label() ?? 'Klasik' }}
                         </p>
@@ -170,8 +170,8 @@
                         <input id="e-poster" type="file" wire:model="poster"
                                accept="image/jpeg,image/png,image/webp"
                                class="tap-target w-full rounded-xl border border-hairline bg-surface px-4 py-2.5
-                                      text-sm text-ink file:mr-3 file:rounded-full file:border-0 file:bg-brand-50
-                                      file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-brand-700" />
+                                      text-sm text-ink file:mr-3 file:rounded-full file:border-0 file:bg-clay-50
+                                      file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-clay-700" />
                     </x-ui.field>
 
                     @if ($poster && method_exists($poster, 'temporaryUrl'))

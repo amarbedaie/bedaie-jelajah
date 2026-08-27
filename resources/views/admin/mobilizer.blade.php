@@ -1,18 +1,18 @@
 <x-layouts.admin :title="$user->name" :heading="$user->name">
     <a href="{{ route('admin.penggerak') }}"
-       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-navy-900">
+       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
         <x-ui.icon name="arrow-left" class="h-4 w-4" /> Semua penggerak
     </a>
 
     <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
         <x-ui.card class="lg:sticky lg:top-24 lg:self-start">
             <div class="flex items-center gap-4">
-                <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-action
+                <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-clay-600
                              font-display text-xl text-white">
                     {{ mb_strtoupper(mb_substr($user->name, 0, 1)) }}
                 </span>
                 <div class="min-w-0">
-                    <p class="font-semibold text-navy-900 text-pretty">{{ $user->name }}</p>
+                    <p class="font-semibold text-ink text-pretty">{{ $user->name }}</p>
                     <p class="mt-0.5 text-sm text-ink-muted">{{ $user->role->label() }}</p>
                 </div>
             </div>
@@ -29,10 +29,10 @@
                     @if ($value)
                         <div class="flex justify-between gap-3">
                             <dt class="text-ink-muted">{{ $label }}</dt>
-                            <dd class="text-right text-navy-900 text-pretty">
+                            <dd class="text-right text-ink text-pretty">
                                 @if ($label === 'WhatsApp')
                                     <a href="https://wa.me/{{ $value }}" target="_blank" rel="noopener"
-                                       class="font-medium text-brand-600 hover:underline">{{ $value }}</a>
+                                       class="font-medium text-clay-600 hover:underline">{{ $value }}</a>
                                 @else
                                     {{ $value }}
                                 @endif
@@ -68,7 +68,7 @@
 
         <div class="space-y-6">
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Permohonan</h2>
+                <h2 class="font-semibold text-ink">Permohonan</h2>
                 @if ($user->applications->isEmpty())
                     <p class="mt-3 text-sm text-ink-muted">Belum ada permohonan.</p>
                 @else
@@ -77,7 +77,7 @@
                             <li class="flex flex-wrap items-center justify-between gap-3 py-3">
                                 <div class="min-w-0">
                                     <a href="{{ route('admin.permohonan.show', $application) }}"
-                                       class="font-medium text-navy-900 hover:text-brand-700">
+                                       class="font-medium text-ink hover:text-clay-700">
                                         {{ $application->venue_name }}
                                     </a>
                                     <p class="text-xs text-ink-muted">
@@ -94,7 +94,7 @@
             </x-ui.card>
 
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Program Digerakkan</h2>
+                <h2 class="font-semibold text-ink">Program Digerakkan</h2>
                 @if ($user->mobilizedEvents->isEmpty())
                     <p class="mt-3 text-sm text-ink-muted">Belum ada program.</p>
                 @else
@@ -103,7 +103,7 @@
                             <li class="flex flex-wrap items-center justify-between gap-3 py-3">
                                 <div class="min-w-0">
                                     <a href="{{ route('admin.program.show', $event) }}"
-                                       class="font-medium text-navy-900 hover:text-brand-700">{{ $event->title }}</a>
+                                       class="font-medium text-ink hover:text-clay-700">{{ $event->title }}</a>
                                     <p class="text-xs text-ink-muted">
                                         {{ $event->dateLabel() }} &middot; {{ $event->venue?->name ?? $event->state?->name }}
                                     </p>

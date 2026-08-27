@@ -13,7 +13,7 @@
                 <li class="rounded-card border border-hairline bg-surface p-5">
                     <div class="flex flex-wrap items-start justify-between gap-3">
                         <div class="min-w-0">
-                            <p class="font-medium text-navy-900 text-pretty">{{ $event->title }}</p>
+                            <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                             <p class="mt-0.5 text-sm text-ink-muted text-pretty">
                                 {{ $event->dateLabel() }} &middot; {{ $event->timeLabel() }}<br>
                                 {{ $event->venue?->name ?? $event->locationLabel() }}

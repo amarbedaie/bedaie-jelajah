@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use BaconQrCode\Renderer\Color\Rgb;
 use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use BaconQrCode\Renderer\ImageRenderer;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class QrCodeService
 {
     /** Menjana QR sebagai markup SVG (untuk paparan web). */
-    public function svg(string $payload, int $size = 320, string $foreground = '#0A083B'): string
+    public function svg(string $payload, int $size = 320, string $foreground = '#141413'): string
     {
         $renderer = new ImageRenderer(
             new RendererStyle($size, 1, null, null, Fill::uniformColor(
@@ -26,13 +27,13 @@ class QrCodeService
     }
 
     /** SVG sebagai data URI — selamat digunakan dalam <img src="…">. */
-    public function svgDataUri(string $payload, int $size = 320, string $foreground = '#0A083B'): string
+    public function svgDataUri(string $payload, int $size = 320, string $foreground = '#141413'): string
     {
         return 'data:image/svg+xml;base64,'.base64_encode($this->svg($payload, $size, $foreground));
     }
 
     /** PNG data URI — diperlukan oleh DomPDF yang tidak menyokong SVG. */
-    public function pngDataUri(string $payload, int $size = 320, string $foreground = '#0A083B'): string
+    public function pngDataUri(string $payload, int $size = 320, string $foreground = '#141413'): string
     {
         if (! extension_loaded('imagick')) {
             // Fallback: DomPDF akan memaparkan SVG melalui imej gagal; guna SVG data URI.
@@ -61,7 +62,7 @@ class QrCodeService
         return $path;
     }
 
-    private function color(string $hex): \BaconQrCode\Renderer\Color\Rgb
+    private function color(string $hex): Rgb
     {
         $hex = ltrim($hex, '#');
         [$r, $g, $b] = [
@@ -70,6 +71,6 @@ class QrCodeService
             hexdec(substr($hex, 4, 2)),
         ];
 
-        return new \BaconQrCode\Renderer\Color\Rgb((int) $r, (int) $g, (int) $b);
+        return new Rgb((int) $r, (int) $g, (int) $b);
     }
 }

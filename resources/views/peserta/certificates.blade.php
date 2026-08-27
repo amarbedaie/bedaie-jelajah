@@ -10,10 +10,10 @@
         <ul class="grid gap-5 sm:grid-cols-2">
             @foreach ($certificates as $certificate)
                 <li class="flex h-full flex-col overflow-hidden rounded-card border border-hairline bg-surface">
-                    <div class="relative bg-navy-900 p-5">
+                    <div class="relative bg-char-900 p-5">
                         <div class="motif-girih-dark absolute inset-0 opacity-50" aria-hidden="true"></div>
                         <div class="relative">
-                            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-brand-300">
+                            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-clay-300">
                                 {{ $certificate->type->label() }}
                             </p>
                             <p class="mt-2 font-medium leading-snug text-white text-pretty">
@@ -26,12 +26,12 @@
                         <dl class="space-y-2 text-sm">
                             <div class="flex justify-between gap-3">
                                 <dt class="text-ink-muted">Nombor</dt>
-                                <dd class="font-mono text-xs text-navy-900">{{ $certificate->certificate_number }}</dd>
+                                <dd class="font-mono text-xs text-ink">{{ $certificate->certificate_number }}</dd>
                             </div>
                             @if ($certificate->event_date)
                                 <div class="flex justify-between gap-3">
                                     <dt class="text-ink-muted">Tarikh program</dt>
-                                    <dd class="text-navy-900">
+                                    <dd class="text-ink">
                                         {{ \Illuminate\Support\Carbon::parse($certificate->event_date)->translatedFormat('j M Y') }}
                                     </dd>
                                 </div>
@@ -39,7 +39,7 @@
                             @if ($certificate->learning_hours)
                                 <div class="flex justify-between gap-3">
                                     <dt class="text-ink-muted">Jam pembelajaran</dt>
-                                    <dd class="text-navy-900">
+                                    <dd class="text-ink">
                                         {{ rtrim(rtrim(number_format((float) $certificate->learning_hours, 1), '0'), '.') }} jam
                                     </dd>
                                 </div>

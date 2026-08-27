@@ -1,7 +1,7 @@
 <x-ui.card>
     <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
-            <h2 class="font-semibold text-navy-900">Rakaman & Bahan</h2>
+            <h2 class="font-semibold text-ink">Rakaman & Bahan</h2>
             <p class="mt-1 text-sm text-ink-soft text-pretty">
                 Peserta membukanya melalui tiket mereka. Rakaman "peserta hadir sahaja"
                 memberi nilai tambahan kepada mereka yang benar-benar datang.
@@ -13,7 +13,7 @@
     </div>
 
     @if ($showForm)
-        <form wire:submit="save" class="mt-5 space-y-4 rounded-xl border border-brand-200 bg-brand-50/50 p-4">
+        <form wire:submit="save" class="mt-5 space-y-4 rounded-xl border border-clay-200 bg-clay-50/50 p-4">
             <x-ui.field label="Tajuk" for="r-title" required :error="$errors->first('title')">
                 <x-ui.input id="r-title" wire:model="title" :error="$errors->has('title')"
                             placeholder="Contoh: Sesi Penuh — Bidayatul Hidayah" />
@@ -55,7 +55,7 @@
             </x-ui.field>
 
             <fieldset>
-                <legend class="mb-2.5 block text-sm font-medium text-navy-900">
+                <legend class="mb-2.5 block text-sm font-medium text-ink">
                     Siapa boleh tonton? <span class="text-danger" aria-hidden="true">*</span>
                 </legend>
                 <div class="grid gap-2.5">
@@ -102,7 +102,7 @@
                     <div class="min-w-0 flex-1">
                         <div class="flex flex-wrap items-center gap-2">
                             <x-ui.icon :name="$recording->type->icon()" class="h-4 w-4 text-ink-muted" />
-                            <span class="font-medium text-navy-900">{{ $recording->title }}</span>
+                            <span class="font-medium text-ink">{{ $recording->title }}</span>
                             <x-ui.badge :color="$recording->visibility->color()">
                                 {{ $recording->visibility->label() }}
                             </x-ui.badge>

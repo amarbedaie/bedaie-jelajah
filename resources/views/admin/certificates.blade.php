@@ -34,7 +34,7 @@
             @foreach ($certificates as $certificate)
                 <tr class="hover:bg-mist/40">
                     <td class="px-4 py-3 font-mono text-xs text-ink-soft">{{ $certificate->certificate_number }}</td>
-                    <td class="px-4 py-3 font-medium text-navy-900">{{ $certificate->recipient_name }}</td>
+                    <td class="px-4 py-3 font-medium text-ink">{{ $certificate->recipient_name }}</td>
                     <td class="px-4 py-3 text-ink-soft">{{ $certificate->event_title }}</td>
                     <td class="px-4 py-3">
                         <x-ui.badge color="grey">{{ $certificate->type->label() }}</x-ui.badge>

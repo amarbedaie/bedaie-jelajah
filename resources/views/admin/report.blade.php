@@ -1,11 +1,11 @@
 <x-layouts.admin :title="'Laporan — '.$event->title" heading="Laporan Impak Program">
     <a href="{{ route('admin.laporan') }}"
-       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-navy-900">
+       class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
         <x-ui.icon name="arrow-left" class="h-4 w-4" /> Semua laporan
     </a>
 
     <div class="mt-4">
-        <h2 class="font-display text-xl text-navy-900 text-pretty">{{ $event->title }}</h2>
+        <h2 class="font-display text-xl text-ink text-pretty">{{ $event->title }}</h2>
         <p class="mt-1 text-sm text-ink-muted text-pretty">
             {{ $event->dateLabel() }} &middot; {{ $event->venue?->name ?? $event->locationLabel() }}
             @if ($event->speaker) &middot; {{ $event->speaker->name }} @endif
@@ -24,7 +24,7 @@
             ['Gambar diluluskan', number_format($report['gallery_count'])],
         ] as [$label, $value])
             <div class="rounded-card border border-hairline bg-surface p-5">
-                <dd class="font-display text-2xl text-navy-900">{{ $value }}</dd>
+                <dd class="font-display text-2xl text-ink">{{ $value }}</dd>
                 <dt class="mt-1 text-sm text-ink-soft text-pretty">{{ $label }}</dt>
             </div>
         @endforeach
@@ -32,26 +32,26 @@
 
     <div class="mt-7 grid gap-6 lg:grid-cols-2">
         <x-ui.card>
-            <h3 class="font-semibold text-navy-900">Kewangan</h3>
+            <h3 class="font-semibold text-ink">Kewangan</h3>
             <dl class="mt-4 space-y-3 text-sm">
                 <div class="flex justify-between gap-3">
                     <dt class="text-ink-muted">Kutipan berjaya</dt>
-                    <dd class="font-medium text-navy-900">RM {{ number_format($report['revenue'], 2) }}</dd>
+                    <dd class="font-medium text-ink">RM {{ number_format($report['revenue'], 2) }}</dd>
                 </div>
                 <div class="flex justify-between gap-3">
                     <dt class="text-ink-muted">Menunggu pengesahan</dt>
-                    <dd class="text-navy-900">{{ number_format($report['pending_payments']) }}</dd>
+                    <dd class="text-ink">{{ number_format($report['pending_payments']) }}</dd>
                 </div>
             </dl>
         </x-ui.card>
 
         <x-ui.card>
-            <h3 class="font-semibold text-navy-900">Demografi</h3>
+            <h3 class="font-semibold text-ink">Demografi</h3>
             <dl class="mt-4 space-y-2.5 text-sm">
                 @forelse ($report['gender'] as $gender => $count)
                     <div class="flex justify-between gap-3">
                         <dt class="text-ink-muted">{{ $gender ? ucfirst($gender) : 'Tidak dinyatakan' }}</dt>
-                        <dd class="text-navy-900">{{ number_format($count) }}</dd>
+                        <dd class="text-ink">{{ number_format($count) }}</dd>
                     </div>
                 @empty
                     <p class="text-sm text-ink-muted">Tiada data.</p>
@@ -60,7 +60,7 @@
         </x-ui.card>
 
         <x-ui.card>
-            <h3 class="font-semibold text-navy-900">Peserta Mengikut Negeri</h3>
+            <h3 class="font-semibold text-ink">Peserta Mengikut Negeri</h3>
             @if ($report['by_state']->isEmpty())
                 <p class="mt-3 text-sm text-ink-muted">Tiada data.</p>
             @else
@@ -68,7 +68,7 @@
                     @foreach ($report['by_state']->take(10) as $stateName => $count)
                         <li class="flex items-center justify-between gap-3 text-sm">
                             <span class="text-ink-soft">{{ $stateName }}</span>
-                            <span class="font-medium text-navy-900">{{ number_format($count) }}</span>
+                            <span class="font-medium text-ink">{{ number_format($count) }}</span>
                         </li>
                     @endforeach
                 </ul>
@@ -76,9 +76,9 @@
         </x-ui.card>
 
         <x-ui.card>
-            <h3 class="font-semibold text-navy-900">Maklum Balas</h3>
+            <h3 class="font-semibold text-ink">Maklum Balas</h3>
             @if ($report['rating_count'] > 0)
-                <p class="mt-3 font-display text-3xl text-navy-900">
+                <p class="mt-3 font-display text-3xl text-ink">
                     {{ number_format((float) $report['rating'], 1) }}
                     <span class="text-base font-normal text-ink-muted">/ 5</span>
                 </p>
@@ -107,7 +107,7 @@
 
     @if ($report['next_topics']->isNotEmpty())
         <x-ui.card class="mt-6">
-            <h3 class="font-semibold text-navy-900">Topik Yang Diminta Peserta</h3>
+            <h3 class="font-semibold text-ink">Topik Yang Diminta Peserta</h3>
             <ul class="mt-4 flex flex-wrap gap-2">
                 @foreach ($report['next_topics'] as $topic)
                     <li><x-ui.badge color="purple">{{ $topic }}</x-ui.badge></li>

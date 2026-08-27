@@ -33,7 +33,7 @@
             <div class="space-y-12">
                 @foreach ($partners as $type => $group)
                     <div>
-                        <h2 class="text-xl font-semibold text-navy-900">
+                        <h2 class="text-xl font-semibold text-ink">
                             {{ $typeLabels[$type] ?? \Illuminate\Support\Str::headline($type) }}
                         </h2>
                         <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -44,14 +44,14 @@
                                         <img src="{{ Storage::url($partner->logo_path) }}" alt="{{ $partner->name }}"
                                              loading="lazy" class="h-12 w-auto" />
                                     @else
-                                        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50">
-                                            <x-ui.icon name="building" class="h-6 w-6 text-brand-600" />
+                                        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-clay-50">
+                                            <x-ui.icon name="building" class="h-6 w-6 text-clay-600" />
                                         </span>
                                     @endif
-                                    <p class="font-medium text-navy-900 text-pretty">{{ $partner->name }}</p>
+                                    <p class="font-medium text-ink text-pretty">{{ $partner->name }}</p>
                                     @if ($partner->website_url)
                                         <a href="{{ $partner->website_url }}" target="_blank" rel="noopener"
-                                           class="text-sm text-brand-600 hover:underline">Lawati laman</a>
+                                           class="text-sm text-clay-600 hover:underline">Lawati laman</a>
                                     @endif
                                 </li>
                             @endforeach

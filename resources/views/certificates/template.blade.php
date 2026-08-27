@@ -1,7 +1,7 @@
 @php
     // DomPDF tidak menyokong CSS moden — gunakan gaya inline yang mudah.
-    $accent = $template?->accent_color ?: '#8875FF';
-    $navy = '#0A083B';
+    $accent = $template?->accent_color ?: '#D97757';
+    $ink = '#141413';
     $isLandscape = ($template?->orientation ?? 'landscape') === 'landscape';
 
     // Nama panjang dikecilkan supaya tidak pecah pada satu baris.
@@ -29,7 +29,7 @@
             margin: 0;
             padding: 0;
             font-family: DejaVu Sans, sans-serif;
-            color: {{ $navy }};
+            color: {{ $ink }};
             background: #FFFFFF;
         }
 
@@ -50,7 +50,7 @@
         .frame-inner {
             position: absolute;
             top: 24pt; right: 24pt; bottom: 24pt; left: 24pt;
-            border: 0.6pt solid #D5CCFF;
+            border: 0.6pt solid #EDC4B2;
         }
 
         .band {
@@ -63,7 +63,7 @@
         .content { position: relative; text-align: center; }
 
         .brand { font-size: 11pt; letter-spacing: 3pt; color: {{ $accent }}; font-weight: bold; }
-        .brand-sub { margin-top: 3pt; font-size: 7.5pt; letter-spacing: 2pt; color: #83868C; }
+        .brand-sub { margin-top: 3pt; font-size: 7.5pt; letter-spacing: 2pt; color: #67665F; }
 
         .title {
             margin-top: {{ $isLandscape ? '18pt' : '26pt' }};
@@ -71,22 +71,22 @@
             letter-spacing: 1.5pt;
             font-weight: bold;
         }
-        .subtitle { margin-top: 5pt; font-size: 9.5pt; color: #55575C; }
+        .subtitle { margin-top: 5pt; font-size: 9.5pt; color: #57564F; }
 
-        .intro { margin-top: {{ $isLandscape ? '20pt' : '30pt' }}; font-size: 10pt; color: #55575C; }
+        .intro { margin-top: {{ $isLandscape ? '20pt' : '30pt' }}; font-size: 10pt; color: #57564F; }
 
         .name {
             margin-top: 8pt;
             font-size: {{ $nameSize }};
             font-weight: bold;
-            color: {{ $navy }};
+            color: {{ $ink }};
             line-height: 1.25;
             padding: 0 20pt;
         }
 
         .rule { margin: 12pt auto 0; width: 140pt; height: 1pt; background: {{ $accent }}; }
 
-        .closing { margin-top: 12pt; font-size: 10pt; color: #55575C; }
+        .closing { margin-top: 12pt; font-size: 10pt; color: #57564F; }
 
         .event {
             margin-top: 8pt;
@@ -96,7 +96,7 @@
             padding: 0 30pt;
         }
 
-        .meta { margin-top: 10pt; font-size: 9pt; color: #55575C; line-height: 1.6; }
+        .meta { margin-top: 10pt; font-size: 9pt; color: #57564F; line-height: 1.6; }
 
         .footer {
             position: absolute;
@@ -105,13 +105,13 @@
             bottom: {{ $isLandscape ? '44pt' : '56pt' }};
         }
         .footer table { width: 100%; border-collapse: collapse; }
-        .footer td { vertical-align: bottom; font-size: 8pt; color: #55575C; }
+        .footer td { vertical-align: bottom; font-size: 8pt; color: #57564F; }
 
-        .sign-line { border-top: 0.8pt solid #83868C; padding-top: 4pt; width: 150pt; }
-        .sign-name { font-size: 9.5pt; font-weight: bold; color: {{ $navy }}; }
-        .sign-title { font-size: 7.5pt; color: #83868C; }
+        .sign-line { border-top: 0.8pt solid #67665F; padding-top: 4pt; width: 150pt; }
+        .sign-name { font-size: 9.5pt; font-weight: bold; color: {{ $ink }}; }
+        .sign-title { font-size: 7.5pt; color: #67665F; }
 
-        .serial { font-size: 7.5pt; color: #83868C; letter-spacing: 0.5pt; }
+        .serial { font-size: 7.5pt; color: #67665F; letter-spacing: 0.5pt; }
         .verify { font-size: 6.5pt; color: #A0A2A8; margin-top: 2pt; }
     </style>
 </head>

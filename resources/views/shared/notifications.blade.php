@@ -9,17 +9,17 @@
             @foreach ($notifications as $notification)
                 @php $data = $notification->data; @endphp
                 <li class="rounded-card border border-hairline bg-surface p-5
-                           {{ $notification->read_at ? '' : 'border-brand-200 bg-brand-50/40' }}">
+                           {{ $notification->read_at ? '' : 'border-clay-200 bg-clay-50/40' }}">
                     <div class="flex items-start gap-3.5">
                         <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl
-                                     {{ $notification->read_at ? 'bg-mist' : 'bg-brand-100' }}">
+                                     {{ $notification->read_at ? 'bg-mist' : 'bg-clay-100' }}">
                             <x-ui.icon :name="$data['icon'] ?? 'bell'"
-                                       class="h-4 w-4 {{ $notification->read_at ? 'text-ink-muted' : 'text-brand-600' }}" />
+                                       class="h-4 w-4 {{ $notification->read_at ? 'text-ink-muted' : 'text-clay-600' }}" />
                         </span>
 
                         <div class="min-w-0 flex-1">
                             @if (! empty($data['title']))
-                                <p class="font-medium text-navy-900 text-pretty">{{ $data['title'] }}</p>
+                                <p class="font-medium text-ink text-pretty">{{ $data['title'] }}</p>
                             @endif
                             <p class="mt-1 text-sm text-ink-soft text-pretty">
                                 {{ $data['body'] ?? $data['message'] ?? '' }}
@@ -30,7 +30,7 @@
 
                             @if (! empty($data['url']))
                                 <a href="{{ $data['url'] }}"
-                                   class="mt-2.5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 hover:underline">
+                                   class="mt-2.5 inline-flex items-center gap-1.5 text-sm font-medium text-clay-600 hover:underline">
                                     Lihat <x-ui.icon name="arrow-right" class="h-3.5 w-3.5" />
                                 </a>
                             @endif

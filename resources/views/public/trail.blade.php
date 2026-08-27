@@ -17,13 +17,13 @@
                 @foreach ($events as $event)
                     <article class="flex h-full flex-col overflow-hidden rounded-card border
                                     border-hairline bg-surface shadow-soft">
-                        <a href="{{ $event->publicUrl() }}" class="relative block aspect-[16/9] bg-navy-900">
+                        <a href="{{ $event->publicUrl() }}" class="relative block aspect-[16/9] bg-char-900">
                             @if ($event->heroUrl())
                                 <img src="{{ $event->heroUrl() }}" alt="{{ $event->title }}" loading="lazy"
                                      class="h-full w-full object-cover" />
                             @else
                                 <div class="motif-girih-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
-                                <div class="absolute inset-0 bg-gradient-to-tr from-navy-900 to-brand-700/60"></div>
+                                <div class="absolute inset-0 bg-gradient-to-tr from-char-900 to-clay-700/60"></div>
                             @endif
                             <div class="absolute left-3 top-3">
                                 <x-ui.badge color="white">{{ $event->state?->name }}</x-ui.badge>
@@ -32,8 +32,8 @@
 
                         <div class="flex flex-1 flex-col p-5">
                             <p class="text-xs text-ink-muted">{{ $event->dateLabel() }}</p>
-                            <h3 class="mt-1.5 font-semibold leading-snug text-navy-900 text-pretty">
-                                <a href="{{ $event->publicUrl() }}" class="hover:text-brand-700">{{ $event->title }}</a>
+                            <h3 class="mt-1.5 font-semibold leading-snug text-ink text-pretty">
+                                <a href="{{ $event->publicUrl() }}" class="hover:text-clay-700">{{ $event->title }}</a>
                             </h3>
                             <p class="mt-2 text-sm text-ink-soft text-pretty">{{ $event->locationLabel() }}</p>
 

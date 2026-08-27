@@ -17,7 +17,7 @@
 
         <aside>
             <x-ui.card class="lg:sticky lg:top-24">
-                <h2 class="font-semibold text-navy-900">Halaman Rasmi</h2>
+                <h2 class="font-semibold text-ink">Halaman Rasmi</h2>
                 <ul class="mt-4 space-y-3">
                     @foreach ([
                         ['Polisi Privasi', route('privasi'), $legal['privacy']],
@@ -25,7 +25,7 @@
                     ] as [$label, $url, $value])
                         <li class="flex items-center justify-between gap-3 rounded-xl border border-hairline p-4">
                             <div class="min-w-0">
-                                <p class="font-medium text-navy-900">{{ $label }}</p>
+                                <p class="font-medium text-ink">{{ $label }}</p>
                                 <p class="mt-0.5 text-xs text-ink-muted">
                                     {{ $value ? 'Teks tersuai disimpan' : 'Menggunakan teks lalai' }}
                                 </p>

@@ -15,7 +15,7 @@
 
         <div class="space-y-6">
             <div>
-                <h2 class="text-xl font-semibold text-navy-900">Maklumat Peserta</h2>
+                <h2 class="text-xl font-semibold text-ink">Maklumat Peserta</h2>
                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                     Hanya perlu seminit. Pastikan nama ditulis seperti yang anda mahu cetak pada sijil.
                 </p>
@@ -63,7 +63,7 @@
 
             @if ($event->target_audience?->requiresGender())
                 <fieldset>
-                    <legend class="mb-2.5 block text-sm font-medium text-navy-900">Jantina</legend>
+                    <legend class="mb-2.5 block text-sm font-medium text-ink">Jantina</legend>
                     <div class="grid gap-2.5 sm:grid-cols-2">
                         <x-ui.choice name="gender" value="lelaki" label="Lelaki"
                                      wire:model="gender" :checked="$gender === 'lelaki'" />
@@ -90,7 +90,7 @@
                 <div class="rounded-xl border border-hairline bg-mist/50 p-4">
                     <div class="flex flex-wrap items-center justify-between gap-3">
                         <div>
-                            <h3 class="text-sm font-semibold text-navy-900">Daftar Ahli Keluarga</h3>
+                            <h3 class="text-sm font-semibold text-ink">Daftar Ahli Keluarga</h3>
                             <p class="mt-0.5 text-xs text-ink-muted">
                                 Sehingga {{ $event->max_guests_per_registration }} orang bersama anda.
                             </p>
@@ -178,8 +178,8 @@
     {{-- ── Ringkasan program ───────────────────────────────── --}}
     <aside class="space-y-5 lg:sticky lg:top-24">
         <x-ui.card>
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">Anda mendaftar untuk</p>
-            <h3 class="mt-2 font-semibold leading-snug text-navy-900 text-pretty">{{ $event->title }}</h3>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-600">Anda mendaftar untuk</p>
+            <h3 class="mt-2 font-semibold leading-snug text-ink text-pretty">{{ $event->title }}</h3>
 
             <dl class="mt-4 space-y-2.5 text-sm">
                 <div class="flex gap-2.5">
@@ -204,23 +204,23 @@
             <div class="mt-5 border-t border-hairline pt-4">
                 <div class="flex items-center justify-between text-sm">
                     <span class="text-ink-soft">Bilangan tempat</span>
-                    <span class="font-medium text-navy-900">{{ $seats }}</span>
+                    <span class="font-medium text-ink">{{ $seats }}</span>
                 </div>
 
                 @if ($isPaid)
                     <div class="mt-2 flex items-center justify-between text-sm">
                         <span class="text-ink-soft">Harga seunit</span>
-                        <span class="font-medium text-navy-900">RM {{ number_format((float) $event->price, 2) }}</span>
+                        <span class="font-medium text-ink">RM {{ number_format((float) $event->price, 2) }}</span>
                     </div>
                     <div class="mt-3 flex items-center justify-between border-t border-hairline pt-3">
-                        <span class="font-medium text-navy-900">Jumlah</span>
-                        <span class="font-display text-xl text-navy-900">
+                        <span class="font-medium text-ink">Jumlah</span>
+                        <span class="font-display text-xl text-ink">
                             RM {{ number_format((float) $event->price * $seats, 2) }}
                         </span>
                     </div>
                 @else
                     <div class="mt-3 flex items-center justify-between border-t border-hairline pt-3">
-                        <span class="font-medium text-navy-900">Jumlah</span>
+                        <span class="font-medium text-ink">Jumlah</span>
                         <span class="font-display text-xl text-success">{{ $event->priceLabel() }}</span>
                     </div>
                 @endif
@@ -228,7 +228,7 @@
         </x-ui.card>
 
         <div class="rounded-card border border-hairline bg-mist/60 p-5">
-            <h3 class="text-sm font-semibold text-navy-900">Selepas mendaftar</h3>
+            <h3 class="text-sm font-semibold text-ink">Selepas mendaftar</h3>
             <ul class="mt-3 space-y-2">
                 @foreach ([
                     'Anda terima tiket dengan QR kehadiran.',

@@ -10,9 +10,9 @@
                     <div class="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-danger-soft">
                         <x-ui.icon name="x-circle" class="h-8 w-8 text-danger" />
                     </div>
-                    <h1 class="mt-6 font-display text-2xl text-navy-900">Sijil Tidak Ditemui</h1>
+                    <h1 class="mt-6 font-display text-2xl text-ink">Sijil Tidak Ditemui</h1>
                     <p class="mt-3 text-ink-soft text-pretty">
-                        Tiada sijil dengan nombor <strong class="font-mono text-navy-900">{{ $number }}</strong>
+                        Tiada sijil dengan nombor <strong class="font-mono text-ink">{{ $number }}</strong>
                         dalam rekod kami. Sila semak semula nombor tersebut.
                     </p>
                     <x-ui.button :href="route('sijil.semak')" variant="primary" class="mt-6">
@@ -27,7 +27,7 @@
                             <x-ui.icon :name="$valid ? 'check-circle' : 'x-circle'"
                                        class="h-8 w-8 {{ $valid ? 'text-success' : 'text-danger' }}" />
                         </div>
-                        <h1 class="mt-6 font-display text-2xl text-navy-900 sm:text-3xl">
+                        <h1 class="mt-6 font-display text-2xl text-ink sm:text-3xl">
                             {{ $valid ? 'Sijil Ini Sah' : 'Sijil Ini Tidak Lagi Sah' }}
                         </h1>
                         @unless ($valid)
@@ -56,7 +56,7 @@
                             @if ($value)
                                 <div class="flex flex-col gap-1 py-3.5 sm:flex-row sm:gap-4">
                                     <dt class="w-44 shrink-0 text-sm text-ink-muted">{{ $label }}</dt>
-                                    <dd class="text-sm text-navy-900 text-pretty">{{ $value }}</dd>
+                                    <dd class="text-sm text-ink text-pretty">{{ $value }}</dd>
                                 </div>
                             @endif
                         @endforeach

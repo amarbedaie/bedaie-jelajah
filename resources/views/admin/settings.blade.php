@@ -6,16 +6,16 @@
 
         <aside class="space-y-5">
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Gateway Pembayaran</h2>
+                <h2 class="font-semibold text-ink">Gateway Pembayaran</h2>
                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">
-                    Gateway aktif: <strong class="text-navy-900">{{ $activeGateway }}</strong>
+                    Gateway aktif: <strong class="text-ink">{{ $activeGateway }}</strong>
                 </p>
 
                 <ul class="mt-4 space-y-2.5">
                     @foreach ($gateways as $key => $gateway)
                         <li class="flex items-center justify-between gap-3 rounded-xl border border-hairline p-3.5">
                             <div class="min-w-0">
-                                <p class="text-sm font-medium text-navy-900">{{ $gateway->label() }}</p>
+                                <p class="text-sm font-medium text-ink">{{ $gateway->label() }}</p>
                                 <p class="font-mono text-xs text-ink-muted">{{ $key }}</p>
                             </div>
                             <x-ui.badge :color="$key === $activeGateway ? 'success' : 'grey'">
@@ -32,7 +32,7 @@
             </x-ui.card>
 
             <x-ui.card>
-                <h2 class="font-semibold text-navy-900">Jenama</h2>
+                <h2 class="font-semibold text-ink">Jenama</h2>
                 <p class="mt-1.5 text-xs text-ink-muted text-pretty">
                     Nilai ini ditetapkan dalam <code class="font-mono">.env</code>.
                 </p>
@@ -48,7 +48,7 @@
                     ] as $label => $value)
                         <div class="flex justify-between gap-3">
                             <dt class="text-ink-muted">{{ $label }}</dt>
-                            <dd class="text-right text-navy-900 text-pretty">{{ $value }}</dd>
+                            <dd class="text-right text-ink text-pretty">{{ $value }}</dd>
                         </div>
                     @endforeach
                 </dl>

@@ -1,7 +1,7 @@
 <form wire:submit="save" class="space-y-6">
     @forelse ($groups as $groupName => $settings)
         <x-ui.card>
-            <h2 class="font-semibold text-navy-900">{{ \Illuminate\Support\Str::headline($groupName) }}</h2>
+            <h2 class="font-semibold text-ink">{{ \Illuminate\Support\Str::headline($groupName) }}</h2>
 
             <div class="mt-5 space-y-5">
                 @foreach ($settings as $setting)

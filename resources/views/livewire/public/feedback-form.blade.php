@@ -4,16 +4,16 @@
             <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-success-soft">
                 <x-ui.icon name="check-circle" class="h-7 w-7 text-success" />
             </div>
-            <h2 class="mt-5 font-display text-2xl text-navy-900">Terima Kasih</h2>
+            <h2 class="mt-5 font-display text-2xl text-ink">Terima Kasih</h2>
             <p class="mt-3 text-ink-soft text-pretty">
                 Maklum balas anda telah kami terima dan akan membantu kami memperbaiki
                 program yang akan datang.
             </p>
 
             @if ($registration->certificate)
-                <div class="mt-7 rounded-xl bg-brand-50 p-5">
-                    <x-ui.icon name="certificate" class="mx-auto h-6 w-6 text-brand-600" />
-                    <p class="mt-2.5 font-medium text-navy-900">Sijil anda telah sedia</p>
+                <div class="mt-7 rounded-xl bg-clay-50 p-5">
+                    <x-ui.icon name="certificate" class="mx-auto h-6 w-6 text-clay-600" />
+                    <p class="mt-2.5 font-medium text-ink">Sijil anda telah sedia</p>
                     <p class="mt-1 font-mono text-xs text-ink-muted">
                         {{ $registration->certificate->certificate_number }}
                     </p>
@@ -37,7 +37,7 @@
         <x-ui.card class="sm:p-8">
             <div class="space-y-6">
                 <div>
-                    <h2 class="text-xl font-semibold text-navy-900">Bagaimana pengalaman anda?</h2>
+                    <h2 class="text-xl font-semibold text-ink">Bagaimana pengalaman anda?</h2>
                     <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                         Empat soalan ringkas sahaja — kurang dari seminit.
                     </p>
@@ -45,7 +45,7 @@
 
                 {{-- Penilaian bintang --}}
                 <fieldset>
-                    <legend class="mb-3 block text-sm font-medium text-navy-900">
+                    <legend class="mb-3 block text-sm font-medium text-ink">
                         Penilaian keseluruhan <span class="text-danger" aria-hidden="true">*</span>
                     </legend>
                     <div class="flex gap-2" role="radiogroup" aria-label="Penilaian 1 hingga 5">
@@ -56,7 +56,7 @@
                                     class="tap-target grid flex-1 place-items-center rounded-xl border transition
                                            {{ $rating >= $i
                                               ? 'border-warning bg-warning-soft'
-                                              : 'border-hairline bg-surface hover:border-brand-300' }}">
+                                              : 'border-hairline bg-surface hover:border-clay-300' }}">
                                 <x-ui.icon name="star"
                                     :fill="$rating >= $i ? 'currentColor' : 'none'"
                                     class="h-6 w-6 {{ $rating >= $i ? 'text-warning' : 'text-hairline' }}" />

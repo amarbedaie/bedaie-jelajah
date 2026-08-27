@@ -34,13 +34,13 @@
             @foreach ($payments as $payment)
                 <tr wire:key="payment-{{ $payment->id }}" class="hover:bg-mist/40">
                     <td class="px-4 py-3">
-                        <p class="font-medium text-navy-900">{{ $payment->registration?->name ?? '—' }}</p>
+                        <p class="font-medium text-ink">{{ $payment->registration?->name ?? '—' }}</p>
                         <p class="font-mono text-xs text-ink-muted">{{ $payment->registration?->reference_no }}</p>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">
                         {{ \Illuminate\Support\Str::limit($payment->event?->title ?? '—', 36) }}
                     </td>
-                    <td class="whitespace-nowrap px-4 py-3 font-medium text-navy-900">
+                    <td class="whitespace-nowrap px-4 py-3 font-medium text-ink">
                         RM {{ number_format((float) $payment->amount, 2) }}
                     </td>
                     <td class="px-4 py-3 text-xs text-ink-muted">

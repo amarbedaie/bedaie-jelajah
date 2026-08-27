@@ -34,7 +34,7 @@
                 @endif
 
                 <fieldset>
-                    <legend class="mb-2.5 block text-sm font-medium text-navy-900">Jantina</legend>
+                    <legend class="mb-2.5 block text-sm font-medium text-ink">Jantina</legend>
                     <div class="grid gap-2.5 sm:grid-cols-2">
                         <x-ui.choice name="gender" value="lelaki" label="Lelaki"
                                      :checked="old('gender', $user->gender) === 'lelaki'" />
@@ -74,7 +74,7 @@
         </x-ui.card>
 
         <x-ui.card class="mt-6 sm:p-8">
-            <h2 class="font-semibold text-navy-900">
+            <h2 class="font-semibold text-ink">
                 {{ $user->password_set_at ? 'Tukar Kata Laluan' : 'Tetapkan Kata Laluan' }}
             </h2>
             <p class="mt-1.5 text-sm text-ink-soft text-pretty">

@@ -5,7 +5,7 @@
 <head>
     @include('partials.head', ['title' => $title])
 </head>
-<body class="min-h-screen antialiased {{ $dark ? 'bg-navy-900' : 'bg-cream' }}">
+<body class="min-h-screen antialiased {{ $dark ? 'bg-char-900' : 'bg-cream' }}">
     {{ $slot }}
     @livewireScripts
 </body>

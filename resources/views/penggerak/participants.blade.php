@@ -36,18 +36,18 @@
                         <caption class="sr-only">Senarai peserta {{ $selected->title }}</caption>
                         <thead class="border-b border-hairline bg-mist/60 text-left">
                             <tr>
-                                <th scope="col" class="px-4 py-3 font-medium text-navy-900">Nama</th>
-                                <th scope="col" class="px-4 py-3 font-medium text-navy-900">Telefon</th>
-                                <th scope="col" class="px-4 py-3 font-medium text-navy-900">Kawasan</th>
-                                <th scope="col" class="px-4 py-3 font-medium text-navy-900">Tempat</th>
-                                <th scope="col" class="px-4 py-3 font-medium text-navy-900">Kehadiran</th>
+                                <th scope="col" class="px-4 py-3 font-medium text-ink">Nama</th>
+                                <th scope="col" class="px-4 py-3 font-medium text-ink">Telefon</th>
+                                <th scope="col" class="px-4 py-3 font-medium text-ink">Kawasan</th>
+                                <th scope="col" class="px-4 py-3 font-medium text-ink">Tempat</th>
+                                <th scope="col" class="px-4 py-3 font-medium text-ink">Kehadiran</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-hairline">
                             @foreach ($registrations as $registration)
                                 <tr>
                                     <td class="px-4 py-3">
-                                        <p class="font-medium text-navy-900">{{ $registration->name }}</p>
+                                        <p class="font-medium text-ink">{{ $registration->name }}</p>
                                         <p class="text-xs text-ink-muted">{{ $registration->reference_no }}</p>
                                     </td>
                                     {{-- Nombor disamarkan: Penggerak tidak perlu nombor penuh --}}
