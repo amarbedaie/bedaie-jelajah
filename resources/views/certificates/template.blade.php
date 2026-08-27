@@ -29,8 +29,8 @@
             margin: 0;
             padding: 0;
             font-family: DejaVu Sans, sans-serif;
+            background: #FAF9F5;
             color: {{ $ink }};
-            background: #FFFFFF;
         }
 
         .sheet {
@@ -65,22 +65,24 @@
         .brand { font-size: 11pt; letter-spacing: 3pt; color: {{ $accent }}; font-weight: bold; }
         .brand-sub { margin-top: 3pt; font-size: 7.5pt; letter-spacing: 2pt; color: #67665F; }
 
+        /* Serif untuk tajuk dan nama — dompdf membawa DejaVu Serif,
+           padanan terdekat kepada Source Serif 4 pada web. */
         .title {
             margin-top: {{ $isLandscape ? '18pt' : '26pt' }};
-            font-size: 19pt;
-            letter-spacing: 1.5pt;
-            font-weight: bold;
+            font-family: DejaVu Serif, serif;
+            font-size: 20pt;
+            letter-spacing: 1pt;
         }
         .subtitle { margin-top: 5pt; font-size: 9.5pt; color: #57564F; }
 
         .intro { margin-top: {{ $isLandscape ? '20pt' : '30pt' }}; font-size: 10pt; color: #57564F; }
 
         .name {
-            margin-top: 8pt;
+            margin-top: 10pt;
+            font-family: DejaVu Serif, serif;
             font-size: {{ $nameSize }};
-            font-weight: bold;
             color: {{ $ink }};
-            line-height: 1.25;
+            line-height: 1.22;
             padding: 0 20pt;
         }
 
