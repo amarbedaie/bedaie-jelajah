@@ -272,7 +272,7 @@ class EventEditor extends Component
             'event_category_id' => (int) $data['event_category_id'],
             'speaker_id' => $data['speaker_id'] ? (int) $data['speaker_id'] : null,
             'target_audience' => TargetAudience::from($data['target_audience']),
-            'learning_hours' => $data['learning_hours'] !== '' ? (float) $data['learning_hours'] : null,
+            'learning_hours' => $data['learning_hours'] !== '' ? (float) $data['learning_hours'] : 0,
             'venue_id' => $venue->id,
             'state_id' => (int) $data['state_id'],
             'district_id' => $data['district_id'] ? (int) $data['district_id'] : null,

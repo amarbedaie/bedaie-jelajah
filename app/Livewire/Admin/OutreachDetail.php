@@ -251,6 +251,17 @@ class OutreachDetail extends Component
         return redirect()->route('admin.permohonan.show', $application);
     }
 
+    public function delete()
+    {
+        $target = $this->target;
+        $name = $target->name;
+        $target->delete();
+
+        session()->flash('success', "Sasaran \"{$name}\" dibuang daripada papan.");
+
+        return redirect()->route('admin.sasaran');
+    }
+
     public function render()
     {
         return view('livewire.admin.outreach-detail', [

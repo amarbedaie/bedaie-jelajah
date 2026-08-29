@@ -67,6 +67,20 @@ class AdminManagementTest extends TestCase
         $this->assertSame('Masjid Baharu Ujian', $event->venue->name);
     }
 
+    public function test_admin_boleh_kosongkan_jam_pembelajaran_semasa_sunting_program_diterbitkan(): void
+    {
+        $admin = $this->admin();
+        $event = $this->makeEvent(['status' => EventStatus::Diterbitkan, 'learning_hours' => 3]);
+
+        Livewire::actingAs($admin)
+            ->test(EventEditor::class, ['event' => $event])
+            ->set('learning_hours', '')
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $this->assertSame('0.00', $event->fresh()->learning_hours);
+    }
+
     public function test_kapasiti_tidak_boleh_kurang_daripada_tempat_diambil(): void
     {
         $admin = $this->admin();

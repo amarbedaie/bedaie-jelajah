@@ -1,4 +1,13 @@
-<div class="grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+<div>
+    <div class="mb-6 flex justify-end">
+        <x-ui.button wire:click="delete"
+                     wire:confirm="Buang sasaran ini daripada papan? Tindakan ini tidak boleh dibuat asal."
+                     variant="danger-soft" size="sm" icon="trash">
+            Buang Sasaran
+        </x-ui.button>
+    </div>
+
+    <div class="grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
     {{-- ══ Lajur utama ═══════════════════════════════════════ --}}
     <div class="space-y-6">
         {{-- Kemajuan --}}
@@ -420,4 +429,5 @@
             @endif
         </x-ui.card>
     </aside>
+    </div>
 </div>

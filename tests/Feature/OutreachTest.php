@@ -191,6 +191,19 @@ class OutreachTest extends TestCase
         $this->assertSame(OutreachStage::CariKontak, $target->fresh()->stage);
     }
 
+    public function test_staf_boleh_membuang_sasaran_daripada_papan(): void
+    {
+        $admin = $this->admin();
+        $target = $this->makeTarget();
+
+        Livewire::actingAs($admin)
+            ->test(OutreachDetail::class, ['target' => $target])
+            ->call('delete')
+            ->assertRedirect(route('admin.sasaran'));
+
+        $this->assertSoftDeleted($target);
+    }
+
     public function test_menutup_sasaran_memerlukan_sebab(): void
     {
         $admin = $this->admin();

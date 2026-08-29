@@ -314,7 +314,24 @@
                 @endif
             </x-ui.empty-state>
         @else
-            <div class="no-scrollbar mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
+            <div class="relative mt-6" x-data="kanbanScroll" x-init="init()">
+                <button type="button" x-show="!atStart" x-cloak x-on:click="scroll(-1)"
+                        class="tap-target absolute -left-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center
+                               rounded-full border border-hairline bg-surface text-ink-soft shadow-soft
+                               transition hover:text-ink"
+                        aria-label="Tatal papan ke kiri">
+                    <x-ui.icon name="arrow-left" class="h-4 w-4" />
+                </button>
+                <button type="button" x-show="!atEnd" x-cloak x-on:click="scroll(1)"
+                        class="tap-target absolute -right-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center
+                               rounded-full border border-hairline bg-surface text-ink-soft shadow-soft
+                               transition hover:text-ink"
+                        aria-label="Tatal papan ke kanan">
+                    <x-ui.icon name="arrow-right" class="h-4 w-4" />
+                </button>
+
+                <div x-ref="scroller"
+                     class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
                 @foreach ($stages as $stage)
                     @php $items = $grouped[$stage->value] ?? collect(); @endphp
                     <section class="w-[17rem] shrink-0 snap-start" aria-label="{{ $stage->label() }}">
@@ -383,6 +400,7 @@
                         </div>
                     </section>
                 @endforeach
+                </div>
             </div>
 
             @if ($closed->isNotEmpty())

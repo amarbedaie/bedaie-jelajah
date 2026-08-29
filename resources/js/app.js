@@ -24,6 +24,39 @@ document.addEventListener('alpine:init', () => {
         },
     }));
 
+    /**
+     * Papan kanban yang ditatal mendatar (cth. papan sasaran jelajah).
+     * Skrol bar disembunyikan untuk kekemasan, jadi pengguna tetikus biasa
+     * (tanpa touchpad) tiada cara nampak untuk tatal ke kanan — komponen ini
+     * menambah butang anak panah dan menukar skrol menegak tetikus kepada
+     * tatalan mendatar apabila menuding di atas papan.
+     */
+    window.Alpine.data('kanbanScroll', () => ({
+        atStart: true,
+        atEnd: false,
+        init() {
+            const el = this.$refs.scroller;
+            this.update();
+            el.addEventListener('scroll', () => this.update(), { passive: true });
+            el.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && el.scrollWidth > el.clientWidth) {
+                    el.scrollLeft += e.deltaY;
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            new ResizeObserver(() => this.update()).observe(el);
+        },
+        update() {
+            const el = this.$refs.scroller;
+            this.atStart = el.scrollLeft <= 4;
+            this.atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - 4;
+        },
+        scroll(dir) {
+            const el = this.$refs.scroller;
+            el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' });
+        },
+    }));
+
     /** Kaunter yang menaik apabila masuk pandangan. */
     window.Alpine.data('counter', (value, duration = 1400) => ({
         display: 0,
