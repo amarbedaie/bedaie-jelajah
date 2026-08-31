@@ -9,6 +9,7 @@ use App\Models\EventCategory;
 use App\Models\State;
 use App\Services\ImpactStatsService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class EventController extends Controller
 {
@@ -17,6 +18,7 @@ class EventController extends Controller
     public function index(Request $request)
     {
         $events = Event::with(['venue', 'state', 'district', 'speaker', 'category'])
+            ->withSeatCounts()
             ->when($request->string('status')->value() === 'perlu_ditutup',
                 fn ($q) => $q->where('status', EventStatus::Diterbitkan)
                     ->where('starts_at', '<', now()->subHours(6)))
@@ -58,7 +60,7 @@ class EventController extends Controller
     public function calendar(Request $request)
     {
         $month = $request->filled('bulan')
-            ? \Illuminate\Support\Carbon::parse($request->string('bulan').'-01')
+            ? Carbon::parse($request->string('bulan').'-01')
             : now()->startOfMonth();
 
         $events = Event::whereBetween('starts_at', [

@@ -14,10 +14,10 @@ class AttendanceController extends Controller
     public function index()
     {
         return view('admin.attendance-index', [
-            'today' => Event::whereBetween('starts_at', [now()->startOfDay(), now()->endOfDay()])
+            'today' => Event::withSeatCounts()->whereBetween('starts_at', [now()->startOfDay(), now()->endOfDay()])
                 ->with(['venue', 'state'])->orderBy('starts_at')->get(),
-            'upcoming' => Event::upcoming()->with(['venue', 'state'])->limit(10)->get(),
-            'recent' => Event::where('status', EventStatus::Selesai)
+            'upcoming' => Event::upcoming()->withSeatCounts()->with(['venue', 'state'])->limit(10)->get(),
+            'recent' => Event::withSeatCounts()->where('status', EventStatus::Selesai)
                 ->with(['venue', 'state'])->orderByDesc('starts_at')->limit(10)->get(),
         ]);
     }

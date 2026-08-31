@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\EventStatus;
+use App\Enums\PosterStyle;
 use App\Enums\PricingMode;
 use App\Enums\RegistrationStatus;
 use App\Enums\TargetAudience;
@@ -14,6 +15,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class Event extends Model
 {
@@ -36,7 +39,7 @@ class Event extends Model
     {
         return [
             'status' => EventStatus::class,
-            'poster_style' => \App\Enums\PosterStyle::class,
+            'poster_style' => PosterStyle::class,
             'pricing_mode' => PricingMode::class,
             'target_audience' => TargetAudience::class,
             'starts_at' => 'datetime',
@@ -175,10 +178,27 @@ class Event extends Model
     /** Bilangan tempat yang telah diambil (peserta + tetamu). */
     public function seatsTaken(): int
     {
+        // Senarai memuatkan agregat ini sekali melalui withSeatCounts();
+        // tanpa semakan ini setiap baris menembak pertanyaan sendiri.
+        if (array_key_exists('seats_taken_agg', $this->attributes)) {
+            return (int) $this->attributes['seats_taken_agg'];
+        }
+
         return (int) $this->registrations()
             ->whereIn('status', [RegistrationStatus::Disahkan->value, RegistrationStatus::MenungguPengesahan->value])
             ->selectRaw('COALESCE(SUM(1 + guests_count), 0) as total')
             ->value('total');
+    }
+
+    /** Memuatkan kiraan tempat untuk seluruh senarai dalam satu pertanyaan. */
+    public function scopeWithSeatCounts(Builder $q): Builder
+    {
+        return $q->withSum([
+            'registrations as seats_taken_agg' => fn ($r) => $r->whereIn('status', [
+                RegistrationStatus::Disahkan->value,
+                RegistrationStatus::MenungguPengesahan->value,
+            ]),
+        ], DB::raw('1 + guests_count'));
     }
 
     public function seatsLeft(): ?int
@@ -316,14 +336,14 @@ class Event extends Model
      */
     public function posterUrl(): ?string
     {
-        return $this->poster_path ? \Illuminate\Support\Facades\Storage::disk('public')->url($this->poster_path) : null;
+        return $this->poster_path ? Storage::disk('public')->url($this->poster_path) : null;
     }
 
     public function heroUrl(): ?string
     {
         $path = $this->hero_image_path ?? $this->poster_path;
 
-        return $path ? \Illuminate\Support\Facades\Storage::disk('public')->url($path) : null;
+        return $path ? Storage::disk('public')->url($path) : null;
     }
 
     /** Mesej WhatsApp siap sedia untuk dikongsi Penggerak. */
@@ -369,8 +389,20 @@ class Event extends Model
 
     public function averageRating(): ?float
     {
+        if (array_key_exists('rating_avg_agg', $this->attributes)) {
+            $avg = $this->attributes['rating_avg_agg'];
+
+            return $avg ? round((float) $avg, 1) : null;
+        }
+
         $avg = $this->feedback()->whereNotNull('rating')->avg('rating');
 
         return $avg ? round((float) $avg, 1) : null;
+    }
+
+    /** Memuatkan purata penilaian untuk seluruh senarai sekali gus. */
+    public function scopeWithRatingAverage(Builder $q): Builder
+    {
+        return $q->withAvg('feedback as rating_avg_agg', 'rating');
     }
 }

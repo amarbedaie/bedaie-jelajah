@@ -19,12 +19,22 @@ class DashboardController extends Controller
     {
         $today = now()->startOfDay();
 
+        // Enam kiraan status permohonan dalam satu pertanyaan, bukan enam.
+        // Dashboard ialah skrin yang paling kerap dibuka pasukan BeDaie.
+        $this->statusCounts = $byStatus = Application::query()
+            ->whereNotNull('submitted_at')
+            ->selectRaw('status, count(*) as total')
+            ->groupBy('status')
+            ->pluck('total', 'status');
+
+        $count = fn (ApplicationStatus ...$s) => collect($s)
+            ->sum(fn ($x) => (int) ($byStatus[$x->value] ?? 0));
+
         return view('admin.dashboard', [
             'headline' => $this->stats->headline(),
-            'newApplications' => Application::submitted()
-                ->where('status', ApplicationStatus::Diterima)->count(),
-            'openApplications' => Application::open()->count(),
-            'awaitingConfirmation' => Application::where('status', ApplicationStatus::Diluluskan)->count(),
+            'newApplications' => $count(ApplicationStatus::Diterima),
+            'openApplications' => $count(...ApplicationStatus::openStatuses()),
+            'awaitingConfirmation' => $count(ApplicationStatus::Diluluskan),
             'upcomingEvents' => Event::upcoming()->count(),
             'todayEvents' => Event::whereBetween('starts_at', [$today, $today->clone()->endOfDay()])
                 ->with(['venue', 'state', 'speaker'])->orderBy('starts_at')->get(),
@@ -39,12 +49,15 @@ class DashboardController extends Controller
         ]);
     }
 
+    /** Kiraan status yang telah diagregat, dikongsi dengan actionQueue(). */
+    private $statusCounts = [];
+
     /** "Tindakan yang perlu dibuat" — senarai kerja sebenar, bukan graf. */
     private function actionQueue(): array
     {
         $actions = [];
 
-        $needsReview = Application::where('status', ApplicationStatus::Diterima)->count();
+        $needsReview = $this->statusCounts[ApplicationStatus::Diterima->value] ?? 0;
         if ($needsReview > 0) {
             $actions[] = [
                 'label' => "{$needsReview} permohonan baharu menunggu semakan",
@@ -53,7 +66,7 @@ class DashboardController extends Controller
             ];
         }
 
-        $awaitingInfo = Application::where('status', ApplicationStatus::PerluMaklumat)->count();
+        $awaitingInfo = $this->statusCounts[ApplicationStatus::PerluMaklumat->value] ?? 0;
         if ($awaitingInfo > 0) {
             $actions[] = [
                 'label' => "{$awaitingInfo} permohonan menunggu maklumat pemohon",
@@ -62,7 +75,7 @@ class DashboardController extends Controller
             ];
         }
 
-        $approved = Application::where('status', ApplicationStatus::Diluluskan)->count();
+        $approved = $this->statusCounts[ApplicationStatus::Diluluskan->value] ?? 0;
         if ($approved > 0) {
             $actions[] = [
                 'label' => "{$approved} permohonan diluluskan — sedia untuk dicipta program",

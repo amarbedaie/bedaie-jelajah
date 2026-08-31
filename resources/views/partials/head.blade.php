@@ -20,9 +20,12 @@
 <link rel="manifest" href="{{ route('pwa.manifest') }}">
 <link rel="apple-touch-icon" href="{{ asset('brand/bedaie-logo-placeholder.svg') }}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+{{-- Fon dihos sendiri (resources/css/fonts.css). Dua muka taip yang
+     paling awal kelihatan dipramuat supaya tajuk tidak berkelip. --}}
+<link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/SourceSerif4-400-normal.woff2') }}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/HankenGrotesk-400-normal.woff2') }}" crossorigin>
 
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @livewireStyles

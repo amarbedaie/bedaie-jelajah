@@ -23,20 +23,45 @@ class CertificateActions extends Component
 
     public string $revokeReason = '';
 
+    /** Data paparan, disalin sekali supaya render tidak menyentuh DB. */
+    public string $recipientName = '';
+
+    public string $verifyUrl = '';
+
+    public string $downloadUrl = '';
+
+    public bool $isValid = false;
+
     public function mount(Certificate $certificate): void
     {
         $this->certificateId = $certificate->id;
+        $this->fillDisplay($certificate);
     }
 
+    /**
+     * Model diambil hanya apabila satu tindakan benar-benar berlaku.
+     *
+     * Senarai sijil memaparkan 25 baris, setiap satu satu komponen. Jika
+     * render menyentuh model, itu 25 pertanyaan tambahan setiap kali
+     * halaman dibuka.
+     */
     public function getCertificateProperty(): Certificate
     {
         return Certificate::findOrFail($this->certificateId);
     }
 
+    private function fillDisplay(Certificate $certificate): void
+    {
+        $this->recipientName = $certificate->recipient_name;
+        $this->verifyUrl = $certificate->verificationUrl();
+        $this->downloadUrl = $certificate->isValid() ? $certificate->downloadUrl() : '';
+        $this->isValid = $certificate->isValid();
+    }
+
     public function startRegenerate(): void
     {
         $this->mode = 'regenerate';
-        $this->correctedName = $this->certificate->recipient_name;
+        $this->correctedName = $this->recipientName;
         $this->resetValidation();
     }
 
@@ -65,6 +90,7 @@ class CertificateActions extends Component
             auth()->user(),
         );
 
+        $this->fillDisplay($this->certificate->fresh());
         $this->cancel();
         $this->dispatch('sijil-dikemaskini');
 
@@ -80,6 +106,7 @@ class CertificateActions extends Component
 
         $certificates->revoke($this->certificate, $this->revokeReason, auth()->user());
 
+        $this->fillDisplay($this->certificate->fresh());
         $this->cancel();
         $this->dispatch('sijil-dikemaskini');
 
@@ -88,8 +115,6 @@ class CertificateActions extends Component
 
     public function render()
     {
-        return view('livewire.admin.certificate-actions', [
-            'certificate' => $this->certificate,
-        ]);
+        return view('livewire.admin.certificate-actions');
     }
 }

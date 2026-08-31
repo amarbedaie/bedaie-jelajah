@@ -18,7 +18,7 @@ class ReportController extends Controller
         return view('admin.reports', [
             'headline' => $this->stats->headline(),
             'states' => $this->stats->stateMap(),
-            'events' => Event::where('status', EventStatus::Selesai)
+            'events' => Event::withSeatCounts()->withRatingAverage()->where('status', EventStatus::Selesai)
                 ->with(['venue', 'state', 'speaker', 'category'])
                 ->orderByDesc('starts_at')
                 ->paginate(15),
