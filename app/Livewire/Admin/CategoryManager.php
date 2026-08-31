@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\EventCategory;
 use App\Services\ActivityLogger;
 use Illuminate\Support\Str;
@@ -10,6 +11,8 @@ use Livewire\Component;
 
 class CategoryManager extends Component
 {
+    use NotifiesUser;
+
     public ?int $editingId = null;
 
     public bool $showForm = false;
@@ -100,7 +103,7 @@ class CategoryManager extends Component
             $category, "Kategori {$category->name} disimpan.");
 
         $this->resetForm();
-        session()->flash('success', 'Kategori disimpan.');
+        $this->notify('Kategori disimpan.', 'success');
     }
 
     public function toggleActive(int $id): void
@@ -117,14 +120,13 @@ class CategoryManager extends Component
         // rekod program dan permohonan lampau kekal utuh.
         if ($category->events_count > 0 || $category->applications_count > 0) {
             $category->update(['is_active' => false]);
-            session()->flash('info',
-                "{$category->name} sedang digunakan, jadi hanya dinyahaktifkan.");
+            $this->notify("{$category->name} sedang digunakan, jadi hanya dinyahaktifkan.", 'info');
 
             return;
         }
 
         $category->delete();
-        session()->flash('success', 'Kategori dibuang.');
+        $this->notify('Kategori dibuang.', 'success');
     }
 
     public function cancel(): void

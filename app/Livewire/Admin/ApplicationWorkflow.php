@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Enums\ApplicationStatus;
 use App\Enums\PricingMode;
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Application;
 use App\Models\ApplicationNote;
 use App\Models\Speaker;
@@ -17,6 +18,8 @@ use Livewire\Component;
  */
 class ApplicationWorkflow extends Component
 {
+    use NotifiesUser;
+
     #[Locked]
     public int $applicationId;
 
@@ -146,11 +149,18 @@ class ApplicationWorkflow extends Component
 
         $this->reset('publicNote', 'internalNote');
 
+        // Lencana status dan garis masa dirender oleh view induk, di luar
+        // komponen ini — jadi kemas kini di tempat akan meninggalkan skrin
+        // memaparkan status LAMA. Muat semula supaya halaman bercakap
+        // benar, dan bawa mesej melalui sesi kerana toast tidak bertahan
+        // merentas navigasi.
         session()->flash('success', $this->confirmsProgram()
             ? 'Program disahkan. Halaman program, link, QR dan poster telah dijana automatik.'
             : 'Status permohonan dikemas kini.');
 
-        $this->dispatch('permohonan-dikemaskini');
+        // Bukan url()->current(): di dalam permintaan Livewire itu
+        // menunjuk ke /livewire/update, bukan halaman permohonan.
+        $this->redirect(route('admin.permohonan.show', $application), navigate: true);
     }
 
     public function addNote(): void
@@ -170,6 +180,7 @@ class ApplicationWorkflow extends Component
         ]);
 
         $this->reset('noteBody');
+        $this->notify('Nota direkodkan.');
         $this->dispatch('permohonan-dikemaskini');
     }
 

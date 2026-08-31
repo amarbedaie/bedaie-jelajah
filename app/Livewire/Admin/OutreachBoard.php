@@ -6,6 +6,7 @@ use App\Enums\OutreachPriority;
 use App\Enums\OutreachSource;
 use App\Enums\OutreachStage;
 use App\Enums\OutreachTargetType;
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\District;
 use App\Models\OutreachTarget;
 use App\Models\Partner;
@@ -21,6 +22,8 @@ use Livewire\Component;
  */
 class OutreachBoard extends Component
 {
+    use NotifiesUser;
+
     // ── Penapis ──
     public string $assignee = '';
 
@@ -188,7 +191,7 @@ class OutreachBoard extends Component
         ], auth()->user());
 
         $this->resetForm();
-        session()->flash('success', 'Sasaran ditambah ke papan.');
+        $this->notify('Sasaran ditambah ke papan.', 'success');
     }
 
     /** Gerakkan sasaran satu langkah ke hadapan terus dari papan. */

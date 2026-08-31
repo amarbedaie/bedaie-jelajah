@@ -321,7 +321,7 @@
                     <x-ui.button type="button" wire:click="$set('open', false)" variant="ghost">Batal</x-ui.button>
                 </div>
 
-                <p class="text-xs text-ink-muted text-pretty">
+                <p class="text-[0.8125rem] text-ink-muted text-pretty">
                     Perubahan tarikh atau lokasi akan menghantar pemberitahuan automatik
                     kepada semua peserta yang telah mendaftar.
                 </p>

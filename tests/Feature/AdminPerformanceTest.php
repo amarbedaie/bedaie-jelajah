@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Feedback;
+use App\Models\NotificationTemplate;
 use App\Services\AttendanceService;
 use App\Services\CertificateService;
 use App\Services\RegistrationService;
@@ -131,5 +132,26 @@ class AdminPerformanceTest extends TestCase
 
             app(CertificateService::class)->issueForEvent($event->fresh());
         }
+    }
+
+    /**
+     * Halaman templat notifikasi memaparkan satu komponen Livewire
+     * setiap templat. Ia pernah menembak 41 pertanyaan berulang.
+     */
+    public function test_halaman_templat_tidak_menembak_pertanyaan_per_templat(): void
+    {
+        $this->actingAs($this->admin());
+
+        DB::flushQueryLog();
+        DB::enableQueryLog();
+        $this->get(route('admin.template'))->assertOk();
+        $n = count(DB::getQueryLog());
+        DB::disableQueryLog();
+
+        $templates = NotificationTemplate::count();
+
+        $this->assertLessThan(10, $n,
+            "Halaman templat menggunakan {$n} pertanyaan untuk {$templates} templat — "
+            .'render komponen tidak boleh mengambil semula modelnya.');
     }
 }

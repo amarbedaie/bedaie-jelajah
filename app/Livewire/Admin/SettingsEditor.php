@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Setting;
 use App\Services\ActivityLogger;
 use Livewire\Component;
@@ -13,6 +14,8 @@ use Livewire\Component;
  */
 class SettingsEditor extends Component
 {
+    use NotifiesUser;
+
     /** @var array<string, string> */
     public array $values = [];
 
@@ -82,9 +85,9 @@ class SettingsEditor extends Component
                 "{$changed} tetapan dikemas kini oleh ".auth()->user()->name.'.');
         }
 
-        session()->flash('success', $changed > 0
+        $this->notify($changed > 0
             ? "{$changed} tetapan dikemas kini."
-            : 'Tiada perubahan untuk disimpan.');
+            : 'Tiada perubahan untuk disimpan.', 'success');
     }
 
     public function render()

@@ -40,7 +40,7 @@
                     ] as [$label, $value])
                         <div class="rounded-xl bg-mist p-3.5">
                             <dd class="font-display text-xl text-ink">{{ $value }}</dd>
-                            <dt class="mt-0.5 text-xs text-ink-soft text-pretty">{{ $label }}</dt>
+                            <dt class="mt-0.5 text-[0.8125rem] text-ink-soft text-pretty">{{ $label }}</dt>
                         </div>
                     @endforeach
                 </dl>
@@ -107,12 +107,12 @@
                             {{ number_format((float) $report['rating'], 1) }}
                             <span class="text-base font-normal text-ink-muted">/ 5</span>
                         </p>
-                        <p class="mt-0.5 text-xs text-ink-muted">
+                        <p class="mt-0.5 text-[0.8125rem] text-ink-muted">
                             daripada {{ $report['rating_count'] }} maklum balas
                         </p>
                         <ul class="mt-4 space-y-1.5">
                             @foreach ($report['rating_breakdown'] as $star => $count)
-                                <li class="flex items-center gap-2.5 text-xs">
+                                <li class="flex items-center gap-2.5 text-[0.8125rem]">
                                     <span class="w-8 shrink-0 text-ink-muted">{{ $star }} ★</span>
                                     <span class="h-1.5 flex-1 overflow-hidden rounded-full bg-mist">
                                         <span class="block h-full rounded-full bg-clay-400"
@@ -179,7 +179,7 @@
                     <div class="rounded-xl bg-white p-2.5 ring-1 ring-hairline">
                         {!! app(\App\Services\QrCodeService::class)->svg($event->shortUrl(), 150) !!}
                     </div>
-                    <p class="break-all text-center font-mono text-xs text-clay-700">{{ $event->shortUrl() }}</p>
+                    <p class="break-all text-center font-mono text-[0.8125rem] text-clay-700">{{ $event->shortUrl() }}</p>
                 </div>
                 <div class="mt-4 grid gap-2.5">
                     <x-ui.copy-button :text="$event->shortUrl()" label="Salin Link Pendek" variant="outline" block />

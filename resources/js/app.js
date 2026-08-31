@@ -129,3 +129,64 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
+/*
+ * Maklum balas tindakan.
+ *
+ * session()->flash() tidak pernah dipaparkan dari dalam komponen
+ * Livewire: partial flash berada di luar akar komponen, jadi permintaan
+ * XHR memakan mesej itu sebelum ia sempat dirender. Setiap "berjaya
+ * disimpan" dalam ruang admin hilang begitu sahaja — punca utama staf
+ * merasakan sistem ini tidak memberi respons.
+ *
+ * Komponen kini menghantar peristiwa 'notify'; pendengar ini membina
+ * nodnya sendiri, jadi ia tidak bergantung pada kitaran reaktif mana-mana
+ * rangka kerja.
+ */
+const TOAST_TONES = {
+    success: ['bg-clay-50', 'border-clay-300', 'text-ink', 'bg-clay-600'],
+    warning: ['bg-mist', 'border-control-line/35', 'text-ink', 'bg-ink-muted'],
+    info:    ['bg-mist', 'border-control-line/35', 'text-ink', 'bg-ink-muted'],
+    error:   ['bg-alert-soft', 'border-alert-line', 'text-alert', 'bg-alert'],
+};
+
+function tunjukToast(detail) {
+    const host = document.getElementById('jelajah-toast');
+    if (!host || !detail?.message) return;
+
+    const [bg, border, text, dot] = TOAST_TONES[detail.variant] ?? TOAST_TONES.success;
+
+    const el = document.createElement('div');
+    el.className = `pointer-events-auto flex w-full max-w-md items-start gap-3 rounded-card border
+                    px-4 py-3 text-sm shadow-lift transition-opacity duration-200 sm:w-auto
+                    sm:min-w-[20rem] ${bg} ${border} ${text}`;
+    el.style.opacity = '0';
+
+    const mark = document.createElement('span');
+    mark.className = `mt-1 h-2 w-2 shrink-0 rounded-full ${dot}`;
+
+    const body = document.createElement('span');
+    body.className = 'flex-1 text-pretty';
+    body.textContent = detail.message;
+
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'shrink-0 opacity-50 transition hover:opacity-100';
+    close.setAttribute('aria-label', 'Tutup mesej');
+    close.innerHTML = '<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" '
+        + 'stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>';
+
+    const buang = () => {
+        el.style.opacity = '0';
+        setTimeout(() => el.remove(), 200);
+    };
+
+    close.addEventListener('click', buang);
+    el.append(mark, body, close);
+    host.append(el);
+
+    requestAnimationFrame(() => { el.style.opacity = '1'; });
+    setTimeout(buang, 6000);
+}
+
+window.addEventListener('notify', (e) => tunjukToast(e.detail));

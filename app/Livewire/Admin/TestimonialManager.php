@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Event;
 use App\Models\State;
 use App\Models\Testimonial;
@@ -11,6 +12,8 @@ use Livewire\Component;
 /** Menguruskan testimoni yang dipaparkan pada laman awam. */
 class TestimonialManager extends Component
 {
+    use NotifiesUser;
+
     public ?int $editingId = null;
 
     public string $name = '';
@@ -111,7 +114,7 @@ class TestimonialManager extends Component
         );
 
         $this->resetForm();
-        session()->flash('success', 'Testimoni disimpan.');
+        $this->notify('Testimoni disimpan.', 'success');
     }
 
     public function toggleApproved(int $id): void
@@ -119,9 +122,9 @@ class TestimonialManager extends Component
         $testimonial = Testimonial::findOrFail($id);
         $testimonial->update(['is_approved' => ! $testimonial->is_approved]);
 
-        session()->flash('success', $testimonial->is_approved
+        $this->notify($testimonial->is_approved
             ? 'Testimoni diluluskan dan kini dipaparkan.'
-            : 'Testimoni ditarik daripada paparan awam.');
+            : 'Testimoni ditarik daripada paparan awam.', 'success');
     }
 
     public function toggleFeatured(int $id): void
@@ -135,7 +138,7 @@ class TestimonialManager extends Component
         Testimonial::findOrFail($id)->delete();
 
         ActivityLogger::log('testimonial.deleted', null, 'Testimoni dibuang.');
-        session()->flash('success', 'Testimoni dibuang.');
+        $this->notify('Testimoni dibuang.', 'success');
     }
 
     public function cancel(): void

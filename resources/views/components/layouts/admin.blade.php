@@ -144,6 +144,8 @@
         </main>
     </div>
 
+    @include('partials.toast')
+
     @livewireScripts
 </body>
 </html>

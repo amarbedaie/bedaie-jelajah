@@ -35,7 +35,7 @@
                 <tr wire:key="payment-{{ $payment->id }}" class="hover:bg-mist/40">
                     <td class="px-4 py-3">
                         <p class="font-medium text-ink">{{ $payment->registration?->name ?? '—' }}</p>
-                        <p class="font-mono text-xs text-ink-muted">{{ $payment->registration?->reference_no }}</p>
+                        <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $payment->registration?->reference_no }}</p>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">
                         {{ \Illuminate\Support\Str::limit($payment->event?->title ?? '—', 36) }}
@@ -43,7 +43,7 @@
                     <td class="whitespace-nowrap px-4 py-3 font-medium text-ink">
                         RM {{ number_format((float) $payment->amount, 2) }}
                     </td>
-                    <td class="px-4 py-3 text-xs text-ink-muted">
+                    <td class="px-4 py-3 text-[0.8125rem] text-ink-muted">
                         {{ $payment->gateway }}
                         @if ($payment->gateway_reference)
                             <span class="block font-mono">{{ $payment->gateway_reference }}</span>
@@ -52,7 +52,7 @@
                     <td class="px-4 py-3">
                         <x-ui.badge :color="$payment->status->color()">{{ $payment->status->label() }}</x-ui.badge>
                     </td>
-                    <td class="whitespace-nowrap px-4 py-3 text-xs text-ink-muted">
+                    <td class="whitespace-nowrap px-4 py-3 text-[0.8125rem] text-ink-muted">
                         {{ $payment->paid_at?->translatedFormat('j M Y') ?? $payment->created_at->translatedFormat('j M Y') }}
                     </td>
                     <td class="px-4 py-3 text-right">

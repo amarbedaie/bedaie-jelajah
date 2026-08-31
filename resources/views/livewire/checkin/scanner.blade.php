@@ -1,13 +1,15 @@
 @php
     $outcome = $result['outcome'] ?? null;
-    // Skrin ini dibaca di pintu masuk masjid waktu malam, jadi setiap
-    // pasangan latar/teks mesti mencapai AA — bukan sekadar berwarna.
+    // Skrin ini dibaca di pintu masuk masjid waktu malam, selalunya
+    // sekilas pandang. Tiga keputusan dipisahkan oleh KECERAHAN, bukan
+    // rona: kertas cerah = berjaya, wain gelap = gagal (7.35:1 antara
+    // keduanya). Rona sahaja tidak bertahan pada skrin malap.
     $tones = [
-        'checked_in' => ['bg-clay-600', 'text-white', 'check-circle', 'Berjaya'],
+        'checked_in' => ['bg-cream', 'text-ink', 'check-circle', 'Berjaya'],
         'duplicate'  => ['bg-clay-400', 'text-ink', 'alert', 'Sudah Check-in'],
         'fail'       => ['bg-alert', 'text-white', 'x-circle', 'Tidak Berjaya'],
     ];
-    [$tone, $toneInk, $icon, $heading] = $tones[$outcome] ?? ['bg-char-900', 'text-white', 'qr', ''];
+    [$tone, $toneInk, $icon, $heading] = $tones[$outcome] ?? ['bg-char-800', 'text-white', 'qr', ''];
 @endphp
 
 <div x-data="qrScanner($wire)"
@@ -50,7 +52,29 @@
 
     {{-- ── Keputusan imbasan ──────────────────────────────── --}}
     @if ($result)
-        <div class="jelajah-container pt-5" wire:key="result-{{ md5(json_encode($result)) }}">
+        {{-- Isyarat bunyi: di pintu masuk, mata operator pada orang di
+             hadapannya, bukan pada skrin. navigator.vibrate tiada pada
+             iOS, jadi satu nada pendek ialah satu-satunya isyarat yang
+             boleh diharap. --}}
+        <div class="jelajah-container pt-5" wire:key="result-{{ md5(json_encode($result)) }}"
+             x-data
+             x-init="(() => {
+                const ok = @js($outcome === 'checked_in');
+                try {
+                    const Ctx = window.AudioContext || window.webkitAudioContext;
+                    if (!Ctx) return;
+                    const ctx = new Ctx();
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain); gain.connect(ctx.destination);
+                    osc.frequency.value = ok ? 880 : 320;
+                    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.15, ctx.currentTime + 0.01);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (ok ? 0.14 : 0.32));
+                    osc.start(); osc.stop(ctx.currentTime + (ok ? 0.15 : 0.34));
+                } catch (e) { /* audio disekat — visual sudah memadai */ }
+                if (navigator.vibrate) navigator.vibrate(ok ? 40 : [60, 50, 60]);
+             })()">
             <div class="overflow-hidden rounded-card-lg {{ $tone }} {{ $toneInk }} p-5">
                 <div class="flex items-start gap-4">
                     <x-ui.icon :name="$icon" class="mt-0.5 h-7 w-7 shrink-0" />
@@ -121,7 +145,7 @@
 
     {{-- ── Kod manual ─────────────────────────────────────── --}}
     <div class="jelajah-container pt-4">
-        <form wire:submit="scan(manualCode)" class="flex gap-2">
+        <form wire:submit="scanManual" class="flex gap-2">
             <label for="kod-manual" class="sr-only">Kod QR manual</label>
             <input id="kod-manual" wire:model="manualCode" type="text"
                    placeholder="Masukkan kod QR secara manual"

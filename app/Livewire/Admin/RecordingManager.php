@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Enums\RecordingType;
 use App\Enums\RecordingVisibility;
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Event;
 use App\Models\EventRecording;
 use App\Services\ActivityLogger;
@@ -13,6 +14,8 @@ use Livewire\Component;
 /** Menguruskan rakaman dan bahan sesuatu program. */
 class RecordingManager extends Component
 {
+    use NotifiesUser;
+
     #[Locked]
     public int $eventId;
 
@@ -122,7 +125,7 @@ class RecordingManager extends Component
             $recording, "Rakaman \"{$recording->title}\" disimpan.");
 
         $this->resetForm();
-        session()->flash('success', 'Rakaman disimpan.');
+        $this->notify('Rakaman disimpan.', 'success');
     }
 
     public function togglePublished(int $id): void
@@ -130,15 +133,15 @@ class RecordingManager extends Component
         $r = EventRecording::where('event_id', $this->eventId)->findOrFail($id);
         $r->update(['is_published' => ! $r->is_published]);
 
-        session()->flash('success', $r->is_published
+        $this->notify($r->is_published
             ? 'Rakaman diterbitkan dan kini boleh ditonton peserta yang layak.'
-            : 'Rakaman ditarik daripada paparan peserta.');
+            : 'Rakaman ditarik daripada paparan peserta.', 'success');
     }
 
     public function delete(int $id): void
     {
         EventRecording::where('event_id', $this->eventId)->findOrFail($id)->delete();
-        session()->flash('success', 'Rakaman dibuang.');
+        $this->notify('Rakaman dibuang.', 'success');
     }
 
     public function cancel(): void

@@ -6,21 +6,21 @@
     <div class="flex flex-wrap items-start justify-between gap-3">
         <div class="min-w-0">
             <div class="flex flex-wrap items-center gap-2">
-                <x-ui.badge :color="$template->channel === 'whatsapp' ? 'success' : 'grey'">
-                    {{ $channelLabels[$template->channel] ?? $template->channel }}
+                <x-ui.badge :color="$channel === 'whatsapp' ? 'success' : 'grey'">
+                    {{ $channelLabels[$channel] ?? $channel }}
                 </x-ui.badge>
-                @if ($template->subject)
-                    <span class="text-sm font-medium text-ink">{{ $template->subject }}</span>
+                @if ($subject)
+                    <span class="text-sm font-medium text-ink">{{ $subject }}</span>
                 @endif
                 <button type="button" wire:click="toggleActive" aria-label="Tukar status aktif">
-                    <x-ui.badge :color="$template->is_active ? 'success' : 'warning'">
-                        {{ $template->is_active ? 'Aktif' : 'Tidak aktif' }}
+                    <x-ui.badge :color="$is_active ? 'success' : 'warning'">
+                        {{ $is_active ? 'Aktif' : 'Tidak aktif' }}
                     </x-ui.badge>
                 </button>
             </div>
 
             @unless ($open)
-                <p class="mt-2 whitespace-pre-line text-sm text-ink-soft text-pretty">{{ $template->body }}</p>
+                <p class="mt-2 whitespace-pre-line text-sm text-ink-soft text-pretty">{{ $body }}</p>
             @endunless
         </div>
 
@@ -29,9 +29,9 @@
         </x-ui.button>
     </div>
 
-    @if (! empty($template->placeholders) && ! $open)
+    @if (! empty($placeholders) && ! $open)
         <ul class="mt-2.5 flex flex-wrap gap-1.5">
-            @foreach ($template->placeholders as $placeholder)
+            @foreach ($placeholders as $placeholder)
                 <li class="rounded bg-mist px-1.5 py-0.5 font-mono text-[0.68rem] text-ink-soft">
                     &#123;&#123;{{ $placeholder }}&#125;&#125;
                 </li>
@@ -41,25 +41,25 @@
 
     @if ($open)
         <form wire:submit="save" class="mt-4 space-y-4 rounded-xl border border-clay-200 bg-clay-50/50 p-4">
-            @if ($template->channel === 'mail')
-                <x-ui.field label="Tajuk e-mel" for="tpl-subject-{{ $template->id }}"
+            @if ($channel === 'mail')
+                <x-ui.field label="Tajuk e-mel" for="tpl-subject-{{ $templateId }}"
                             :error="$errors->first('subject')">
-                    <x-ui.input id="tpl-subject-{{ $template->id }}" wire:model="subject"
+                    <x-ui.input id="tpl-subject-{{ $templateId }}" wire:model="subject"
                                 :error="$errors->has('subject')" />
                 </x-ui.field>
             @endif
 
-            <x-ui.field label="Kandungan" for="tpl-body-{{ $template->id }}" required
+            <x-ui.field label="Kandungan" for="tpl-body-{{ $templateId }}" required
                         :error="$errors->first('body')">
-                <x-ui.textarea id="tpl-body-{{ $template->id }}" wire:model="body" rows="6"
+                <x-ui.textarea id="tpl-body-{{ $templateId }}" wire:model="body" rows="6"
                                :error="$errors->has('body')" class="font-mono text-sm" />
             </x-ui.field>
 
-            @if (! empty($template->placeholders))
+            @if (! empty($placeholders))
                 <div>
-                    <p class="text-xs font-medium text-ink">Placeholder yang tersedia</p>
+                    <p class="text-[0.8125rem] font-medium text-ink">Placeholder yang tersedia</p>
                     <ul class="mt-1.5 flex flex-wrap gap-1.5">
-                        @foreach ($template->placeholders as $placeholder)
+                        @foreach ($placeholders as $placeholder)
                             <li class="rounded bg-surface px-1.5 py-0.5 font-mono text-[0.68rem] text-clay-700
                                        ring-1 ring-hairline">
                                 &#123;&#123;{{ $placeholder }}&#125;&#125;

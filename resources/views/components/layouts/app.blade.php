@@ -140,6 +140,8 @@
         {{ $slot }}
     </main>
 
+    @include('partials.toast')
+
     @livewireScripts
 </body>
 </html>

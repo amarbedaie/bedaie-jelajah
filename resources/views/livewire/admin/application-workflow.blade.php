@@ -22,7 +22,7 @@
                 @else
                     <div class="rounded-xl border border-clay-200 bg-clay-50/60 p-4">
                         <p class="text-sm font-semibold text-ink">Butiran Program</p>
-                        <p class="mt-1 text-xs text-ink-soft text-pretty">
+                        <p class="mt-1 text-[0.8125rem] text-ink-soft text-pretty">
                             Menyimpan status ini akan menjana halaman program, link pendek, QR,
                             poster dan dashboard Penggerak secara automatik.
                         </p>

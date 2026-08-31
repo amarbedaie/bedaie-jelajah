@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Speaker;
 use App\Services\ActivityLogger;
 use Illuminate\Support\Facades\Storage;
@@ -11,6 +12,7 @@ use Livewire\WithFileUploads;
 
 class SpeakerManager extends Component
 {
+    use NotifiesUser;
     use WithFileUploads;
 
     public ?int $editingId = null;
@@ -103,7 +105,7 @@ class SpeakerManager extends Component
             $speaker, "Penceramah {$speaker->name} disimpan.");
 
         $this->resetForm();
-        session()->flash('success', 'Penceramah disimpan.');
+        $this->notify('Penceramah disimpan.', 'success');
     }
 
     public function toggleActive(int $id): void
@@ -120,14 +122,13 @@ class SpeakerManager extends Component
         // supaya rekod program lampau kekal utuh.
         if ($speaker->events_count > 0) {
             $speaker->update(['is_active' => false]);
-            session()->flash('info',
-                "{$speaker->name} mempunyai {$speaker->events_count} program, jadi hanya dinyahaktifkan.");
+            $this->notify("{$speaker->name} mempunyai {$speaker->events_count} program, jadi hanya dinyahaktifkan.", 'info');
 
             return;
         }
 
         $speaker->delete();
-        session()->flash('success', 'Penceramah dibuang.');
+        $this->notify('Penceramah dibuang.', 'success');
     }
 
     public function cancel(): void

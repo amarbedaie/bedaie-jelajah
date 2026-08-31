@@ -35,7 +35,7 @@
                                         <x-ui.icon :name="$row['icon']" class="mt-0.5 h-4 w-4 shrink-0 text-clay-400" />
                                         <span class="min-w-0">
                                             <span class="block truncate text-sm font-medium text-ink">{{ $row['title'] }}</span>
-                                            <span class="block truncate text-xs text-ink-muted">{{ $row['meta'] }}</span>
+                                            <span class="block truncate text-[0.8125rem] text-ink-muted">{{ $row['meta'] }}</span>
                                         </span>
                                     </a>
                                 </li>

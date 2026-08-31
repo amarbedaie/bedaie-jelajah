@@ -81,7 +81,7 @@
                         <img src="{{ Storage::url($photo->image_path) }}" alt="{{ $photo->caption }}"
                              class="aspect-square w-full object-cover" />
                         <div class="p-3">
-                            <p class="truncate text-xs text-ink-muted">{{ $photo->event?->title }}</p>
+                            <p class="truncate text-[0.8125rem] text-ink-muted">{{ $photo->event?->title }}</p>
                             <div class="mt-2.5 flex gap-1.5">
                                 <x-ui.button wire:click="approve({{ $photo->id }})" variant="success" size="sm" icon="check">
                                     Luluskan
@@ -118,14 +118,14 @@
                         <img src="{{ Storage::url($photo->image_path) }}" alt="{{ $photo->caption }}"
                              loading="lazy" class="aspect-square w-full object-cover" />
                         <div class="p-3">
-                            <p class="truncate text-xs text-ink-muted">{{ $photo->event?->title }}</p>
+                            <p class="truncate text-[0.8125rem] text-ink-muted">{{ $photo->event?->title }}</p>
 
                             <label class="sr-only" for="cap-{{ $photo->id }}">Kapsyen gambar</label>
                             <input id="cap-{{ $photo->id }}" type="text" value="{{ $photo->caption }}"
                                    wire:change="updateCaption({{ $photo->id }}, $event.target.value)"
                                    placeholder="Tambah kapsyen…"
                                    class="mt-2 w-full rounded-lg border border-hairline bg-surface px-2.5 py-1.5
-                                          text-xs text-ink placeholder:text-ink-muted focus:border-clay-400
+                                          text-[0.8125rem] text-ink placeholder:text-ink-muted focus:border-clay-400
                                           focus:outline-none focus:ring-2 focus:ring-clay-400/15" />
 
                             <div class="mt-2.5 flex gap-1.5">

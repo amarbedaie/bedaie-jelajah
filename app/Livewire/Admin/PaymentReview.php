@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Enums\PaymentStatus;
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Payment;
 use App\Services\ActivityLogger;
 use App\Services\RegistrationService;
@@ -15,6 +16,7 @@ use Livewire\WithPagination;
  */
 class PaymentReview extends Component
 {
+    use NotifiesUser;
     use WithPagination;
 
     public string $status = 'belum_bayar';
@@ -36,7 +38,7 @@ class PaymentReview extends Component
         $payment = Payment::with('registration')->findOrFail($id);
 
         if ($payment->status === PaymentStatus::Berjaya) {
-            session()->flash('info', 'Bayaran ini telah pun disahkan.');
+            $this->notify('Bayaran ini telah pun disahkan.', 'info');
 
             return;
         }
@@ -54,7 +56,7 @@ class PaymentReview extends Component
         ActivityLogger::log('payment.confirmed', $payment,
             "Bayaran {$payment->registration?->reference_no} disahkan secara manual.");
 
-        session()->flash('success', 'Bayaran disahkan dan pendaftaran peserta telah diaktifkan.');
+        $this->notify('Bayaran disahkan dan pendaftaran peserta telah diaktifkan.', 'success');
     }
 
     public function markFailed(int $id): void
@@ -63,7 +65,7 @@ class PaymentReview extends Component
         $payment->update(['status' => PaymentStatus::Gagal]);
 
         ActivityLogger::log('payment.failed', $payment, 'Bayaran ditanda gagal oleh admin.');
-        session()->flash('warning', 'Bayaran ditanda sebagai gagal.');
+        $this->notify('Bayaran ditanda sebagai gagal.', 'warning');
     }
 
     public function markRefunded(int $id): void
@@ -72,7 +74,7 @@ class PaymentReview extends Component
         $payment->update(['status' => PaymentStatus::Dipulangkan]);
 
         ActivityLogger::log('payment.refunded', $payment, 'Bayaran ditanda dipulangkan.');
-        session()->flash('info', 'Bayaran ditanda sebagai dipulangkan.');
+        $this->notify('Bayaran ditanda sebagai dipulangkan.', 'info');
     }
 
     public function exempt(int $id, RegistrationService $registrations): void
@@ -85,7 +87,7 @@ class PaymentReview extends Component
         }
 
         ActivityLogger::log('payment.exempted', $payment, 'Peserta dikecualikan daripada bayaran.');
-        session()->flash('success', 'Peserta dikecualikan dan pendaftaran diaktifkan.');
+        $this->notify('Peserta dikecualikan dan pendaftaran diaktifkan.', 'success');
     }
 
     public function render()

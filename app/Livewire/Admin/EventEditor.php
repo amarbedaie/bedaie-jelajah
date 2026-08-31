@@ -3,8 +3,10 @@
 namespace App\Livewire\Admin;
 
 use App\Enums\EventStatus;
+use App\Enums\PosterStyle;
 use App\Enums\PricingMode;
 use App\Enums\TargetAudience;
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\District;
 use App\Models\Event;
 use App\Models\EventCategory;
@@ -16,7 +18,9 @@ use App\Services\EventLifecycleService;
 use App\Services\ImpactStatsService;
 use App\Services\Notifications\NotificationRecipient;
 use App\Services\Notifications\NotificationService;
+use App\Services\PosterGenerator;
 use App\Services\RegistrationService;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -28,6 +32,7 @@ use Livewire\WithFileUploads;
  */
 class EventEditor extends Component
 {
+    use NotifiesUser;
     use WithFileUploads;
 
     #[Locked]
@@ -160,7 +165,7 @@ class EventEditor extends Component
         }
 
         try {
-            $new = \Illuminate\Support\Carbon::parse($value);
+            $new = Carbon::parse($value);
         } catch (\Throwable) {
             return;
         }
@@ -176,7 +181,7 @@ class EventEditor extends Component
                 continue;
             }
 
-            $this->{$field} = \Illuminate\Support\Carbon::parse($this->{$field})
+            $this->{$field} = Carbon::parse($this->{$field})
                 ->addSeconds($shift)->format('Y-m-d\TH:i');
         }
     }
@@ -314,9 +319,9 @@ class EventEditor extends Component
         $this->reset('poster');
         $this->open = false;
 
-        session()->flash('success', $scheduleChanged || $venueChanged
+        $this->notify($scheduleChanged || $venueChanged
             ? 'Program dikemas kini. Peserta berdaftar telah dimaklumkan tentang perubahan.'
-            : 'Program dikemas kini.');
+            : 'Program dikemas kini.', 'success');
     }
 
     /** Memaklumkan peserta aktif tentang perubahan masa atau lokasi. */
@@ -348,18 +353,18 @@ class EventEditor extends Component
         $event = $this->event;
 
         if ($event->status === EventStatus::Selesai) {
-            session()->flash('info', 'Program ini telah pun ditutup.');
+            $this->notify('Program ini telah pun ditutup.', 'info');
 
             return;
         }
 
         $result = $lifecycle->complete($event, auth()->user());
 
-        session()->flash('success', sprintf(
+        $this->notify(sprintf(
             'Program ditutup. %d sijil dikeluarkan, %d permintaan maklum balas dihantar.',
             $result['certificates'] ?? 0,
             $result['feedback_requests'] ?? 0,
-        ));
+        ), 'success');
     }
 
     /**
@@ -372,28 +377,26 @@ class EventEditor extends Component
     public function regeneratePoster(?string $style = null): void
     {
         $chosen = $style
-            ? \App\Enums\PosterStyle::tryFrom($style)
+            ? PosterStyle::tryFrom($style)
             : $this->event->poster_style;
 
-        $path = app(\App\Services\PosterGenerator::class)->generate($this->event, $chosen);
+        $path = app(PosterGenerator::class)->generate($this->event, $chosen);
 
         $path
-            ? session()->flash('success',
-                'Poster dijana semula dalam gaya '.($chosen?->label() ?? 'Klasik').'.')
-            : session()->flash('warning',
-                'Poster tidak dapat dijana pada pelayan ini (Imagick tidak tersedia).');
+            ? $this->notify('Poster dijana semula dalam gaya '.($chosen?->label() ?? 'Klasik').'.')
+            : $this->notify('Poster tidak dapat dijana pada pelayan ini (Imagick tidak tersedia).', 'warning');
     }
 
     public function postpone(EventLifecycleService $lifecycle): void
     {
         $lifecycle->postpone($this->event, 'Ditangguhkan oleh pasukan BeDaie.');
-        session()->flash('warning', 'Program ditandakan sebagai ditangguhkan.');
+        $this->notify('Program ditandakan sebagai ditangguhkan.', 'warning');
     }
 
     public function cancelEvent(EventLifecycleService $lifecycle): void
     {
         $lifecycle->cancel($this->event, 'Dibatalkan oleh pasukan BeDaie.');
-        session()->flash('warning', 'Program dibatalkan dan peserta dimaklumkan.');
+        $this->notify('Program dibatalkan dan peserta dimaklumkan.', 'warning');
     }
 
     public function render()
@@ -409,7 +412,7 @@ class EventEditor extends Component
                 ? District::where('state_id', $this->state_id)->orderBy('name')->get()
                 : collect(),
             'pricingModes' => PricingMode::cases(),
-            'posterStyles' => \App\Enums\PosterStyle::cases(),
+            'posterStyles' => PosterStyle::cases(),
             'audiences' => TargetAudience::cases(),
         ]);
     }

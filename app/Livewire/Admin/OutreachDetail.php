@@ -7,6 +7,7 @@ use App\Enums\OutreachActivityType;
 use App\Enums\OutreachPriority;
 use App\Enums\OutreachStage;
 use App\Enums\TargetAudience;
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\EventCategory;
 use App\Models\OutreachTarget;
 use App\Models\User;
@@ -18,6 +19,8 @@ use Livewire\Component;
 /** Satu sasaran: garis masa, kontak, peringkat dan penukaran kepada permohonan. */
 class OutreachDetail extends Component
 {
+    use NotifiesUser;
+
     #[Locked]
     public int $targetId;
 
@@ -122,7 +125,7 @@ class OutreachDetail extends Component
         );
 
         $this->reset('activityBody', 'activityOutcome');
-        session()->flash('success', 'Aktiviti direkodkan.');
+        $this->notify('Aktiviti direkodkan.', 'success');
     }
 
     // ── Peringkat ────────────────────────────────────────────
@@ -147,7 +150,7 @@ class OutreachDetail extends Component
             : $outreach->moveStage($this->target, $next, $this->stageNote ?: null, auth()->user());
 
         $this->reset('stageNote');
-        session()->flash('success', 'Peringkat dikemas kini.');
+        $this->notify('Peringkat dikemas kini.', 'success');
     }
 
     // ── Kontak ───────────────────────────────────────────────
@@ -176,7 +179,7 @@ class OutreachDetail extends Component
 
         $this->editingContact = false;
         $this->stage = $this->target->fresh()->stage->value;
-        session()->flash('success', 'Kontak dikemas kini.');
+        $this->notify('Kontak dikemas kini.', 'success');
     }
 
     // ── Tugasan ──────────────────────────────────────────────
@@ -200,7 +203,7 @@ class OutreachDetail extends Component
             'next_action_note' => $data['next_action_note'] ?: null,
         ]);
 
-        session()->flash('success', 'Tugasan dikemas kini.');
+        $this->notify('Tugasan dikemas kini.', 'success');
     }
 
     // ── Penukaran ────────────────────────────────────────────
@@ -246,7 +249,7 @@ class OutreachDetail extends Component
             'target_audience' => TargetAudience::from($data['target_audience']),
         ], auth()->user());
 
-        session()->flash('success', "Permohonan {$application->reference_no} dijana daripada sasaran ini.");
+        $this->notify("Permohonan {$application->reference_no} dijana daripada sasaran ini.", 'success');
 
         return redirect()->route('admin.permohonan.show', $application);
     }
@@ -257,7 +260,7 @@ class OutreachDetail extends Component
         $name = $target->name;
         $target->delete();
 
-        session()->flash('success', "Sasaran \"{$name}\" dibuang daripada papan.");
+        $this->notify("Sasaran \"{$name}\" dibuang daripada papan.", 'success');
 
         return redirect()->route('admin.sasaran');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Partner;
 use App\Services\ActivityLogger;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +13,7 @@ use Livewire\WithFileUploads;
 
 class PartnerManager extends Component
 {
+    use NotifiesUser;
     use WithFileUploads;
 
     public ?int $editingId = null;
@@ -127,7 +129,7 @@ class PartnerManager extends Component
             $partner, "Rakan {$partner->name} disimpan.");
 
         $this->resetForm();
-        session()->flash('success', 'Rakan disimpan.');
+        $this->notify('Rakan disimpan.', 'success');
     }
 
     public function toggleActive(int $id): void
@@ -145,7 +147,7 @@ class PartnerManager extends Component
         }
 
         $partner->delete();
-        session()->flash('success', 'Rakan dibuang.');
+        $this->notify('Rakan dibuang.', 'success');
     }
 
     public function cancel(): void

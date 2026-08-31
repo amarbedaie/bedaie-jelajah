@@ -57,10 +57,10 @@
             :headers="['Masa', 'Pencetus', 'Saluran', 'Penerima', 'Status', 'Kandungan']">
             @foreach ($logs as $log)
                 <tr class="align-top hover:bg-mist/40">
-                    <td class="whitespace-nowrap px-4 py-3 text-xs text-ink-muted">
+                    <td class="whitespace-nowrap px-4 py-3 text-[0.8125rem] text-ink-muted">
                         {{ $log->created_at->translatedFormat('j M, g:ia') }}
                     </td>
-                    <td class="px-4 py-3 font-mono text-xs text-ink-soft">{{ $log->template_key }}</td>
+                    <td class="px-4 py-3 font-mono text-[0.8125rem] text-ink-soft">{{ $log->template_key }}</td>
                     <td class="px-4 py-3">
                         <x-ui.badge :color="$log->channel === 'whatsapp' ? 'success' : 'grey'">
                             {{ $channels[$log->channel] ?? $log->channel }}
@@ -69,7 +69,7 @@
                     <td class="px-4 py-3">
                         <p class="text-ink">{{ $log->recipient_name ?? '—' }}</p>
                         {{-- Alamat penuh disimpan; dipaparkan separa demi privasi. --}}
-                        <p class="font-mono text-xs text-ink-muted">{{ $log->maskedAddress() }}</p>
+                        <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $log->maskedAddress() }}</p>
                     </td>
                     <td class="px-4 py-3">
                         @php
@@ -82,11 +82,11 @@
                         @endphp
                         <x-ui.badge :color="$tone">{{ $label }}</x-ui.badge>
                         @if ($log->error)
-                            <p class="mt-1 max-w-xs text-xs text-alert text-pretty">{{ $log->error }}</p>
+                            <p class="mt-1 max-w-xs text-[0.8125rem] text-alert text-pretty">{{ $log->error }}</p>
                         @endif
                     </td>
                     <td class="max-w-md px-4 py-3">
-                        <p class="whitespace-pre-line text-xs leading-relaxed text-ink-soft text-pretty">{{ $log->preview() }}</p>
+                        <p class="whitespace-pre-line text-[0.8125rem] leading-relaxed text-ink-soft text-pretty">{{ $log->preview() }}</p>
                     </td>
                 </tr>
             @endforeach

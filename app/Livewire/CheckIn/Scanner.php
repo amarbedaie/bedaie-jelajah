@@ -3,6 +3,7 @@
 namespace App\Livewire\CheckIn;
 
 use App\Enums\AttendanceMethod;
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Event;
 use App\Models\Registration;
 use App\Services\AttendanceService;
@@ -19,6 +20,8 @@ use Livewire\Component;
  */
 class Scanner extends Component
 {
+    use NotifiesUser;
+
     #[Locked]
     public int $eventId;
 
@@ -51,6 +54,27 @@ class Scanner extends Component
     }
 
     /** Dipanggil oleh pengimbas kamera dan input kod manual. */
+    /**
+     * Kod dimasukkan tangan apabila kamera gagal.
+     *
+     * Jangan hantar $manualCode sebagai argumen wire:submit — Livewire
+     * menilai argumen dalam skop JavaScript, jadi sifat PHP menjadi
+     * undefined dan borang gagal tanpa sebarang tanda.
+     */
+    public function scanManual(AttendanceService $attendance): void
+    {
+        $code = trim($this->manualCode);
+
+        if ($code === '') {
+            $this->notify('Masukkan kod QR dahulu.', 'warning');
+
+            return;
+        }
+
+        $this->scan($code, $attendance);
+        $this->manualCode = '';
+    }
+
     public function scan(string $token, AttendanceService $attendance): void
     {
         $token = trim($token);

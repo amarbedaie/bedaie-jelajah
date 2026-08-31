@@ -26,7 +26,7 @@
                         <li class="flex items-center justify-between gap-3 rounded-xl border border-hairline p-4">
                             <div class="min-w-0">
                                 <p class="font-medium text-ink">{{ $label }}</p>
-                                <p class="mt-0.5 text-xs text-ink-muted">
+                                <p class="mt-0.5 text-[0.8125rem] text-ink-muted">
                                     {{ $value ? 'Teks tersuai disimpan' : 'Menggunakan teks lalai' }}
                                 </p>
                             </div>
@@ -37,7 +37,7 @@
                     @endforeach
                 </ul>
 
-                <p class="mt-4 text-xs text-ink-muted text-pretty">
+                <p class="mt-4 text-[0.8125rem] text-ink-muted text-pretty">
                     Teks menyokong format Markdown — gunakan <code class="font-mono">##</code> untuk
                     tajuk dan <code class="font-mono">-</code> untuk senarai.
                 </p>

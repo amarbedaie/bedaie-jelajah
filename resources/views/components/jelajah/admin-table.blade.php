@@ -2,7 +2,8 @@
 
 <div class="overflow-hidden rounded-card border border-hairline bg-surface">
     <div class="overflow-x-auto">
-        <table class="w-full text-sm">
+        {{-- 15px, bukan 14px: skrin ini dibaca berjam-jam setiap hari. --}}
+        <table class="w-full text-[0.9375rem]">
             @if ($caption)
                 <caption class="sr-only">{{ $caption }}</caption>
             @endif

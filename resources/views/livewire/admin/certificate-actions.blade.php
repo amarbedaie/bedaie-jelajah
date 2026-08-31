@@ -17,8 +17,8 @@
         </div>
     @elseif ($mode === 'regenerate')
         <div class="w-full max-w-sm rounded-xl border border-clay-200 bg-clay-50/60 p-3 text-left">
-            <p class="text-xs font-semibold text-ink">Betulkan nama pada sijil</p>
-            <p class="mt-1 text-xs text-ink-soft text-pretty">
+            <p class="text-[0.8125rem] font-semibold text-ink">Betulkan nama pada sijil</p>
+            <p class="mt-1 text-[0.8125rem] text-ink-soft text-pretty">
                 Sijil baharu akan dijana. Sijil lama ditandakan "Digantikan".
             </p>
 
@@ -27,7 +27,7 @@
                 <x-ui.input id="cn-{{ $certificateId }}" wire:model="correctedName"
                             :error="$errors->has('correctedName')" class="text-sm" />
                 @error('correctedName')
-                    <p class="mt-1.5 text-xs text-alert">{{ $message }}</p>
+                    <p class="mt-1.5 text-[0.8125rem] text-alert">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -41,8 +41,8 @@
         </div>
     @elseif ($mode === 'revoke')
         <div class="w-full max-w-sm rounded-xl border border-alert/30 bg-alert-soft p-3 text-left">
-            <p class="text-xs font-semibold text-ink">Tarik balik sijil</p>
-            <p class="mt-1 text-xs text-ink-soft text-pretty">
+            <p class="text-[0.8125rem] font-semibold text-ink">Tarik balik sijil</p>
+            <p class="mt-1 text-[0.8125rem] text-ink-soft text-pretty">
                 Sijil tidak lagi boleh dimuat turun dan pengesahan awam akan menunjukkan
                 status ditarik balik.
             </p>
@@ -53,7 +53,7 @@
                             placeholder="Sebab pembatalan…"
                             :error="$errors->has('revokeReason')" class="text-sm" />
                 @error('revokeReason')
-                    <p class="mt-1.5 text-xs text-alert">{{ $message }}</p>
+                    <p class="mt-1.5 text-[0.8125rem] text-alert">{{ $message }}</p>
                 @enderror
             </div>
 

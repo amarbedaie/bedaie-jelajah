@@ -61,7 +61,7 @@
                                 @if ($state['interest'] > 0)
                                     <x-ui.badge color="warning">{{ $state['interest'] }} permintaan</x-ui.badge>
                                 @else
-                                    <span class="text-xs text-ink-muted">Tiada permintaan</span>
+                                    <span class="text-[0.8125rem] text-ink-muted">Tiada permintaan</span>
                                 @endif
                             </li>
                         @endforeach

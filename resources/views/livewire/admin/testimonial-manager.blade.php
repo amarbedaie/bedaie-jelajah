@@ -96,7 +96,7 @@
                 <tr wire:key="testimonial-{{ $testimonial->id }}" class="hover:bg-mist/40">
                     <td class="px-4 py-3">
                         <p class="font-medium text-ink">{{ $testimonial->name }}</p>
-                        <p class="text-xs text-ink-muted">{{ $testimonial->role_label }}</p>
+                        <p class="text-[0.8125rem] text-ink-muted">{{ $testimonial->role_label }}</p>
                     </td>
                     <td class="max-w-lg px-4 py-3 text-ink-soft text-pretty">
                         {{ \Illuminate\Support\Str::limit($testimonial->quote, 110) }}
@@ -104,7 +104,7 @@
                     <td class="whitespace-nowrap px-4 py-3 text-ink-soft">
                         {{ $testimonial->rating ? $testimonial->rating.' / 5' : '—' }}
                     </td>
-                    <td class="px-4 py-3 text-xs text-ink-muted">
+                    <td class="px-4 py-3 text-[0.8125rem] text-ink-muted">
                         {{ $testimonial->event?->title ? \Illuminate\Support\Str::limit($testimonial->event->title, 30) : '—' }}
                     </td>
                     <td class="px-4 py-3">

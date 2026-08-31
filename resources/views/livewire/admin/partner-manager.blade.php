@@ -116,7 +116,7 @@
                                             {{ \Illuminate\Support\Str::limit($partner->website_url, 32) }}
                                         </a>
                                     @else
-                                        <span class="text-xs text-ink-muted">—</span>
+                                        <span class="text-[0.8125rem] text-ink-muted">—</span>
                                     @endif
                                 </td>
                                 <td class="px-4 py-3 text-ink-soft">{{ $partner->tier ?: '—' }}</td>

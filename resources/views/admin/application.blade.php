@@ -109,11 +109,11 @@
                                     <p class="mt-1 text-sm text-ink-soft text-pretty">{{ $entry->public_note }}</p>
                                 @endif
                                 @if ($entry->internal_note)
-                                    <p class="mt-1.5 rounded-lg bg-mist px-2.5 py-1.5 text-xs text-[#7A4E06] text-pretty">
+                                    <p class="mt-1.5 rounded-lg bg-mist px-2.5 py-1.5 text-[0.8125rem] text-[#7A4E06] text-pretty">
                                         <strong>Dalaman:</strong> {{ $entry->internal_note }}
                                     </p>
                                 @endif
-                                <p class="mt-1.5 text-xs text-ink-muted">
+                                <p class="mt-1.5 text-[0.8125rem] text-ink-muted">
                                     {{ $entry->created_at->translatedFormat('j M Y, g:ia') }}
                                     @if ($entry->user) &middot; {{ $entry->user->name }} @endif
                                 </p>
@@ -134,7 +134,7 @@
                             <li class="rounded-xl border border-hairline bg-mist/50 p-4">
                                 <div class="flex flex-wrap items-center gap-2">
                                     <x-ui.badge color="grey">{{ ucfirst($note->channel) }}</x-ui.badge>
-                                    <span class="text-xs text-ink-muted">
+                                    <span class="text-[0.8125rem] text-ink-muted">
                                         {{ $note->occurred_at?->translatedFormat('j M Y, g:ia') }}
                                         @if ($note->user) &middot; {{ $note->user->name }} @endif
                                     </span>

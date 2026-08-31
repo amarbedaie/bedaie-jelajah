@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\NotificationTemplate;
 use App\Services\ActivityLogger;
 use Livewire\Attributes\Locked;
@@ -10,6 +11,8 @@ use Livewire\Component;
 /** Menyunting satu template notifikasi (satu pencetus, satu saluran). */
 class TemplateEditor extends Component
 {
+    use NotifiesUser;
+
     #[Locked]
     public int $templateId;
 
@@ -21,12 +24,23 @@ class TemplateEditor extends Component
 
     public bool $is_active = true;
 
+    /** Data paparan, disalin sekali supaya render tidak menyentuh DB. */
+    public string $channel = '';
+
+    public array $placeholders = [];
+
     public function mount(NotificationTemplate $template): void
     {
         $this->templateId = $template->id;
         $this->fillFrom($template);
     }
 
+    /**
+     * Model diambil hanya apabila satu tindakan berlaku.
+     *
+     * Halaman ini memaparkan puluhan templat, setiap satu satu komponen.
+     * Jika render menyentuh model, itu satu pertanyaan setiap baris.
+     */
     public function getTemplateProperty(): NotificationTemplate
     {
         return NotificationTemplate::findOrFail($this->templateId);
@@ -37,6 +51,8 @@ class TemplateEditor extends Component
         $this->subject = (string) $template->subject;
         $this->body = (string) $template->body;
         $this->is_active = (bool) $template->is_active;
+        $this->channel = (string) $template->channel;
+        $this->placeholders = (array) ($template->placeholders ?? []);
     }
 
     public function toggle(): void
@@ -69,7 +85,7 @@ class TemplateEditor extends Component
             "Template {$template->key} ({$template->channel}) dikemas kini.");
 
         $this->open = false;
-        session()->flash('success', 'Template notifikasi disimpan.');
+        $this->notify('Template notifikasi disimpan.', 'success');
     }
 
     public function toggleActive(): void
@@ -81,8 +97,6 @@ class TemplateEditor extends Component
 
     public function render()
     {
-        return view('livewire.admin.template-editor', [
-            'template' => $this->template,
-        ]);
+        return view('livewire.admin.template-editor');
     }
 }

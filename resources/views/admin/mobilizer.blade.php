@@ -61,7 +61,7 @@
                     Hantar Pautan Log Masuk
                 </x-ui.button>
             </form>
-            <p class="mt-2 text-xs text-ink-muted text-pretty">
+            <p class="mt-2 text-[0.8125rem] text-ink-muted text-pretty">
                 Pautan sekali-guna, sah 30 minit. Guna ini jika Penggerak tidak dapat masuk.
             </p>
         </x-ui.card>
@@ -80,7 +80,7 @@
                                        class="font-medium text-ink hover:text-clay-700">
                                         {{ $application->venue_name }}
                                     </a>
-                                    <p class="text-xs text-ink-muted">
+                                    <p class="text-[0.8125rem] text-ink-muted">
                                         {{ $application->reference_no }} &middot; {{ $application->state?->name }}
                                     </p>
                                 </div>
@@ -104,7 +104,7 @@
                                 <div class="min-w-0">
                                     <a href="{{ route('admin.program.show', $event) }}"
                                        class="font-medium text-ink hover:text-clay-700">{{ $event->title }}</a>
-                                    <p class="text-xs text-ink-muted">
+                                    <p class="text-[0.8125rem] text-ink-muted">
                                         {{ $event->dateLabel() }} &middot; {{ $event->venue?->name ?? $event->state?->name }}
                                     </p>
                                 </div>

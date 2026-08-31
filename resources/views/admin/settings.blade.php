@@ -16,7 +16,7 @@
                         <li class="flex items-center justify-between gap-3 rounded-xl border border-hairline p-3.5">
                             <div class="min-w-0">
                                 <p class="text-sm font-medium text-ink">{{ $gateway->label() }}</p>
-                                <p class="font-mono text-xs text-ink-muted">{{ $key }}</p>
+                                <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $key }}</p>
                             </div>
                             <x-ui.badge :color="$key === $activeGateway ? 'success' : 'grey'">
                                 {{ $key === $activeGateway ? 'Aktif' : 'Sedia' }}
@@ -33,7 +33,7 @@
 
             <x-ui.card>
                 <h2 class="font-semibold text-ink">Jenama</h2>
-                <p class="mt-1.5 text-xs text-ink-muted text-pretty">
+                <p class="mt-1.5 text-[0.8125rem] text-ink-muted text-pretty">
                     Nilai ini ditetapkan dalam <code class="font-mono">.env</code>.
                 </p>
                 <dl class="mt-4 space-y-3 text-sm">

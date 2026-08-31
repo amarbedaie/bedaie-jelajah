@@ -14,7 +14,7 @@
             <tr class="hover:bg-mist/40">
                 <td class="px-4 py-3">
                     <p class="font-medium text-ink">{{ $state['name'] }}</p>
-                    <p class="text-xs text-ink-muted">{{ $state['code'] }} &middot; {{ ucfirst($state['region']) }}</p>
+                    <p class="text-[0.8125rem] text-ink-muted">{{ $state['code'] }} &middot; {{ ucfirst($state['region']) }}</p>
                 </td>
                 <td class="px-4 py-3">
                     @php
@@ -42,7 +42,7 @@
                     @if ($state['interest'] > 0)
                         <x-ui.badge color="purple">{{ number_format($state['interest']) }}</x-ui.badge>
                     @else
-                        <span class="text-xs text-ink-muted">—</span>
+                        <span class="text-[0.8125rem] text-ink-muted">—</span>
                     @endif
                 </td>
             </tr>

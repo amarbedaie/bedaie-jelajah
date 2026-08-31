@@ -22,7 +22,7 @@
     <div class="overflow-hidden rounded-card border border-hairline bg-surface">
         <div class="grid grid-cols-7 border-b border-hairline bg-mist/60">
             @foreach (['Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab', 'Ahd'] as $label)
-                <div class="px-2 py-2.5 text-center text-xs font-semibold text-ink-soft">{{ $label }}</div>
+                <div class="px-2 py-2.5 text-center text-[0.8125rem] font-semibold text-ink-soft">{{ $label }}</div>
             @endforeach
         </div>
 
@@ -35,7 +35,7 @@
                 @endphp
                 <div class="min-h-[6.5rem] border-b border-r border-hairline p-2 last:border-r-0
                             {{ $inMonth ? '' : 'bg-mist/40' }}">
-                    <p class="text-xs font-medium
+                    <p class="text-[0.8125rem] font-medium
                               {{ $day->isToday() ? 'inline-grid h-5 w-5 place-items-center rounded-full bg-clay-600 text-white'
                                  : ($inMonth ? 'text-ink-soft' : 'text-ink-muted') }}">
                         {{ $day->day }}

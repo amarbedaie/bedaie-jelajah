@@ -60,7 +60,7 @@
                         <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-clay-700" />
                         <div class="min-w-0 flex-1">
                             <p class="font-medium text-[#0A5537]">Sasaran ini telah menjadi permohonan</p>
-                            <p class="mt-1 font-mono text-xs text-[#0A5537]/85">
+                            <p class="mt-1 font-mono text-[0.8125rem] text-[#0A5537]/85">
                                 {{ $target->application->reference_no }}
                             </p>
                             <x-ui.button :href="route('admin.permohonan.show', $target->application)"
@@ -219,7 +219,7 @@
                                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">{{ $activity->body }}</p>
                             @endif
 
-                            <p class="mt-1.5 text-xs text-ink-muted">
+                            <p class="mt-1.5 text-[0.8125rem] text-ink-muted">
                                 {{ $activity->occurred_at->translatedFormat('j M Y, g:ia') }}
                                 @if ($activity->user) &middot; {{ $activity->user->name }} @endif
                             </p>
@@ -270,18 +270,18 @@
                 <dl class="mt-4 space-y-3 text-sm">
                     @if ($target->contact_name)
                         <div>
-                            <dt class="text-xs text-ink-muted">Nama</dt>
+                            <dt class="text-[0.8125rem] text-ink-muted">Nama</dt>
                             <dd class="mt-0.5 text-ink">
                                 {{ $target->contact_name }}
                                 @if ($target->contact_role)
-                                    <span class="block text-xs text-ink-muted">{{ $target->contact_role }}</span>
+                                    <span class="block text-[0.8125rem] text-ink-muted">{{ $target->contact_role }}</span>
                                 @endif
                             </dd>
                         </div>
                     @endif
                     @if ($target->contact_phone)
                         <div>
-                            <dt class="text-xs text-ink-muted">Telefon</dt>
+                            <dt class="text-[0.8125rem] text-ink-muted">Telefon</dt>
                             <dd class="mt-0.5">
                                 <a href="tel:{{ $target->contact_phone }}"
                                    class="font-medium text-clay-600 hover:underline">{{ $target->contact_phone }}</a>
@@ -290,13 +290,13 @@
                     @endif
                     @if ($target->contact_email)
                         <div>
-                            <dt class="text-xs text-ink-muted">E-mel</dt>
+                            <dt class="text-[0.8125rem] text-ink-muted">E-mel</dt>
                             <dd class="mt-0.5 break-all text-ink">{{ $target->contact_email }}</dd>
                         </div>
                     @endif
                     @if ($target->contact_note)
                         <div>
-                            <dt class="text-xs text-ink-muted">Nota</dt>
+                            <dt class="text-[0.8125rem] text-ink-muted">Nota</dt>
                             <dd class="mt-0.5 text-ink-soft text-pretty">{{ $target->contact_note }}</dd>
                         </div>
                     @endif
@@ -329,7 +329,7 @@
                 </span>
                 <div class="min-w-0">
                     <p class="text-sm font-medium text-ink">{{ $target->sourceLabel() }}</p>
-                    <p class="mt-0.5 text-xs text-ink-soft text-pretty">{{ $target->source->description() }}</p>
+                    <p class="mt-0.5 text-[0.8125rem] text-ink-soft text-pretty">{{ $target->source->description() }}</p>
                 </div>
             </div>
 
@@ -423,7 +423,7 @@
 
             @if ($target->notes)
                 <div class="mt-4 rounded-xl bg-mist p-3.5">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-ink-muted">Nota</p>
+                    <p class="text-[0.8125rem] font-semibold uppercase tracking-wider text-ink-muted">Nota</p>
                     <p class="mt-1.5 text-sm text-ink-soft text-pretty">{{ $target->notes }}</p>
                 </div>
             @endif

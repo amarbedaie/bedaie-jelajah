@@ -33,7 +33,7 @@
             :headers="['Nombor', 'Penerima', 'Program', 'Jenis', 'Status', 'Dikeluarkan', '']">
             @foreach ($certificates as $certificate)
                 <tr class="hover:bg-mist/40">
-                    <td class="px-4 py-3 font-mono text-xs text-ink-soft">{{ $certificate->certificate_number }}</td>
+                    <td class="px-4 py-3 font-mono text-[0.8125rem] text-ink-soft">{{ $certificate->certificate_number }}</td>
                     <td class="px-4 py-3 font-medium text-ink">{{ $certificate->recipient_name }}</td>
                     <td class="px-4 py-3 text-ink-soft">{{ $certificate->event_title }}</td>
                     <td class="px-4 py-3">
@@ -44,7 +44,7 @@
                             {{ $certificate->status->label() }}
                         </x-ui.badge>
                     </td>
-                    <td class="whitespace-nowrap px-4 py-3 text-xs text-ink-muted">
+                    <td class="whitespace-nowrap px-4 py-3 text-[0.8125rem] text-ink-muted">
                         {{ $certificate->issued_at?->translatedFormat('j M Y') }}
                     </td>
                     <td class="px-4 py-3 text-right">

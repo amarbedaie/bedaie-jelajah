@@ -114,7 +114,7 @@
                             </button>
                         </div>
 
-                        <p class="mt-1 text-xs text-ink-muted">
+                        <p class="mt-1 text-[0.8125rem] text-ink-muted">
                             {{ $recording->durationLabel() ?? 'Tempoh tidak dinyatakan' }}
                             &middot; {{ $recording->views_count }} tontonan
                             @if ($recording->available_from)

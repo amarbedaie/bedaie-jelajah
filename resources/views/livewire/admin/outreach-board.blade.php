@@ -93,7 +93,7 @@
                     <legend class="px-1 text-sm font-medium text-ink">
                         Dari mana sasaran ini datang? <span class="text-alert" aria-hidden="true">*</span>
                     </legend>
-                    <p class="mt-1 text-xs text-ink-soft text-pretty">
+                    <p class="mt-1 text-[0.8125rem] text-ink-soft text-pretty">
                         Ini yang membolehkan kita tahu rakan mana benar-benar membawa hasil.
                     </p>
 
@@ -337,7 +337,7 @@
                     <section class="w-[17rem] shrink-0 snap-start" aria-label="{{ $stage->label() }}">
                         <header class="flex items-center justify-between gap-2 px-1 pb-2.5">
                             <h3 class="text-sm font-semibold text-ink">{{ $stage->label() }}</h3>
-                            <span class="rounded-full bg-mist px-2 py-0.5 text-xs font-medium text-ink-soft">
+                            <span class="rounded-full bg-mist px-2 py-0.5 text-[0.8125rem] font-medium text-ink-soft">
                                 {{ $items->count() }}
                             </span>
                         </header>
@@ -361,7 +361,7 @@
                                         @endif
                                     </div>
 
-                                    <p class="mt-1.5 text-xs text-ink-muted">{{ $target->locationLabel() }}</p>
+                                    <p class="mt-1.5 text-[0.8125rem] text-ink-muted">{{ $target->locationLabel() }}</p>
 
                                     <div class="mt-2.5 flex flex-wrap gap-1.5">
                                         <x-ui.badge :color="$target->source->color()" :icon="$target->source->icon()">
@@ -373,7 +373,7 @@
                                     </div>
 
                                     <div class="mt-3 flex items-center justify-between gap-2 border-t border-hairline pt-2.5">
-                                        <span class="min-w-0 truncate text-xs {{ $target->isOverdue() ? 'font-medium text-alert' : 'text-ink-muted' }}">
+                                        <span class="min-w-0 truncate text-[0.8125rem] {{ $target->isOverdue() ? 'font-medium text-alert' : 'text-ink-muted' }}">
                                             @if ($target->next_action_at)
                                                 {{ $target->isOverdue() ? 'Tertunggak' : 'Susul' }}
                                                 {{ $target->next_action_at->translatedFormat('j M') }}
@@ -395,7 +395,7 @@
                                     </div>
                                 </article>
                             @empty
-                                <p class="px-2 py-4 text-center text-xs text-ink-muted">Kosong</p>
+                                <p class="px-2 py-4 text-center text-[0.8125rem] text-ink-muted">Kosong</p>
                             @endforelse
                         </div>
                     </section>
@@ -417,7 +417,7 @@
                                        class="text-sm font-medium text-ink hover:text-clay-700">
                                         {{ $target->name }}
                                     </a>
-                                    <p class="text-xs text-ink-muted">
+                                    <p class="text-[0.8125rem] text-ink-muted">
                                         {{ $target->locationLabel() }}
                                         @if ($target->closed_reason) &middot; {{ $target->closed_reason }} @endif
                                     </p>
@@ -444,7 +444,7 @@
                             <td class="px-4 py-3">
                                 <a href="{{ route('admin.sasaran.show', $target) }}"
                                    class="font-medium text-ink hover:text-clay-700">{{ $target->name }}</a>
-                                <p class="font-mono text-xs text-ink-muted">{{ $target->reference_no }}</p>
+                                <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $target->reference_no }}</p>
                             </td>
                             <td class="px-4 py-3 text-ink-soft">{{ $target->locationLabel() }}</td>
                             <td class="px-4 py-3">

@@ -4,7 +4,7 @@
         <a href="{{ route('admin.permohonan') }}"
            class="tap-target flex shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition
                   {{ ! request('status') ? 'bg-clay-600 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
-            Semua <span class="text-xs opacity-70">{{ $counts->sum() }}</span>
+            Semua <span class="text-[0.8125rem] opacity-70">{{ $counts->sum() }}</span>
         </a>
         @foreach ($statuses as $value => $label)
             @php $count = (int) ($counts[$value] ?? 0); @endphp
@@ -12,7 +12,7 @@
                 <a href="{{ route('admin.permohonan', ['status' => $value]) }}"
                    class="tap-target flex shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition
                           {{ request('status') === $value ? 'bg-clay-600 text-white' : 'bg-surface text-ink-soft ring-1 ring-hairline hover:bg-mist' }}">
-                    {{ $label }} <span class="text-xs opacity-70">{{ $count }}</span>
+                    {{ $label }} <span class="text-[0.8125rem] opacity-70">{{ $count }}</span>
                 </a>
             @endif
         @endforeach
@@ -40,14 +40,14 @@
             :headers="['Rujukan', 'Lokasi & Pemohon', 'Kawasan', 'Program', 'Status', 'Dihantar', '']">
             @foreach ($applications as $application)
                 <tr class="hover:bg-mist/40">
-                    <td class="px-4 py-3 font-mono text-xs text-ink-soft">{{ $application->reference_no }}</td>
+                    <td class="px-4 py-3 font-mono text-[0.8125rem] text-ink-soft">{{ $application->reference_no }}</td>
                     <td class="px-4 py-3">
                         <p class="font-medium text-ink">{{ $application->venue_name }}</p>
-                        <p class="text-xs text-ink-muted">{{ $application->applicant_name }}</p>
+                        <p class="text-[0.8125rem] text-ink-muted">{{ $application->applicant_name }}</p>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">
                         {{ $application->district?->name ?? '—' }}
-                        <span class="block text-xs text-ink-muted">{{ $application->state?->name }}</span>
+                        <span class="block text-[0.8125rem] text-ink-muted">{{ $application->state?->name }}</span>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">{{ $application->category?->name ?? '—' }}</td>
                     <td class="px-4 py-3">
@@ -55,7 +55,7 @@
                             {{ $application->status->label() }}
                         </x-ui.badge>
                     </td>
-                    <td class="whitespace-nowrap px-4 py-3 text-xs text-ink-muted">
+                    <td class="whitespace-nowrap px-4 py-3 text-[0.8125rem] text-ink-muted">
                         {{ $application->submitted_at?->translatedFormat('j M Y') }}
                     </td>
                     <td class="px-4 py-3 text-right">

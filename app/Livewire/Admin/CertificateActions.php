@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Certificate;
 use App\Services\CertificateService;
 use Livewire\Attributes\Locked;
@@ -14,6 +15,8 @@ use Livewire\Component;
  */
 class CertificateActions extends Component
 {
+    use NotifiesUser;
+
     #[Locked]
     public int $certificateId;
 
@@ -94,8 +97,7 @@ class CertificateActions extends Component
         $this->cancel();
         $this->dispatch('sijil-dikemaskini');
 
-        session()->flash('success',
-            "Sijil dijana semula: {$replacement->certificate_number}. Sijil lama ditandakan digantikan.");
+        $this->notify("Sijil dijana semula: {$replacement->certificate_number}. Sijil lama ditandakan digantikan.", 'success');
     }
 
     public function revoke(CertificateService $certificates): void
@@ -110,7 +112,7 @@ class CertificateActions extends Component
         $this->cancel();
         $this->dispatch('sijil-dikemaskini');
 
-        session()->flash('warning', 'Sijil telah ditarik balik dan tidak lagi boleh dimuat turun.');
+        $this->notify('Sijil telah ditarik balik dan tidak lagi boleh dimuat turun.', 'warning');
     }
 
     public function render()

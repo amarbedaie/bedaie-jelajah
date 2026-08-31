@@ -108,7 +108,7 @@
                                class="flex items-start justify-between gap-3 p-4 hover:bg-mist/60">
                                 <div class="min-w-0">
                                     <p class="truncate font-medium text-ink">{{ $application->venue_name }}</p>
-                                    <p class="mt-0.5 truncate text-xs text-ink-muted">
+                                    <p class="mt-0.5 truncate text-[0.8125rem] text-ink-muted">
                                         {{ $application->reference_no }} &middot; {{ $application->state?->name }}
                                         &middot; {{ $application->submitted_at?->diffForHumans() }}
                                     </p>
@@ -144,7 +144,7 @@
                             <p class="truncate font-medium text-ink">
                                 {{ $area->district?->name ?? $area->state?->name }}
                             </p>
-                            <p class="truncate text-xs text-ink-muted">{{ $area->state?->name }}</p>
+                            <p class="truncate text-[0.8125rem] text-ink-muted">{{ $area->state?->name }}</p>
                         </div>
                         <x-ui.badge color="purple">{{ $area->individuals }} orang</x-ui.badge>
                     </li>

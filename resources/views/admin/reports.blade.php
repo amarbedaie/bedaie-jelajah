@@ -23,7 +23,7 @@
                         <tr class="hover:bg-mist/40">
                             <td class="px-4 py-3">
                                 <p class="font-medium text-ink">{{ $event->title }}</p>
-                                <p class="text-xs text-ink-muted">
+                                <p class="text-[0.8125rem] text-ink-muted">
                                     {{ $event->venue?->name ?? $event->state?->name }}
                                 </p>
                             </td>
@@ -78,7 +78,7 @@
                             <li class="flex items-center justify-between gap-3 text-sm">
                                 <span class="min-w-0 text-ink-soft">
                                     {{ $area->district?->name ?? $area->state?->name }}
-                                    <span class="block text-xs text-ink-muted">{{ $area->state?->name }}</span>
+                                    <span class="block text-[0.8125rem] text-ink-muted">{{ $area->state?->name }}</span>
                                 </span>
                                 <x-ui.badge color="warning">{{ number_format($area->individuals) }}</x-ui.badge>
                             </li>

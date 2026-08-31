@@ -29,14 +29,14 @@
                 <tr class="hover:bg-mist/40">
                     <td class="px-4 py-3">
                         <p class="font-medium text-ink">{{ $registration->name }}</p>
-                        <p class="font-mono text-xs text-ink-muted">{{ $registration->reference_no }}</p>
+                        <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $registration->reference_no }}</p>
                         {{-- Nombor penuh sengaja tidak dipaparkan pada direktori --}}
-                        <p class="font-mono text-xs text-ink-muted">{{ $registration->maskedPhone() }}</p>
+                        <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $registration->maskedPhone() }}</p>
                     </td>
                     <td class="px-4 py-3">
                         <a href="{{ route('admin.program.show', $registration->event) }}"
                            class="text-ink hover:text-clay-700">{{ $registration->event->title }}</a>
-                        <span class="block text-xs text-ink-muted">
+                        <span class="block text-[0.8125rem] text-ink-muted">
                             {{ $registration->event->starts_at->translatedFormat('j M Y') }}
                         </span>
                     </td>
@@ -51,7 +51,7 @@
                                 {{ $registration->attendance->checked_in_at->format('g:ia') }}
                             </x-ui.badge>
                         @else
-                            <span class="text-xs text-ink-muted">—</span>
+                            <span class="text-[0.8125rem] text-ink-muted">—</span>
                         @endif
                     </td>
                     <td class="px-4 py-3">
@@ -60,7 +60,7 @@
                                 {{ $registration->payment->status->label() }}
                             </x-ui.badge>
                         @else
-                            <span class="text-xs text-ink-muted">—</span>
+                            <span class="text-[0.8125rem] text-ink-muted">—</span>
                         @endif
                     </td>
                 </tr>

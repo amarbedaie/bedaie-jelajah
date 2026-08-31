@@ -93,7 +93,7 @@
                             </span>
                             <div class="min-w-0">
                                 <p class="font-medium text-ink">{{ $category->name }}</p>
-                                <p class="font-mono text-xs text-ink-muted">{{ $category->slug }}</p>
+                                <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $category->slug }}</p>
                             </div>
                         </div>
                     </td>

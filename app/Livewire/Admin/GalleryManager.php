@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\NotifiesUser;
 use App\Models\Event;
 use App\Models\EventGallery;
 use App\Services\ActivityLogger;
 use App\Services\ImpactStatsService;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -18,13 +20,14 @@ use Livewire\WithPagination;
  */
 class GalleryManager extends Component
 {
+    use NotifiesUser;
     use WithFileUploads, WithPagination;
 
     public string $eventId = '';
 
     public string $caption = '';
 
-    /** @var array<int, \Illuminate\Http\UploadedFile> */
+    /** @var array<int, UploadedFile> */
     #[Validate(['photos.*' => 'image|mimes:jpg,jpeg,png,webp|max:5120'])]
     public array $photos = [];
 
@@ -64,7 +67,7 @@ class GalleryManager extends Component
         ImpactStatsService::flush();
 
         $this->reset('photos', 'caption');
-        session()->flash('success', 'Gambar berjaya dimuat naik.');
+        $this->notify('Gambar berjaya dimuat naik.', 'success');
     }
 
     public function approve(int $id): void
@@ -75,7 +78,7 @@ class GalleryManager extends Component
         ActivityLogger::log('gallery.approved', $photo, 'Gambar diluluskan untuk paparan awam.');
         ImpactStatsService::flush();
 
-        session()->flash('success', 'Gambar diluluskan dan kini dipaparkan kepada umum.');
+        $this->notify('Gambar diluluskan dan kini dipaparkan kepada umum.', 'success');
     }
 
     public function unapprove(int $id): void
@@ -86,7 +89,7 @@ class GalleryManager extends Component
         ActivityLogger::log('gallery.unapproved', $photo, 'Gambar ditarik daripada paparan awam.');
         ImpactStatsService::flush();
 
-        session()->flash('info', 'Gambar ditarik daripada paparan awam.');
+        $this->notify('Gambar ditarik daripada paparan awam.', 'info');
     }
 
     public function updateCaption(int $id, string $value): void
@@ -110,7 +113,7 @@ class GalleryManager extends Component
         ActivityLogger::log('gallery.deleted', null, 'Gambar galeri dibuang.');
         ImpactStatsService::flush();
 
-        session()->flash('success', 'Gambar telah dibuang.');
+        $this->notify('Gambar telah dibuang.', 'success');
     }
 
     public function render()

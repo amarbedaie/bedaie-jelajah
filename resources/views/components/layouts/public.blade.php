@@ -19,6 +19,8 @@
 
     @include('partials.public-footer')
 
+    @include('partials.toast')
+
     @livewireScripts
 </body>
 </html>

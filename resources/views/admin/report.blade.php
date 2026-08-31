@@ -82,14 +82,14 @@
                     {{ number_format((float) $report['rating'], 1) }}
                     <span class="text-base font-normal text-ink-muted">/ 5</span>
                 </p>
-                <p class="mt-0.5 text-xs text-ink-muted">
+                <p class="mt-0.5 text-[0.8125rem] text-ink-muted">
                     daripada {{ $report['rating_count'] }} maklum balas &middot;
                     {{ $report['wants_advanced'] }} mahu kelas lanjutan
                 </p>
 
                 <ul class="mt-4 space-y-1.5">
                     @foreach ($report['rating_breakdown'] as $star => $count)
-                        <li class="flex items-center gap-2.5 text-xs">
+                        <li class="flex items-center gap-2.5 text-[0.8125rem]">
                             <span class="w-8 shrink-0 text-ink-muted">{{ $star }} ★</span>
                             <span class="h-1.5 flex-1 overflow-hidden rounded-full bg-mist">
                                 <span class="block h-full rounded-full bg-clay-400"
