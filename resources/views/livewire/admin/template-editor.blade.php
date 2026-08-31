@@ -40,7 +40,7 @@
     @endif
 
     @if ($open)
-        <form wire:submit="save" class="mt-4 space-y-4 rounded-xl border border-clay-200 bg-clay-50/50 p-4">
+        <form wire:submit="save" class="mt-4 space-y-4 rounded-xl border border-brand-200 bg-brand-50/50 p-4">
             @if ($channel === 'mail')
                 <x-ui.field label="Tajuk e-mel" for="tpl-subject-{{ $templateId }}"
                             :error="$errors->first('subject')">
@@ -60,7 +60,7 @@
                     <p class="text-[0.8125rem] font-medium text-ink">Placeholder yang tersedia</p>
                     <ul class="mt-1.5 flex flex-wrap gap-1.5">
                         @foreach ($placeholders as $placeholder)
-                            <li class="rounded bg-surface px-1.5 py-0.5 font-mono text-[0.68rem] text-clay-700
+                            <li class="rounded bg-surface px-1.5 py-0.5 font-mono text-[0.68rem] text-brand-700
                                        ring-1 ring-hairline">
                                 &#123;&#123;{{ $placeholder }}&#125;&#125;
                             </li>

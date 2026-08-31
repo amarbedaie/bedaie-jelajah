@@ -63,7 +63,7 @@
 
             <aside class="space-y-5">
                 <div class="rounded-card-lg rounded-card-lg border border-hairline bg-cream p-7">
-                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay-700">Slogan Kami</p>
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-700">Slogan Kami</p>
                     <p class="mt-4 font-display text-2xl leading-tight">
                         {{ config('jelajah.slogan') }}
                     </p>
@@ -72,7 +72,7 @@
                         itulah ukuran sebenar jelajah ini.
                     </p>
                     <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-surface px-4 py-2
-                              text-sm text-clay-700 ring-1 ring-hairline">
+                              text-sm text-brand-700 ring-1 ring-hairline">
                         <x-ui.icon name="home" class="h-4 w-4" /> {{ config('jelajah.motto') }}
                     </p>
                 </div>
@@ -114,7 +114,7 @@
                         <li>
                             <a href="{{ $event->publicUrl() }}"
                                class="flex items-center justify-between gap-4 rounded-card border
-                                      border-hairline bg-surface p-5 transition hover:border-clay-200 hover:shadow-soft">
+                                      border-hairline bg-surface p-5 transition hover:border-brand-200 hover:shadow-soft">
                                 <div class="min-w-0">
                                     <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                                     <p class="mt-0.5 text-sm text-ink-muted">

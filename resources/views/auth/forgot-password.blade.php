@@ -12,6 +12,6 @@
     </form>
 
     <p class="mt-7 text-center text-sm text-ink-soft">
-        <a href="{{ route('login') }}" class="font-medium text-clay-600 hover:underline">Kembali ke log masuk</a>
+        <a href="{{ route('login') }}" class="font-medium text-brand-600 hover:underline">Kembali ke log masuk</a>
     </p>
 </x-layouts.auth>

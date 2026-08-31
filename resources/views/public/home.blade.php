@@ -11,8 +11,8 @@
         <div class="jelajah-container relative py-14 sm:py-20 lg:py-28">
             <div class="grid items-start gap-14 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-20">
                 <div class="max-w-2xl">
-                    <p class="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-clay-700">
-                        <span class="h-px w-8 bg-clay-400"></span>
+                    <p class="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">
+                        <span class="h-px w-8 bg-brand-400"></span>
                         {{ config('jelajah.slogan') }}
                     </p>
 
@@ -40,7 +40,7 @@
                         Lebih suka bertanya dahulu?
                         <a href="https://wa.me/{{ config('jelajah.support.phone') }}?text={{ rawurlencode('Assalamualaikum. Saya ingin bertanya tentang BeDaie Jelajah untuk kawasan saya.') }}"
                            target="_blank" rel="noopener"
-                           class="font-medium text-clay-700 underline decoration-clay-300 underline-offset-4 hover:decoration-clay-700"
+                           class="font-medium text-brand-700 underline decoration-brand-300 underline-offset-4 hover:decoration-brand-700"
                         >WhatsApp kami terus</a>.
                     </p>
                 </div>
@@ -50,7 +50,7 @@
                 @if ($upcoming->isNotEmpty())
                     @php $next = $upcoming->first(); @endphp
                     <div class="rounded-card-lg border border-hairline bg-surface p-6 shadow-soft sm:p-7">
-                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-700">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
                             Program Terdekat
                         </p>
 
@@ -61,18 +61,18 @@
                         <dl class="mt-5 space-y-2.5 text-sm text-ink-soft">
                             <div class="flex items-start gap-3">
                                 <dt class="sr-only">Tarikh</dt>
-                                <x-ui.icon name="calendar" class="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
+                                <x-ui.icon name="calendar" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
                                 <dd>{{ $next->dateLabel() }} &middot; {{ $next->timeLabel() }}</dd>
                             </div>
                             <div class="flex items-start gap-3">
                                 <dt class="sr-only">Lokasi</dt>
-                                <x-ui.icon name="pin" class="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
+                                <x-ui.icon name="pin" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
                                 <dd class="text-pretty">{{ $next->locationLabel() }}</dd>
                             </div>
                             @if ($next->speaker)
                                 <div class="flex items-start gap-3">
                                     <dt class="sr-only">Penceramah</dt>
-                                    <x-ui.icon name="user" class="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
+                                    <x-ui.icon name="user" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
                                     <dd>{{ $next->speaker->name }}</dd>
                                 </div>
                             @endif
@@ -178,8 +178,8 @@
 
         <div class="jelajah-container relative">
             <div class="max-w-2xl">
-                <p class="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-clay-700">
-                    <span class="h-px w-8 bg-clay-400"></span>
+                <p class="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">
+                    <span class="h-px w-8 bg-brand-400"></span>
                     Mudah Sahaja
                 </p>
                 <h2 id="tajuk-cara" class="mt-6 font-display text-3xl leading-tight text-ink sm:text-[2.75rem]">
@@ -201,8 +201,8 @@
                     ['Sebarkan link', 'Anda terima link, QR dan poster rasmi.'],
                     ['BeDaie hadir', 'Kami datang. Peserta imbas QR. Sijil automatik.'],
                 ] as $i => [$title, $body])
-                    <li class="border-t border-clay-300 pt-5">
-                        <span class="font-display text-2xl text-clay-700">{{ $i + 1 }}</span>
+                    <li class="border-t border-brand-300 pt-5">
+                        <span class="font-display text-2xl text-brand-700">{{ $i + 1 }}</span>
                         <h3 class="mt-2 font-semibold text-ink">{{ $title }}</h3>
                         <p class="mt-1.5 text-sm leading-relaxed text-ink-soft text-pretty">{{ $body }}</p>
                     </li>
@@ -234,10 +234,10 @@
                         <dt>
                             <a href="{{ route('jemput', ['kategori' => $category->slug]) }}"
                                class="flex items-baseline justify-between gap-4 font-display text-xl text-ink
-                                      transition-colors hover:text-clay-700">
+                                      transition-colors hover:text-brand-700">
                                 <span class="text-pretty">{{ $category->name }}</span>
                                 <x-ui.icon name="arrow-right"
-                                           class="h-4 w-4 shrink-0 translate-y-0.5 text-clay-500 opacity-0
+                                           class="h-4 w-4 shrink-0 translate-y-0.5 text-brand-500 opacity-0
                                                   transition group-hover:opacity-100" />
                                 <span class="sr-only">— jemput BeDaie untuk program ini</span>
                             </a>
@@ -281,7 +281,7 @@
 
                                 <span class="min-w-0">
                                     <span class="block font-display text-xl leading-snug text-ink text-pretty
-                                                 group-hover:text-clay-700">{{ $event->title }}</span>
+                                                 group-hover:text-brand-700">{{ $event->title }}</span>
                                     <span class="mt-1 block text-sm text-ink-soft text-pretty">
                                         {{ $event->locationLabel() }}
                                     </span>
@@ -304,7 +304,7 @@
     {{-- ══ H. PERMINTAAN KOMUNITI ════════════════════════════════ --}}
     <section class="bg-surface py-16 sm:py-20">
         <div class="jelajah-container">
-            <div class="relative overflow-hidden rounded-card-lg bg-clay-50 px-6 py-12 sm:px-12 sm:py-16">
+            <div class="relative overflow-hidden rounded-card-lg bg-brand-50 px-6 py-12 sm:px-12 sm:py-16">
                 <div class="motif-girih absolute inset-0 opacity-70" aria-hidden="true"></div>
 
                 <div class="relative mx-auto max-w-2xl text-center">
@@ -345,7 +345,7 @@
                      baris kosong. --}}
                 @php $lead = $testimonials->first(); $rest = $testimonials->skip(1)->take(2); @endphp
 
-                <figure class="mt-12 border-t border-clay-300 pt-9">
+                <figure class="mt-12 border-t border-brand-300 pt-9">
                     <blockquote class="max-w-4xl font-display text-[1.75rem] leading-[1.32] text-ink text-pretty sm:text-[2.25rem]">
                         &ldquo;{{ $lead->quote }}&rdquo;
                     </blockquote>
@@ -379,7 +379,7 @@
         <div class="jelajah-container">
             <div class="flex flex-col items-center gap-8 text-center">
                 <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay-600">Rakan Jelajah</p>
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Rakan Jelajah</p>
                     <h2 class="mt-2.5 font-display text-2xl text-ink sm:text-3xl">
                         Bersama Menghidupkan Ummah
                     </h2>

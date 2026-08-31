@@ -7,7 +7,7 @@
     <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
         <x-ui.card class="lg:sticky lg:top-24 lg:self-start">
             <div class="flex items-center gap-4">
-                <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-clay-600
+                <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-600
                              font-display text-xl text-white">
                     {{ mb_strtoupper(mb_substr($user->name, 0, 1)) }}
                 </span>
@@ -32,7 +32,7 @@
                             <dd class="text-right text-ink text-pretty">
                                 @if ($label === 'WhatsApp')
                                     <a href="https://wa.me/{{ $value }}" target="_blank" rel="noopener"
-                                       class="font-medium text-clay-600 hover:underline">{{ $value }}</a>
+                                       class="font-medium text-brand-600 hover:underline">{{ $value }}</a>
                                 @else
                                     {{ $value }}
                                 @endif
@@ -77,7 +77,7 @@
                             <li class="flex flex-wrap items-center justify-between gap-3 py-3">
                                 <div class="min-w-0">
                                     <a href="{{ route('admin.permohonan.show', $application) }}"
-                                       class="font-medium text-ink hover:text-clay-700">
+                                       class="font-medium text-ink hover:text-brand-700">
                                         {{ $application->venue_name }}
                                     </a>
                                     <p class="text-[0.8125rem] text-ink-muted">
@@ -103,7 +103,7 @@
                             <li class="flex flex-wrap items-center justify-between gap-3 py-3">
                                 <div class="min-w-0">
                                     <a href="{{ route('admin.program.show', $event) }}"
-                                       class="font-medium text-ink hover:text-clay-700">{{ $event->title }}</a>
+                                       class="font-medium text-ink hover:text-brand-700">{{ $event->title }}</a>
                                     <p class="text-[0.8125rem] text-ink-muted">
                                         {{ $event->dateLabel() }} &middot; {{ $event->venue?->name ?? $event->state?->name }}
                                     </p>

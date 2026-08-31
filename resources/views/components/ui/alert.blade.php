@@ -2,8 +2,8 @@
 
 @php
     $styles = [
-        'info'    => ['bg-clay-50 border-clay-200 text-clay-900', 'text-clay-700', 'info'],
-        'success' => ['bg-clay-50 border-clay-300 text-ink', 'text-clay-700', 'check-circle'],
+        'info'    => ['bg-brand-50 border-brand-200 text-brand-900', 'text-brand-700', 'info'],
+        'success' => ['bg-brand-50 border-brand-300 text-ink', 'text-brand-700', 'check-circle'],
         'warning' => ['bg-mist border-control-line/35 text-ink', 'text-ink-soft', 'alert'],
         'danger'  => ['bg-alert-soft border-alert-line text-alert', 'text-alert', 'x-circle'],
         'neutral' => ['bg-mist border-hairline text-ink', 'text-ink-soft', 'info'],

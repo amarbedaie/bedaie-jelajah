@@ -15,7 +15,7 @@
 @endisset
 <meta name="twitter:card" content="summary_large_image">
 
-<meta name="theme-color" content="#D97757">
+<meta name="theme-color" content="#8040C0">
 <link rel="icon" href="{{ asset('brand/bedaie-logo-placeholder.svg') }}" type="image/svg+xml">
 <link rel="manifest" href="{{ route('pwa.manifest') }}">
 <link rel="apple-touch-icon" href="{{ asset('brand/bedaie-logo-placeholder.svg') }}">

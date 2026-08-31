@@ -14,7 +14,7 @@
 
         <p class="mx-auto mt-10 max-w-3xl text-sm text-ink-muted">
             Ada soalan tentang {{ mb_strtolower($pageTitle) }}? Hubungi kami di
-            <a href="mailto:{{ config('jelajah.support.email') }}" class="font-medium text-clay-600 hover:underline">
+            <a href="mailto:{{ config('jelajah.support.email') }}" class="font-medium text-brand-600 hover:underline">
                 {{ config('jelajah.support.email') }}
             </a>.
         </p>

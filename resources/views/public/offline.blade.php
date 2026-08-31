@@ -12,7 +12,7 @@
                 cuba berdiri berhampiran pintu atau tunggu sebentar.
             </p>
 
-            <div class="mt-8 rounded-card bg-clay-50 p-5 text-left">
+            <div class="mt-8 rounded-card bg-brand-50 p-5 text-left">
                 <p class="text-sm font-medium text-ink">Jika anda sedang mendaftar masuk peserta</p>
                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                     Catat nama dan nombor telefon peserta secara manual dahulu. Anda boleh

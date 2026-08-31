@@ -1,7 +1,7 @@
 @php
     // DomPDF tidak menyokong CSS moden — gunakan gaya inline yang mudah.
-    $accent = $template?->accent_color ?: '#D97757';
-    $ink = '#141413';
+    $accent = $template?->accent_color ?: '#8040C0';
+    $ink = '#17161C';
     $isLandscape = ($template?->orientation ?? 'landscape') === 'landscape';
 
     // Nama panjang dikecilkan supaya tidak pecah pada satu baris.
@@ -29,7 +29,7 @@
             margin: 0;
             padding: 0;
             font-family: DejaVu Sans, sans-serif;
-            background: #FAF9F5;
+            background: #FAFAFC;
             color: {{ $ink }};
         }
 
@@ -50,7 +50,7 @@
         .frame-inner {
             position: absolute;
             top: 24pt; right: 24pt; bottom: 24pt; left: 24pt;
-            border: 0.6pt solid #EDC4B2;
+            border: 0.6pt solid #D0BBEB;
         }
 
         .band {
@@ -63,7 +63,7 @@
         .content { position: relative; text-align: center; }
 
         .brand { font-size: 11pt; letter-spacing: 3pt; color: {{ $accent }}; font-weight: bold; }
-        .brand-sub { margin-top: 3pt; font-size: 7.5pt; letter-spacing: 2pt; color: #67665F; }
+        .brand-sub { margin-top: 3pt; font-size: 7.5pt; letter-spacing: 2pt; color: #63616D; }
 
         /* Serif untuk tajuk dan nama — dompdf membawa DejaVu Serif,
            padanan terdekat kepada Source Serif 4 pada web. */
@@ -73,9 +73,9 @@
             font-size: 20pt;
             letter-spacing: 1pt;
         }
-        .subtitle { margin-top: 5pt; font-size: 9.5pt; color: #57564F; }
+        .subtitle { margin-top: 5pt; font-size: 9.5pt; color: #54525F; }
 
-        .intro { margin-top: {{ $isLandscape ? '20pt' : '30pt' }}; font-size: 10pt; color: #57564F; }
+        .intro { margin-top: {{ $isLandscape ? '20pt' : '30pt' }}; font-size: 10pt; color: #54525F; }
 
         .name {
             margin-top: 10pt;
@@ -88,7 +88,7 @@
 
         .rule { margin: 12pt auto 0; width: 140pt; height: 1pt; background: {{ $accent }}; }
 
-        .closing { margin-top: 12pt; font-size: 10pt; color: #57564F; }
+        .closing { margin-top: 12pt; font-size: 10pt; color: #54525F; }
 
         .event {
             margin-top: 8pt;
@@ -98,7 +98,7 @@
             padding: 0 30pt;
         }
 
-        .meta { margin-top: 10pt; font-size: 9pt; color: #57564F; line-height: 1.6; }
+        .meta { margin-top: 10pt; font-size: 9pt; color: #54525F; line-height: 1.6; }
 
         .footer {
             position: absolute;
@@ -107,14 +107,14 @@
             bottom: {{ $isLandscape ? '44pt' : '56pt' }};
         }
         .footer table { width: 100%; border-collapse: collapse; }
-        .footer td { vertical-align: bottom; font-size: 8pt; color: #57564F; }
+        .footer td { vertical-align: bottom; font-size: 8pt; color: #54525F; }
 
-        .sign-line { border-top: 0.8pt solid #67665F; padding-top: 4pt; width: 150pt; }
+        .sign-line { border-top: 0.8pt solid #63616D; padding-top: 4pt; width: 150pt; }
         .sign-name { font-size: 9.5pt; font-weight: bold; color: {{ $ink }}; }
-        .sign-title { font-size: 7.5pt; color: #67665F; }
+        .sign-title { font-size: 7.5pt; color: #63616D; }
 
-        .serial { font-size: 7.5pt; color: #67665F; letter-spacing: 0.5pt; }
-        .verify { font-size: 6.5pt; color: #67665F; margin-top: 2pt; }
+        .serial { font-size: 7.5pt; color: #63616D; letter-spacing: 0.5pt; }
+        .verify { font-size: 6.5pt; color: #63616D; margin-top: 2pt; }
     </style>
 </head>
 <body>

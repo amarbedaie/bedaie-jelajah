@@ -27,6 +27,6 @@
 
     <p class="mt-6 text-center text-sm text-ink-soft">
         Ada kata laluan?
-        <a href="{{ route('login') }}" class="font-medium text-clay-700 hover:underline">Log masuk biasa</a>
+        <a href="{{ route('login') }}" class="font-medium text-brand-700 hover:underline">Log masuk biasa</a>
     </p>
 </x-layouts.auth>

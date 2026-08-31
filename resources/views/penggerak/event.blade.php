@@ -51,7 +51,7 @@
                     <div class="shrink-0 rounded-xl bg-white p-2.5 ring-1 ring-hairline">{!! $qrSvg !!}</div>
                     <div class="min-w-0 flex-1 text-center sm:text-left">
                         <p class="text-sm font-medium text-ink">Link pendaftaran</p>
-                        <p class="mt-1 break-all font-mono text-sm text-clay-700">{{ $event->shortUrl() }}</p>
+                        <p class="mt-1 break-all font-mono text-sm text-brand-700">{{ $event->shortUrl() }}</p>
                     </div>
                 </div>
 

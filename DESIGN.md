@@ -2,34 +2,37 @@
 name: BeDaie Jelajah
 description: Gerakan ilmu yang membawa BeDaie ke masjid, surau, sekolah dan komuniti seluruh Malaysia
 colors:
-  cream: "#F0EEE6"
+  cream: "#F4F3F7"
   surface: "#FFFFFF"
-  raised: "#FAF9F5"
-  mist: "#E8E5DB"
-  hairline: "#E3E1D9"
-  control-line: "#858175"
-  ink: "#141413"
-  ink-soft: "#57564F"
-  ink-muted: "#67665F"
-  clay-50: "#FBF0EB"
-  clay-100: "#F6E0D6"
-  clay-200: "#EDC4B2"
-  clay-300: "#E3A488"
-  clay-400: "#D97757"
-  clay-500: "#C96A48"
-  clay-600: "#B4552F"
-  clay-700: "#9E4726"
-  clay-800: "#7E3720"
-  clay-900: "#4A2115"
-  char-900: "#141413"
-  char-800: "#262622"
-  char-700: "#33322D"
-  char-400: "#8A887F"
-  char-200: "#D6D3C9"
-  char-100: "#E8E5DB"
-  alert: "#8E2438"
-  alert-soft: "#F4E4E7"
-  alert-line: "#DFC0C7"
+  raised: "#FAFAFC"
+  mist: "#EBE9F1"
+  hairline: "#E4E2EC"
+  control-line: "#807D8C"
+  ink: "#17161C"
+  ink-soft: "#54525F"
+  ink-muted: "#63616D"
+  brand-50: "#F3EDFA"
+  brand-100: "#E7DBF5"
+  brand-200: "#D0BBEB"
+  brand-300: "#B394DE"
+  brand-400: "#9A6FD1"
+  brand-500: "#8040C0"
+  brand-600: "#7A3BB8"
+  brand-700: "#6F35AA"
+  brand-800: "#5F2B93"
+  brand-900: "#3D1C5E"
+  char-900: "#17161C"
+  char-800: "#262430"
+  char-700: "#34313F"
+  char-400: "#8B8899"
+  char-200: "#D5D2DE"
+  char-100: "#EBE9F1"
+  alert: "#A32017"
+  teal: "#1B6E6E"
+  teal-soft: "#E3F1F1"
+  teal-line: "#BCDEDE"
+  alert-soft: "#F8E6E3"
+  alert-line: "#E8C4BE"
 typography:
   display:
     fontFamily: "Source Serif 4, ui-serif, Georgia, serif"
@@ -88,14 +91,14 @@ spacing:
   tap: "2.75rem"
 components:
   button-primary:
-    backgroundColor: "{colors.clay-600}"
+    backgroundColor: "{colors.brand-500}"
     textColor: "{colors.surface}"
     typography: "{typography.body}"
     rounded: "0.5rem"
     padding: "0 1.125rem"
     height: "{spacing.tap}"
   button-primary-hover:
-    backgroundColor: "{colors.clay-700}"
+    backgroundColor: "{colors.brand-600}"
   button-outline:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
@@ -119,8 +122,8 @@ components:
     padding: "0.625rem 1rem"
     height: "{spacing.tap}"
   badge:
-    backgroundColor: "{colors.clay-50}"
-    textColor: "{colors.clay-700}"
+    backgroundColor: "{colors.brand-50}"
+    textColor: "{colors.brand-600}"
     rounded: "{rounded.pill}"
     padding: "0.25rem 0.625rem"
 ---
@@ -132,9 +135,10 @@ components:
 BeDaie Jelajah ialah **kertas**. Sebuah rumah penerbitan yang membawa kitab ke
 masjid patut kelihatan seperti helaian bercetak, bukan seperti papan pemuka.
 
-Seluruh sistem berdiri di atas satu tanah: kertas tulang `cream` #F0EEE6.
-Dakwat hitam suam `ink` #141413. Satu warna tindakan — tanah liat — yang hanya
-muncul di tempat orang benar-benar bertindak.
+Seluruh sistem berdiri di atas satu tanah: kertas sejuk `cream` #F4F3F7 yang
+condong sedikit ungu. Dakwat `ink` #17161C. Satu warna tindakan — **ungu
+jenama, diambil terus daripada logo BeDaie** — yang hanya muncul di tempat
+orang benar-benar bertindak.
 
 Sistem ini **tidak mempunyai slab gelap**. Hero, panel jenama, kaki halaman,
 poster: semuanya kertas. Hierarki datang daripada saiz taip dan ruang, bukan
@@ -158,25 +162,33 @@ kepala jadual, blok nota, lencana senyap. `hairline` untuk setiap pembahagi.
 perenggan sekunder. `ink-muted` untuk metadata — ia mencapai AA di atas
 ketiga-tiga latar cerah, termasuk `mist`.
 
-**Tanah liat.** Satu keluarga, satu tangga penuh 50→900, tiga peranan:
+**Ungu jenama.** Diambil terus daripada logo. Tanda BeDaie ialah gradien
+lima warna — teal, ungu, indigo, merah jambu, amber — tetapi antara muka
+premium tidak boleh memakai lima rona tepu. Jadi hanya **hue 270**, badan
+huruf "B" dan bahagian terbesar tanda itu, menjadi warna sistem.
 
-- `clay-400` #D97757 — aksen, tekstur girih, garis. Ia **tidak** boleh
-  membawa teks putih; ia hanya mencapai 3.12:1.
-- `clay-600` #B4552F — setiap permukaan berisi yang membawa teks putih.
-  4.91:1. Ini warna butang utama.
-- `clay-700` #9E4726 — hover, dan teks tanah liat di atas kertas. 5.34:1.
+Tidak seperti kebanyakan ungu jenama, nada logo itu sendiri sudah mencapai
+**6.15:1** dengan teks putih — jadi tiada nada "pengganti" diperlukan:
 
-**Satu isyarat, dan hanya satu.** `alert` #8E2438 ialah rona keempat dan
-satu-satunya. Ia dikhaskan untuk pembatalan, kegagalan dan tindakan
-memusnah — tidak pernah untuk hiasan, tidak pernah untuk amaran lembut.
-Hue-nya 349° berbanding 17° tanah liat, dipilih dengan sengaja supaya ia
-tidak pernah dibaca sebagai aksen jenama.
+- `brand-500` #8040C0 — ungu logo. Butang utama, gelang fokus, aksen.
+- `brand-600` #7A3BB8 — hover isian.
+- `brand-700` #6F35AA — teks jenama di atas kertas. 6.87:1.
 
-**Tiada hijau, tiada oren amaran, tiada biru.** Kejayaan tidak berwarna
-hijau di sini; ia berwarna dakwat — pejal, selesai, dimeterai. Butang
-WhatsApp memakai tanah liat dengan ikon WhatsApp; ikon itu yang
-mengenalkannya, dan hijau #00D357 ialah satu-satunya benda paling kuat yang
-boleh diletakkan pada halaman kertas.
+**Gradien penuh muncul HANYA dalam logo itu sendiri.** Itu satu-satunya
+tempat lima warna dibenarkan bertemu; di mana-mana lain, satu ungu.
+
+**Teal sokongan.** `teal` #1B6E6E ialah warna kedua terbesar dalam logo
+(hue 180, kira-kira 30% kawasan tanda). Digunakan berhemat sebagai aksen —
+ia bukan warna tindakan kedua.
+
+**Satu isyarat, dan hanya satu.** `alert` #A32017 dikhaskan untuk
+pembatalan, kegagalan dan tindakan memusnah — tidak pernah untuk hiasan.
+Hue 4° dipilih dengan sengaja: 266° daripada ungu jenama, dan 28° daripada
+merah jambu logo, supaya ia tidak pernah dibaca sebagai warna jenama.
+
+**Tiada hijau kejayaan, tiada oren amaran.** Kejayaan tidak berwarna hijau
+di sini; ia berwarna dakwat — pejal, selesai, dimeterai. Butang WhatsApp
+memakai ungu jenama dengan ikon WhatsApp; ikon itu yang mengenalkannya.
 
 ### Status dibawa oleh bentuk, bukan rona
 
@@ -188,9 +200,9 @@ teks:
 |---|---|---|---|---|
 | `quiet` | mist | tiada | ink-muted | tidak aktif, tidur |
 | `line` | tiada | control-line | ink | sedang diproses |
-| `edge` | tiada | clay-400 | clay-700 | bergerak, aktif |
-| `soft` | clay-50 | clay-200 | clay-700 | baharu, diterima |
-| `strong` | clay-600 | — | putih | tindakan diperlukan |
+| `edge` | tiada | brand-400 | brand-700 | bergerak, aktif |
+| `soft` | brand-50 | brand-200 | brand-700 | baharu, diterima |
+| `strong` | brand-600 | — | putih | tindakan diperlukan |
 | `solid` | ink | — | cream | selesai, dimeterai |
 | `alert` | alert-soft | alert-line | alert | dibatalkan, gagal |
 | `paper` | surface | hairline | ink | lencana di atas imej |
@@ -226,7 +238,7 @@ Tajuk serif memakai tracking -0.02em; sans memakai -0.011em. Ukuran perenggan
 dihadkan 68ch. `text-balance` pada tajuk, `text-pretty` pada perenggan.
 
 **Eyebrow** ialah label huruf besar 0.75rem dengan tracking 0.18em, didahului
-garis rambut tanah liat sepanjang 2rem. Garis itu ciri jenama — bukan setiap
+garis rambut ungu jenama sepanjang 2rem. Garis itu ciri jenama — bukan setiap
 seksyen memerlukannya, tetapi apabila ada, bentuknya sentiasa sama.
 
 ## Layout
@@ -249,7 +261,7 @@ pernah menatal mendatar.
 
 Kedalaman utama ialah **sempadan**. `border-hairline` memisahkan hampir
 segala-galanya. Kad tidak melayang; hover menggelapkan sempadannya kepada
-`clay-300` dan tidak mengangkatnya.
+`brand-300` dan tidak mengangkatnya.
 
 Dua bayang sahaja, kedua-duanya membawa offset dan kabur, kedua-duanya
 berasaskan `ink` bukan hitam tulen:
@@ -263,19 +275,19 @@ Radius kecil: kad 12px, kad besar 16px, kawalan 12px, butang 8px. Kertas
 mempunyai tepi, bukan sudut gula-gula. Pil (`rounded-full`) hanya untuk
 lencana, tidak pernah untuk butang.
 
-Motif `motif-girih` — jubin **khatam 8-mata** 96px dalam tanah liat pada
-opacity 30–50%. Ini satu-satunya ornamen Islam yang dibenarkan. Ia tekstur
+Motif `motif-girih` — jubin **khatam 8-mata** 96px dalam ungu jenama pada
+opacity 30–50%, dalam ungu jenama. Ini satu-satunya ornamen Islam yang dibenarkan. Ia tekstur
 latar, bukan gambar. `motif-girih-dark` (putih) dikekalkan untuk dua
 permukaan arang sahaja.
 
-Peta jelajah mewarnakan negeri dengan **kedalaman tanah liat**, bukan rona
+Peta jelajah mewarnakan negeri dengan **kedalaman ungu**, bukan rona
 berbeza: sedang berlangsung paling pekat, telah dijelajahi sederhana, akan
 datang pucat, dan **belum dijelajahi dibiarkan kosong sebagai kertas** — itu
 maknanya secara harfiah, dan ia melepaskan hujung pucat supaya tiga keadaan
 lain boleh terpisah dengan jelas.
 
-Poster dan imej kad program dijana pada kertas tulang dengan **rosette girih
-10-mata** tanah liat sebagai subjek visual, dan siluet arked masjid tanpa
+Poster dan imej kad program dijana pada kertas sejuk dengan **rosette girih
+10-mata** ungu sebagai subjek visual, dan siluet arked masjid tanpa
 kubah pada kakinya.
 
 ## Components
@@ -297,7 +309,7 @@ serta `aria-describedby` yang sepadan.
 
 **Do**
 
-- Guna tanah liat hanya untuk tindakan. Satu tindakan utama setiap skrin.
+- Guna ungu jenama hanya untuk tindakan. Satu tindakan utama setiap skrin.
 - Biarkan saiz taip membawa hierarki, bukan blok warna.
 - Beri setiap keadaan kosong satu jalan keluar.
 - Utamakan WhatsApp pada setiap skrin Penggerak.
@@ -314,7 +326,8 @@ serta `aria-describedby` yang sepadan.
   warna.
 - Jangan guna `alert` untuk apa-apa selain pembatalan, kegagalan dan
   tindakan memusnah.
-- Jangan letak teks putih di atas `clay-400` — guna `clay-600`.
+- Jangan guna gradien lima warna logo di mana-mana selain logo itu sendiri.
+- Jangan jadikan teal warna tindakan kedua; ia aksen.
 - Jangan guna kubah, bulan sabit, kaligrafi hiasan atau lampu tanglung.
 - Jangan letak arahan Blade (`@js`, `@disabled`, `@class`) di dalam tag
   komponen `<x-...>`, dan jangan letak `@class` pada elemen yang sudah

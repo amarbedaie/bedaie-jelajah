@@ -13,7 +13,7 @@
                 <li>
                     <a href="{{ route('penggerak.permohonan.show', $application) }}"
                        class="block rounded-card border border-hairline bg-surface p-5
-                              transition hover:border-clay-200 hover:shadow-soft">
+                              transition hover:border-brand-200 hover:shadow-soft">
                         <div class="flex flex-wrap items-start justify-between gap-3">
                             <div class="min-w-0">
                                 <p class="font-medium text-ink text-pretty">{{ $application->venue_name }}</p>
@@ -37,8 +37,8 @@
                         </div>
 
                         @if ($application->event)
-                            <div class="mt-4 flex items-center gap-2 rounded-xl bg-clay-50 px-3.5 py-2.5">
-                                <x-ui.icon name="check-circle" class="h-4 w-4 shrink-0 text-clay-700" />
+                            <div class="mt-4 flex items-center gap-2 rounded-xl bg-brand-50 px-3.5 py-2.5">
+                                <x-ui.icon name="check-circle" class="h-4 w-4 shrink-0 text-brand-700" />
                                 <span class="text-sm text-[#0A5537] text-pretty">
                                     Program telah dijana: {{ $application->event->title }}
                                 </span>

@@ -32,7 +32,7 @@
                         <div class="flex flex-1 flex-col p-5">
                             <p class="text-xs text-ink-muted">{{ $event->dateLabel() }}</p>
                             <h3 class="mt-1.5 font-semibold leading-snug text-ink text-pretty">
-                                <a href="{{ $event->publicUrl() }}" class="hover:text-clay-700">{{ $event->title }}</a>
+                                <a href="{{ $event->publicUrl() }}" class="hover:text-brand-700">{{ $event->title }}</a>
                             </h3>
                             <p class="mt-2 text-sm text-ink-soft text-pretty">{{ $event->locationLabel() }}</p>
 

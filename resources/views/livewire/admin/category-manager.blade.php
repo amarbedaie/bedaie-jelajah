@@ -44,8 +44,8 @@
                                     aria-label="Ikon {{ $option }}"
                                     class="tap-target grid place-items-center rounded-xl border transition
                                            {{ $icon === $option
-                                              ? 'border-clay-400 bg-clay-50 text-clay-700 ring-1 ring-clay-400'
-                                              : 'border-hairline bg-surface text-ink-soft hover:border-clay-300' }}">
+                                              ? 'border-brand-400 bg-brand-50 text-brand-700 ring-1 ring-brand-400'
+                                              : 'border-hairline bg-surface text-ink-soft hover:border-brand-300' }}">
                                 <x-ui.icon :name="$option" class="h-5 w-5" />
                             </button>
                         @endforeach
@@ -88,8 +88,8 @@
                 <tr wire:key="category-{{ $category->id }}" class="hover:bg-mist/40">
                     <td class="px-4 py-3">
                         <div class="flex items-center gap-3">
-                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-clay-50">
-                                <x-ui.icon :name="$category->icon ?? 'book'" class="h-4 w-4 text-clay-600" />
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-50">
+                                <x-ui.icon :name="$category->icon ?? 'book'" class="h-4 w-4 text-brand-600" />
                             </span>
                             <div class="min-w-0">
                                 <p class="font-medium text-ink">{{ $category->name }}</p>

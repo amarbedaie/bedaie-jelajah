@@ -37,8 +37,8 @@
                         <input id="s-photo" type="file" wire:model="photo"
                                accept="image/jpeg,image/png,image/webp"
                                class="tap-target w-full rounded-xl border border-hairline bg-surface px-4 py-2.5
-                                      text-sm text-ink file:mr-3 file:rounded-full file:border-0 file:bg-clay-50
-                                      file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-clay-700" />
+                                      text-sm text-ink file:mr-3 file:rounded-full file:border-0 file:bg-brand-50
+                                      file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-brand-700" />
                     </x-ui.field>
 
                     <x-ui.field label="Susunan" for="s-sort" optional :error="$errors->first('sort_order')">
@@ -76,8 +76,8 @@
                             <img src="{{ Storage::url($speaker->photo_path) }}" alt="{{ $speaker->name }}"
                                  class="h-14 w-14 shrink-0 rounded-2xl object-cover" />
                         @else
-                            <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-clay-50
-                                         font-display text-xl text-clay-600">
+                            <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50
+                                         font-display text-xl text-brand-600">
                                 {{ mb_strtoupper(mb_substr($speaker->name, 0, 1)) }}
                             </span>
                         @endif

@@ -20,7 +20,7 @@
                 @php
                     $done = $number < $step;
                     $current = $number === $step;
-                    $bar = $done || $current ? 'bg-clay-400' : 'bg-hairline';
+                    $bar = $done || $current ? 'bg-brand-400' : 'bg-hairline';
                 @endphp
                 <li class="flex-1">
                     {{-- Label langkah tersembunyi bawah sm, jadi bar yang
@@ -33,9 +33,9 @@
                             aria-current="{{ $current ? 'step' : 'false' }}"
                             class="group flex w-full flex-col justify-center gap-1.5 py-3 text-left
                                    {{ $done ? 'cursor-pointer' : 'cursor-default' }}">
-                        <span class="h-1.5 w-full rounded-full transition {{ $bar }} {{ $done ? 'group-hover:bg-clay-600' : '' }}"></span>
+                        <span class="h-1.5 w-full rounded-full transition {{ $bar }} {{ $done ? 'group-hover:bg-brand-600' : '' }}"></span>
                         <span class="hidden text-xs font-medium sm:block
-                                     {{ $done || $current ? 'text-clay-700' : 'text-ink-muted' }}">
+                                     {{ $done || $current ? 'text-brand-700' : 'text-ink-muted' }}">
                             {{ $meta[0] }}
                         </span>
                     </button>
@@ -327,7 +327,7 @@
                             <div class="flex items-center justify-between gap-3">
                                 <h3 class="text-sm font-semibold text-ink">{{ $sectionTitle }}</h3>
                                 <button type="button" wire:click="goTo({{ $targetStep }})"
-                                        class="rounded-full px-2.5 py-1 text-xs font-medium text-clay-600 hover:bg-clay-50">
+                                        class="rounded-full px-2.5 py-1 text-xs font-medium text-brand-600 hover:bg-brand-50">
                                     Ubah
                                 </button>
                             </div>
@@ -394,6 +394,6 @@
     <p class="mt-6 text-center text-sm text-ink-muted">
         Ada soalan? Hubungi kami di
         <a href="https://wa.me/{{ config('jelajah.support.phone') }}" target="_blank" rel="noopener"
-           class="font-medium text-clay-600 hover:underline">WhatsApp</a>.
+           class="font-medium text-brand-600 hover:underline">WhatsApp</a>.
     </p>
 </div>

@@ -6,8 +6,8 @@
     // impak di halaman utama, yang sudah menjadi rujukan sistem ini.
     $tones = [
         'default' => 'border-t border-hairline pt-4',
-        'brand'   => 'rounded-card border border-clay-200 bg-clay-50 p-4 sm:p-5',
-        'success' => 'rounded-card border border-clay-300 bg-clay-50 p-4 sm:p-5',
+        'brand'   => 'rounded-card border border-brand-200 bg-brand-50 p-4 sm:p-5',
+        'success' => 'rounded-card border border-brand-300 bg-brand-50 p-4 sm:p-5',
         'warning' => 'rounded-card border border-control-line/35 bg-mist p-4 sm:p-5',
         'danger'  => 'rounded-card border border-alert-line bg-alert-soft p-4 sm:p-5',
     ];
@@ -20,7 +20,7 @@
     <div class="mt-2.5 flex items-start justify-between gap-3">
         <p class="text-sm leading-snug text-ink-muted text-pretty">{{ $label }}</p>
         @if ($icon && ! $bare)
-            <x-ui.icon :name="$icon" class="h-5 w-5 shrink-0 text-clay-500" />
+            <x-ui.icon :name="$icon" class="h-5 w-5 shrink-0 text-brand-500" />
         @endif
     </div>
 

@@ -55,8 +55,8 @@
                 </div>
 
                 <dl class="mt-5 grid grid-cols-3 gap-3">
-                    <div class="rounded-xl bg-clay-50 p-3.5">
-                        <dd class="font-display text-2xl text-clay-700">{{ number_format($active->seatsTaken()) }}</dd>
+                    <div class="rounded-xl bg-brand-50 p-3.5">
+                        <dd class="font-display text-2xl text-brand-700">{{ number_format($active->seatsTaken()) }}</dd>
                         <dt class="mt-0.5 text-xs text-ink-soft">Telah mendaftar</dt>
                     </div>
                     <div class="rounded-xl bg-mist p-3.5">
@@ -118,7 +118,7 @@
                     @endif
                     <div class="min-w-0 flex-1 text-center sm:text-left">
                         <p class="text-sm font-medium text-ink">Link pendaftaran anda</p>
-                        <p class="mt-1 break-all font-mono text-sm text-clay-700">{{ $active->shortUrl() }}</p>
+                        <p class="mt-1 break-all font-mono text-sm text-brand-700">{{ $active->shortUrl() }}</p>
                         <p class="mt-2.5 text-xs text-ink-muted text-pretty">
                             Cetak QR ini pada poster atau paparkan di skrin masjid.
                         </p>
@@ -157,7 +157,7 @@
         <div class="flex flex-wrap items-end justify-between gap-3">
             <h2 class="text-lg font-semibold text-ink">Permohonan Saya</h2>
             <a href="{{ route('penggerak.permohonan') }}"
-               class="text-sm font-medium text-clay-600 hover:underline">Lihat semua</a>
+               class="text-sm font-medium text-brand-600 hover:underline">Lihat semua</a>
         </div>
 
         @if ($applications->isEmpty())
@@ -174,7 +174,7 @@
                     <li>
                         <a href="{{ route('penggerak.permohonan.show', $application) }}"
                            class="block rounded-card border border-hairline bg-surface p-5
-                                  transition hover:border-clay-200 hover:shadow-soft">
+                                  transition hover:border-brand-200 hover:shadow-soft">
                             <div class="flex flex-wrap items-start justify-between gap-3">
                                 <div class="min-w-0">
                                     <p class="font-medium text-ink text-pretty">{{ $application->venue_name }}</p>
@@ -208,7 +208,7 @@
             <div class="flex flex-wrap items-end justify-between gap-3">
                 <h2 class="text-lg font-semibold text-ink">Program Yang Telah Selesai</h2>
                 <a href="{{ route('penggerak.sijil') }}"
-                   class="text-sm font-medium text-clay-600 hover:underline">Sijil & laporan</a>
+                   class="text-sm font-medium text-brand-600 hover:underline">Sijil & laporan</a>
             </div>
 
             <ul class="mt-4 grid gap-4 sm:grid-cols-2">
@@ -216,7 +216,7 @@
                     <li>
                         <a href="{{ route('penggerak.program.show', $event) }}"
                            class="flex h-full flex-col rounded-card border border-hairline bg-surface p-5
-                                  transition hover:border-clay-200 hover:shadow-soft">
+                                  transition hover:border-brand-200 hover:shadow-soft">
                             <p class="font-medium text-ink text-pretty">{{ $event->title }}</p>
                             <p class="mt-0.5 text-sm text-ink-muted">{{ $event->dateLabel() }}</p>
                             <div class="mt-3 flex flex-wrap gap-2">

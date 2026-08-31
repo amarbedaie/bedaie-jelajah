@@ -13,7 +13,7 @@
                     <div class="relative border-b border-hairline bg-cream p-5">
                         <div class="motif-girih absolute inset-0 opacity-50" aria-hidden="true"></div>
                         <div class="relative">
-                            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-clay-700">
+                            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-brand-700">
                                 {{ $certificate->type->label() }}
                             </p>
                             <p class="mt-2 font-medium leading-snug text-ink text-pretty">

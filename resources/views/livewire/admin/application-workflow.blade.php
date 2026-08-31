@@ -20,7 +20,7 @@
                            class="font-medium underline">buka program</a>.
                     </x-ui.alert>
                 @else
-                    <div class="rounded-xl border border-clay-200 bg-clay-50/60 p-4">
+                    <div class="rounded-xl border border-brand-200 bg-brand-50/60 p-4">
                         <p class="text-sm font-semibold text-ink">Butiran Program</p>
                         <p class="mt-1 text-[0.8125rem] text-ink-soft text-pretty">
                             Menyimpan status ini akan menjana halaman program, link pendek, QR,

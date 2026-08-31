@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class QrCodeService
 {
     /** Menjana QR sebagai markup SVG (untuk paparan web). */
-    public function svg(string $payload, int $size = 320, string $foreground = '#141413'): string
+    public function svg(string $payload, int $size = 320, string $foreground = '#17161C'): string
     {
         $renderer = new ImageRenderer(
             new RendererStyle($size, 1, null, null, Fill::uniformColor(
@@ -27,13 +27,13 @@ class QrCodeService
     }
 
     /** SVG sebagai data URI — selamat digunakan dalam <img src="…">. */
-    public function svgDataUri(string $payload, int $size = 320, string $foreground = '#141413'): string
+    public function svgDataUri(string $payload, int $size = 320, string $foreground = '#17161C'): string
     {
         return 'data:image/svg+xml;base64,'.base64_encode($this->svg($payload, $size, $foreground));
     }
 
     /** PNG data URI — diperlukan oleh DomPDF yang tidak menyokong SVG. */
-    public function pngDataUri(string $payload, int $size = 320, string $foreground = '#141413'): string
+    public function pngDataUri(string $payload, int $size = 320, string $foreground = '#17161C'): string
     {
         if (! extension_loaded('imagick')) {
             // Fallback: DomPDF akan memaparkan SVG melalui imej gagal; guna SVG data URI.

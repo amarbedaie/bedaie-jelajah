@@ -35,7 +35,7 @@
                     </td>
                     <td class="px-4 py-3">
                         <a href="{{ route('admin.program.show', $registration->event) }}"
-                           class="text-ink hover:text-clay-700">{{ $registration->event->title }}</a>
+                           class="text-ink hover:text-brand-700">{{ $registration->event->title }}</a>
                         <span class="block text-[0.8125rem] text-ink-muted">
                             {{ $registration->event->starts_at->translatedFormat('j M Y') }}
                         </span>

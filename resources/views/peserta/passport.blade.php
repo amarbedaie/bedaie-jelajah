@@ -3,10 +3,10 @@
     <section class="overflow-hidden rounded-card-lg border border-hairline bg-cream">
         <div class="relative p-7 sm:p-9">
             <div class="motif-girih absolute inset-0 opacity-60" aria-hidden="true"></div>
-            <div class="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-clay-400/25 blur-3xl" aria-hidden="true"></div>
+            <div class="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-brand-400/25 blur-3xl" aria-hidden="true"></div>
 
             <div class="relative">
-                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-clay-700">
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-700">
                     Pasport Ilmu BeDaie
                 </p>
                 <h1 class="mt-3 font-display text-2xl text-ink sm:text-3xl text-pretty">{{ $user->name }}</h1>
@@ -22,7 +22,7 @@
                         ['Sijil diperoleh', number_format($certificates->count()), 'certificate'],
                     ] as [$label, $value, $icon])
                         <div class="rounded-xl bg-surface p-4 ring-1 ring-hairline">
-                            <x-ui.icon :name="$icon" class="h-4 w-4 text-clay-700" />
+                            <x-ui.icon :name="$icon" class="h-4 w-4 text-brand-700" />
                             <dd class="mt-2 font-display text-2xl text-ink">{{ $value }}</dd>
                             <dt class="mt-0.5 text-xs text-ink-muted text-pretty">{{ $label }}</dt>
                         </div>
@@ -36,7 +36,7 @@
     <section class="mt-8">
         <div class="flex flex-wrap items-end justify-between gap-3">
             <h2 class="text-lg font-semibold text-ink">Program Akan Datang</h2>
-            <a href="{{ route('peserta.program') }}" class="text-sm font-medium text-clay-600 hover:underline">
+            <a href="{{ route('peserta.program') }}" class="text-sm font-medium text-brand-600 hover:underline">
                 Semua program saya
             </a>
         </div>
@@ -87,7 +87,7 @@
     <section class="mt-8">
         <div class="flex flex-wrap items-end justify-between gap-3">
             <h2 class="text-lg font-semibold text-ink">Sijil Saya</h2>
-            <a href="{{ route('peserta.sijil') }}" class="text-sm font-medium text-clay-600 hover:underline">
+            <a href="{{ route('peserta.sijil') }}" class="text-sm font-medium text-brand-600 hover:underline">
                 Semua sijil
             </a>
         </div>
@@ -101,8 +101,8 @@
                 @foreach ($certificates->take(4) as $certificate)
                     <li class="rounded-card border border-hairline bg-surface p-5">
                         <div class="flex items-start gap-3">
-                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-clay-50">
-                                <x-ui.icon name="certificate" class="h-5 w-5 text-clay-600" />
+                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50">
+                                <x-ui.icon name="certificate" class="h-5 w-5 text-brand-600" />
                             </span>
                             <div class="min-w-0 flex-1">
                                 <p class="font-medium text-ink text-pretty">{{ $certificate->event_title }}</p>

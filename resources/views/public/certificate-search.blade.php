@@ -24,7 +24,7 @@
 
             <p class="mt-6 text-center text-sm text-ink-muted text-pretty">
                 Peserta yang telah log masuk boleh melihat semua sijil dalam
-                <a href="{{ route('peserta.sijil') }}" class="font-medium text-clay-600 hover:underline">Pasport Ilmu</a>.
+                <a href="{{ route('peserta.sijil') }}" class="font-medium text-brand-600 hover:underline">Pasport Ilmu</a>.
             </p>
         </div>
     </section>

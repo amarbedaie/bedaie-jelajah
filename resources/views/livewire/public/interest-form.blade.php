@@ -1,8 +1,8 @@
 <div class="mx-auto max-w-xl">
     @if ($submitted)
         <x-ui.card class="text-center sm:p-8">
-            <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-clay-50">
-                <x-ui.icon name="check-circle" class="h-7 w-7 text-clay-700" />
+            <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-50">
+                <x-ui.icon name="check-circle" class="h-7 w-7 text-brand-700" />
             </div>
             <h2 class="mt-5 font-display text-2xl text-ink">Permintaan Anda Direkodkan</h2>
             <p class="mt-3 text-ink-soft text-pretty">
@@ -10,7 +10,7 @@
                 perancangan jelajah kami yang seterusnya.
             </p>
 
-            <div class="mt-7 rounded-xl bg-clay-50 p-5 text-left">
+            <div class="mt-7 rounded-xl bg-brand-50 p-5 text-left">
                 <p class="text-sm font-medium text-ink">Mahu lebih pantas?</p>
                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">
                     Jika anda mempunyai lokasi tertentu dalam fikiran — masjid, surau, sekolah

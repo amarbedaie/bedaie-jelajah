@@ -33,7 +33,7 @@
                                 <dd class="text-sm text-ink text-pretty">
                                     @if ($label === 'WhatsApp')
                                         <a href="https://wa.me/{{ $value }}" target="_blank" rel="noopener"
-                                           class="font-medium text-clay-600 hover:underline">{{ $value }}</a>
+                                           class="font-medium text-brand-600 hover:underline">{{ $value }}</a>
                                     @else
                                         {{ $value }}
                                     @endif
@@ -99,8 +99,8 @@
                 <h2 class="font-semibold text-ink">Timeline Status</h2>
                 <ol class="mt-5">
                     @forelse ($application->statusHistories->sortByDesc('created_at') as $entry)
-                        <li class="relative flex gap-4 border-l-2 border-clay-200 pb-6 pl-6 last:border-transparent last:pb-0">
-                            <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-clay-400 ring-4 ring-surface"></span>
+                        <li class="relative flex gap-4 border-l-2 border-brand-200 pb-6 pl-6 last:border-transparent last:pb-0">
+                            <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-brand-400 ring-4 ring-surface"></span>
                             <div class="min-w-0">
                                 <p class="font-medium text-ink">
                                     {{ $entry->to_status->label() }}

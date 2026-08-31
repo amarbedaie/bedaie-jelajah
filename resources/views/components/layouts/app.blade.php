@@ -57,8 +57,8 @@
                     <div x-data="{ open: false }" class="relative">
                         <button type="button" x-on:click="open = !open" x-bind:aria-expanded="open.toString()"
                                 class="tap-target flex items-center gap-2 rounded-full border border-hairline bg-surface px-2.5 py-1.5
-                                       transition hover:border-clay-300 hover:bg-clay-50">
-                            <span class="grid h-7 w-7 place-items-center rounded-full bg-clay-600 text-xs font-semibold text-white">
+                                       transition hover:border-brand-300 hover:bg-brand-50">
+                            <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-600 text-xs font-semibold text-white">
                                 {{ mb_strtoupper(mb_substr($user->name, 0, 1)) }}
                             </span>
                             <span class="hidden max-w-28 truncate text-sm font-medium text-ink sm:block">
@@ -115,7 +115,7 @@
                         <a href="{{ route($item['route']) }}"
                            @if($active) aria-current="page" @endif
                            class="tap-target flex shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition
-                                  {{ $active ? 'bg-clay-600 text-white' : 'text-ink-soft hover:bg-mist hover:text-ink' }}">
+                                  {{ $active ? 'bg-brand-600 text-white' : 'text-ink-soft hover:bg-mist hover:text-ink' }}">
                             <x-ui.icon :name="$item['icon']" class="h-4 w-4" />
                             {{ $item['label'] }}
                         </a>

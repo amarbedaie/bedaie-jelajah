@@ -9,8 +9,8 @@
                 @foreach ($actions as $action)
                     @php
                         $tones = [
-                            'warning' => 'border-clay-400/30 bg-mist text-[#7A4E06]',
-                            'success' => 'border-clay-600/30 bg-clay-50 text-[#0A5537]',
+                            'warning' => 'border-brand-400/30 bg-mist text-[#7A4E06]',
+                            'success' => 'border-brand-600/30 bg-brand-50 text-[#0A5537]',
                             'danger'  => 'border-alert/30 bg-alert-soft text-[#8C1A1E]',
                             'neutral' => 'border-hairline bg-surface text-ink',
                         ];
@@ -44,10 +44,10 @@
                 {{-- Angka, bukan kad: garis rambut dan ruang membawa
                      pengasingan, dan keseluruhan blok ialah pautannya. --}}
                 <a href="{{ $url }}"
-                   class="group block border-t border-hairline pt-4 transition-colors hover:border-clay-400">
+                   class="group block border-t border-hairline pt-4 transition-colors hover:border-brand-400">
                     <dd class="font-display text-[2.5rem] leading-none text-ink tabular-nums">{{ $value }}</dd>
                     <dt class="mt-2.5 text-sm leading-snug text-ink-muted text-pretty
-                               group-hover:text-clay-700">{{ $label }}</dt>
+                               group-hover:text-brand-700">{{ $label }}</dt>
                 </a>
             @endforeach
         </dl>
@@ -93,7 +93,7 @@
         <section class="min-w-0">
             <div class="mb-3 flex items-end justify-between gap-3">
                 <h2 class="text-lg font-semibold text-ink">Permohonan Terkini</h2>
-                <a href="{{ route('admin.permohonan') }}" class="text-sm font-medium text-clay-600 hover:underline">
+                <a href="{{ route('admin.permohonan') }}" class="text-sm font-medium text-brand-600 hover:underline">
                     Semua
                 </a>
             </div>
@@ -128,7 +128,7 @@
     <section class="mt-7">
         <div class="mb-3 flex items-end justify-between gap-3">
             <h2 class="text-lg font-semibold text-ink">Kawasan Permintaan Tertinggi</h2>
-            <a href="{{ route('admin.permintaan') }}" class="text-sm font-medium text-clay-600 hover:underline">
+            <a href="{{ route('admin.permintaan') }}" class="text-sm font-medium text-brand-600 hover:underline">
                 Semua permintaan
             </a>
         </div>

@@ -9,8 +9,8 @@
     <div class="jelajah-container relative py-12 sm:py-16 lg:py-20">
         <div class="max-w-3xl">
             @if ($eyebrow)
-                <p class="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-clay-700">
-                    <span class="h-px w-8 bg-clay-400"></span>
+                <p class="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">
+                    <span class="h-px w-8 bg-brand-400"></span>
                     {{ $eyebrow }}
                 </p>
             @endif

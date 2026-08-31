@@ -13,7 +13,7 @@
     </div>
 
     @if ($showForm)
-        <form wire:submit="save" class="mt-5 space-y-4 rounded-xl border border-clay-200 bg-clay-50/50 p-4">
+        <form wire:submit="save" class="mt-5 space-y-4 rounded-xl border border-brand-200 bg-brand-50/50 p-4">
             <x-ui.field label="Tajuk" for="r-title" required :error="$errors->first('title')">
                 <x-ui.input id="r-title" wire:model="title" :error="$errors->has('title')"
                             placeholder="Contoh: Sesi Penuh — Bidayatul Hidayah" />

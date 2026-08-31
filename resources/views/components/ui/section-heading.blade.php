@@ -11,8 +11,8 @@
 <div class="{{ $action ? 'max-w-2xl' : '' }}">
     @if ($eyebrow)
         <p class="mb-2.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em]
-                  {{ $light ? 'text-clay-300' : 'text-clay-700' }} {{ $align === 'center' ? 'justify-center' : '' }}">
-            <span class="h-px w-8 {{ $light ? 'bg-clay-300/60' : 'bg-clay-400' }}"></span>
+                  {{ $light ? 'text-brand-300' : 'text-brand-700' }} {{ $align === 'center' ? 'justify-center' : '' }}">
+            <span class="h-px w-8 {{ $light ? 'bg-brand-300/60' : 'bg-brand-400' }}"></span>
             {{ $eyebrow }}
         </p>
     @endif
@@ -37,7 +37,7 @@
     <a href="{{ $action }}"
        class="tap-target inline-flex shrink-0 items-center gap-1.5 self-start rounded-lg px-4 text-sm
               font-medium transition sm:self-auto
-              {{ $light ? 'text-clay-300 hover:bg-white/10' : 'text-clay-600 hover:bg-clay-50' }}">
+              {{ $light ? 'text-brand-300 hover:bg-white/10' : 'text-brand-600 hover:bg-brand-50' }}">
         {{ $actionLabel }}
         <x-ui.icon name="arrow-right" class="h-4 w-4" />
     </a>

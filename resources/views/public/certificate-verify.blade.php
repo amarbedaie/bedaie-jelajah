@@ -23,9 +23,9 @@
                 <x-ui.card class="sm:p-10">
                     <div class="text-center">
                         <div class="mx-auto grid h-16 w-16 place-items-center rounded-3xl
-                                    {{ $valid ? 'bg-clay-50' : 'bg-alert-soft' }}">
+                                    {{ $valid ? 'bg-brand-50' : 'bg-alert-soft' }}">
                             <x-ui.icon :name="$valid ? 'check-circle' : 'x-circle'"
-                                       class="h-8 w-8 {{ $valid ? 'text-clay-700' : 'text-alert' }}" />
+                                       class="h-8 w-8 {{ $valid ? 'text-brand-700' : 'text-alert' }}" />
                         </div>
                         <h1 class="mt-6 font-display text-2xl text-ink sm:text-3xl">
                             {{ $valid ? 'Sijil Ini Sah' : 'Sijil Ini Tidak Lagi Sah' }}

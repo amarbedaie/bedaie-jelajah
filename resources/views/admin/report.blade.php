@@ -92,7 +92,7 @@
                         <li class="flex items-center gap-2.5 text-[0.8125rem]">
                             <span class="w-8 shrink-0 text-ink-muted">{{ $star }} ★</span>
                             <span class="h-1.5 flex-1 overflow-hidden rounded-full bg-mist">
-                                <span class="block h-full rounded-full bg-clay-400"
+                                <span class="block h-full rounded-full bg-brand-400"
                                       style="width: {{ $report['rating_count'] ? round($count / $report['rating_count'] * 100) : 0 }}%"></span>
                             </span>
                             <span class="w-6 shrink-0 text-right text-ink-muted">{{ $count }}</span>

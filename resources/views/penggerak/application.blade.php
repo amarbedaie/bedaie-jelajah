@@ -24,9 +24,9 @@
                 <p class="mt-3 text-ink-soft text-pretty">{{ $application->status->description() }}</p>
 
                 @if ($application->event)
-                    <div class="mt-5 rounded-xl border border-clay-600/25 bg-clay-50 p-4">
+                    <div class="mt-5 rounded-xl border border-brand-600/25 bg-brand-50 p-4">
                         <div class="flex items-start gap-3">
-                            <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-clay-700" />
+                            <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-brand-700" />
                             <div class="min-w-0 flex-1">
                                 <p class="font-medium text-[#0A5537]">Program anda telah disahkan</p>
                                 <p class="mt-1 text-sm text-[#0A5537]/85 text-pretty">
@@ -47,8 +47,8 @@
                 <h2 class="font-semibold text-ink">Perjalanan Permohonan</h2>
                 <ol class="mt-5 space-y-0">
                     @forelse ($application->publicTimeline as $entry)
-                        <li class="relative flex gap-4 border-l-2 border-clay-200 pb-6 pl-6 last:border-transparent last:pb-0">
-                            <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-clay-400 ring-4 ring-surface"></span>
+                        <li class="relative flex gap-4 border-l-2 border-brand-200 pb-6 pl-6 last:border-transparent last:pb-0">
+                            <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-brand-400 ring-4 ring-surface"></span>
                             <div class="min-w-0">
                                 <p class="font-medium text-ink">
                                     {{ $entry->to_status->label() }}
@@ -127,7 +127,7 @@
                         'Program disahkan — link, QR dan poster dijana automatik.',
                     ] as $i => $text)
                         <li class="flex gap-2.5 text-sm text-ink-soft text-pretty">
-                            <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-clay-600
+                            <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-600
                                          text-[0.65rem] font-bold text-white">{{ $i + 1 }}</span>
                             {{ $text }}
                         </li>

@@ -10,8 +10,8 @@
                x-on:focus="fokus = true"
                placeholder="Cari permohonan, program, peserta…"
                class="tap-target w-full rounded-full border border-hairline bg-mist/60 pl-10 pr-4 text-sm
-                      text-ink placeholder:text-ink-muted transition focus:border-clay-400 focus:bg-surface
-                      focus:outline-none focus:ring-4 focus:ring-clay-400/15" />
+                      text-ink placeholder:text-ink-muted transition focus:border-brand-400 focus:bg-surface
+                      focus:outline-none focus:ring-4 focus:ring-brand-400/15" />
     </div>
 
     @if ($open)
@@ -32,7 +32,7 @@
                             @foreach ($rows as $row)
                                 <li>
                                     <a href="{{ $row['url'] }}" class="flex items-start gap-3 px-4 py-3 hover:bg-mist/60">
-                                        <x-ui.icon :name="$row['icon']" class="mt-0.5 h-4 w-4 shrink-0 text-clay-400" />
+                                        <x-ui.icon :name="$row['icon']" class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
                                         <span class="min-w-0">
                                             <span class="block truncate text-sm font-medium text-ink">{{ $row['title'] }}</span>
                                             <span class="block truncate text-[0.8125rem] text-ink-muted">{{ $row['meta'] }}</span>

@@ -178,7 +178,7 @@
     {{-- ── Ringkasan program ───────────────────────────────── --}}
     <aside class="space-y-5 lg:sticky lg:top-24">
         <x-ui.card>
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-600">Anda mendaftar untuk</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">Anda mendaftar untuk</p>
             <h3 class="mt-2 font-semibold leading-snug text-ink text-pretty">{{ $event->title }}</h3>
 
             <dl class="mt-4 space-y-2.5 text-sm">
@@ -221,7 +221,7 @@
                 @else
                     <div class="mt-3 flex items-center justify-between border-t border-hairline pt-3">
                         <span class="font-medium text-ink">Jumlah</span>
-                        <span class="font-display text-xl text-clay-700">{{ $event->priceLabel() }}</span>
+                        <span class="font-display text-xl text-brand-700">{{ $event->priceLabel() }}</span>
                     </div>
                 @endif
             </div>
@@ -237,7 +237,7 @@
                     'Sijil digital dijana automatik selepas program.',
                 ] as $item)
                     <li class="flex gap-2.5 text-sm text-ink-soft text-pretty">
-                        <x-ui.icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-clay-700" />
+                        <x-ui.icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand-700" />
                         {{ $item }}
                     </li>
                 @endforeach

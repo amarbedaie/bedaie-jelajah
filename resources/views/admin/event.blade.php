@@ -71,7 +71,7 @@
                                 <dd class="text-sm text-ink text-pretty">
                                     @if ($label === 'Dari permohonan')
                                         <a href="{{ route('admin.permohonan.show', $event->application) }}"
-                                           class="font-medium text-clay-600 hover:underline">{{ $value }}</a>
+                                           class="font-medium text-brand-600 hover:underline">{{ $value }}</a>
                                     @else
                                         {{ $value }}
                                     @endif
@@ -115,7 +115,7 @@
                                 <li class="flex items-center gap-2.5 text-[0.8125rem]">
                                     <span class="w-8 shrink-0 text-ink-muted">{{ $star }} ★</span>
                                     <span class="h-1.5 flex-1 overflow-hidden rounded-full bg-mist">
-                                        <span class="block h-full rounded-full bg-clay-400"
+                                        <span class="block h-full rounded-full bg-brand-400"
                                               style="width: {{ $report['rating_count'] ? round($count / $report['rating_count'] * 100) : 0 }}%"></span>
                                     </span>
                                     <span class="w-6 shrink-0 text-right text-ink-muted">{{ $count }}</span>
@@ -179,7 +179,7 @@
                     <div class="rounded-xl bg-white p-2.5 ring-1 ring-hairline">
                         {!! app(\App\Services\QrCodeService::class)->svg($event->shortUrl(), 150) !!}
                     </div>
-                    <p class="break-all text-center font-mono text-[0.8125rem] text-clay-700">{{ $event->shortUrl() }}</p>
+                    <p class="break-all text-center font-mono text-[0.8125rem] text-brand-700">{{ $event->shortUrl() }}</p>
                 </div>
                 <div class="mt-4 grid gap-2.5">
                     <x-ui.copy-button :text="$event->shortUrl()" label="Salin Link Pendek" variant="outline" block />

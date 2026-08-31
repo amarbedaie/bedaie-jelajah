@@ -4,8 +4,8 @@
 
         <div class="mx-auto max-w-xl">
             <div class="text-center">
-                <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-clay-50">
-                    <x-ui.icon name="ticket" class="h-7 w-7 text-clay-600" />
+                <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-50">
+                    <x-ui.icon name="ticket" class="h-7 w-7 text-brand-600" />
                 </div>
                 <h1 class="mt-5 font-display text-2xl text-ink sm:text-3xl">Selesaikan Pembayaran</h1>
                 <p class="mt-2 text-ink-soft text-pretty">

@@ -6,7 +6,7 @@
 @endphp
 
 <article class="group relative flex h-full flex-col overflow-hidden rounded-card border border-hairline
-                bg-surface transition-colors duration-150 hover:border-clay-300">
+                bg-surface transition-colors duration-150 hover:border-brand-300">
     <a href="{{ $event->publicUrl() }}"
        class="relative block aspect-[16/10] overflow-hidden border-b border-hairline bg-cream">
         @if ($event->heroUrl())
@@ -18,7 +18,7 @@
             <div class="motif-girih absolute inset-0 opacity-60" aria-hidden="true"></div>
             <div class="relative flex h-full flex-col justify-end p-5">
                 <p class="font-display text-xl leading-tight text-ink text-pretty">{{ $event->theme ?? $event->title }}</p>
-                <p class="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-clay-700">
+                <p class="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-brand-700">
                     {{ $event->category?->name }}
                 </p>
             </div>
@@ -37,13 +37,13 @@
     </a>
 
     <div class="flex flex-1 flex-col p-5">
-        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-clay-600">
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-600">
             {{ $event->category?->name ?? 'Jelajah' }}
         </p>
 
         <h2 class="mt-2 font-display text-xl leading-snug text-ink text-pretty">
             <a href="{{ $event->publicUrl() }}"
-               class="after:absolute after:inset-0 hover:text-clay-700 focus-visible:outline-none">{{ $event->title }}</a>
+               class="after:absolute after:inset-0 hover:text-brand-700 focus-visible:outline-none">{{ $event->title }}</a>
         </h2>
 
         <dl class="mt-3 space-y-1.5 text-sm text-ink-soft">

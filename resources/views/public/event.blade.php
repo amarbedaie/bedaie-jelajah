@@ -15,9 +15,9 @@
 
         <div class="jelajah-container relative py-12 sm:py-16 lg:py-20">
             <nav aria-label="Laluan" class="mb-8 flex flex-wrap items-center gap-2 text-sm text-ink-muted">
-                <a href="{{ route('program.index') }}" class="hover:text-clay-700">Program</a>
+                <a href="{{ route('program.index') }}" class="hover:text-brand-700">Program</a>
                 <span aria-hidden="true">/</span>
-                <a href="{{ route('peta.negeri', $event->state->slug) }}" class="hover:text-clay-700">{{ $event->state->name }}</a>
+                <a href="{{ route('peta.negeri', $event->state->slug) }}" class="hover:text-brand-700">{{ $event->state->name }}</a>
             </nav>
 
             <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
@@ -38,12 +38,12 @@
                     </h1>
 
                     @if ($event->theme)
-                        <p class="mt-5 text-xl text-clay-700 text-pretty sm:text-2xl">{{ $event->theme }}</p>
+                        <p class="mt-5 text-xl text-brand-700 text-pretty sm:text-2xl">{{ $event->theme }}</p>
                     @endif
 
                     <dl class="mt-8 grid gap-5 sm:grid-cols-2">
                         <div class="flex gap-3">
-                            <x-ui.icon name="calendar" class="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
+                            <x-ui.icon name="calendar" class="mt-0.5 h-5 w-5 shrink-0 text-brand-500" />
                             <div>
                                 <dt class="text-xs uppercase tracking-wider text-ink-muted">Tarikh & Masa</dt>
                                 <dd class="mt-1 text-ink">{{ $event->dateLabel() }}</dd>
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="flex gap-3">
-                            <x-ui.icon name="pin" class="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
+                            <x-ui.icon name="pin" class="mt-0.5 h-5 w-5 shrink-0 text-brand-500" />
                             <div>
                                 <dt class="text-xs uppercase tracking-wider text-ink-muted">Lokasi</dt>
                                 <dd class="mt-1 text-ink text-pretty">{{ $event->venue?->name ?? $event->locationLabel() }}</dd>
@@ -64,7 +64,7 @@
 
                         @if ($event->speaker)
                             <div class="flex gap-3">
-                                <x-ui.icon name="user" class="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
+                                <x-ui.icon name="user" class="mt-0.5 h-5 w-5 shrink-0 text-brand-500" />
                                 <div>
                                     <dt class="text-xs uppercase tracking-wider text-ink-muted">Penceramah</dt>
                                     <dd class="mt-1 text-ink">{{ $event->speaker->name }}</dd>
@@ -76,7 +76,7 @@
                         @endif
 
                         <div class="flex gap-3">
-                            <x-ui.icon name="users" class="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
+                            <x-ui.icon name="users" class="mt-0.5 h-5 w-5 shrink-0 text-brand-500" />
                             <div>
                                 <dt class="text-xs uppercase tracking-wider text-ink-muted">Sasaran Peserta</dt>
                                 <dd class="mt-1 text-ink">{{ $event->target_audience?->label() ?? 'Umum' }}</dd>
@@ -133,7 +133,7 @@
                                         <x-ui.progress :value="$event->fillPercent()"
                                                        :tone="$event->fillPercent() >= 90 ? 'warning' : 'brand'"
                                                        :showValue="false" />
-                                        <p class="mt-2 text-sm {{ $seatsLeft && $seatsLeft <= 20 ? 'font-medium text-clay-700' : 'text-ink-soft' }}">
+                                        <p class="mt-2 text-sm {{ $seatsLeft && $seatsLeft <= 20 ? 'font-medium text-brand-700' : 'text-ink-soft' }}">
                                             @if ($event->isFull())
                                                 Tempat telah penuh — senarai menunggu dibuka.
                                             @else
@@ -200,10 +200,10 @@
                         <h2 class="text-xl font-semibold text-ink">Tentatif Program</h2>
                         <ol class="mt-4 space-y-0">
                             @foreach ($event->tentative as $i => $row)
-                                <li class="flex gap-4 border-l-2 border-clay-200 pb-5 pl-5 last:pb-0
+                                <li class="flex gap-4 border-l-2 border-brand-200 pb-5 pl-5 last:pb-0
                                            {{ $loop->last ? 'border-transparent' : '' }} relative">
-                                    <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-clay-400 ring-4 ring-cream"></span>
-                                    <span class="w-20 shrink-0 text-sm font-semibold text-clay-700">{{ $row['masa'] ?? '' }}</span>
+                                    <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-brand-400 ring-4 ring-cream"></span>
+                                    <span class="w-20 shrink-0 text-sm font-semibold text-brand-700">{{ $row['masa'] ?? '' }}</span>
                                     <span class="text-sm text-ink-soft text-pretty">{{ $row['aktiviti'] ?? '' }}</span>
                                 </li>
                             @endforeach
@@ -328,9 +328,9 @@
 
                 {{-- Sijil --}}
                 @if ($event->certificate_enabled)
-                    <div class="rounded-card border border-clay-200 bg-clay-50 p-5">
+                    <div class="rounded-card border border-brand-200 bg-brand-50 p-5">
                         <div class="flex items-start gap-3">
-                            <x-ui.icon name="certificate" class="mt-0.5 h-5 w-5 shrink-0 text-clay-600" />
+                            <x-ui.icon name="certificate" class="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
                             <div>
                                 <h3 class="font-semibold text-ink">Sijil Digital Automatik</h3>
                                 <p class="mt-1.5 text-sm text-ink-soft text-pretty">

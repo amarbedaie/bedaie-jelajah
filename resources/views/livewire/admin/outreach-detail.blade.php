@@ -55,9 +55,9 @@
             </form>
 
             @if ($target->application)
-                <div class="mt-5 rounded-xl border border-clay-600/25 bg-clay-50 p-4">
+                <div class="mt-5 rounded-xl border border-brand-600/25 bg-brand-50 p-4">
                     <div class="flex items-start gap-3">
-                        <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-clay-700" />
+                        <x-ui.icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-brand-700" />
                         <div class="min-w-0 flex-1">
                             <p class="font-medium text-[#0A5537]">Sasaran ini telah menjadi permohonan</p>
                             <p class="mt-1 font-mono text-[0.8125rem] text-[#0A5537]/85">
@@ -72,7 +72,7 @@
                 </div>
             @elseif ($target->stage->canConvert())
                 @if (! $converting)
-                    <div class="mt-5 rounded-xl border border-clay-200 bg-clay-50/60 p-4">
+                    <div class="mt-5 rounded-xl border border-brand-200 bg-brand-50/60 p-4">
                         <p class="text-sm font-medium text-ink">Pihak lokasi sudah bersetuju?</p>
                         <p class="mt-1 text-sm text-ink-soft text-pretty">
                             Tukar sasaran ini kepada permohonan rasmi. Selepas itu ia mengalir melalui
@@ -84,7 +84,7 @@
                         </x-ui.button>
                     </div>
                 @else
-                    <form wire:submit="convert" class="mt-5 space-y-4 rounded-xl border border-clay-200 bg-clay-50/60 p-4">
+                    <form wire:submit="convert" class="mt-5 space-y-4 rounded-xl border border-brand-200 bg-brand-50/60 p-4">
                         <p class="text-sm font-semibold text-ink">Butiran Permohonan</p>
 
                         <x-ui.field label="Jenis program" for="c-cat" required
@@ -196,9 +196,9 @@
             {{-- Garis masa --}}
             <ol class="mt-6 border-t border-hairline pt-5">
                 @forelse ($target->activities as $activity)
-                    <li class="relative flex gap-4 border-l-2 border-clay-200 pb-5 pl-6 last:border-transparent last:pb-0">
+                    <li class="relative flex gap-4 border-l-2 border-brand-200 pb-5 pl-6 last:border-transparent last:pb-0">
                         <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full
-                                     {{ $activity->isStageChange() ? 'bg-clay-400' : 'bg-hairline' }} ring-4 ring-surface"></span>
+                                     {{ $activity->isStageChange() ? 'bg-brand-400' : 'bg-hairline' }} ring-4 ring-surface"></span>
                         <div class="min-w-0">
                             <div class="flex flex-wrap items-center gap-2">
                                 <x-ui.icon :name="$activity->type->icon()" class="h-4 w-4 text-ink-muted" />
@@ -284,7 +284,7 @@
                             <dt class="text-[0.8125rem] text-ink-muted">Telefon</dt>
                             <dd class="mt-0.5">
                                 <a href="tel:{{ $target->contact_phone }}"
-                                   class="font-medium text-clay-600 hover:underline">{{ $target->contact_phone }}</a>
+                                   class="font-medium text-brand-600 hover:underline">{{ $target->contact_phone }}</a>
                             </dd>
                         </div>
                     @endif
@@ -324,8 +324,8 @@
         <x-ui.card>
             <h3 class="font-semibold text-ink">Sumber Sasaran</h3>
             <div class="mt-3 flex items-start gap-3">
-                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-clay-50">
-                    <x-ui.icon :name="$target->source->icon()" class="h-4 w-4 text-clay-600" />
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-50">
+                    <x-ui.icon :name="$target->source->icon()" class="h-4 w-4 text-brand-600" />
                 </span>
                 <div class="min-w-0">
                     <p class="text-sm font-medium text-ink">{{ $target->sourceLabel() }}</p>
@@ -336,7 +336,7 @@
             @if ($target->referrer_phone)
                 <p class="mt-3 text-sm text-ink-soft">
                     Perujuk: <a href="tel:{{ $target->referrer_phone }}"
-                                class="font-medium text-clay-600 hover:underline">{{ $target->referrer_phone }}</a>
+                                class="font-medium text-brand-600 hover:underline">{{ $target->referrer_phone }}</a>
                 </p>
             @endif
 

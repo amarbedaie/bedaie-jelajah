@@ -28,17 +28,17 @@ class PosterGenerator
 
     private const H = 1350;   // 4:5 — sesuai untuk WhatsApp, Instagram dan cetakan
 
-    private const INK = '#141413';
+    private const INK = '#17161C';
 
-    private const INK_DEEP = '#33322D';
+    private const INK_DEEP = '#34313F';
 
-    private const BRAND = '#D97757';
+    private const BRAND = '#8040C0';
 
-    private const BRAND_SOFT = '#E3A488';
+    private const BRAND_SOFT = '#B394DE';
 
-    private const MUTED = '#8A887F';
+    private const MUTED = '#8B8899';
 
-    private const CREAM = '#F0EEE6';
+    private const CREAM = '#F4F3F7';
 
     public function available(): bool
     {
@@ -88,8 +88,8 @@ class PosterGenerator
     private function compose(Event $event, PosterStyle $style): \Imagick
     {
         $ink = $style->isLight() ? self::INK : '#FFFFFF';
-        $soft = $style->isLight() ? '#9E4726' : self::BRAND_SOFT;
-        $meta = $style->isLight() ? '#57564F' : self::MUTED;
+        $soft = $style->isLight() ? '#6F35AA' : self::BRAND_SOFT;
+        $meta = $style->isLight() ? '#54525F' : self::MUTED;
         $w = self::W;
         $h = self::H;
 
@@ -107,8 +107,8 @@ class PosterGenerator
         $category = mb_strtoupper($event->category?->name ?? 'BeDaie Jelajah');
         $pillW = max(240, (int) ($this->textWidth($category, 21, 'sans-bold', 3.5)) + 56);
 
-        $draw->setFillColor($style->isLight() ? 'rgba(217,119,87,0.14)' : 'rgba(255,255,255,0.10)');
-        $draw->setStrokeColor($style->isLight() ? 'rgba(158,71,38,0.32)' : 'rgba(255,255,255,0.18)');
+        $draw->setFillColor($style->isLight() ? 'rgba(128,64,192,0.13)' : 'rgba(255,255,255,0.10)');
+        $draw->setStrokeColor($style->isLight() ? 'rgba(111,53,170,0.30)' : 'rgba(255,255,255,0.18)');
         $draw->setStrokeWidth(1);
         $draw->roundRectangle(80, 232, 80 + $pillW, 286, 27, 27);
         $draw->setStrokeWidth(0);
@@ -209,7 +209,7 @@ class PosterGenerator
 
         // ── Kaki ──
 
-        $draw->setFillColor($style->isLight() ? 'rgba(20,20,19,0.16)' : 'rgba(255,255,255,0.16)');
+        $draw->setFillColor($style->isLight() ? 'rgba(23,22,28,0.16)' : 'rgba(255,255,255,0.16)');
         $draw->rectangle(80, $footerY, $w - 80, $footerY + 1);
 
         // Petak putih untuk QR
@@ -236,7 +236,7 @@ class PosterGenerator
     private function composeHero(Event $event, PosterStyle $style): \Imagick
     {
         $ink = $style->isLight() ? self::INK : '#FFFFFF';
-        $soft = $style->isLight() ? '#9E4726' : self::BRAND_SOFT;
+        $soft = $style->isLight() ? '#6F35AA' : self::BRAND_SOFT;
         $w = self::W;
         $h = 608;
 
@@ -285,15 +285,15 @@ class PosterGenerator
         if ($style->isLight()) {
             // Kertas tulang, dakwat hitam suam. Menjimatkan dakwat cetakan
             // dan lebih mudah dibaca di bawah cahaya siang.
-            $canvas->newPseudoImage($w, $h, 'gradient:#FAF9F5-'.self::CREAM);
+            $canvas->newPseudoImage($w, $h, 'gradient:#FAFAFC-'.self::CREAM);
 
             // Minimalis sengaja kosong; yang lain membawa geometri girih
             // sebagai subjek visual, cukup kuat untuk kelihatan bercetak.
             if ($style !== PosterStyle::Minimalis) {
-                $this->drawGirihField($canvas, $w, $h, 'rgba(158,71,38,0.13)', 132);
+                $this->drawGirihField($canvas, $w, $h, 'rgba(111,53,170,0.13)', 132);
                 $this->drawRosette($canvas, $w * 0.82, $h * 0.28,
-                    min($w, $h) * $rosetteScale, 'rgba(158,71,38,%s)');
-                $this->drawSkyline($canvas, $w, $h, 'rgba(158,71,38,0.16)');
+                    min($w, $h) * $rosetteScale, 'rgba(111,53,170,%s)');
+                $this->drawSkyline($canvas, $w, $h, 'rgba(111,53,170,0.16)');
             }
 
             return $canvas;
@@ -388,7 +388,7 @@ class PosterGenerator
      * rendah, tanpa kubah. Menara sengaja ditinggalkan — pada saiz ini
      * ia terbaca sebagai anak panah, bukan seni bina.
      */
-    private function drawSkyline(\Imagick $canvas, int $w, int $h, string $fill = 'rgba(20,20,19,0.55)'): void
+    private function drawSkyline(\Imagick $canvas, int $w, int $h, string $fill = 'rgba(23,22,28,0.55)'): void
     {
         $draw = new \ImagickDraw;
         $draw->setStrokeColor('transparent');
@@ -480,7 +480,7 @@ class PosterGenerator
         $draw->setStrokeColor('transparent');
 
         $this->text($draw, 'BeDaie', 178, 124, 38, $light ? self::INK : '#FFFFFF', 'sans-bold');
-        $this->text($draw, 'JELAJAH', 178, 154, 18, $light ? '#9E4726' : self::BRAND_SOFT, 'sans-bold', 7);
+        $this->text($draw, 'JELAJAH', 178, 154, 18, $light ? '#6F35AA' : self::BRAND_SOFT, 'sans-bold', 7);
     }
 
     private function compositeQr(\Imagick $canvas, string $payload, int $x, int $y, int $size): void

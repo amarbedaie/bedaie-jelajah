@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $subjectLine ?? 'BeDaie Jelajah' }}</title>
 </head>
-<body style="margin:0;padding:0;background:#F0EEE6;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#141413;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F0EEE6;padding:32px 16px;">
+<body style="margin:0;padding:0;background:#F4F3F7;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#17161C;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F3F7;padding:32px 16px;">
         <tr>
             <td align="center">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-                       style="max-width:560px;background:#FFFFFF;border:1px solid #E3E1D9;border-radius:20px;overflow:hidden;">
+                       style="max-width:560px;background:#FFFFFF;border:1px solid #E4E2EC;border-radius:20px;overflow:hidden;">
                     {{-- Kepala berjenama --}}
                     <tr>
-                        <td style="background:#141413;padding:28px 32px;">
+                        <td style="background:#17161C;padding:28px 32px;">
                             <p style="margin:0;font-size:19px;font-weight:600;color:#FFFFFF;letter-spacing:-0.2px;">
-                                BeDaie <span style="color:#E3A488;">Jelajah</span>
+                                BeDaie <span style="color:#B394DE;">Jelajah</span>
                             </p>
-                            <p style="margin:6px 0 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9E4726;">
+                            <p style="margin:6px 0 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6F35AA;">
                                 {{ config('jelajah.tagline') }}
                             </p>
                         </td>
@@ -27,12 +27,12 @@
                     <tr>
                         <td style="padding:32px;">
                             @if ($recipientName)
-                                <p style="margin:0 0 16px;font-size:16px;color:#141413;">
+                                <p style="margin:0 0 16px;font-size:16px;color:#17161C;">
                                     Assalamualaikum {{ $recipientName }},
                                 </p>
                             @endif
 
-                            <div style="font-size:15px;line-height:1.7;color:#57564F;">
+                            <div style="font-size:15px;line-height:1.7;color:#54525F;">
                                 @foreach (preg_split('/\n\s*\n/', trim($bodyText)) as $paragraph)
                                     <p style="margin:0 0 14px;">{!! nl2br(e($paragraph)) !!}</p>
                                 @endforeach
@@ -41,7 +41,7 @@
                             @if ($actionUrl)
                                 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:26px 0 8px;">
                                     <tr>
-                                        <td style="background:#D97757;border-radius:999px;">
+                                        <td style="background:#8040C0;border-radius:999px;">
                                             <a href="{{ $actionUrl }}"
                                                style="display:inline-block;padding:13px 28px;font-size:15px;font-weight:500;
                                                       color:#FFFFFF;text-decoration:none;">
@@ -50,7 +50,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <p style="margin:12px 0 0;font-size:12px;color:#67665F;word-break:break-all;">
+                                <p style="margin:12px 0 0;font-size:12px;color:#63616D;word-break:break-all;">
                                     Atau salin pautan ini: {{ $actionUrl }}
                                 </p>
                             @endif
@@ -59,12 +59,12 @@
 
                     {{-- Kaki --}}
                     <tr>
-                        <td style="border-top:1px solid #E3E1D9;padding:22px 32px;background:#E8E5DB;">
-                            <p style="margin:0;font-size:12px;line-height:1.6;color:#67665F;">
+                        <td style="border-top:1px solid #E4E2EC;padding:22px 32px;background:#EBE9F1;">
+                            <p style="margin:0;font-size:12px;line-height:1.6;color:#63616D;">
                                 {{ config('jelajah.slogan') }}<br>
                                 BeDaie &middot; {{ config('jelajah.org') }} &middot; {{ config('jelajah.motto') }}
                             </p>
-                            <p style="margin:10px 0 0;font-size:11px;color:#67665F;">
+                            <p style="margin:10px 0 0;font-size:11px;color:#63616D;">
                                 Anda menerima e-mel ini kerana anda berurusan dengan BeDaie Jelajah.
                             </p>
                         </td>

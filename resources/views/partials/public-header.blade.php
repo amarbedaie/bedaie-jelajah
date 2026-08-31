@@ -28,7 +28,7 @@
                     <a href="{{ route($item['route']) }}"
                        @if($active) aria-current="page" @endif
                        class="rounded-full px-4 py-2 text-sm font-medium transition
-                              {{ $active ? 'bg-clay-50 text-clay-700' : 'text-ink-soft hover:bg-mist hover:text-ink' }}">
+                              {{ $active ? 'bg-brand-50 text-brand-700' : 'text-ink-soft hover:bg-mist hover:text-ink' }}">
                         {{ $item['label'] }}
                     </a>
                 @endforeach
@@ -74,7 +74,7 @@
                 @php $active = request()->routeIs($item['route']) || request()->routeIs($item['route'].'.*'); @endphp
                 <a href="{{ route($item['route']) }}"
                    class="tap-target flex items-center rounded-xl px-4 text-base font-medium
-                          {{ $active ? 'bg-clay-50 text-clay-700' : 'text-ink hover:bg-mist' }}">
+                          {{ $active ? 'bg-brand-50 text-brand-700' : 'text-ink hover:bg-mist' }}">
                     {{ $item['label'] }}
                 </a>
             @endforeach

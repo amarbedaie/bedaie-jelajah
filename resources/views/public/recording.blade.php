@@ -21,8 +21,8 @@
                     </div>
                 @elseif ($recording->downloadUrl())
                     <div class="rounded-card-lg border border-hairline bg-surface p-8 text-center">
-                        <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-clay-50">
-                            <x-ui.icon :name="$recording->type->icon()" class="h-7 w-7 text-clay-700" />
+                        <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-50">
+                            <x-ui.icon :name="$recording->type->icon()" class="h-7 w-7 text-brand-700" />
                         </div>
                         <p class="mt-4 font-medium text-ink">{{ $recording->type->label() }}</p>
                         <x-ui.button :href="$recording->downloadUrl()" target="_blank" rel="noopener"
@@ -89,8 +89,8 @@
                                         </span>
                                     @else
                                         <a href="{{ route('rakaman.show', [$registration->public_token, $other]) }}"
-                                           class="flex items-start gap-2.5 text-sm text-ink hover:text-clay-700">
-                                            <x-ui.icon :name="$other->type->icon()" class="mt-0.5 h-4 w-4 shrink-0 text-clay-700" />
+                                           class="flex items-start gap-2.5 text-sm text-ink hover:text-brand-700">
+                                            <x-ui.icon :name="$other->type->icon()" class="mt-0.5 h-4 w-4 shrink-0 text-brand-700" />
                                             <span class="text-pretty">{{ $other->title }}</span>
                                         </a>
                                     @endif

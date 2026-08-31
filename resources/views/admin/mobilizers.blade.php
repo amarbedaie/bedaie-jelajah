@@ -19,7 +19,7 @@
                     </td>
                     <td class="px-4 py-3">
                         <a href="https://wa.me/{{ $user->phone }}" target="_blank" rel="noopener"
-                           class="text-sm font-medium text-clay-600 hover:underline">{{ $user->phone }}</a>
+                           class="text-sm font-medium text-brand-600 hover:underline">{{ $user->phone }}</a>
                         <span class="block text-[0.8125rem] text-ink-muted">{{ $user->email }}</span>
                     </td>
                     <td class="px-4 py-3 text-ink-soft">

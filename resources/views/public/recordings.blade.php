@@ -5,7 +5,7 @@
                class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
                 <x-ui.icon name="arrow-left" class="h-4 w-4" /> Kembali ke tiket
             </a>
-            <p class="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-clay-700">Rakaman Program</p>
+            <p class="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">Rakaman Program</p>
             <h1 class="mt-2 font-display text-2xl text-ink sm:text-3xl text-pretty">{{ $event->title }}</h1>
             <p class="mt-1.5 text-sm text-ink-muted">
                 {{ $event->dateLabel() }} &middot; {{ $event->locationLabel() }}
@@ -36,12 +36,12 @@
                         $reason = $recording->lockedReason($registration);
                     @endphp
                     <li class="relative flex h-full flex-col rounded-card border border-hairline
-                               bg-surface p-5 {{ $locked ? '' : 'transition hover:border-clay-200 hover:shadow-soft' }}">
+                               bg-surface p-5 {{ $locked ? '' : 'transition hover:border-brand-200 hover:shadow-soft' }}">
                         <div class="flex items-start gap-3">
                             <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl
-                                         {{ $locked ? 'bg-mist' : 'bg-clay-50' }}">
+                                         {{ $locked ? 'bg-mist' : 'bg-brand-50' }}">
                                 <x-ui.icon :name="$locked ? 'lock' : $recording->type->icon()"
-                                           class="h-5 w-5 {{ $locked ? 'text-ink-muted' : 'text-clay-700' }}" />
+                                           class="h-5 w-5 {{ $locked ? 'text-ink-muted' : 'text-brand-700' }}" />
                             </span>
                             <div class="min-w-0 flex-1">
                                 <h2 class="font-semibold text-ink text-pretty">
@@ -49,7 +49,7 @@
                                         {{ $recording->title }}
                                     @else
                                         <a href="{{ route('rakaman.show', [$registration->public_token, $recording]) }}"
-                                           class="after:absolute after:inset-0 hover:text-clay-700">
+                                           class="after:absolute after:inset-0 hover:text-brand-700">
                                             {{ $recording->title }}
                                         </a>
                                     @endif
@@ -77,7 +77,7 @@
                             @if ($locked)
                                 <span class="text-xs text-ink-muted text-pretty">{{ $reason }}</span>
                             @else
-                                <span class="ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-clay-700">
+                                <span class="ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-brand-700">
                                     Tonton <x-ui.icon name="arrow-right" class="h-4 w-4" />
                                 </span>
                             @endif

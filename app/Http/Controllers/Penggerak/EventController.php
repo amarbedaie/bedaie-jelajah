@@ -45,7 +45,7 @@ class EventController extends Controller
 
         return response()->view('penggerak.poster', [
             'event' => $event->load(['venue', 'state', 'district', 'speaker', 'category']),
-            'qrSvg' => $this->qr->svg($event->publicUrl(), 300, '#141413'),
+            'qrSvg' => $this->qr->svg($event->publicUrl(), 300, '#17161C'),
         ])->header('Content-Type', 'text/html; charset=utf-8');
     }
 

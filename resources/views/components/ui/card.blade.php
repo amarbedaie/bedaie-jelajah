@@ -5,7 +5,7 @@
 <{{ $as }} {{ $attributes->merge([
     'class' => 'bg-surface border border-hairline rounded-card '
         . ($padded ? 'p-5 sm:p-6 ' : '')
-        . ($hover ? 'transition-colors duration-150 hover:border-clay-300 ' : '')
+        . ($hover ? 'transition-colors duration-150 hover:border-brand-300 ' : '')
 ]) }}>
     {{ $slot }}
 </{{ $as }}>

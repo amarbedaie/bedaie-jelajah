@@ -36,15 +36,15 @@
                 <div class="min-h-[6.5rem] border-b border-r border-hairline p-2 last:border-r-0
                             {{ $inMonth ? '' : 'bg-mist/40' }}">
                     <p class="text-[0.8125rem] font-medium
-                              {{ $day->isToday() ? 'inline-grid h-5 w-5 place-items-center rounded-full bg-clay-600 text-white'
+                              {{ $day->isToday() ? 'inline-grid h-5 w-5 place-items-center rounded-full bg-brand-600 text-white'
                                  : ($inMonth ? 'text-ink-soft' : 'text-ink-muted') }}">
                         {{ $day->day }}
                     </p>
 
                     @foreach ($dayEvents as $event)
                         <a href="{{ route('admin.program.show', $event) }}"
-                           class="mt-1.5 block rounded-lg bg-clay-50 px-2 py-1 text-[0.7rem] leading-tight
-                                  text-clay-800 transition hover:bg-clay-100">
+                           class="mt-1.5 block rounded-lg bg-brand-50 px-2 py-1 text-[0.7rem] leading-tight
+                                  text-brand-800 transition hover:bg-brand-100">
                             <span class="block font-medium">{{ $event->starts_at->format('g:ia') }}</span>
                             <span class="block truncate">{{ $event->title }}</span>
                         </a>

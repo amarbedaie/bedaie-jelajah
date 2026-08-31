@@ -144,7 +144,7 @@ if ('serviceWorker' in navigator) {
  * rangka kerja.
  */
 const TOAST_TONES = {
-    success: ['bg-clay-50', 'border-clay-300', 'text-ink', 'bg-clay-600'],
+    success: ['bg-brand-50', 'border-brand-300', 'text-ink', 'bg-brand-600'],
     warning: ['bg-mist', 'border-control-line/35', 'text-ink', 'bg-ink-muted'],
     info:    ['bg-mist', 'border-control-line/35', 'text-ink', 'bg-ink-muted'],
     error:   ['bg-alert-soft', 'border-alert-line', 'text-alert', 'bg-alert'],

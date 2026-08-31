@@ -1,8 +1,8 @@
 <div class="mx-auto max-w-xl">
     @if ($submitted)
         <x-ui.card class="text-center sm:p-8">
-            <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-clay-50">
-                <x-ui.icon name="check-circle" class="h-7 w-7 text-clay-700" />
+            <div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-50">
+                <x-ui.icon name="check-circle" class="h-7 w-7 text-brand-700" />
             </div>
             <h2 class="mt-5 font-display text-2xl text-ink">Terima Kasih</h2>
             <p class="mt-3 text-ink-soft text-pretty">
@@ -11,8 +11,8 @@
             </p>
 
             @if ($registration->certificate)
-                <div class="mt-7 rounded-xl bg-clay-50 p-5">
-                    <x-ui.icon name="certificate" class="mx-auto h-6 w-6 text-clay-600" />
+                <div class="mt-7 rounded-xl bg-brand-50 p-5">
+                    <x-ui.icon name="certificate" class="mx-auto h-6 w-6 text-brand-600" />
                     <p class="mt-2.5 font-medium text-ink">Sijil anda telah sedia</p>
                     <p class="mt-1 font-mono text-xs text-ink-muted">
                         {{ $registration->certificate->certificate_number }}
@@ -55,11 +55,11 @@
                                     aria-label="{{ $i }} daripada 5"
                                     class="tap-target grid flex-1 place-items-center rounded-xl border transition
                                            {{ $rating >= $i
-                                              ? 'border-clay-400 bg-mist'
-                                              : 'border-hairline bg-surface hover:border-clay-300' }}">
+                                              ? 'border-brand-400 bg-mist'
+                                              : 'border-hairline bg-surface hover:border-brand-300' }}">
                                 <x-ui.icon name="star"
                                     :fill="$rating >= $i ? 'currentColor' : 'none'"
-                                    class="h-6 w-6 {{ $rating >= $i ? 'text-clay-700' : 'text-hairline' }}" />
+                                    class="h-6 w-6 {{ $rating >= $i ? 'text-brand-700' : 'text-hairline' }}" />
                             </button>
                         @endfor
                     </div>

@@ -10,9 +10,9 @@
         // tanpa isian.
         'quiet'  => 'bg-mist text-ink-muted ring-transparent',
         'line'   => 'bg-transparent text-ink ring-control-line/70',
-        'edge'   => 'bg-transparent text-clay-700 ring-clay-400',
-        'soft'   => 'bg-clay-50 text-clay-700 ring-clay-200',
-        'strong' => 'bg-clay-600 text-white ring-clay-600',
+        'edge'   => 'bg-transparent text-brand-700 ring-brand-400',
+        'soft'   => 'bg-brand-50 text-brand-700 ring-brand-200',
+        'strong' => 'bg-brand-600 text-white ring-brand-600',
         'solid'  => 'bg-ink text-cream ring-ink',
         'alert'  => 'bg-alert-soft text-alert ring-alert-line',
         'paper'  => 'bg-surface text-ink ring-hairline shadow-soft',
@@ -30,9 +30,9 @@
 
     $dots = [
         'quiet' => 'bg-ink-muted', 'line' => 'bg-ink-soft',
-        'edge' => 'bg-clay-500', 'soft' => 'bg-clay-500',
+        'edge' => 'bg-brand-500', 'soft' => 'bg-brand-500',
         'strong' => 'bg-white', 'solid' => 'bg-cream', 'alert' => 'bg-alert',
-        'paper' => 'bg-clay-500',
+        'paper' => 'bg-brand-500',
     ];
 @endphp
 

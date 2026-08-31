@@ -11,10 +11,10 @@
     // dibiar kosong sebagai kertas — itu maknanya secara harfiah, dan
     // ia melepaskan hujung pucat supaya tiga yang lain boleh terpisah.
     $fills = [
-        'berlangsung' => '#7E3720',
-        'dijelajahi'  => '#C96A48',
-        'akan_datang' => '#E9C3B0',
-        'belum'       => '#F0EEE6',
+        'berlangsung' => '#5F2B93',
+        'dijelajahi'  => '#9A6FD1',
+        'akan_datang' => '#D0BBEB',
+        'belum'       => '#F4F3F7',
     ];
 
     $legend = [
@@ -76,9 +76,9 @@
                                    kerana outline CSS tidak boleh dipercayai pada laluan SVG. --}}
                               class="cursor-pointer transition-opacity duration-200 hover:opacity-80
                                      focus-visible:outline-2 focus-visible:outline-offset-2
-                                     focus-visible:outline-clay-400"
+                                     focus-visible:outline-brand-400"
                               x-bind:opacity="active && active.slug !== '{{ $state['slug'] }}' ? 0.45 : 1"
-                              x-bind:stroke="focused === '{{ $state['slug'] }}' ? '#141413' : '#FFFFFF'"
+                              x-bind:stroke="focused === '{{ $state['slug'] }}' ? '#17161C' : '#FFFFFF'"
                               x-bind:stroke-width="focused === '{{ $state['slug'] }}' ? 4 : 1.6"
                               x-on:click="select('{{ $state['slug'] }}')"
                               x-on:mouseenter="select('{{ $state['slug'] }}')"
@@ -99,7 +99,7 @@
 
                         @if ($state['high_demand'])
                             <circle cx="{{ $state['label_x'] }}" cy="{{ $state['label_y'] - ($tiny ? 26 : 26) }}" r="9"
-                                    fill="#8E2438" stroke="#FFFFFF" stroke-width="2.5" class="pointer-events-none">
+                                    fill="#A32017" stroke="#FFFFFF" stroke-width="2.5" class="pointer-events-none">
                                 <title>Permintaan tinggi daripada komuniti</title>
                             </circle>
                         @endif
@@ -114,12 +114,12 @@
                             <line x1="{{ $state['label_x'] }}" y1="{{ $state['label_y'] }}"
                                   x2="{{ $state['label_x'] + ($flip ? 34 : -34) }}"
                                   y2="{{ $state['label_y'] + 4 }}"
-                                  stroke="#E3E1D9" stroke-width="1.6" class="pointer-events-none" />
+                                  stroke="#E4E2EC" stroke-width="1.6" class="pointer-events-none" />
                             <text x="{{ $state['label_x'] + ($flip ? 40 : -40) }}"
                                   y="{{ $state['label_y'] + 9 }}"
                                   text-anchor="{{ $flip ? 'start' : 'end' }}"
                                   class="pointer-events-none select-none"
-                                  font-size="22" font-weight="700" fill="#57564F">
+                                  font-size="22" font-weight="700" fill="#54525F">
                                 {{ $state['code'] }}
                             </text>
                         @else
@@ -127,7 +127,7 @@
                                   text-anchor="middle"
                                   class="pointer-events-none select-none"
                                   font-size="24" font-weight="700"
-                                  fill="{{ $state['status'] === 'belum' ? '#57564F' : '#FFFFFF' }}">
+                                  fill="{{ $state['status'] === 'belum' ? '#54525F' : '#FFFFFF' }}">
                                 {{ $state['code'] }}
                             </text>
                         @endif
@@ -156,7 +156,7 @@
         <x-ui.card class="min-h-[13rem]">
             <template x-if="!active">
                 <div class="flex h-full flex-col justify-center py-4 text-center">
-                    <x-ui.icon name="map" class="mx-auto h-8 w-8 text-clay-300" />
+                    <x-ui.icon name="map" class="mx-auto h-8 w-8 text-brand-300" />
                     <p class="mt-3 font-medium text-ink">Pilih negeri pada peta</p>
                     <p class="mt-1 text-sm text-ink-muted text-pretty">
                         Atau gunakan senarai negeri di bawah untuk melihat rekod jelajah.
@@ -166,7 +166,7 @@
 
             <template x-if="active">
                 <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-clay-600">Negeri</p>
+                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">Negeri</p>
                     <h3 class="mt-1 text-xl font-semibold text-ink" x-text="active.name"></h3>
 
                     <dl class="mt-4 grid grid-cols-2 gap-3">
@@ -191,13 +191,13 @@
 
                     <div class="mt-4 grid gap-2">
                         <a x-bind:href="active.url"
-                           class="tap-target inline-flex items-center justify-center gap-2 rounded-lg bg-clay-600
+                           class="tap-target inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600
                                   px-5 text-sm font-medium text-white transition hover:bg-char-800">
                             Lihat Butiran Negeri
                         </a>
                         <a x-bind:href="active.invite"
                            class="tap-target inline-flex items-center justify-center gap-2 rounded-full border
-                                  border-clay-300 px-5 text-sm font-medium text-clay-700 transition hover:bg-clay-50">
+                                  border-brand-300 px-5 text-sm font-medium text-brand-700 transition hover:bg-brand-50">
                             Jemput BeDaie ke Negeri Ini
                         </a>
                     </div>

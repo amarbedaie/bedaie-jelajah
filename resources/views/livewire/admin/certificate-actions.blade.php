@@ -16,7 +16,7 @@
             @endif
         </div>
     @elseif ($mode === 'regenerate')
-        <div class="w-full max-w-sm rounded-xl border border-clay-200 bg-clay-50/60 p-3 text-left">
+        <div class="w-full max-w-sm rounded-xl border border-brand-200 bg-brand-50/60 p-3 text-left">
             <p class="text-[0.8125rem] font-semibold text-ink">Betulkan nama pada sijil</p>
             <p class="mt-1 text-[0.8125rem] text-ink-soft text-pretty">
                 Sijil baharu akan dijana. Sijil lama ditandakan "Digantikan".

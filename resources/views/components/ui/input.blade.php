@@ -5,7 +5,7 @@
         . 'placeholder:text-ink-muted transition focus:outline-none focus:ring-3 '
         . ($error
             ? 'border-alert focus:border-alert focus:ring-alert/45 '
-            : 'border-control-line focus:border-clay-600 focus:ring-clay-400/45 ')
+            : 'border-control-line focus:border-brand-600 focus:ring-brand-400/45 ')
         . ($icon ? 'pl-11 ' : '');
 
     $ariaId = $attributes->get('id');

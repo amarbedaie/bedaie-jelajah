@@ -1,23 +1,27 @@
 {{--
-    PLACEHOLDER LOGO — gantikan dengan fail logo rasmi BeDaie.
-    Letakkan fail rasmi di public/brand/bedaie-logo.svg; komponen ini
-    akan menggunakannya secara automatik sebaik sahaja fail itu wujud.
-    Jangan hotlink imej daripada laman lama.
+    Logo rasmi BeDaie (public/brand/bedaie-logo.png), dimuat turun
+    daripada bedaie.com.my dan dihos sendiri — tidak pernah dihotlink.
+
+    Tanda itu membawa gradien lima warna jenama. Itu satu-satunya tempat
+    gradien penuh muncul dalam sistem ini; antara muka kekal ungu.
 --}}
 @props(['variant' => 'full', 'light' => false, 'class' => ''])
 
 @php
-    $officialPath = public_path('brand/bedaie-logo.svg');
-    $hasOfficial = is_file($officialPath);
+    // SVG diutamakan jika suatu hari fail vektor tersedia.
+    $svg = public_path('brand/bedaie-logo.svg');
+    $png = public_path('brand/bedaie-logo.png');
+    $officialFile = is_file($svg) ? 'brand/bedaie-logo.svg' : (is_file($png) ? 'brand/bedaie-logo.png' : null);
     $textColor = $light ? 'text-white' : 'text-ink';
-    $subColor  = $light ? 'text-clay-300' : 'text-clay-600';
+    $subColor  = $light ? 'text-brand-300' : 'text-brand-600';
 @endphp
 
 <span {{ $attributes->merge(['class' => 'inline-flex items-center gap-2.5 ' . $class]) }}>
-    @if ($hasOfficial)
-        <img src="{{ asset('brand/bedaie-logo.svg') }}" alt="BeDaie" class="h-9 w-auto" />
+    @if ($officialFile)
+        <img src="{{ asset($officialFile) }}" alt="BeDaie" class="h-9 w-auto"
+             width="253" height="160" />
     @else
-        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg {{ $light ? 'bg-white/15' : 'bg-clay-600' }}"
+        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg {{ $light ? 'bg-white/15' : 'bg-brand-600' }}"
               data-logo="bedaie-logo-placeholder">
             <svg viewBox="0 0 64 64" class="h-6 w-6" fill="none" aria-hidden="true">
                 <g stroke="#FFFFFF" stroke-width="3.4" stroke-linejoin="round">

@@ -21,8 +21,8 @@
             ['Senarai menunggu', $stats['senarai_menunggu'], 'list'],
         ] as [$label, $value, $icon])
             <div class="rounded-card border border-hairline bg-surface p-5">
-                <span class="grid h-9 w-9 place-items-center rounded-xl bg-clay-50">
-                    <x-ui.icon :name="$icon" class="h-4 w-4 text-clay-600" />
+                <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-50">
+                    <x-ui.icon :name="$icon" class="h-4 w-4 text-brand-600" />
                 </span>
                 <dd class="mt-3 font-display text-3xl text-ink">{{ number_format($value) }}</dd>
                 <dt class="mt-0.5 text-sm text-ink-soft text-pretty">{{ $label }}</dt>

@@ -22,8 +22,8 @@
                     Sertai gerakan yang menghubungkan BeDaie dengan masjid, surau, sekolah,
                     tahfiz dan komuniti di seluruh Malaysia.
                 </p>
-                <p class="mt-9 inline-flex items-center gap-2 border-t border-clay-300 pt-4
-                          text-sm font-medium text-clay-700">
+                <p class="mt-9 inline-flex items-center gap-2 border-t border-brand-300 pt-4
+                          text-sm font-medium text-brand-700">
                     {{ config('jelajah.motto') }}
                 </p>
             </div>

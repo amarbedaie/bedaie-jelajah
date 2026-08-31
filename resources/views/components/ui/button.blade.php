@@ -16,20 +16,20 @@
           . 'focus-visible:outline-2 focus-visible:outline-offset-2 whitespace-nowrap';
 
     $variants = [
-        'primary'   => 'bg-clay-600 text-white hover:bg-clay-700 focus-visible:outline-clay-700',
+        'primary'   => 'bg-brand-600 text-white hover:bg-brand-700 focus-visible:outline-brand-700',
         // Hanya untuk permukaan arang yang disanksi (bar sisi, pengimbas).
-        'navy'      => 'bg-ink text-white hover:bg-char-800 focus-visible:outline-clay-400',
-        'secondary' => 'bg-clay-50 text-clay-700 hover:bg-clay-100 focus-visible:outline-clay-600',
-        'outline'   => 'border border-control-line/60 bg-transparent text-ink hover:border-ink hover:bg-ink/[0.04] focus-visible:outline-clay-600',
-        'ghost'     => 'text-ink-soft hover:bg-ink/[0.05] hover:text-ink focus-visible:outline-clay-600',
+        'navy'      => 'bg-ink text-white hover:bg-char-800 focus-visible:outline-brand-400',
+        'secondary' => 'bg-brand-50 text-brand-700 hover:bg-brand-100 focus-visible:outline-brand-600',
+        'outline'   => 'border border-control-line/60 bg-transparent text-ink hover:border-ink hover:bg-ink/[0.04] focus-visible:outline-brand-600',
+        'ghost'     => 'text-ink-soft hover:bg-ink/[0.05] hover:text-ink focus-visible:outline-brand-600',
         // WhatsApp tidak lagi membawa hijaunya sendiri — ikon yang
         // mengenalkannya, dan hijau itu satu-satunya benda paling kuat
         // pada halaman kertas.
-        'whatsapp'  => 'bg-clay-600 text-white hover:bg-clay-700 focus-visible:outline-clay-700',
-        'success'   => 'bg-ink text-cream hover:bg-char-800 focus-visible:outline-clay-600',
+        'whatsapp'  => 'bg-brand-600 text-white hover:bg-brand-700 focus-visible:outline-brand-700',
+        'success'   => 'bg-ink text-cream hover:bg-char-800 focus-visible:outline-brand-600',
         'danger'    => 'bg-alert text-white hover:brightness-110 focus-visible:outline-alert',
         'danger-soft'=> 'bg-alert-soft text-alert hover:bg-alert hover:text-white focus-visible:outline-alert',
-        'white'     => 'bg-surface text-ink border border-hairline hover:bg-clay-50 hover:border-clay-300 focus-visible:outline-ink',
+        'white'     => 'bg-surface text-ink border border-hairline hover:bg-brand-50 hover:border-brand-300 focus-visible:outline-ink',
     ];
 
     $sizes = [

@@ -19,7 +19,7 @@
                 <dt class="text-sm text-ink-soft">Tindakan tertunggak</dt>
             </div>
             <div>
-                <dd class="font-display text-3xl text-clay-700">{{ number_format($wonCount) }}</dd>
+                <dd class="font-display text-3xl text-brand-700">{{ number_format($wonCount) }}</dd>
                 <dt class="text-sm text-ink-soft">Berjaya jadi jelajah</dt>
             </div>
         </dl>
@@ -120,7 +120,7 @@
                                 </x-ui.select>
                             </x-ui.field>
                             @if ($partners->isEmpty())
-                                <p class="mt-2 text-sm text-clay-700">
+                                <p class="mt-2 text-sm text-brand-700">
                                     Belum ada rakan aktif.
                                     <a href="{{ route('admin.rakan') }}" class="font-medium underline">Tambah rakan dahulu</a>.
                                 </p>
@@ -275,7 +275,7 @@
             <button type="button" wire:click="$toggle('mineOnly')"
                     aria-pressed="{{ $mineOnly ? 'true' : 'false' }}"
                     class="tap-target rounded-full px-4 text-sm font-medium transition
-                           {{ $mineOnly ? 'bg-clay-600 text-white' : 'bg-mist text-ink-soft hover:text-ink' }}">
+                           {{ $mineOnly ? 'bg-brand-600 text-white' : 'bg-mist text-ink-soft hover:text-ink' }}">
                 Sasaran saya
             </button>
 
@@ -346,13 +346,13 @@
                             @forelse ($items as $target)
                                 <article wire:key="t-{{ $target->id }}"
                                          class="rounded-xl border border-hairline bg-surface p-3.5 shadow-soft
-                                                transition hover:border-clay-200">
+                                                transition hover:border-brand-200">
                                     <div class="flex items-start gap-2">
                                         <x-ui.icon :name="$target->type->icon()"
                                                    class="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" />
                                         <a href="{{ route('admin.sasaran.show', $target) }}"
                                            class="min-w-0 flex-1 text-sm font-medium leading-snug text-ink
-                                                  hover:text-clay-700 text-pretty">
+                                                  hover:text-brand-700 text-pretty">
                                             {{ $target->name }}
                                         </a>
                                         @if ($target->priority === \App\Enums\OutreachPriority::Tinggi)
@@ -387,7 +387,7 @@
                                         @if ($stage !== \App\Enums\OutreachStage::Berjaya)
                                             <button type="button" wire:click="advance({{ $target->id }})"
                                                     class="shrink-0 rounded-full p-1.5 text-ink-muted transition
-                                                           hover:bg-clay-50 hover:text-clay-700"
+                                                           hover:bg-brand-50 hover:text-brand-700"
                                                     aria-label="Gerakkan {{ $target->name }} ke peringkat seterusnya">
                                                 <x-ui.icon name="arrow-right" class="h-4 w-4" />
                                             </button>
@@ -414,7 +414,7 @@
                             <li class="flex flex-wrap items-center justify-between gap-3 px-5 py-3">
                                 <div class="min-w-0">
                                     <a href="{{ route('admin.sasaran.show', $target) }}"
-                                       class="text-sm font-medium text-ink hover:text-clay-700">
+                                       class="text-sm font-medium text-ink hover:text-brand-700">
                                         {{ $target->name }}
                                     </a>
                                     <p class="text-[0.8125rem] text-ink-muted">
@@ -443,7 +443,7 @@
                         <tr wire:key="row-{{ $target->id }}" class="hover:bg-mist/40">
                             <td class="px-4 py-3">
                                 <a href="{{ route('admin.sasaran.show', $target) }}"
-                                   class="font-medium text-ink hover:text-clay-700">{{ $target->name }}</a>
+                                   class="font-medium text-ink hover:text-brand-700">{{ $target->name }}</a>
                                 <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $target->reference_no }}</p>
                             </td>
                             <td class="px-4 py-3 text-ink-soft">{{ $target->locationLabel() }}</td>
@@ -498,7 +498,7 @@
                                 <td class="px-4 py-3">
                                     <div class="flex items-center gap-2.5">
                                         <span class="h-1.5 w-20 overflow-hidden rounded-full bg-mist">
-                                            <span class="block h-full rounded-full bg-clay-600"
+                                            <span class="block h-full rounded-full bg-brand-600"
                                                   style="width: {{ $rate }}%"></span>
                                         </span>
                                         <span class="text-sm text-ink-soft">{{ $rate }}%</span>

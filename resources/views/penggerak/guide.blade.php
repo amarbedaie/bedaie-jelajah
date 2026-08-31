@@ -69,7 +69,7 @@
         <div class="relative">
             <div class="motif-girih absolute inset-0 opacity-45" aria-hidden="true"></div>
             <div class="relative max-w-2xl">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-clay-700">Mulakan di sini</p>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">Mulakan di sini</p>
                 <h2 class="mt-3 font-display text-2xl text-ink sm:text-3xl text-pretty">
                     Anda tidak perlu menjadi penganjur profesional.
                 </h2>
@@ -99,12 +99,12 @@
             @foreach ($steps as $i => $step)
                 <li class="rounded-card border border-hairline bg-surface p-5">
                     <div class="flex items-start gap-4">
-                        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-clay-50">
-                            <x-ui.icon :name="$step['icon']" class="h-5 w-5 text-clay-700" />
+                        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50">
+                            <x-ui.icon :name="$step['icon']" class="h-5 w-5 text-brand-700" />
                         </span>
                         <div class="min-w-0 flex-1">
                             <div class="flex items-baseline gap-2.5">
-                                <span class="text-sm font-semibold text-clay-700">{{ $i + 1 }}</span>
+                                <span class="text-sm font-semibold text-brand-700">{{ $i + 1 }}</span>
                                 <h3 class="font-semibold text-ink">{{ $step['title'] }}</h3>
                             </div>
                             <p class="mt-2 leading-relaxed text-ink-soft text-pretty">{{ $step['body'] }}</p>
@@ -138,7 +138,7 @@
     </section>
 
     {{-- ── Bantuan ─────────────────────────────────────────── --}}
-    <div class="mt-10 rounded-card border border-clay-200 bg-clay-50 p-6">
+    <div class="mt-10 rounded-card border border-brand-200 bg-brand-50 p-6">
         <h2 class="font-semibold text-ink">Masih ada soalan?</h2>
         <p class="mt-2 text-ink-soft text-pretty">
             Kami lebih suka anda bertanya daripada tersekat. Hubungi terus — tiada soalan yang bodoh.

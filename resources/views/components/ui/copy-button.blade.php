@@ -18,7 +18,7 @@
         <span x-show="!copied" class="flex items-center gap-2">
             <x-ui.icon name="copy" class="w-[1.15em] h-[1.15em]" />{{ $label }}
         </span>
-        <span x-show="copied" x-cloak class="flex items-center gap-2 text-clay-700">
+        <span x-show="copied" x-cloak class="flex items-center gap-2 text-brand-700">
             <x-ui.icon name="check" class="w-[1.15em] h-[1.15em]" />Telah disalin!
         </span>
     </x-ui.button>

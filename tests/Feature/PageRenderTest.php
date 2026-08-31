@@ -41,7 +41,7 @@ class PageRenderTest extends TestCase
         $this->get(route('pwa.manifest'))
             ->assertOk()
             ->assertJsonPath('name', 'BeDaie Jelajah')
-            ->assertJsonPath('theme_color', '#D97757');
+            ->assertJsonPath('theme_color', '#8040C0');
     }
 
     public function test_halaman_program_dan_pautan_pendek_berfungsi(): void

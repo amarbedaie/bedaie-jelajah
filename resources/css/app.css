@@ -14,14 +14,15 @@
    satu helaian kertas tulang yang tenang, taip bersaiz penerbitan, dan
    satu warna tanah liat yang hanya muncul di tempat orang bertindak.
 
-   OWN-WORLD: Tiga keluarga warna, tidak lebih. Kertas tulang #F0EEE6,
-   dakwat hitam suam #141413, dan satu tanah liat #D97757 (isian #B4552F).
-   Tiada hijau, tiada oren amaran, tiada biru. Status dibawa oleh BENTUK
-   lencana — senyap, bergaris, lembut, tebal, pejal — bukan oleh rona.
-   Satu isyarat wain #8E2438 dikhaskan untuk pembatalan dan kegagalan
-   sahaja; hue 349 berbanding 17 tanah liat, jadi ia tidak pernah
-   dikelirukan dengan aksen. Sempadan rambut suam. Bayang hampir tiada.
-   Serif Source Serif 4 untuk tajuk; Hanken Grotesk untuk badan.
+   OWN-WORLD: Warna diambil terus daripada logo BeDaie. Tanda itu satu
+   gradien lima warna — teal, ungu, indigo, merah jambu, amber — tetapi
+   antara muka premium tidak boleh memakai lima rona tepu. Jadi: ungu
+   #8040C0 (hue 270, badan huruf B, bahagian terbesar tanda) menjadi
+   satu-satunya warna tindakan, teal #1B6E6E sebagai aksen berhemat,
+   dan gradien penuh muncul HANYA dalam logo itu sendiri. Kertas sejuk
+   #F4F3F7 yang condong sedikit ungu; dakwat #17161C. Satu isyarat
+   merah #A32017 untuk pembatalan sahaja. Status dibawa oleh BENTUK
+   lencana, bukan rona. Serif Source Serif 4; Hanken Grotesk untuk badan.
 
    STORY: Pengunjung nampak satu halaman yang lapang dan yakin, membaca
    satu tajuk besar, dan nampak dengan segera satu tindakan tanah liat.
@@ -37,76 +38,76 @@
 
 @theme {
   /* ── Kertas ───────────────────────────────────────────────────
-     Tanah sistem ialah kertas tulang, bukan putih. Kad putih tulen
-     timbul daripadanya tanpa perlu bayang. */
-  --color-cream:    #F0EEE6;   /* tanah halaman */
+     Neutral sejuk dengan sedikit condong ungu, supaya ia menyanjung
+     ungu jenama dan bukan melawannya. */
+  --color-cream:    #F4F3F7;   /* tanah halaman */
   --color-surface:  #FFFFFF;   /* kad */
-  --color-raised:   #FAF9F5;   /* kad kedua, lebih senyap */
-  --color-mist:     #E8E5DB;   /* telaga: kepala jadual, blok nota */
-  --color-hairline: #E3E1D9;   /* pembahagi hiasan sahaja */
-  --color-control-line: #858175; /* sempadan medan borang — 3.35:1 kertas,
-                                    3.89:1 putih, 3.09:1 telaga */
+  --color-raised:   #FAFAFC;
+  --color-mist:     #EBE9F1;   /* telaga: kepala jadual, blok nota */
+  --color-hairline: #E4E2EC;   /* pembahagi hiasan sahaja */
+  --color-control-line: #807D8C; /* sempadan medan — 3.63:1 kertas,
+                                    4.02:1 putih, 3.34:1 telaga */
 
   /* ── Dakwat ───────────────────────────────────────────────────
-     Hitam suam, bukan kelabu neutral — ia duduk atas kertas. */
-  --color-ink:       #141413;  /* 15.87:1 atas kertas */
-  --color-ink-soft:  #57564F;  /*  6.34:1 atas kertas */
-  --color-ink-muted: #67665F;  /*  4.94:1 atas kertas, 4.57:1 atas telaga */
+     Hampir hitam dengan sedikit ungu, bukan kelabu neutral. */
+  --color-ink:       #17161C;  /* 16.28:1 atas kertas */
+  --color-ink-soft:  #54525F;  /*  6.91:1 */
+  --color-ink-muted: #63616D;  /*  5.49:1 kertas, 5.04:1 telaga */
 
-  /* ── Tanah liat — satu-satunya warna tindakan ─────────────────
-     #D97757 ialah tanah liat yang dikenali, tetapi ia hanya 3.12:1
-     dengan putih. Permukaan berisi yang membawa teks memakai nada
-     yang lebih dalam. */
-  --color-clay-50:   #FBF0EB;
-  --color-clay-100:  #F6E0D6;
-  --color-clay-200:  #EDC4B2;
-  --color-clay-300:  #E3A488;
-  --color-clay-400:  #D97757;  /* aksen, tekstur, garis */
-  --color-clay-500:  #C96A48;
-  --color-clay-600:  #B4552F;  /* isian dengan teks putih — 4.91:1 */
-  --color-clay-700:  #9E4726;  /* hover isian; teks atas kertas — 5.34:1 */
-  --color-clay-800:  #7E3720;
-  --color-clay-900:  #4A2115;
+  /* ── Ungu jenama ──────────────────────────────────────────────
+     Diambil terus daripada logo BeDaie: badan huruf "B" ialah
+     hue 270, bahagian terbesar tanda itu. Tidak seperti kebanyakan
+     ungu jenama, nada ini sudah mencapai 6.15:1 dengan teks putih,
+     jadi warna logo itu sendiri boleh menjadi warna butang. */
+  --color-brand-50:  #F3EDFA;
+  --color-brand-100: #E7DBF5;
+  --color-brand-200: #D0BBEB;
+  --color-brand-300: #B394DE;
+  --color-brand-400: #9A6FD1;
+  --color-brand-500: #8040C0;  /* ungu logo — 6.15:1 dengan putih */
+  --color-brand-600: #7A3BB8;  /* hover isian */
+  --color-brand-700: #6F35AA;  /* teks jenama atas kertas — 6.87:1 */
+  --color-brand-800: #5F2B93;
+  --color-brand-900: #3D1C5E;
+
+  /* ── Teal sokongan ────────────────────────────────────────────
+     Warna kedua terbesar dalam logo (hue 180, ~30% kawasan tanda).
+     Digunakan berhemat: aksen, bukan warna tindakan kedua. */
+  --color-teal:      #1B6E6E;  /* 6.00:1 dengan putih */
+  --color-teal-soft: #E3F1F1;
+  --color-teal-line: #BCDEDE;
 
   /* ── Arang — permukaan gelap ──────────────────────────────────
-     Hanya untuk skrin operasi malam, sijil dan poster. */
-  --color-char-900: #141413;
-  --color-char-800: #262622;
-  --color-char-700: #33322D;
-  --color-char-400: #8A887F;
-  --color-char-200: #D6D3C9;
-  --color-char-100: #E8E5DB;
+     Hanya bar sisi admin dan skrin pengimbas QR. */
+  --color-char-900: #17161C;
+  --color-char-800: #262430;
+  --color-char-700: #34313F;
+  --color-char-400: #8B8899;
+  --color-char-200: #D5D2DE;
+  --color-char-100: #EBE9F1;
 
-  /* ── Isyarat tunggal ─────────────────────────────────────────
-     Satu-satunya rona keempat dalam sistem. Dikhaskan untuk
-     pembatalan, kegagalan dan tindakan memusnah — tidak pernah untuk
-     hiasan. Wain pada hue 349 berbanding tanah liat pada hue 17,
-     supaya ia tidak pernah dibaca sebagai aksen. */
-  --color-alert:      #8E2438;   /* 8.54:1 dengan putih, 7.35:1 atas kertas */
-  --color-alert-soft: #F4E4E7;
-  --color-alert-line: #DFC0C7;
+  /* ── Isyarat tunggal ──────────────────────────────────────────
+     Merah pada hue 4 — 28 darjah daripada merah jambu logo, dan
+     266 darjah daripada ungu jenama, jadi ia tidak pernah dibaca
+     sebagai warna jenama. Pembatalan dan kegagalan sahaja. */
+  --color-alert:      #A32017;  /* 7.56:1 dengan putih */
+  --color-alert-soft: #F8E6E3;
+  --color-alert-line: #E8C4BE;
 
-  /* ── Tipografi ────────────────────────────────────────────────
-     Serif transitional untuk tajuk — kontras sederhana, dibaca
-     dengan mudah oleh warga emas pada telefon. Grotesque neutral
-     untuk badan, tinggi-x besar. */
+  /* ── Tipografi ────────────────────────────────────────────── */
   --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
 
-  /* ── Bentuk ───────────────────────────────────────────────────
-     Radius jauh lebih kecil daripada sebelum ini. Kertas mempunyai
-     tepi, bukan sudut gula-gula. */
+  /* ── Bentuk ───────────────────────────────────────────────── */
   --radius-focus: 0.375rem;
   --radius-card: 0.75rem;
   --radius-card-lg: 1rem;
   --radius-pill: 999px;
 
-  /* ── Kedalaman ────────────────────────────────────────────────
-     Setiap bayang membawa offset dan kabur. Kedalaman utama sistem
-     ini ialah sempadan dan ruang, bukan bayang. */
-  --shadow-soft: 0 1px 2px rgb(20 20 19 / 0.04), 0 2px 8px -4px rgb(20 20 19 / 0.06);
-  --shadow-lift: 0 2px 4px rgb(20 20 19 / 0.05), 0 12px 28px -16px rgb(20 20 19 / 0.16);
-  --shadow-brand: 0 2px 4px rgb(20 20 19 / 0.06), 0 10px 24px -14px rgb(120 60 34 / 0.42);
+  /* ── Kedalaman ────────────────────────────────────────────── */
+  --shadow-soft: 0 1px 2px rgb(23 22 28 / 0.04), 0 2px 8px -4px rgb(23 22 28 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(23 22 28 / 0.05), 0 12px 28px -16px rgb(23 22 28 / 0.16);
+  --shadow-brand: 0 2px 4px rgb(23 22 28 / 0.06), 0 10px 24px -14px rgb(128 64 192 / 0.42);
 }
 
 /* ── Asas ─────────────────────────────────────────────────────────── */
@@ -145,13 +146,13 @@
 
   /* Fokus keyboard yang jelas di seluruh sistem */
   :focus-visible {
-    outline: 2px solid var(--color-clay-600);
+    outline: 2px solid var(--color-brand-500);
     outline-offset: 2px;
     border-radius: var(--radius-focus);
   }
 
   ::selection {
-    background: var(--color-clay-200);
+    background: var(--color-brand-200);
     color: var(--color-ink);
   }
 
@@ -165,7 +166,7 @@
   /* Khatam 8-mata — bintang Islam klasik yang terbentuk daripada dua
      segi empat bertindih. Ini geometri sebenar, bukan berlian bersarang. */
   .motif-girih {
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23D97757%27%20stroke-linejoin%3D%27round%27%3E%3Cg%20stroke-width%3D%271.2%27%20stroke-opacity%3D%270.16%27%3E%3Cpath%20d%3D%27M20%2020h56v56H20z%27%2F%3E%3Cpath%20d%3D%27M48%208%2088%2048%2048%2088%208%2048Z%27%2F%3E%3C%2Fg%3E%3Cg%20stroke-width%3D%271%27%20stroke-opacity%3D%270.10%27%3E%3Cpath%20d%3D%27M40%2033h16l7%207v16l-7%207H40l-7-7V40Z%27%2F%3E%3Cpath%20d%3D%27M0%200%2024%2024M96%200%2072%2024M0%2096%2024%2072M96%2096%2072%2072%27%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%238040C0%27%20stroke-linejoin%3D%27round%27%3E%3Cg%20stroke-width%3D%271.2%27%20stroke-opacity%3D%270.16%27%3E%3Cpath%20d%3D%27M20%2020h56v56H20z%27%2F%3E%3Cpath%20d%3D%27M48%208%2088%2048%2048%2088%208%2048Z%27%2F%3E%3C%2Fg%3E%3Cg%20stroke-width%3D%271%27%20stroke-opacity%3D%270.10%27%3E%3Cpath%20d%3D%27M40%2033h16l7%207v16l-7%207H40l-7-7V40Z%27%2F%3E%3Cpath%20d%3D%27M0%200%2024%2024M96%200%2072%2024M0%2096%2024%2072M96%2096%2072%2072%27%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
     background-size: 96px 96px;
   }
 
@@ -225,16 +226,16 @@
   .prose-jelajah ul { list-style: disc; }
   .prose-jelajah ol { list-style: decimal; }
   .prose-jelajah li { margin-block: 0.4em; padding-inline-start: 0.25rem; }
-  .prose-jelajah li::marker { color: var(--color-clay-500); }
+  .prose-jelajah li::marker { color: var(--color-brand-500); }
 
   .prose-jelajah a {
-    color: var(--color-clay-700);
+    color: var(--color-brand-700);
     text-decoration: underline;
-    text-decoration-color: var(--color-clay-300);
+    text-decoration-color: var(--color-brand-300);
     text-underline-offset: 3px;
   }
 
-  .prose-jelajah a:hover { text-decoration-color: var(--color-clay-700); }
+  .prose-jelajah a:hover { text-decoration-color: var(--color-brand-700); }
   .prose-jelajah em { font-style: italic; }
 
   .prose-jelajah hr {
