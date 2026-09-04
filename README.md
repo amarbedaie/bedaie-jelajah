@@ -429,6 +429,43 @@ navy `#0A083B`, putih suam `#FAF9F6`, Poppins) ditakrifkan dalam
    `StateSeeder`, `CatalogSeeder`, `SettingSeeder`, `NotificationTemplateSeeder`
    sahaja untuk data rujukan.
 
+### Keadaan produksi semasa (4 Sept 2026)
+
+**Redis untuk sesi dan cache.** Pelayan berkongsi 2 core antara 59 laman, jadi
+setiap perjalanan ke MySQL memberi kesan. `SESSION_DRIVER=redis` dan
+`CACHE_STORE=redis`, dengan `REDIS_DB=3`, `REDIS_CACHE_DB=4` dan
+`REDIS_PREFIX=jelajah_` supaya kunci tidak berlanggar dengan laman lain yang
+berkongsi Redis yang sama. Queue kekal `database` — ia sudah stabil dan
+menukarnya tiada faedah jelas. Salinan lama disimpan di `.env.sebelum-redis`.
+
+**API Forge v1 telah ditarik.** Semua endpoint v1 memulangkan 404 dan v2
+menolak kunci sedia ada. Sehingga kunci v2 dijana, deploy dilakukan melalui
+SSH:
+
+```bash
+ssh forge@129.212.216.31
+cd /home/forge/jelajah.129-212-216-31.sslip.io
+git pull origin main
+composer install --no-dev --optimize-autoloader
+npm ci && npm run build
+php8.5 artisan migrate --force
+php8.5 artisan config:cache && php8.5 artisan route:cache && php8.5 artisan view:cache
+```
+
+**Cron scheduler** berada dalam `crontab -l` pengguna `forge`, bukan diuruskan
+Forge — entri yang dicipta melalui API v1 hilang semasa peralihan versi.
+
+**Backup** diuruskan oleh `/home/forge/bin/backup-all.sh` (harian 18:00), yang
+sudah merangkumi pangkalan data laman ini.
+
+**WhatsApp**: WAHA berjalan pada `http://127.0.0.1:3000` dengan sesi
+`amarbedaie` berstatus WORKING. Konfigurasi mengikut laman lain
+(`WAHA_URL`, `WAHA_API_KEY`, `WAHA_SESSION`, `WAHA_ENABLED`).
+**Jangan hidupkan sebelum data demo dibersihkan** — pangkalan data produksi
+masih mengandungi 846 pendaftaran dengan nombor telefon berformat Malaysia
+yang sah, dan menghidupkan notifikasi akan menghantar mesej kepada orang
+yang tidak berkenaan.
+
 ---
 
 ## 15. Yang masih memerlukan kredensial pihak ketiga
