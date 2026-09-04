@@ -4,7 +4,7 @@ description: Gerakan ilmu yang membawa BeDaie ke masjid, surau, sekolah dan komu
 colors:
   cream: "#F4F3F7"
   surface: "#FFFFFF"
-  raised: "#FAFAFC"
+
   mist: "#EBE9F1"
   hairline: "#E4E2EC"
   control-line: "#807D8C"
@@ -28,9 +28,7 @@ colors:
   char-200: "#D5D2DE"
   char-100: "#EBE9F1"
   alert: "#A32017"
-  teal: "#1B6E6E"
-  teal-soft: "#E3F1F1"
-  teal-line: "#BCDEDE"
+  teal: "#124A4A"
   alert-soft: "#F8E6E3"
   alert-line: "#E8C4BE"
 typography:
@@ -177,9 +175,17 @@ Tidak seperti kebanyakan ungu jenama, nada logo itu sendiri sudah mencapai
 **Gradien penuh muncul HANYA dalam logo itu sendiri.** Itu satu-satunya
 tempat lima warna dibenarkan bertemu; di mana-mana lain, satu ungu.
 
-**Teal sokongan.** `teal` #1B6E6E ialah warna kedua terbesar dalam logo
-(hue 180, kira-kira 30% kawasan tanda). Digunakan berhemat sebagai aksen —
-ia bukan warna tindakan kedua.
+**Teal sokongan.** `teal` #124A4A ialah warna kedua terbesar dalam logo
+(hue 180, kira-kira 30% kawasan tanda). Ia mempunyai **satu tugas sahaja**:
+menandakan keadaan yang sedang berlaku *sekarang* — negeri yang sedang
+dijelajahi pada peta, dan lencana program yang sedang berlangsung.
+
+Nada itu sengaja digelapkan kepada 9.98:1. Teal yang lebih cerah terpisah
+daripada ungu pada hue sahaja (1.03 luminan), jadi pengguna buta warna
+tidak dapat membezakannya langsung. Nada ini terpisah pada kedua-dua
+saluran.
+
+Ia bukan warna tindakan kedua, dan tidak digunakan sebagai hiasan.
 
 **Satu isyarat, dan hanya satu.** `alert` #A32017 dikhaskan untuk
 pembatalan, kegagalan dan tindakan memusnah — tidak pernah untuk hiasan.
@@ -327,7 +333,7 @@ serta `aria-describedby` yang sepadan.
 - Jangan guna `alert` untuk apa-apa selain pembatalan, kegagalan dan
   tindakan memusnah.
 - Jangan guna gradien lima warna logo di mana-mana selain logo itu sendiri.
-- Jangan jadikan teal warna tindakan kedua; ia aksen.
+- Jangan gunakan teal untuk apa-apa selain keadaan "sedang berlaku sekarang".
 - Jangan guna kubah, bulan sabit, kaligrafi hiasan atau lampu tanglung.
 - Jangan letak arahan Blade (`@js`, `@disabled`, `@class`) di dalam tag
   komponen `<x-...>`, dan jangan letak `@class` pada elemen yang sudah

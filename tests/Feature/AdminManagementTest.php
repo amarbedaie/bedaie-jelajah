@@ -7,6 +7,7 @@ use App\Enums\EventStatus;
 use App\Enums\PaymentStatus;
 use App\Enums\PricingMode;
 use App\Enums\RegistrationStatus;
+use App\Jobs\SendNotificationJob;
 use App\Livewire\Admin\CategoryManager;
 use App\Livewire\Admin\CertificateActions;
 use App\Livewire\Admin\EventEditor;
@@ -17,10 +18,8 @@ use App\Livewire\Admin\SettingsEditor;
 use App\Livewire\Admin\SpeakerManager;
 use App\Livewire\Admin\TemplateEditor;
 use App\Livewire\Admin\TestimonialManager;
-use App\Models\EventCategory;
 use App\Models\EventGallery;
 use App\Models\NotificationTemplate;
-use App\Models\Partner;
 use App\Models\Setting;
 use App\Models\Speaker;
 use App\Models\Testimonial;
@@ -113,7 +112,7 @@ class AdminManagementTest extends TestCase
             ->call('save')
             ->assertHasNoErrors();
 
-        Queue::assertPushed(\App\Jobs\SendNotificationJob::class);
+        Queue::assertPushed(SendNotificationJob::class);
     }
 
     public function test_admin_boleh_menutup_program_dan_melepaskan_sijil(): void
@@ -467,5 +466,38 @@ class AdminManagementTest extends TestCase
             'admin.tetapan', 'admin.kandungan', 'admin.template', 'admin.pembayaran'] as $route) {
             $this->actingAs($admin)->get(route($route))->assertOk();
         }
+    }
+
+    /**
+     * Komponen sijil menyalin data paparan sekali semasa mount supaya
+     * senarai 25 baris tidak menembak 25 pertanyaan. Ujian ini memastikan
+     * salinan itu disegarkan selepas tindakan — jika tidak, baris kekal
+     * memaparkan keadaan lama sehingga halaman dimuat semula.
+     */
+    public function test_paparan_sijil_disegarkan_selepas_ditarik_balik(): void
+    {
+        $admin = $this->admin();
+        $event = $this->makeEvent();
+        $registration = app(RegistrationService::class)->register($event, $this->registrationPayload());
+
+        $this->movePast($event);
+        app(AttendanceService::class)->checkIn($registration->fresh(), $admin);
+
+        $certificate = app(CertificateService::class)->issueForRegistration($registration->fresh());
+        $this->assertNotNull($certificate);
+
+        $component = Livewire::actingAs($admin)
+            ->test(CertificateActions::class, ['certificate' => $certificate])
+            ->assertSet('isValid', true);
+
+        $component->call('startRevoke')
+            ->set('revokeReason', 'Nama peserta tidak sepadan dengan rekod.')
+            ->call('revoke')
+            ->assertHasNoErrors();
+
+        $component->assertSet('isValid', false)
+            ->assertSet('downloadUrl', '');
+
+        $this->assertSame(CertificateStatus::Dibatalkan, $certificate->fresh()->status);
     }
 }

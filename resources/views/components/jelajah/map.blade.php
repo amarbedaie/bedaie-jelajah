@@ -6,13 +6,13 @@
     $tinyStates = ['PLS', 'KUL', 'PJY', 'LBN', 'MLK', 'PNG'];
 
     // Empat keadaan, satu rona. Kedalaman tanah liat yang membezakan —
-    // negeri yang telah dijelajahi paling pekat, yang belum paling pucat.
-    // Tiga keadaan membawa tanah liat; negeri yang belum dijelajahi
-    // dibiar kosong sebagai kertas — itu maknanya secara harfiah, dan
-    // ia melepaskan hujung pucat supaya tiga yang lain boleh terpisah.
+    // Teal untuk keadaan yang sedang berlaku sekarang; selebihnya
+    // kedalaman ungu jenama. Negeri yang belum dijelajahi dibiar kosong
+    // sebagai kertas — itu maknanya secara harfiah, dan ia melepaskan
+    // hujung pucat supaya keadaan lain boleh terpisah.
     $fills = [
-        'berlangsung' => '#5F2B93',
-        'dijelajahi'  => '#9A6FD1',
+        'berlangsung' => '#124A4A',
+        'dijelajahi'  => '#8040C0',
         'akan_datang' => '#D0BBEB',
         'belum'       => '#F4F3F7',
     ];

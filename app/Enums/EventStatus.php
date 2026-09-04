@@ -28,7 +28,7 @@ enum EventStatus: string
         return match ($this) {
             self::Draf => 'quiet',
             self::Diterbitkan => 'soft',
-            self::Berlangsung => 'strong',
+            self::Berlangsung => 'live',
             self::Selesai => 'solid',
             self::Ditangguhkan => 'quiet',
             self::Dibatalkan => 'alert',

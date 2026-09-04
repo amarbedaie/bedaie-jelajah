@@ -42,7 +42,6 @@
      ungu jenama dan bukan melawannya. */
   --color-cream:    #F4F3F7;   /* tanah halaman */
   --color-surface:  #FFFFFF;   /* kad */
-  --color-raised:   #FAFAFC;
   --color-mist:     #EBE9F1;   /* telaga: kepala jadual, blok nota */
   --color-hairline: #E4E2EC;   /* pembahagi hiasan sahaja */
   --color-control-line: #807D8C; /* sempadan medan — 3.63:1 kertas,
@@ -73,9 +72,9 @@
   /* ── Teal sokongan ────────────────────────────────────────────
      Warna kedua terbesar dalam logo (hue 180, ~30% kawasan tanda).
      Digunakan berhemat: aksen, bukan warna tindakan kedua. */
-  --color-teal:      #1B6E6E;  /* 6.00:1 dengan putih */
-  --color-teal-soft: #E3F1F1;
-  --color-teal-line: #BCDEDE;
+  --color-teal:      #124A4A;  /* 9.98:1 dengan putih; 1.62 luminan
+                                  daripada ungu jenama, jadi ia terpisah
+                                  walaupun tanpa persepsi warna */
 
   /* ── Arang — permukaan gelap ──────────────────────────────────
      Hanya bar sisi admin dan skrin pengimbas QR. */

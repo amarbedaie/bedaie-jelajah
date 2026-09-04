@@ -14,6 +14,9 @@
         'soft'   => 'bg-brand-50 text-brand-700 ring-brand-200',
         'strong' => 'bg-brand-600 text-white ring-brand-600',
         'solid'  => 'bg-ink text-cream ring-ink',
+        // Teal daripada logo, dikhaskan untuk keadaan yang sedang berlaku
+        // sekarang — satu-satunya rona selain ungu dalam antara muka.
+        'live'   => 'bg-teal text-white ring-teal',
         'alert'  => 'bg-alert-soft text-alert ring-alert-line',
         'paper'  => 'bg-surface text-ink ring-hairline shadow-soft',
     ];
@@ -31,7 +34,7 @@
     $dots = [
         'quiet' => 'bg-ink-muted', 'line' => 'bg-ink-soft',
         'edge' => 'bg-brand-500', 'soft' => 'bg-brand-500',
-        'strong' => 'bg-white', 'solid' => 'bg-cream', 'alert' => 'bg-alert',
+        'strong' => 'bg-white', 'solid' => 'bg-cream', 'live' => 'bg-white', 'alert' => 'bg-alert',
         'paper' => 'bg-brand-500',
     ];
 @endphp
