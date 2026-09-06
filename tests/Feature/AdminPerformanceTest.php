@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Models\Event;
 use App\Models\Feedback;
 use App\Models\NotificationTemplate;
+use App\Models\Registration;
 use App\Services\AttendanceService;
 use App\Services\CertificateService;
 use App\Services\RegistrationService;
@@ -153,5 +155,55 @@ class AdminPerformanceTest extends TestCase
         $this->assertLessThan(10, $n,
             "Halaman templat menggunakan {$n} pertanyaan untuk {$templates} templat — "
             .'render komponen tidak boleh mengambil semula modelnya.');
+    }
+
+    /**
+     * Halaman butiran program membaca kiraan tempat beberapa kali —
+     * baki tempat, peratus penuh, papan pengeditan. Ia mesti dikira
+     * sekali sahaja, bukan sekali setiap panggilan.
+     */
+    public function test_butiran_program_tidak_mengira_tempat_berulang(): void
+    {
+        $this->seedEvents(1);
+        $event = Event::first();
+        $this->actingAs($this->admin());
+
+        DB::flushQueryLog();
+        DB::enableQueryLog();
+        $this->get(route('admin.program.show', $event))->assertOk();
+        $log = DB::getQueryLog();
+        DB::disableQueryLog();
+
+        $kiraan = collect($log)
+            ->filter(fn ($q) => str_contains($q['query'], 'SUM(1 + guests_count)'))
+            ->count();
+
+        $this->assertLessThanOrEqual(1, $kiraan,
+            "Kiraan tempat dijalankan {$kiraan} kali pada satu halaman.");
+    }
+
+    /** Sejarah peserta memuatkan banyak baris; ia tidak boleh N+1. */
+    public function test_sejarah_peserta_tidak_tumbuh_dengan_baris(): void
+    {
+        $admin = $this->admin();
+        $payload = $this->registrationPayload(['name' => 'Peserta Setia', 'phone' => '60123339999']);
+
+        $daftar = function (int $n) use ($payload) {
+            for ($i = 0; $i < $n; $i++) {
+                app(RegistrationService::class)->register($this->makeEvent(), $payload);
+            }
+        };
+
+        $daftar(3);
+        $this->actingAs($admin);
+        $reg = Registration::where('phone', '60123339999')->first();
+        $url = route('admin.peserta.show', $reg->public_id);
+        $kecil = $this->countQueries($url);
+
+        $daftar(9);
+        $besar = $this->countQueries($url);
+
+        $this->assertLessThanOrEqual(2, $besar - $kecil,
+            "Sejarah peserta: {$kecil} pertanyaan pada 3 baris, {$besar} pada 12.");
     }
 }

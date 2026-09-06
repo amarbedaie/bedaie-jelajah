@@ -50,6 +50,13 @@ class EventController extends Controller
             'application.user', 'certificateTemplate',
         ]);
 
+        // Halaman ini membaca kiraan tempat beberapa kali — baki tempat,
+        // peratus penuh, papan pengeditan. Muatkan sekali sebagai atribut
+        // supaya ia tidak dikira semula, tanpa menyimpan nilai basi di
+        // dalam objek.
+        $event->setAttribute('seats_taken_agg',
+            Event::whereKey($event->id)->withSeatCounts()->value('seats_taken_agg'));
+
         return view('admin.event', [
             'event' => $event,
             'report' => $this->stats->eventReport($event),
