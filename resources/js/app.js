@@ -34,6 +34,7 @@ document.addEventListener('alpine:init', () => {
     window.Alpine.data('kanbanScroll', () => ({
         atStart: true,
         atEnd: false,
+        observer: null,
         init() {
             const el = this.$refs.scroller;
             this.update();
@@ -44,10 +45,13 @@ document.addEventListener('alpine:init', () => {
                     e.preventDefault();
                 }
             }, { passive: false });
-            new ResizeObserver(() => this.update()).observe(el);
+            this.observer = new ResizeObserver(() => this.update());
+            this.observer.observe(el);
         },
+        destroy() { this.observer?.disconnect(); },
         update() {
             const el = this.$refs.scroller;
+            if (!el) return;
             this.atStart = el.scrollLeft <= 4;
             this.atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - 4;
         },

@@ -1,4 +1,4 @@
-<div class="relative w-full max-w-sm" x-data="{ fokus: false }" x-on:click.outside="fokus = false; $wire.close()">
+<div class="relative w-full max-w-sm" x-data="{ fokus: false }" x-on:click.outside="fokus = false; if ($wire.open) { $wire.close() }">
     <label for="carian-global" class="sr-only">Carian global</label>
 
     <div class="relative">

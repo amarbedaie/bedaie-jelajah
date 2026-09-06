@@ -221,6 +221,7 @@
         </x-ui.card>
     @endif
 
+    @unless ($showForm)
     {{-- ══ Penapis ═══════════════════════════════════════════ --}}
     <div class="mt-6 rounded-card border border-hairline bg-surface p-4">
         <div class="grid gap-3 lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))]">
@@ -314,7 +315,7 @@
                 @endif
             </x-ui.empty-state>
         @else
-            <div class="relative mt-6" x-data="kanbanScroll" x-init="init()">
+            <div class="relative mt-6 max-w-[90rem]" x-data="kanbanScroll" x-init="init()">
                 <button type="button" x-show="!atStart" x-cloak x-on:click="scroll(-1)"
                         class="tap-target absolute -left-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center
                                rounded-full border border-hairline bg-surface text-ink-soft shadow-soft
@@ -342,7 +343,7 @@
                             </span>
                         </header>
 
-                        <div class="min-h-[6rem] space-y-2.5 rounded-card bg-mist/50 p-2.5">
+                        <div class="min-h-[6rem] max-h-[60vh] space-y-2.5 overflow-y-auto rounded-card bg-mist/50 p-2.5">
                             @forelse ($items as $target)
                                 <article wire:key="t-{{ $target->id }}"
                                          class="rounded-xl border border-hairline bg-surface p-3.5 shadow-soft
@@ -511,4 +512,5 @@
             @endif
         </div>
     @endif
+    @endunless
 </div>
