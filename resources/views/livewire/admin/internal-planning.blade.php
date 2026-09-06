@@ -102,6 +102,136 @@
             </div>
         </div>
 
+
+        {{-- ── Pakej jualan ─────────────────────────────────── --}}
+        <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-3">
+                <div>
+                    <h3 class="text-sm font-medium text-ink">Apa yang dijual</h3>
+                    <p class="mt-1 text-sm text-ink-soft">
+                        Pilih pakej yang dibawa. Tandakan satu sebagai tumpuan utama.
+                    </p>
+                </div>
+                <x-ui.button :href="route('admin.pakej')" variant="ghost" size="sm" icon="external">
+                    Urus katalog
+                </x-ui.button>
+            </div>
+
+            @if ($katalog->isEmpty())
+                <x-ui.empty-state icon="box" title="Katalog pakej masih kosong"
+                                  description="Cipta pakej sekali, guna untuk semua program."
+                                  compact class="mt-4">
+                    <x-ui.button :href="route('admin.pakej')" variant="primary" size="sm" icon="plus">
+                        Cipta Pakej
+                    </x-ui.button>
+                </x-ui.empty-state>
+            @else
+                <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                    @foreach ($katalog as $pakej)
+                        @php
+                            $dipilih = array_key_exists($pakej->id, $packages);
+                            $fokus = $dipilih && ($packages[$pakej->id]['focus'] ?? false);
+                        @endphp
+                        <div wire:key="pakej-{{ $pakej->id }}"
+                             class="rounded-card border p-4 transition-colors
+                                    {{ $fokus ? 'border-brand-500 bg-brand-50'
+                                       : ($dipilih ? 'border-brand-300 bg-surface' : 'border-hairline bg-surface') }}">
+                            <div class="flex items-start justify-between gap-3">
+                                <button type="button" wire:click="togglePackage({{ $pakej->id }})"
+                                        class="flex min-w-0 flex-1 items-start gap-3 text-left">
+                                    <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded border
+                                                 {{ $dipilih ? 'border-brand-600 bg-brand-600' : 'border-control-line bg-surface' }}">
+                                        @if ($dipilih)
+                                            <x-ui.icon name="check" class="h-3.5 w-3.5 text-white" />
+                                        @endif
+                                    </span>
+                                    <span class="min-w-0">
+                                        <span class="block font-medium text-ink text-pretty">{{ $pakej->name }}</span>
+                                        @if ($pakej->tagline)
+                                            <span class="mt-0.5 block text-sm text-ink-soft text-pretty">{{ $pakej->tagline }}</span>
+                                        @endif
+                                        <span class="mt-1.5 block font-display text-lg text-ink">{{ $pakej->priceLabel() }}</span>
+                                    </span>
+                                </button>
+
+                                @if ($dipilih)
+                                    <button type="button" wire:click="setFocus({{ $pakej->id }})"
+                                            class="tap-target grid shrink-0 place-items-center rounded-lg
+                                                   {{ $fokus ? 'text-brand-700' : 'text-ink-muted hover:text-brand-700' }}"
+                                            aria-label="Tandakan {{ $pakej->name }} sebagai tumpuan utama"
+                                            aria-pressed="{{ $fokus ? 'true' : 'false' }}">
+                                        <x-ui.icon name="star" :fill="$fokus ? 'currentColor' : 'none'" class="h-5 w-5" />
+                                    </button>
+                                @endif
+                            </div>
+
+                            @if ($dipilih)
+                                <div class="mt-3 flex items-center gap-2.5 border-t border-hairline pt-3">
+                                    <label for="sasaran-{{ $pakej->id }}" class="text-sm text-ink-soft">Sasaran</label>
+                                    <input id="sasaran-{{ $pakej->id }}" type="number" min="0" inputmode="numeric"
+                                           wire:model="packages.{{ $pakej->id }}.target"
+                                           placeholder="—"
+                                           class="w-24 rounded-lg border border-control-line bg-surface px-3 py-1.5 text-sm
+                                                  text-ink focus:border-brand-600 focus:outline-none focus:ring-3
+                                                  focus:ring-brand-500/45">
+                                    <span class="text-sm text-ink-muted">unit</span>
+                                    @if ($fokus)
+                                        <x-ui.badge color="soft" class="ml-auto">Tumpuan</x-ui.badge>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+
+        {{-- ── Pasukan bertugas ─────────────────────────────── --}}
+        <div>
+            <div class="flex items-baseline justify-between gap-3">
+                <div>
+                    <h3 class="text-sm font-medium text-ink">Siapa yang terlibat</h3>
+                    <p class="mt-1 text-sm text-ink-soft">
+                        Termasuk AJK masjid dan sukarelawan tempatan.
+                    </p>
+                </div>
+                <span class="text-xs text-ink-muted">{{ count($team) }} orang</span>
+            </div>
+
+            <div class="mt-4 space-y-2.5">
+                @foreach ($team as $i => $member)
+                    <div wire:key="ahli-{{ $i }}"
+                         class="grid gap-2.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_10rem_auto] sm:items-start">
+                        <div>
+                            <label class="sr-only" for="peranan-{{ $i }}">Peranan ahli {{ $i + 1 }}</label>
+                            <x-ui.input id="peranan-{{ $i }}" wire:model="team.{{ $i }}.role"
+                                        placeholder="Ketua program" />
+                        </div>
+                        <div>
+                            <label class="sr-only" for="nama-{{ $i }}">Nama ahli {{ $i + 1 }}</label>
+                            <x-ui.input id="nama-{{ $i }}" wire:model="team.{{ $i }}.name"
+                                        placeholder="Nama penuh" />
+                        </div>
+                        <div>
+                            <label class="sr-only" for="telefon-{{ $i }}">Nombor ahli {{ $i + 1 }}</label>
+                            <x-ui.input id="telefon-{{ $i }}" wire:model="team.{{ $i }}.phone"
+                                        type="tel" inputmode="tel" placeholder="012-345 6789" />
+                        </div>
+                        <button type="button" wire:click="removeMember({{ $i }})"
+                                class="tap-target grid place-items-center rounded-lg text-ink-muted
+                                       hover:bg-alert-soft hover:text-alert"
+                                aria-label="Buang ahli {{ $i + 1 }}">
+                            <x-ui.icon name="trash" class="h-4 w-4" />
+                        </button>
+                    </div>
+                @endforeach
+            </div>
+
+            <x-ui.button type="button" wire:click="addMember" variant="outline" size="sm" class="mt-3" icon="plus">
+                Tambah orang
+            </x-ui.button>
+        </div>
+
         {{-- ── SOP ──────────────────────────────────────────── --}}
         <x-ui.field label="SOP program" for="sop"
                     hint="Prosedur tetap: persiapan, semasa, dan selepas program."

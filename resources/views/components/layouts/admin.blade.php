@@ -23,6 +23,7 @@
             ['label' => 'Permintaan Kawasan','route' => 'admin.permintaan', 'icon' => 'heart'],
             ['label' => 'Penceramah',       'route' => 'admin.penceramah',  'icon' => 'user'],
             ['label' => 'Kategori Program', 'route' => 'admin.kategori',    'icon' => 'list'],
+            ['label' => 'Pakej Jualan',     'route' => 'admin.pakej',       'icon' => 'box'],
         ],
         'Kandungan' => [
             ['label' => 'Galeri & Testimoni','route' => 'admin.galeri',     'icon' => 'image'],

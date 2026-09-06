@@ -91,7 +91,10 @@ class EventController extends Controller
         $this->authorize('viewInternalPlanning', $event);
 
         return view('admin.event-planning', [
-            'event' => $event->load(['flowSteps', 'venue', 'speaker', 'state', 'district', 'category']),
+            'event' => $event->load([
+                'flowSteps', 'teamMembers', 'packages',
+                'venue', 'speaker', 'state', 'district', 'category',
+            ]),
         ]);
     }
 }

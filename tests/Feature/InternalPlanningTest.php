@@ -3,8 +3,11 @@
 namespace Tests\Feature;
 
 use App\Livewire\Admin\InternalPlanning;
+use App\Livewire\Admin\PackageManager;
 use App\Models\Event;
 use App\Models\EventFlowStep;
+use App\Models\EventTeamMember;
+use App\Models\Package;
 use App\Services\RegistrationService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -28,6 +31,10 @@ class InternalPlanningTest extends TestCase
     private const RAHSIA_LANGKAH = 'LANGKAH-DALAMAN-RAHSIA-XYZ';
 
     private const RAHSIA_NOTA = 'NOTA-DALAMAN-RAHSIA-XYZ';
+
+    private const RAHSIA_PAKEJ = 'PAKEJ-DALAMAN-RAHSIA-XYZ';
+
+    private const RAHSIA_AHLI = 'AHLI-DALAMAN-RAHSIA-XYZ';
 
     protected function setUp(): void
     {
@@ -53,13 +60,29 @@ class InternalPlanningTest extends TestCase
             'responsible' => 'Penggerak',
         ]);
 
+        EventTeamMember::create([
+            'event_id' => $event->id,
+            'sort_order' => 0,
+            'role' => 'Kaunter jualan',
+            'name' => self::RAHSIA_AHLI,
+            'phone' => '60123334444',
+        ]);
+
+        $pakej = Package::create([
+            'name' => self::RAHSIA_PAKEJ,
+            'price' => 100,
+            'items' => 'Kitab A',
+        ]);
+
+        $event->packages()->attach($pakej->id, ['target_units' => 20, 'is_focus' => true]);
+
         return $event->fresh();
     }
 
     private function assertTiadaKebocoran(string $body, string $di): void
     {
-        foreach ([self::RAHSIA_OBJEKTIF, self::RAHSIA_SOP,
-            self::RAHSIA_LANGKAH, self::RAHSIA_NOTA] as $rahsia) {
+        foreach ([self::RAHSIA_OBJEKTIF, self::RAHSIA_SOP, self::RAHSIA_LANGKAH,
+            self::RAHSIA_NOTA, self::RAHSIA_PAKEJ, self::RAHSIA_AHLI] as $rahsia) {
             $this->assertStringNotContainsString($rahsia, $body,
                 "Perancangan dalaman bocor pada {$di}.");
         }
@@ -182,5 +205,75 @@ class InternalPlanningTest extends TestCase
             ))->getContent(),
             'fail kalendar',
         );
+    }
+
+    public function test_admin_boleh_menyimpan_pakej_dan_pasukan(): void
+    {
+        $event = $this->makeEvent();
+
+        $pakej = Package::create([
+            'name' => 'Pakej Tadabbur', 'price' => 150, 'items' => "Kitab A\nKitab B",
+        ]);
+
+        Livewire::actingAs($this->admin())
+            ->test(InternalPlanning::class, ['event' => $event])
+            ->call('togglePackage', $pakej->id)
+            ->call('setFocus', $pakej->id)
+            ->set('packages.'.$pakej->id.'.target', 30)
+            ->set('team', [
+                ['id' => null, 'role' => 'Ketua program', 'name' => 'Ustaz Ali', 'phone' => '0123334444'],
+                ['id' => null, 'role' => '', 'name' => '', 'phone' => ''],
+            ])
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $event->refresh();
+
+        $this->assertCount(1, $event->packages);
+        $this->assertSame(30, $event->packages->first()->pivot->target_units);
+        $this->assertTrue((bool) $event->packages->first()->pivot->is_focus);
+
+        // Baris kosong diabaikan.
+        $this->assertCount(1, $event->teamMembers);
+        $this->assertSame('Ustaz Ali', $event->teamMembers->first()->name);
+        $this->assertSame('60123334444', $event->teamMembers->first()->phone,
+            'Nombor telefon dinormalkan.');
+    }
+
+    public function test_hanya_satu_pakej_boleh_menjadi_tumpuan(): void
+    {
+        $event = $this->makeEvent();
+        $a = Package::create(['name' => 'Pakej A', 'price' => 50]);
+        $b = Package::create(['name' => 'Pakej B', 'price' => 80]);
+
+        Livewire::actingAs($this->admin())
+            ->test(InternalPlanning::class, ['event' => $event])
+            ->call('togglePackage', $a->id)
+            ->call('togglePackage', $b->id)
+            ->call('setFocus', $a->id)
+            ->call('setFocus', $b->id)
+            ->call('save');
+
+        $fokus = $event->fresh()->packages->filter(fn ($p) => $p->pivot->is_focus);
+
+        $this->assertCount(1, $fokus, 'Hanya satu pakej boleh menjadi tumpuan.');
+        $this->assertSame('Pakej B', $fokus->first()->name);
+    }
+
+    public function test_katalog_pakej_hanya_untuk_admin(): void
+    {
+        $url = route('admin.pakej');
+
+        $this->actingAs($this->admin())->get($url)->assertOk();
+        $this->actingAs($this->penggerak())->get($url)->assertForbidden();
+        $this->actingAs($this->peserta())->get($url)->assertForbidden();
+    }
+
+    public function test_penggerak_tidak_boleh_menyunting_katalog(): void
+    {
+        Livewire::actingAs($this->penggerak())
+            ->test(PackageManager::class)
+            ->call('create')
+            ->assertForbidden();
     }
 }

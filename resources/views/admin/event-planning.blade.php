@@ -89,6 +89,84 @@
             </section>
         @endif
 
+        @if ($event->packages->isNotEmpty())
+            <section class="mt-9">
+                <h2 class="font-display text-2xl text-ink">Pakej Jualan</h2>
+
+                <div class="mt-4 space-y-4">
+                    @foreach ($event->packages as $pakej)
+                        <div class="rounded-card border p-4
+                                    {{ $pakej->pivot->is_focus ? 'border-brand-500 bg-brand-50' : 'border-hairline' }}">
+                            <div class="flex flex-wrap items-baseline justify-between gap-3">
+                                <div class="min-w-0">
+                                    <h3 class="font-medium text-ink text-pretty">
+                                        {{ $pakej->name }}
+                                        @if ($pakej->pivot->is_focus)
+                                            <span class="ml-2 text-xs font-semibold uppercase tracking-wider text-brand-700">
+                                                Tumpuan utama
+                                            </span>
+                                        @endif
+                                    </h3>
+                                    @if ($pakej->tagline)
+                                        <p class="mt-0.5 text-sm text-ink-soft text-pretty">{{ $pakej->tagline }}</p>
+                                    @endif
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-display text-xl text-ink">{{ $pakej->priceLabel() }}</span>
+                                    @if ($pakej->pivot->target_units)
+                                        <span class="block text-xs text-ink-muted">
+                                            sasaran {{ $pakej->pivot->target_units }} unit
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            @if ($pakej->itemLines())
+                                <ul class="mt-3 grid gap-1 border-t border-hairline pt-3 text-sm text-ink-soft sm:grid-cols-2">
+                                    @foreach ($pakej->itemLines() as $item)
+                                        <li class="flex gap-2">
+                                            <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-400"></span>
+                                            <span class="text-pretty">{{ $item }}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
+                            @if ($pakej->pitch)
+                                <p class="mt-3 text-sm italic leading-relaxed text-ink-soft text-pretty">
+                                    &ldquo;{{ $pakej->pitch }}&rdquo;
+                                </p>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            </section>
+        @endif
+
+        @if ($event->teamMembers->isNotEmpty())
+            <section class="mt-9">
+                <h2 class="font-display text-2xl text-ink">Pasukan Bertugas</h2>
+                <table class="mt-4 w-full border-collapse text-sm">
+                    <thead>
+                        <tr class="border-b border-ink text-left text-xs font-semibold uppercase tracking-wider text-ink">
+                            <th class="w-48 py-2 pr-4">Peranan</th>
+                            <th class="py-2 pr-4">Nama</th>
+                            <th class="w-40 py-2">Nombor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($event->teamMembers as $ahli)
+                            <tr class="border-b border-hairline align-top">
+                                <td class="py-3 pr-4 text-ink-soft">{{ $ahli->role }}</td>
+                                <td class="py-3 pr-4 text-ink text-pretty">{{ $ahli->name }}</td>
+                                <td class="py-3 tabular-nums text-ink-soft">{{ $ahli->phone ?: '—' }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </section>
+        @endif
+
         @if (filled($event->sop))
             <section class="mt-9">
                 <h2 class="font-display text-2xl text-ink">SOP</h2>

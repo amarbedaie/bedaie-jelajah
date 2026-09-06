@@ -453,6 +453,25 @@ tujuan skrin itu. `ParticipantHistoryTest` menguatkuasakan dasar ini
 dengan membuang setiap `href` dan tag, kemudian memastikan nombor penuh
 tidak boleh dibaca pada teks yang tinggal.
 
+### Pakej jualan & pasukan bertugas
+
+`packages` ialah katalog **boleh guna semula** — staf cipta "Pakej
+Tadabbur" sekali di `/admin/pakej`, kemudian pilihnya pada mana-mana
+program. Setiap pakej membawa harga, senarai kandungan, dan satu ayat
+jualan yang staf boleh sebut di kaunter.
+
+Pada setiap program, staf pilih pakej yang dibawa, tetapkan sasaran unit,
+dan tandakan **satu** sebagai tumpuan utama (bintang). `setFocus()`
+menguatkuasakan hanya satu tumpuan pada satu masa.
+
+`event_team_members` pula khusus setiap program kerana AJK masjid berbeza
+setiap tempat. Sengaja teks bebas, bukan pautan ke akaun pengguna —
+sukarelawan tempatan tidak mempunyai akaun dalam sistem ini. Nombor
+telefon dinormalkan melalui `Phone::normalise()`.
+
+Kedua-duanya muncul pada versi cetak, dan kedua-duanya termasuk dalam
+sapuan kebocoran `InternalPlanningTest`.
+
 ### Perancangan dalaman program
 
 Setiap program mempunyai objektif, aliran acara dan SOP — dokumen kerja

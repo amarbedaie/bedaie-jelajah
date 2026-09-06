@@ -214,6 +214,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/permintaan-kawasan', [Admin\CatalogController::class, 'demand'])->name('permintaan');
     Route::get('/penceramah', [Admin\CatalogController::class, 'speakers'])->name('penceramah');
     Route::get('/kategori', [Admin\CatalogController::class, 'categories'])->name('kategori');
+    Route::view('/pakej', 'admin.packages')->name('pakej');
 
     Route::get('/galeri', [Admin\ContentController::class, 'gallery'])->name('galeri');
     Route::get('/rakan', [Admin\ContentController::class, 'partners'])->name('rakan');

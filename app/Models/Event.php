@@ -188,13 +188,31 @@ class Event extends Model
         return $this->hasMany(EventFlowStep::class)->orderBy('sort_order');
     }
 
+    /** Pasukan bertugas — dokumen dalaman. */
+    public function teamMembers(): HasMany
+    {
+        return $this->hasMany(EventTeamMember::class)->orderBy('sort_order');
+    }
+
+    /** Pakej jualan yang dibawa ke program ini — dokumen dalaman. */
+    public function packages(): BelongsToMany
+    {
+        return $this->belongsToMany(Package::class)
+            ->withPivot(['target_units', 'is_focus'])
+            ->withTimestamps()
+            ->orderByDesc('event_package.is_focus')
+            ->orderBy('packages.sort_order');
+    }
+
     /** Adakah program ini mempunyai apa-apa perancangan dalaman? */
     public function hasInternalPlanning(): bool
     {
         return filled($this->objectives)
             || filled($this->sop)
             || filled($this->flow_notes)
-            || $this->flowSteps()->exists();
+            || $this->flowSteps()->exists()
+            || $this->teamMembers()->exists()
+            || $this->packages()->exists();
     }
 
     public function seatsTaken(): int
