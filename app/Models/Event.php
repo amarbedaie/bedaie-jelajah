@@ -33,6 +33,7 @@ class Event extends Model
         'min_attendance_percent', 'feedback_required_for_certificate', 'learning_hours',
         'tentative', 'faqs', 'parking_info', 'registered_count', 'attended_count', 'waitlist_count',
         'published_at', 'completed_at',
+        'objectives', 'sop', 'flow_notes',
     ];
 
     protected function casts(): array
@@ -176,6 +177,26 @@ class Event extends Model
     // ── Kapasiti & pendaftaran ───────────────────────────────────────
 
     /** Bilangan tempat yang telah diambil (peserta + tetamu). */
+    /**
+     * Aliran acara — dokumen dalaman pasukan BeDaie sahaja.
+     *
+     * Tiada mana-mana laluan awam, Penggerak atau peserta memuatkan
+     * relasi ini; lihat EventPolicy::viewInternalPlanning().
+     */
+    public function flowSteps(): HasMany
+    {
+        return $this->hasMany(EventFlowStep::class)->orderBy('sort_order');
+    }
+
+    /** Adakah program ini mempunyai apa-apa perancangan dalaman? */
+    public function hasInternalPlanning(): bool
+    {
+        return filled($this->objectives)
+            || filled($this->sop)
+            || filled($this->flow_notes)
+            || $this->flowSteps()->exists();
+    }
+
     public function seatsTaken(): int
     {
         // Senarai memuatkan agregat ini sekali melalui withSeatCounts();

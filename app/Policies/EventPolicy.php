@@ -34,4 +34,16 @@ class EventPolicy
     {
         return $event->mobilizers()->whereKey($user->id)->exists();
     }
+
+    /**
+     * Perancangan dalaman — objektif, SOP dan aliran acara.
+     *
+     * Super Admin sahaja. Penggerak sengaja dikecualikan walaupun dia
+     * menjalankan program itu di lapangan: kandungan ini ialah dokumen
+     * kerja BeDaie, bukan bahan yang diedarkan.
+     */
+    public function viewInternalPlanning(User $user): bool
+    {
+        return $user->isAdmin();
+    }
 }

@@ -188,6 +188,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
     Route::get('/program', [Admin\EventController::class, 'index'])->name('program');
     Route::get('/program/{event}', [Admin\EventController::class, 'show'])->name('program.show');
+    Route::get('/program/{event}/perancangan', [Admin\EventController::class, 'planning'])
+        ->name('program.perancangan');
     Route::get('/kalendar', [Admin\EventController::class, 'calendar'])->name('kalendar');
 
     Route::get('/penggerak', [Admin\PeopleController::class, 'mobilizers'])->name('penggerak');

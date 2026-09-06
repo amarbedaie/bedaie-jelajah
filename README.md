@@ -429,6 +429,30 @@ navy `#0A083B`, putih suam `#FAF9F6`, Poppins) ditakrifkan dalam
    `StateSeeder`, `CatalogSeeder`, `SettingSeeder`, `NotificationTemplateSeeder`
    sahaja untuk data rujukan.
 
+### Perancangan dalaman program
+
+Setiap program mempunyai objektif, aliran acara dan SOP — dokumen kerja
+pasukan BeDaie. Disunting pada halaman program admin
+(`livewire/admin/internal-planning`), dengan versi cetak di
+`/admin/program/{event}/perancangan` untuk dibawa ke lapangan.
+
+Aliran acara boleh diisi dua cara sekali gus: baris berjadual (masa,
+aktiviti, siapa bertanggungjawab — boleh susun semula) dan satu ruang
+nota bebas untuk perkara yang tidak muat dalam jadual.
+
+**Super Admin sahaja.** Penggerak sengaja dikecualikan walaupun dia yang
+menjalankan program di lapangan. Kebenaran dikuatkuasakan melalui
+`EventPolicy::viewInternalPlanning()` pada **setiap tindakan** komponen
+Livewire, bukan hanya pada paparan — komponen Livewire boleh dipanggil
+terus melalui `/livewire/update`, jadi menyembunyikan butang sahaja tidak
+memadai.
+
+`InternalPlanningTest` menyapu sembilan muka yang orang luar boleh capai
+— laman utama, senarai program, halaman program, peta negeri, tiket
+peserta, jejak jelajah, dashboard dan halaman program Penggerak, serta
+fail kalendar — dan memastikan tiada satu pun rentetan perancangan
+muncul di sana.
+
 ### Keadaan produksi semasa (4 Sept 2026)
 
 **Redis untuk sesi dan cache.** Pelayan berkongsi 2 core antara 59 laman, jadi

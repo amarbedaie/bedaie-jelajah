@@ -73,4 +73,18 @@ class EventController extends Controller
             'events' => $events->groupBy(fn (Event $e) => $e->starts_at->toDateString()),
         ]);
     }
+
+    /**
+     * Versi cetak perancangan dalaman — dibawa ke lapangan.
+     *
+     * Super Admin sahaja; Penggerak dan peserta tidak pernah melihatnya.
+     */
+    public function planning(Event $event)
+    {
+        $this->authorize('viewInternalPlanning', $event);
+
+        return view('admin.event-planning', [
+            'event' => $event->load(['flowSteps', 'venue', 'speaker', 'state', 'district', 'category']),
+        ]);
+    }
 }

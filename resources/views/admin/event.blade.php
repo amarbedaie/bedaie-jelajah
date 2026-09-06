@@ -82,7 +82,9 @@
                 </dl>
             </x-ui.card>
 
-            <livewire:admin.recording-manager :event="$event" />
+            <livewire:admin.internal-planning :event="$event" />
+
+        <livewire:admin.recording-manager :event="$event" />
 
             {{-- Kewangan & maklum balas --}}
             <div class="grid gap-6 sm:grid-cols-2">
