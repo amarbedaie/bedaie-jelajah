@@ -66,9 +66,22 @@
             </button>
         </div>
 
-        <nav class="flex-1 overflow-y-auto px-3 py-4">
+        {{-- 21 item menu tidak muat dalam satu skrin. Kesan pudar di kaki
+             memberitahu pengguna ada lagi di bawah — tanpa ia, senarai
+             kelihatan terpotong dan item terakhir seperti tidak wujud. --}}
+        <div class="relative flex-1 overflow-hidden"
+             x-data="{ boleh: false, bawah: false,
+                       kira() { const n = $refs.nav;
+                                this.boleh = n.scrollHeight > n.clientHeight + 4;
+                                this.bawah = n.scrollTop + n.clientHeight >= n.scrollHeight - 4; } }"
+             x-init="$nextTick(() => { kira();
+                     const aktif = $refs.nav.querySelector('[aria-current=page]');
+                     if (aktif) aktif.scrollIntoView({ block: 'center' });
+                     kira(); })"
+             x-on:resize.window="kira()">
+            <nav x-ref="nav" x-on:scroll="kira()" class="h-full overflow-y-auto px-3 py-4">
             @foreach ($groups as $group => $items)
-                <p class="px-3 pb-1.5 pt-4 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white/60 first:pt-0">
+                <p class="px-3 pb-1 pt-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white/60 first:pt-0">
                     {{ $group }}
                 </p>
                 <ul class="space-y-0.5">
@@ -77,7 +90,7 @@
                         <li>
                             <a href="{{ route($item['route']) }}"
                                @if($active) aria-current="page" @endif
-                               class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition
+                               class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition
                                       {{ $active ? 'bg-brand-600 font-medium text-white shadow-brand' : 'hover:bg-white/8 hover:text-white' }}">
                                 <x-ui.icon :name="$item['icon']" class="h-4 w-4 shrink-0" />
                                 <span class="truncate">{{ $item['label'] }}</span>
@@ -86,7 +99,13 @@
                     @endforeach
                 </ul>
             @endforeach
-        </nav>
+            </nav>
+
+            <div x-show="boleh && ! bawah" x-cloak x-transition.opacity
+                 class="pointer-events-none absolute inset-x-0 bottom-0 h-14
+                        bg-gradient-to-t from-char-900 to-transparent"
+                 aria-hidden="true"></div>
+        </div>
 
         <div class="shrink-0 border-t border-white/10 p-3">
             <div class="flex items-center gap-3 rounded-xl px-2 py-2">
