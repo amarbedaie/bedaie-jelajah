@@ -105,4 +105,45 @@ class PeopleController extends Controller
         return back()->with('success',
             "Pautan log masuk dihantar kepada {$user->name}. Sah selama 30 minit.");
     }
+
+    /**
+     * Sejarah seorang peserta, bukan satu pendaftaran.
+     *
+     * Senarai peserta ialah senarai pendaftaran, jadi orang yang sama
+     * muncul berulang kali. Halaman ini menyatukannya mengikut nombor
+     * telefon — kunci yang paling dipercayai dalam sistem ini.
+     *
+     * Dirujuk melalui public_id satu pendaftaran supaya nombor telefon
+     * tidak pernah muncul dalam URL.
+     */
+    public function participant(Registration $registration)
+    {
+        abort_unless(auth()->user()->isAdmin(), 404);
+
+        $phone = $registration->phone;
+
+        $history = Registration::query()
+            ->where('phone', $phone)
+            ->with(['event.state', 'event.venue', 'event.category', 'attendance', 'certificate', 'feedback'])
+            ->join('events', 'events.id', '=', 'registrations.event_id')
+            ->orderByDesc('events.starts_at')
+            ->select('registrations.*')
+            ->get();
+
+        $attended = $history->filter->hasAttended();
+        $past = $history->filter(fn ($r) => $r->event?->hasEnded());
+
+        return view('admin.participant', [
+            'registration' => $registration->load(['state', 'district']),
+            'history' => $history,
+            'stats' => [
+                'jumlah' => $history->count(),
+                'hadir' => $attended->count(),
+                'terlepas' => max(0, $past->count() - $attended->count()),
+                'sijil' => $history->filter(fn ($r) => $r->certificate?->isValid())->count(),
+                'negeri' => $history->pluck('event.state.name')->filter()->unique()->values(),
+                'pertama' => $history->last()?->registered_at,
+            ],
+        ]);
+    }
 }

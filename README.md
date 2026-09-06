@@ -429,6 +429,30 @@ navy `#0A083B`, putih suam `#FAF9F6`, Poppins) ditakrifkan dalam
    `StateSeeder`, `CatalogSeeder`, `SettingSeeder`, `NotificationTemplateSeeder`
    sahaja untuk data rujukan.
 
+### Sejarah peserta
+
+Senarai peserta ialah senarai **pendaftaran**, jadi seorang yang datang
+lima kali muncul lima baris. `/admin/peserta/{registration:public_id}`
+menyatukannya menjadi seorang manusia — dipadankan mengikut nombor
+WhatsApp, kunci yang paling dipercayai dalam sistem ini.
+
+Dirujuk melalui `public_id` satu pendaftaran supaya nombor telefon tidak
+pernah muncul dalam URL. Super Admin sahaja, kerana ia mendedahkan
+sejarah peribadi.
+
+### Senarai nama pada papan kehadiran
+
+Papan kehadiran dahulu hanya statistik dan butang CSV. Pada malam
+program, soalan sebenar staf ialah *siapa belum sampai* — jadi ada
+senarai nama dengan tapisan Semua / Belum hadir / Sudah hadir, carian,
+dan butang WhatsApp untuk setiap orang yang belum tiba.
+
+Nombor telefon dipaparkan disamarkan. Nombor penuh hanya wujud di dalam
+pautan `wa.me` — menghubungi orang yang belum sampai ialah keseluruhan
+tujuan skrin itu. `ParticipantHistoryTest` menguatkuasakan dasar ini
+dengan membuang setiap `href` dan tag, kemudian memastikan nombor penuh
+tidak boleh dibaca pada teks yang tinggal.
+
 ### Perancangan dalaman program
 
 Setiap program mempunyai objektif, aliran acara dan SOP — dokumen kerja

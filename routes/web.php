@@ -197,6 +197,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::post('/penggerak/{user}/pautan-masuk', [Admin\PeopleController::class, 'sendLoginLink'])
         ->name('penggerak.pautan-masuk');
     Route::get('/peserta', [Admin\PeopleController::class, 'participants'])->name('peserta');
+    Route::get('/peserta/{registration:public_id}', [Admin\PeopleController::class, 'participant'])
+        ->name('peserta.show');
 
     Route::get('/kehadiran', [Admin\AttendanceController::class, 'index'])->name('kehadiran');
     Route::get('/kehadiran/{event}', [Admin\AttendanceController::class, 'show'])->name('kehadiran.show');

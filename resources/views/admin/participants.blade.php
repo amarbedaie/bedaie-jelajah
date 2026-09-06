@@ -28,7 +28,8 @@
             @foreach ($registrations as $registration)
                 <tr class="hover:bg-mist/40">
                     <td class="px-4 py-3">
-                        <p class="font-medium text-ink">{{ $registration->name }}</p>
+                        <a href="{{ route('admin.peserta.show', $registration->public_id) }}"
+                           class="font-medium text-ink hover:text-brand-700">{{ $registration->name }}</a>
                         <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $registration->reference_no }}</p>
                         {{-- Nombor penuh sengaja tidak dipaparkan pada direktori --}}
                         <p class="font-mono text-[0.8125rem] text-ink-muted">{{ $registration->maskedPhone() }}</p>

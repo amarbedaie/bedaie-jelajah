@@ -49,4 +49,80 @@
         <x-ui.progress :value="$stats['berdaftar'] > 0 ? round($stats['hadir'] / $stats['berdaftar'] * 100) : 0"
                        label="Kadar kehadiran" tone="success" />
     </div>
+
+    {{-- ── Senarai nama ──────────────────────────────────────────
+         Pada malam program, soalan sebenar ialah "siapa belum sampai".
+         Statistik sahaja memaksa staf keluar ke fail CSV. --}}
+    <section class="mt-10" aria-labelledby="tajuk-senarai">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+            <div>
+                <h2 id="tajuk-senarai" class="font-display text-2xl text-ink">Senarai Peserta</h2>
+                <p class="mt-1.5 text-sm text-ink-soft">
+                    {{ $registrations->count() }} dipaparkan
+                    @if ($filter === 'belum') &middot; belum hadir sahaja
+                    @elseif ($filter === 'sudah') &middot; sudah hadir sahaja
+                    @endif
+                </p>
+            </div>
+
+            <form method="GET" class="flex flex-wrap items-end gap-2.5">
+                <div class="w-full sm:w-64">
+                    <label for="cari" class="sr-only">Cari nama, nombor atau rujukan</label>
+                    <x-ui.input id="cari" name="q" :value="request('q')" icon="search"
+                                placeholder="Cari nama atau nombor…" />
+                </div>
+                <input type="hidden" name="hadir" value="{{ $filter }}">
+                <x-ui.button type="submit" variant="outline" icon="search">Cari</x-ui.button>
+            </form>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+            @foreach ([['', 'Semua'], ['belum', 'Belum hadir'], ['sudah', 'Sudah hadir']] as [$value, $label])
+                <a href="{{ route('admin.kehadiran.show', ['event' => $event, 'hadir' => $value, 'q' => request('q')]) }}"
+                   class="tap-target inline-flex items-center rounded-lg px-3.5 text-sm font-medium transition-colors
+                          {{ $filter === $value
+                             ? 'bg-brand-600 text-white'
+                             : 'border border-hairline bg-surface text-ink-soft hover:border-brand-300 hover:text-ink' }}">
+                    {{ $label }}
+                </a>
+            @endforeach
+        </div>
+
+        @if ($registrations->isEmpty())
+            <x-ui.empty-state icon="users" title="Tiada peserta sepadan"
+                              description="Cuba tukar carian atau tapisan di atas." class="mt-6" />
+        @else
+            <ul class="mt-5 divide-y divide-hairline border-t border-hairline">
+                @foreach ($registrations as $r)
+                    <li class="flex flex-wrap items-center justify-between gap-3 py-4">
+                        <div class="min-w-0">
+                            <a href="{{ route('admin.peserta.show', $r->public_id) }}"
+                               class="font-medium text-ink hover:text-brand-700">{{ $r->name }}</a>
+                            <p class="mt-0.5 flex flex-wrap items-center gap-x-3 text-sm text-ink-muted">
+                                <span class="font-mono text-[0.8125rem]">{{ $r->maskedPhone() }}</span>
+                                @if ($r->seats() > 1)
+                                    <span>{{ $r->seats() }} tempat</span>
+                                @endif
+                            </p>
+                        </div>
+
+                        <div class="flex items-center gap-2.5">
+                            @if ($r->hasAttended())
+                                <span class="text-sm text-ink-muted tabular-nums">
+                                    {{ $r->attendance?->checked_in_at?->format('g:ia') }}
+                                </span>
+                                <x-ui.badge color="solid" icon="check-circle">Hadir</x-ui.badge>
+                            @else
+                                <x-ui.badge color="quiet">Belum hadir</x-ui.badge>
+                                <x-ui.button :href="'https://wa.me/'.$r->phone" target="_blank" rel="noopener"
+                                             variant="outline" size="sm" icon="whatsapp">
+                                    <span class="sr-only">Hubungi {{ $r->name }} di WhatsApp</span>
+                                </x-ui.button>
+                            @endif
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+    </section>
 </x-layouts.admin>
