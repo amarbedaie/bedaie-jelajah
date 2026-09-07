@@ -315,27 +315,12 @@
                 @endif
             </x-ui.empty-state>
         @else
-            <div class="relative mt-6 max-w-[90rem]" x-data="kanbanScroll" x-init="init()">
-                <button type="button" x-show="!atStart" x-cloak x-on:click="scroll(-1)"
-                        class="tap-target absolute -left-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center
-                               rounded-full border border-hairline bg-surface text-ink-soft shadow-soft
-                               transition hover:text-ink"
-                        aria-label="Tatal papan ke kiri">
-                    <x-ui.icon name="arrow-left" class="h-4 w-4" />
-                </button>
-                <button type="button" x-show="!atEnd" x-cloak x-on:click="scroll(1)"
-                        class="tap-target absolute -right-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center
-                               rounded-full border border-hairline bg-surface text-ink-soft shadow-soft
-                               transition hover:text-ink"
-                        aria-label="Tatal papan ke kanan">
-                    <x-ui.icon name="arrow-right" class="h-4 w-4" />
-                </button>
-
+            <div class="mt-6 max-w-[90rem]" x-data="kanbanScroll" x-init="init()">
                 <div x-ref="scroller"
                      class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
                 @foreach ($stages as $stage)
                     @php $items = $grouped[$stage->value] ?? collect(); @endphp
-                    <section class="w-[17rem] shrink-0 snap-start" aria-label="{{ $stage->label() }}">
+                    <section class="w-[19rem] shrink-0 snap-start" aria-label="{{ $stage->label() }}">
                         <header class="flex items-center justify-between gap-2 px-1 pb-2.5">
                             <h3 class="text-sm font-semibold text-ink">{{ $stage->label() }}</h3>
                             <span class="rounded-full bg-mist px-2 py-0.5 text-[0.8125rem] font-medium text-ink-soft">
@@ -401,6 +386,13 @@
                         </div>
                     </section>
                 @endforeach
+                </div>
+
+                <div x-show="scrollable" x-cloak x-ref="track"
+                     x-on:pointerdown.prevent="startDrag($event)"
+                     class="relative mt-3 h-2 cursor-pointer select-none rounded-full bg-mist">
+                    <span class="absolute inset-y-0 cursor-grab rounded-full bg-brand-600 active:cursor-grabbing"
+                          :style="`left:${thumbLeft}%;width:${thumbWidth}%`"></span>
                 </div>
             </div>
 

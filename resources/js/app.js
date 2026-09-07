@@ -28,12 +28,14 @@ document.addEventListener('alpine:init', () => {
      * Papan kanban yang ditatal mendatar (cth. papan sasaran jelajah).
      * Skrol bar disembunyikan untuk kekemasan, jadi pengguna tetikus biasa
      * (tanpa touchpad) tiada cara nampak untuk tatal ke kanan — komponen ini
-     * menambah butang anak panah dan menukar skrol menegak tetikus kepada
-     * tatalan mendatar apabila menuding di atas papan.
+     * menyediakan trek skrol yang boleh diseret (macam slider) di bawah
+     * papan, dan menukar skrol menegak tetikus kepada tatalan mendatar
+     * apabila menuding di atas papan.
      */
     window.Alpine.data('kanbanScroll', () => ({
-        atStart: true,
-        atEnd: false,
+        scrollable: false,
+        thumbLeft: 0,
+        thumbWidth: 100,
         observer: null,
         init() {
             const el = this.$refs.scroller;
@@ -52,12 +54,27 @@ document.addEventListener('alpine:init', () => {
         update() {
             const el = this.$refs.scroller;
             if (!el) return;
-            this.atStart = el.scrollLeft <= 4;
-            this.atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - 4;
+            const max = el.scrollWidth - el.clientWidth;
+            this.scrollable = max > 4;
+            this.thumbWidth = Math.min(100, (el.clientWidth / el.scrollWidth) * 100);
+            this.thumbLeft = max > 0 ? (el.scrollLeft / max) * (100 - this.thumbWidth) : 0;
         },
-        scroll(dir) {
+        seek(clientX) {
             const el = this.$refs.scroller;
-            el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' });
+            const rect = this.$refs.track.getBoundingClientRect();
+            const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+            el.scrollLeft = ratio * (el.scrollWidth - el.clientWidth);
+        },
+        startDrag(e) {
+            if (!this.scrollable) return;
+            this.seek(e.clientX);
+            const onMove = (ev) => this.seek(ev.clientX);
+            const onUp = () => {
+                window.removeEventListener('pointermove', onMove);
+                window.removeEventListener('pointerup', onUp);
+            };
+            window.addEventListener('pointermove', onMove);
+            window.addEventListener('pointerup', onUp);
         },
     }));
 
