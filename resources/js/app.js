@@ -34,6 +34,9 @@ document.addEventListener('alpine:init', () => {
      */
     window.Alpine.data('kanbanScroll', () => ({
         scrollable: false,
+        atStart: true,
+        atEnd: true,
+        progress: 0,
         thumbLeft: 0,
         thumbWidth: 100,
         observer: null,
@@ -56,6 +59,9 @@ document.addEventListener('alpine:init', () => {
             if (!el) return;
             const max = el.scrollWidth - el.clientWidth;
             this.scrollable = max > 4;
+            this.atStart = el.scrollLeft <= 2;
+            this.atEnd = !this.scrollable || el.scrollLeft >= max - 2;
+            this.progress = max > 0 ? (el.scrollLeft / max) * 100 : 0;
             this.thumbWidth = Math.min(100, (el.clientWidth / el.scrollWidth) * 100);
             this.thumbLeft = max > 0 ? (el.scrollLeft / max) * (100 - this.thumbWidth) : 0;
         },

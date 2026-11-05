@@ -315,8 +315,24 @@
                 @endif
             </x-ui.empty-state>
         @else
-            <div class="mt-6 max-w-[90rem]" x-data="kanbanScroll" x-init="init()">
-                <div x-ref="scroller"
+            {{-- Papan selebar kandungan (sama tepi dengan kad penapis), lajur bergerak di dalamnya.
+                 Trek skrol diletak DI ATAS lajur supaya sentiasa kelihatan tanpa perlu tatal
+                 halaman ke bawah, dan pudar di tepi menandakan ada peringkat lagi. --}}
+            <div class="mt-6 w-full" x-data="kanbanScroll" x-init="init()">
+                <div x-show="scrollable" x-cloak class="mb-3 flex items-center gap-3">
+                    <span class="shrink-0 text-xs text-ink-muted">Seret untuk lihat peringkat seterusnya</span>
+                    <div x-ref="track"
+                         x-on:pointerdown.prevent="startDrag($event)"
+                         class="relative h-2.5 flex-1 cursor-pointer select-none rounded-full bg-mist"
+                         role="scrollbar" aria-controls="outreach-kanban" aria-orientation="horizontal"
+                         :aria-valuenow="Math.round(progress)" aria-valuemin="0" aria-valuemax="100">
+                        <span class="absolute inset-y-0 cursor-grab rounded-full bg-brand-600 active:cursor-grabbing"
+                              :style="`left:${thumbLeft}%;width:${thumbWidth}%`"></span>
+                    </div>
+                </div>
+
+                <div class="relative">
+                <div x-ref="scroller" id="outreach-kanban"
                      class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
                 @foreach ($stages as $stage)
                     @php $items = $grouped[$stage->value] ?? collect(); @endphp
@@ -387,12 +403,10 @@
                     </section>
                 @endforeach
                 </div>
-
-                <div x-show="scrollable" x-cloak x-ref="track"
-                     x-on:pointerdown.prevent="startDrag($event)"
-                     class="relative mt-3 h-2 cursor-pointer select-none rounded-full bg-mist">
-                    <span class="absolute inset-y-0 cursor-grab rounded-full bg-brand-600 active:cursor-grabbing"
-                          :style="`left:${thumbLeft}%;width:${thumbWidth}%`"></span>
+                <div x-show="!atStart" x-cloak aria-hidden="true"
+                     class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-cream to-transparent"></div>
+                <div x-show="!atEnd" x-cloak aria-hidden="true"
+                     class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-cream to-transparent"></div>
                 </div>
             </div>
 
