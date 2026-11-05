@@ -82,6 +82,8 @@
                 </dl>
             </x-ui.card>
 
+            <livewire:admin.event-checklist :event="$event" />
+
             <livewire:admin.internal-planning :event="$event" />
 
         <livewire:admin.recording-manager :event="$event" />

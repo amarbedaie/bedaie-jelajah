@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Enums\CertificateDesign;
 use App\Enums\EventStatus;
 use App\Enums\PosterStyle;
 use App\Enums\PricingMode;
@@ -100,6 +101,11 @@ class EventEditor extends Component
 
     public bool $certificate_enabled = true;
 
+    // Kosong = ikut kategori program, kemudian templat sijil.
+    public string $certificate_design = '';
+
+    public string $certificate_orientation = '';
+
     public $poster;
 
     public function mount(Event $event): void
@@ -145,6 +151,8 @@ class EventEditor extends Component
         $this->organizer_name = (string) $event->organizer_name;
         $this->contact_phone = (string) $event->contact_phone;
         $this->certificate_enabled = (bool) $event->certificate_enabled;
+        $this->certificate_design = (string) $event->certificate_design;
+        $this->certificate_orientation = (string) $event->certificate_orientation;
     }
 
     public function updatedStateId(): void
@@ -293,6 +301,10 @@ class EventEditor extends Component
             'organizer_name' => $data['organizer_name'] ?: null,
             'contact_phone' => $data['contact_phone'] ?: null,
             'certificate_enabled' => $this->certificate_enabled,
+            'certificate_design' => in_array($this->certificate_design, array_keys(CertificateDesign::options()), true)
+                ? $this->certificate_design : null,
+            'certificate_orientation' => in_array($this->certificate_orientation, ['landscape', 'portrait'], true)
+                ? $this->certificate_orientation : null,
         ];
 
         if ($this->poster) {

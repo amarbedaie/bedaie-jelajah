@@ -204,6 +204,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/kehadiran/{event}', [Admin\AttendanceController::class, 'show'])->name('kehadiran.show');
 
     Route::get('/sijil', [Admin\CertificateController::class, 'index'])->name('sijil');
+    Route::view('/sijil/templat', 'admin.certificate-templates')->name('sijil.templat');
+    Route::get('/sijil/templat/{template}/pratonton', [Admin\CertificateController::class, 'preview'])
+        ->name('sijil.pratonton');
     Route::get('/pembayaran', [Admin\CertificateController::class, 'payments'])->name('pembayaran');
 
     // Aliran keluar: sasaran yang dikejar oleh pasukan BeDaie sendiri.
@@ -215,6 +218,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/penceramah', [Admin\CatalogController::class, 'speakers'])->name('penceramah');
     Route::get('/kategori', [Admin\CatalogController::class, 'categories'])->name('kategori');
     Route::view('/pakej', 'admin.packages')->name('pakej');
+    Route::view('/blueprint', 'admin.blueprints')->name('blueprint');
 
     Route::get('/galeri', [Admin\ContentController::class, 'gallery'])->name('galeri');
     Route::get('/rakan', [Admin\ContentController::class, 'partners'])->name('rakan');

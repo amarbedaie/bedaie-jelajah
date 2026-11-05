@@ -33,6 +33,29 @@
                                    :error="$errors->has('description')" />
                 </x-ui.field>
 
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <x-ui.field label="Reka bentuk sijil" for="c-cert-design" optional
+                                hint="Semua program dalam kategori ini guna gaya ini (boleh diubah setiap program)."
+                                :error="$errors->first('certificate_design')">
+                        <x-ui.select id="c-cert-design" wire:model="certificate_design">
+                            <option value="">Ikut templat sijil</option>
+                            @foreach ($designs as $d)
+                                <option value="{{ $d->value }}">{{ $d->label() }} — {{ $d->description() }}</option>
+                            @endforeach
+                        </x-ui.select>
+                    </x-ui.field>
+
+                    <x-ui.field label="Orientasi sijil (A4)" for="c-cert-orient" optional
+                                :error="$errors->first('certificate_orientation')">
+                        <x-ui.select id="c-cert-orient" wire:model="certificate_orientation">
+                            <option value="">Ikut templat sijil</option>
+                            @foreach ($orientations as $value => $label)
+                                <option value="{{ $value }}">{{ $label }}</option>
+                            @endforeach
+                        </x-ui.select>
+                    </x-ui.field>
+                </div>
+
                 <fieldset>
                     <legend class="mb-2.5 block text-sm font-medium text-ink">
                         Ikon <span class="text-alert" aria-hidden="true">*</span>

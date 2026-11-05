@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Enums\CertificateDesign;
 use App\Livewire\Concerns\NotifiesUser;
 use App\Models\EventCategory;
 use App\Services\ActivityLogger;
@@ -29,6 +30,11 @@ class CategoryManager extends Component
 
     public string $sort_order = '0';
 
+    // Reka bentuk sijil lalai bagi program dalam kategori ini (kosong = ikut templat).
+    public string $certificate_design = '';
+
+    public string $certificate_orientation = '';
+
     /** Ikon yang tersedia dalam komponen <x-ui.icon>. */
     public const ICONS = [
         'book', 'mosque', 'heart', 'users', 'user', 'home', 'star',
@@ -45,6 +51,8 @@ class CategoryManager extends Component
             'description' => ['nullable', 'string', 'max:500'],
             'is_active' => ['boolean'],
             'sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
+            'certificate_design' => ['nullable', Rule::in(array_keys(CertificateDesign::options()))],
+            'certificate_orientation' => ['nullable', Rule::in(['landscape', 'portrait'])],
         ];
     }
 
@@ -73,6 +81,8 @@ class CategoryManager extends Component
         $this->description = (string) $category->description;
         $this->is_active = (bool) $category->is_active;
         $this->sort_order = (string) $category->sort_order;
+        $this->certificate_design = (string) $category->certificate_design;
+        $this->certificate_orientation = (string) $category->certificate_orientation;
         $this->showForm = true;
     }
 
@@ -97,6 +107,8 @@ class CategoryManager extends Component
             'description' => $data['description'] ?: null,
             'is_active' => $data['is_active'],
             'sort_order' => (int) ($data['sort_order'] ?: 0),
+            'certificate_design' => $data['certificate_design'] ?: null,
+            'certificate_orientation' => $data['certificate_orientation'] ?: null,
         ])->save();
 
         ActivityLogger::log($this->editingId ? 'category.updated' : 'category.created',
@@ -136,7 +148,8 @@ class CategoryManager extends Component
 
     private function resetForm(): void
     {
-        $this->reset(['editingId', 'name', 'tagline', 'description', 'sort_order', 'showForm']);
+        $this->reset(['editingId', 'name', 'tagline', 'description', 'sort_order', 'showForm',
+            'certificate_design', 'certificate_orientation']);
         $this->icon = 'book';
         $this->is_active = true;
         $this->resetValidation();
@@ -149,6 +162,8 @@ class CategoryManager extends Component
                 ->withCount(['events', 'applications', 'areaInterestRequests'])
                 ->get(),
             'icons' => self::ICONS,
+            'designs' => CertificateDesign::cases(),
+            'orientations' => CertificateDesign::orientations(),
         ]);
     }
 }

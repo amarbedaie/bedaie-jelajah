@@ -98,6 +98,33 @@ enum ApplicationStatus: string
         ];
     }
 
+    /**
+     * Status ringkas yang boleh dipilih admin pada panel tindakan.
+     *
+     * Status lain (Draf, Dalam Semakan, Perlu Maklumat Tambahan,
+     * Diluluskan, Selesai) KEKAL sah untuk rekod sedia ada — cuma tidak
+     * ditawarkan lagi kerana bertindih: Dalam Semakan ≈ Permohonan
+     * Diterima, Perlu Maklumat ≈ Dalam Perbincangan, Diluluskan ≈ Program
+     * Disahkan, Draf tidak pernah ditetapkan admin dan Selesai ditanda
+     * automatik apabila program ditutup.
+     *
+     * @return list<self>
+     */
+    public static function selectable(?self $current = null): array
+    {
+        $choices = [
+            self::Diterima, self::DalamPerbincangan, self::CadanganTarikh,
+            self::ProgramDisahkan, self::Ditangguhkan, self::TidakDapatDipenuhi,
+        ];
+
+        // Rekod yang masih berstatus lama mesti boleh dipaparkan dengan betul.
+        if ($current && ! in_array($current, $choices, true)) {
+            array_unshift($choices, $current);
+        }
+
+        return $choices;
+    }
+
     public static function options(): array
     {
         return collect(self::cases())->mapWithKeys(fn ($c) => [$c->value => $c->label()])->all();

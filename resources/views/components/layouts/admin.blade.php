@@ -24,6 +24,7 @@
             ['label' => 'Penceramah',       'route' => 'admin.penceramah',  'icon' => 'user'],
             ['label' => 'Kategori Program', 'route' => 'admin.kategori',    'icon' => 'list'],
             ['label' => 'Pakej Jualan',     'route' => 'admin.pakej',       'icon' => 'box'],
+            ['label' => 'Blueprint SOP',    'route' => 'admin.blueprint',   'icon' => 'clipboard'],
         ],
         'Kandungan' => [
             ['label' => 'Galeri & Testimoni','route' => 'admin.galeri',     'icon' => 'image'],

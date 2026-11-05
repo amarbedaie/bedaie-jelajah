@@ -292,6 +292,27 @@
                                      wire:model="certificate_enabled" :checked="$certificate_enabled"
                                      label="Keluarkan sijil" />
                     </div>
+
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <x-ui.field label="Reka bentuk sijil" for="e-cert-design" optional
+                                    hint="Kosong = ikut kategori program, kemudian templat sijil.">
+                            <x-ui.select id="e-cert-design" wire:model="certificate_design">
+                                <option value="">Ikut kategori / templat</option>
+                                @foreach (\App\Enums\CertificateDesign::cases() as $d)
+                                    <option value="{{ $d->value }}">{{ $d->label() }} — {{ $d->description() }}</option>
+                                @endforeach
+                            </x-ui.select>
+                        </x-ui.field>
+
+                        <x-ui.field label="Orientasi sijil (A4)" for="e-cert-orient" optional>
+                            <x-ui.select id="e-cert-orient" wire:model="certificate_orientation">
+                                <option value="">Ikut kategori / templat</option>
+                                @foreach (\App\Enums\CertificateDesign::orientations() as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                @endforeach
+                            </x-ui.select>
+                        </x-ui.field>
+                    </div>
                 </section>
 
                 {{-- Penganjur --}}

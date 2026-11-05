@@ -13,6 +13,7 @@ class EventCategory extends Model
 
     protected $fillable = [
         'name', 'slug', 'icon', 'tagline', 'description', 'sort_order', 'is_active',
+        'certificate_design', 'certificate_orientation',
     ];
 
     protected function casts(): array

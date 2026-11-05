@@ -30,6 +30,7 @@ class Event extends Model
         'allow_guest_registration', 'max_guests_per_registration', 'requires_approval', 'invite_code',
         'registration_opens_at', 'registration_closes_at', 'status', 'target_audience',
         'organizer_name', 'contact_phone', 'certificate_enabled', 'certificate_template_id',
+        'certificate_design', 'certificate_orientation', 'blueprint_id',
         'min_attendance_percent', 'feedback_required_for_certificate', 'learning_hours',
         'tentative', 'faqs', 'parking_info', 'registered_count', 'attended_count', 'waitlist_count',
         'published_at', 'completed_at',
@@ -92,6 +93,16 @@ class Event extends Model
     public function district(): BelongsTo
     {
         return $this->belongsTo(District::class);
+    }
+
+    public function blueprint(): BelongsTo
+    {
+        return $this->belongsTo(Blueprint::class);
+    }
+
+    public function checklistItems(): HasMany
+    {
+        return $this->hasMany(EventChecklistItem::class)->orderBy('sort_order')->orderBy('id');
     }
 
     public function certificateTemplate(): BelongsTo

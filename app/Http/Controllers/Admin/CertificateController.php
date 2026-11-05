@@ -6,7 +6,9 @@ use App\Enums\CertificateStatus;
 use App\Enums\CertificateType;
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
+use App\Models\CertificateTemplate;
 use App\Models\Event;
+use App\Services\CertificateService;
 use Illuminate\Http\Request;
 
 class CertificateController extends Controller
@@ -38,5 +40,17 @@ class CertificateController extends Controller
     public function payments()
     {
         return view('admin.payments');
+    }
+
+    /** Pratonton PDF templat dengan data contoh (gaya/orientasi boleh diuji tanpa simpan). */
+    public function preview(Request $request, CertificateTemplate $template, CertificateService $certificates)
+    {
+        $design = in_array($request->query('design'), array_keys(\App\Enums\CertificateDesign::options()), true)
+            ? $request->query('design') : null;
+        $orientation = in_array($request->query('orientation'), ['landscape', 'portrait'], true)
+            ? $request->query('orientation') : null;
+
+        return $certificates->previewPdf($template, $design, $orientation)
+            ->stream("pratonton-{$template->slug}.pdf");
     }
 }

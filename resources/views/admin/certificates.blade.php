@@ -1,4 +1,10 @@
 <x-layouts.admin title="Sijil" heading="Sijil">
+    <div class="mb-4 flex justify-end">
+        <x-ui.button :href="route('admin.sijil.templat')" variant="outline" size="sm" icon="certificate">
+            Templat & Reka Bentuk Sijil
+        </x-ui.button>
+    </div>
+
     <form method="GET" class="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_12rem_12rem_12rem_auto]">
         <x-ui.input name="q" :value="request('q')" icon="search"
                     placeholder="Cari nama atau nombor sijil…" aria-label="Carian sijil" />

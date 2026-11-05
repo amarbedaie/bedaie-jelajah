@@ -188,7 +188,7 @@ class ApplicationWorkflow extends Component
     {
         return view('livewire.admin.application-workflow', [
             'application' => $this->application,
-            'statuses' => ApplicationStatus::cases(),
+            'statuses' => ApplicationStatus::selectable($this->application->status),
             'speakers' => Speaker::active()->ordered()->get(),
             'pricingModes' => PricingMode::cases(),
         ]);

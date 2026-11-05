@@ -207,19 +207,26 @@ class CertificateService
         return $certificate->fresh();
     }
 
+    /**
+     * Versi susun atur PDF. Naikkan apabila templat Blade berubah supaya
+     * PDF lama yang dicache dijana semula secara automatik.
+     */
+    private const LAYOUT_VERSION = 2;
+
     /** Menjana PDF dan memulangkan laluan simpanan. */
     public function renderPdf(Certificate $certificate): string
     {
         $template = $certificate->template ?? CertificateTemplate::resolveFor($certificate->type);
 
-        $pdf = Pdf::loadView('certificates.template', [
-            'certificate' => $certificate,
-            'template' => $template,
-            'qrDataUri' => $this->qr->pngDataUri($certificate->verificationUrl(), 300),
-        ])->setPaper('a4', $template?->orientation ?? 'landscape');
+        $path = $this->expectedPath($certificate, $template);
+        $previous = $certificate->pdf_path;
 
-        $path = "sijil/{$certificate->certificate_number}.pdf";
-        Storage::disk('public')->put($path, $pdf->output());
+        Storage::disk('public')->put($path, $this->buildPdf($certificate, $template)->output());
+
+        // PDF lama hanyalah cache yang dijana — buang supaya storan tidak bersepah.
+        if ($previous && $previous !== $path && Storage::disk('public')->exists($previous)) {
+            Storage::disk('public')->delete($previous);
+        }
 
         $certificate->update(['pdf_path' => $path]);
 
@@ -228,11 +235,66 @@ class CertificateService
 
     public function pdfPath(Certificate $certificate): string
     {
-        if ($certificate->pdf_path && Storage::disk('public')->exists($certificate->pdf_path)) {
+        $template = $certificate->template ?? CertificateTemplate::resolveFor($certificate->type);
+
+        // Jana semula jika reka bentuk, orientasi atau templat telah berubah.
+        if ($certificate->pdf_path === $this->expectedPath($certificate, $template)
+            && Storage::disk('public')->exists($certificate->pdf_path)) {
             return $certificate->pdf_path;
         }
 
         return $this->renderPdf($certificate);
+    }
+
+    /** Pratonton templat dengan data contoh — tiada rekod disimpan. */
+    public function previewPdf(CertificateTemplate $template, ?string $design = null, ?string $orientation = null): \Barryvdh\DomPDF\PDF
+    {
+        $preview = $template->replicate();
+        $preview->design = $design ?: $template->design;
+        $preview->orientation = $orientation ?: $template->orientation;
+
+        $certificate = new Certificate([
+            'certificate_number' => 'BDJ-CONTOH-000001',
+            'type' => $template->type,
+            'recipient_name' => $template->type === CertificateType::PenghargaanRakan
+                ? 'Masjid Al-Hidayah Taman Contoh' : 'Nur Aisyah binti Abdullah',
+            'organization_name' => 'Masjid Al-Hidayah Taman Contoh',
+            'event_title' => 'Jelajah Solat: Kelas Qadha Solat',
+            'speaker_name' => 'Ustaz Ahmad Faiz bin Ismail',
+            'venue_name' => 'Masjid Al-Hidayah Taman Contoh',
+            'event_date' => now()->toDateString(),
+            'learning_hours' => 2.5,
+            'issued_at' => now(),
+        ]);
+        $certificate->public_id = 'contoh';
+
+        return $this->buildPdf($certificate, $preview, previewing: true);
+    }
+
+    private function buildPdf(Certificate $certificate, ?CertificateTemplate $template, bool $previewing = false): \Barryvdh\DomPDF\PDF
+    {
+        [$design, $orientation] = CertificateTemplate::appearance($template, $previewing ? null : $certificate->event);
+
+        return Pdf::loadView('certificates.template', [
+            'certificate' => $certificate,
+            'template' => $template,
+            'design' => $design,
+            'isLandscape' => $orientation === 'landscape',
+            'qrDataUri' => $this->qr->pngDataUri(
+                $previewing ? route('sijil.semak') : $certificate->verificationUrl(), 300),
+        ])->setPaper('a4', $orientation);
+    }
+
+    private function expectedPath(Certificate $certificate, ?CertificateTemplate $template): string
+    {
+        [$design, $orientation] = CertificateTemplate::appearance($template, $certificate->event);
+
+        $signature = substr(md5(implode('|', [
+            self::LAYOUT_VERSION, $design->value, $orientation,
+            $template?->id, $template?->updated_at?->timestamp,
+        ])), 0, 8);
+
+        return "sijil/{$certificate->certificate_number}-{$signature}.pdf";
     }
 
     // ── Dalaman ──────────────────────────────────────────────────────
